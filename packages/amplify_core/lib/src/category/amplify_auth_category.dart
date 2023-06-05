@@ -109,10 +109,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthSignUpStep.confirmSignUp:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     case AuthSignUpStep.done:
   ///       safePrint('Sign up is complete');
-  ///       break;
   ///   }
   /// }
   /// ```
@@ -190,10 +188,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthSignUpStep.confirmSignUp:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     case AuthSignUpStep.done:
   ///       safePrint('Sign up is complete');
-  ///       break;
   ///   }
   /// }
   /// ```
@@ -337,7 +333,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthSignInStep.confirmSignInWithSmsMfaCode:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -353,6 +348,75 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   /// }
   /// ```
   ///
+  /// If TOTP MFA is enabled, prompt the user to visit their registered authenticator app
+  /// for a one-time code.
+  ///
+  /// <?code-excerpt "doc/lib/auth.dart" region="handle-confirm-signin-totp-code"?>
+  /// ```dart
+  /// Future<void> _handleSignInResult(SignInResult result) async {
+  ///   switch (result.nextStep.signInStep) {
+  ///     // ···
+  ///     case AuthSignInStep.confirmSignInWithTotpMfaCode:
+  ///       safePrint('Enter a one-time code from your registered Authenticator app');
+  ///     // ···
+  ///   }
+  /// }
+  /// ```
+  ///
+  /// If TOTP MFA is enabled but the user has not configured it yet, prompt them to
+  /// install an authenticator app capable of generating one-time passcodes (e.g.
+  /// Google Authenticator or Microsoft Authenticator), then use the returned [TotpSetupDetails]
+  /// to generate and display a URI for setup.
+  ///
+  /// <?code-excerpt "doc/lib/auth.dart" region="handle-confirm-signin-totp-setup"?>
+  /// ```dart
+  /// Future<void> _handleSignInResult(SignInResult result) async {
+  ///   switch (result.nextStep.signInStep) {
+  ///     // ···
+  ///     case AuthSignInStep.continueSignInWithTotpSetup:
+  ///       final totpSetupDetails = result.nextStep.totpSetupDetails!;
+  ///       final setupUri = totpSetupDetails.getSetupUri(appName: 'MyApp');
+  ///       safePrint('Open URI to complete setup: $setupUri');
+  ///     // ···
+  ///   }
+  /// }
+  /// ```
+  ///
+  /// If both SMS MFA and TOTP MFA are enabled and configured for the user, they will be
+  /// given the choice of which mechanism they'd like to use to continue signing in.
+  ///
+  /// <?code-excerpt "doc/lib/auth.dart" region="handle-mfa-selection"?>
+  /// ```dart
+  /// Future<MfaType> _promptUserPreference(Set<MfaType> allowedTypes) async {
+  ///   throw UnimplementedError();
+  /// }
+  ///
+  /// Future<void> _handleMfaSelection(MfaType selection) async {
+  ///   try {
+  ///     final result = await Amplify.Auth.confirmSignIn(
+  ///       confirmationValue: selection.name,
+  ///     );
+  ///     return _handleSignInResult(result);
+  ///   } on AuthException catch (e) {
+  ///     safePrint('Error resending code: ${e.message}');
+  ///   }
+  /// }
+  /// ```
+  ///
+  /// <?code-excerpt "doc/lib/auth.dart" region="handle-confirm-signin-mfa-selection"?>
+  /// ```dart
+  /// Future<void> _handleSignInResult(SignInResult result) async {
+  ///   switch (result.nextStep.signInStep) {
+  ///     // ···
+  ///     case AuthSignInStep.continueSignInWithMfaSelection:
+  ///       final allowedMfaTypes = result.nextStep.allowedMfaTypes!;
+  ///       final selection = await _promptUserPreference(allowedMfaTypes);
+  ///       return _handleMfaSelection(selection);
+  ///     // ···
+  ///   }
+  /// }
+  /// ```
+  ///
   /// If the user was created by an administrator, a new password will be required.
   /// Prompt the user to choose a new password and pass the value to [confirmSignIn].
   ///
@@ -363,7 +427,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     // ···
   ///     case AuthSignInStep.confirmSignInWithNewPassword:
   ///       safePrint('Enter a new password to continue signing in');
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -383,7 +446,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///       final parameters = result.nextStep.additionalInfo;
   ///       final prompt = parameters['prompt']!;
   ///       safePrint(prompt);
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -403,7 +465,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///         username: username,
   ///       );
   ///       await _handleResetPasswordResult(resetResult);
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -416,10 +477,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthResetPasswordStep.confirmResetPasswordWithCode:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     case AuthResetPasswordStep.done:
   ///       safePrint('Successfully reset password');
-  ///       break;
   ///   }
   /// }
   /// ```
@@ -439,7 +498,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///         username: username,
   ///       );
   ///       _handleCodeDelivery(resendResult.codeDeliveryDetails);
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -465,7 +523,6 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     // ···
   ///     case AuthSignInStep.done:
   ///       safePrint('Sign in is complete');
-  ///       break;
   ///     // ···
   ///   }
   /// }
@@ -704,10 +761,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthResetPasswordStep.confirmResetPasswordWithCode:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     case AuthResetPasswordStep.done:
   ///       safePrint('Successfully reset password');
-  ///       break;
   ///   }
   /// }
   /// ```
@@ -1045,10 +1100,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///     case AuthUpdateAttributeStep.confirmAttributeWithCode:
   ///       final codeDeliveryDetails = result.nextStep.codeDeliveryDetails!;
   ///       _handleCodeDelivery(codeDeliveryDetails);
-  ///       break;
   ///     case AuthUpdateAttributeStep.done:
   ///       safePrint('Successfully updated attribute');
-  ///       break;
   ///   }
   /// }
   /// ```
@@ -1108,10 +1161,8 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
   ///         case AuthUpdateAttributeStep.confirmAttributeWithCode:
   ///           final destination = value.nextStep.codeDeliveryDetails?.destination;
   ///           safePrint('Confirmation code sent to $destination for $key');
-  ///           break;
   ///         case AuthUpdateAttributeStep.done:
   ///           safePrint('Update completed for $key');
-  ///           break;
   ///       }
   ///     });
   ///   } on AuthException catch (e) {
@@ -1240,6 +1291,36 @@ class AuthCategory extends AmplifyCategory<AuthPluginInterface> {
               options: options,
             ),
           );
+
+  /// {@template amplify_core.amplify_auth_category.set_up_totp}
+  /// Initiates setup of a time-based one-time passcode (TOTP) MFA method for the
+  /// current user.
+  ///
+  /// Your backend must be set up with TOTP MFA enabled prior to calling this method.
+  /// The [TotpSetupDetails] returned contains a [TotpSetupDetails.getSetupUri]
+  /// method which can be used to display a QR code or render a button to open
+  /// the user's installed authenticator app. After setup is complete on the user's
+  /// end, call [verifyTotpSetup] with a one-time code to complete registration.
+  /// {@endtemplate}
+  Future<TotpSetupDetails> setUpTotp({
+    TotpSetupOptions? options,
+  }) =>
+      defaultPlugin.setUpTotp(options: options);
+
+  /// {@template amplify_core.amplify_auth_category.verify_totp_setup}
+  /// Completes setup of a TOTP MFA application.
+  ///
+  /// Call this method with the one-time code generated by the user's authenticator
+  /// app with the URI given by [setUpTotp].
+  /// {@endtemplate}
+  Future<void> verifyTotpSetup(
+    String totpCode, {
+    VerifyTotpSetupOptions? options,
+  }) =>
+      defaultPlugin.verifyTotpSetup(
+        totpCode,
+        options: options,
+      );
 
   /// {@template amplify_core.amplify_auth_category.remember_device}
   /// Remembers the current device.
