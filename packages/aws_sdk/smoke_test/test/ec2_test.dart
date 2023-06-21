@@ -142,31 +142,35 @@ void main() {
       );
     });
 
-    test('Create and delete a volume', () async {
-      // Create volume
-      final createResponse = await client
-          .createVolume(
-            CreateVolumeRequest(
-              availabilityZone: 'us-west-2a',
-              volumeType: VolumeType.io1,
-              size: 150,
-              iops: 7500,
-              multiAttachEnabled: true,
-            ),
-          )
-          .result;
-      expect(createResponse.volumeId, isNotNull);
-      await expectLater(
-        client
-            .deleteVolume(
-              DeleteVolumeRequest(
-                volumeId: createResponse.volumeId!,
+    test(
+      'Create and delete a volume',
+      () async {
+        // Create volume
+        final createResponse = await client
+            .createVolume(
+              CreateVolumeRequest(
+                availabilityZone: 'us-west-2a',
+                volumeType: VolumeType.io1,
+                size: 150,
+                iops: 7500,
+                multiAttachEnabled: true,
               ),
             )
-            .result,
-        completes,
-      );
-    });
+            .result;
+        expect(createResponse.volumeId, isNotNull);
+        await expectLater(
+          client
+              .deleteVolume(
+                DeleteVolumeRequest(
+                  volumeId: createResponse.volumeId!,
+                ),
+              )
+              .result,
+          completes,
+        );
+      },
+      skip: 'Broken in localstack',
+    );
 
     test('Create and delete a key pair', () async {
       // Create key pair
