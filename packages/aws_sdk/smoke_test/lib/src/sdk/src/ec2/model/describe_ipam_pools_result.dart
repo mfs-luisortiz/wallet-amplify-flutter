@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_ipam_pools_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,33 +96,30 @@ class DescribeIpamPoolsResultEc2QuerySerializer
     final result = DescribeIpamPoolsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamPoolSet':
-          if (value != null) {
-            result.ipamPools.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.IpamPool)],
-              ),
-            ) as _i3.BuiltList<_i2.IpamPool>));
-          }
-          break;
+          result.ipamPools.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.IpamPool)],
+            ),
+          ) as _i3.BuiltList<_i2.IpamPool>));
       }
     }
 
@@ -131,39 +129,39 @@ class DescribeIpamPoolsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeIpamPoolsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeIpamPoolsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeIpamPoolsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.nextToken != null) {
-      result
+    final DescribeIpamPoolsResult(:nextToken, :ipamPools) = object;
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamPools != null) {
-      result
+    if (ipamPools != null) {
+      result$
         ..add(const _i4.XmlElementName('IpamPoolSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipamPools!,
+          ipamPools,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.IpamPool)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

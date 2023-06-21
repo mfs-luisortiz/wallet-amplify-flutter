@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_tag_notification_attribute;
+part of 'instance_tag_notification_attribute.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

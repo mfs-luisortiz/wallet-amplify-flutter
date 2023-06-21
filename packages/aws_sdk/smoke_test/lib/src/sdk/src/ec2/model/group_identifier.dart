@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.group_identifier; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -87,26 +88,23 @@ class GroupIdentifierEc2QuerySerializer
     final result = GroupIdentifierBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupId':
-          if (value != null) {
-            result.groupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -116,32 +114,32 @@ class GroupIdentifierEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GroupIdentifier object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GroupIdentifier);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GroupIdentifierResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupName != null) {
-      result
+    final GroupIdentifier(:groupName, :groupId) = object;
+    if (groupName != null) {
+      result$
         ..add(const _i2.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupId != null) {
-      result
+    if (groupId != null) {
+      result$
         ..add(const _i2.XmlElementName('GroupId'))
         ..add(serializers.serialize(
-          payload.groupId!,
+          groupId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

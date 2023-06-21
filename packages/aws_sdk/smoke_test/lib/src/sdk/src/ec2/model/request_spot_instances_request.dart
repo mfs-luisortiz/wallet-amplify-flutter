@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.request_spot_instances_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -247,115 +248,85 @@ class RequestSpotInstancesRequestEc2QuerySerializer
     final result = RequestSpotInstancesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZoneGroup':
-          if (value != null) {
-            result.availabilityZoneGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZoneGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'blockDurationMinutes':
           result.blockDurationMinutes = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'instanceCount':
           result.instanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'launchGroup':
-          if (value != null) {
-            result.launchGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.launchGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LaunchSpecification':
-          if (value != null) {
-            result.launchSpecification.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.RequestSpotLaunchSpecification),
-            ) as _i3.RequestSpotLaunchSpecification));
-          }
-          break;
+          result.launchSpecification.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.RequestSpotLaunchSpecification),
+          ) as _i3.RequestSpotLaunchSpecification));
         case 'spotPrice':
-          if (value != null) {
-            result.spotPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.SpotInstanceType),
-            ) as _i4.SpotInstanceType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.SpotInstanceType),
+          ) as _i4.SpotInstanceType);
         case 'validFrom':
-          if (value != null) {
-            result.validFrom = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.validFrom = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'validUntil':
-          if (value != null) {
-            result.validUntil = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.validUntil = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i5.TagSpecification)],
-              ),
-            ) as _i7.BuiltList<_i5.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i5.TagSpecification)],
+            ),
+          ) as _i7.BuiltList<_i5.TagSpecification>));
         case 'InstanceInterruptionBehavior':
-          if (value != null) {
-            result.instanceInterruptionBehavior = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.InstanceInterruptionBehavior),
-            ) as _i6.InstanceInterruptionBehavior);
-          }
-          break;
+          result.instanceInterruptionBehavior = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.InstanceInterruptionBehavior),
+          ) as _i6.InstanceInterruptionBehavior);
       }
     }
 
@@ -365,122 +336,136 @@ class RequestSpotInstancesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RequestSpotInstancesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RequestSpotInstancesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'RequestSpotInstancesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZoneGroup != null) {
-      result
+    final RequestSpotInstancesRequest(
+      :availabilityZoneGroup,
+      :blockDurationMinutes,
+      :clientToken,
+      :dryRun,
+      :instanceCount,
+      :launchGroup,
+      :launchSpecification,
+      :spotPrice,
+      :type,
+      :validFrom,
+      :validUntil,
+      :tagSpecifications,
+      :instanceInterruptionBehavior
+    ) = object;
+    if (availabilityZoneGroup != null) {
+      result$
         ..add(const _i1.XmlElementName('AvailabilityZoneGroup'))
         ..add(serializers.serialize(
-          payload.availabilityZoneGroup!,
+          availabilityZoneGroup,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('BlockDurationMinutes'))
       ..add(serializers.serialize(
-        payload.blockDurationMinutes,
+        blockDurationMinutes,
         specifiedType: const FullType(int),
       ));
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceCount'))
       ..add(serializers.serialize(
-        payload.instanceCount,
+        instanceCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.launchGroup != null) {
-      result
+    if (launchGroup != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchGroup'))
         ..add(serializers.serialize(
-          payload.launchGroup!,
+          launchGroup,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.launchSpecification != null) {
-      result
+    if (launchSpecification != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchSpecification'))
         ..add(serializers.serialize(
-          payload.launchSpecification!,
+          launchSpecification,
           specifiedType: const FullType(_i3.RequestSpotLaunchSpecification),
         ));
     }
-    if (payload.spotPrice != null) {
-      result
+    if (spotPrice != null) {
+      result$
         ..add(const _i1.XmlElementName('SpotPrice'))
         ..add(serializers.serialize(
-          payload.spotPrice!,
+          spotPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i1.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i4.SpotInstanceType),
         ));
     }
-    if (payload.validFrom != null) {
-      result
+    if (validFrom != null) {
+      result$
         ..add(const _i1.XmlElementName('ValidFrom'))
         ..add(serializers.serialize(
-          payload.validFrom!,
+          validFrom,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.validUntil != null) {
-      result
+    if (validUntil != null) {
+      result$
         ..add(const _i1.XmlElementName('ValidUntil'))
         ..add(serializers.serialize(
-          payload.validUntil!,
+          validUntil,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i5.TagSpecification)],
           ),
         ));
     }
-    if (payload.instanceInterruptionBehavior != null) {
-      result
+    if (instanceInterruptionBehavior != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceInterruptionBehavior'))
         ..add(serializers.serialize(
-          payload.instanceInterruptionBehavior!,
+          instanceInterruptionBehavior,
           specifiedType:
               const FullType.nullable(_i6.InstanceInterruptionBehavior),
         ));
     }
-    return result;
+    return result$;
   }
 }

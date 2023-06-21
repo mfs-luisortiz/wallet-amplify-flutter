@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_snapshot_request;
+part of 'create_snapshot_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

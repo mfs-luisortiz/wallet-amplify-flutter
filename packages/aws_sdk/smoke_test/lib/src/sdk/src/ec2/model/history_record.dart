@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.history_record; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,34 +108,28 @@ class HistoryRecordEc2QuerySerializer
     final result = HistoryRecordBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'eventInformation':
-          if (value != null) {
-            result.eventInformation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.EventInformation),
-            ) as _i2.EventInformation));
-          }
-          break;
+          result.eventInformation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.EventInformation),
+          ) as _i2.EventInformation));
         case 'eventType':
-          if (value != null) {
-            result.eventType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.EventType),
-            ) as _i3.EventType);
-          }
-          break;
+          result.eventType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.EventType),
+          ) as _i3.EventType);
         case 'timestamp':
-          if (value != null) {
-            result.timestamp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.timestamp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -144,40 +139,40 @@ class HistoryRecordEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    HistoryRecord object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as HistoryRecord);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'HistoryRecordResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.eventInformation != null) {
-      result
+    final HistoryRecord(:eventInformation, :eventType, :timestamp) = object;
+    if (eventInformation != null) {
+      result$
         ..add(const _i4.XmlElementName('EventInformation'))
         ..add(serializers.serialize(
-          payload.eventInformation!,
+          eventInformation,
           specifiedType: const FullType(_i2.EventInformation),
         ));
     }
-    if (payload.eventType != null) {
-      result
+    if (eventType != null) {
+      result$
         ..add(const _i4.XmlElementName('EventType'))
         ..add(serializers.serialize(
-          payload.eventType!,
+          eventType,
           specifiedType: const FullType.nullable(_i3.EventType),
         ));
     }
-    if (payload.timestamp != null) {
-      result
+    if (timestamp != null) {
+      result$
         ..add(const _i4.XmlElementName('Timestamp'))
         ..add(serializers.serialize(
-          payload.timestamp!,
+          timestamp,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

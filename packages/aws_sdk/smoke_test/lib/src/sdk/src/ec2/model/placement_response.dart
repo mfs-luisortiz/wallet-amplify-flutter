@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.placement_response; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -71,18 +72,18 @@ class PlacementResponseEc2QuerySerializer
     final result = PlacementResponseBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -92,24 +93,24 @@ class PlacementResponseEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PlacementResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PlacementResponse);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PlacementResponseResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupName != null) {
-      result
+    final PlacementResponse(:groupName) = object;
+    if (groupName != null) {
+      result$
         ..add(const _i2.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

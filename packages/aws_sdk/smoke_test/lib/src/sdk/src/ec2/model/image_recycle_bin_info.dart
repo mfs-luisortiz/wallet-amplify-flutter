@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.image_recycle_bin_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,50 +119,38 @@ class ImageRecycleBinInfoEc2QuerySerializer
     final result = ImageRecycleBinInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'imageId':
-          if (value != null) {
-            result.imageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'recycleBinEnterTime':
-          if (value != null) {
-            result.recycleBinEnterTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.recycleBinEnterTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'recycleBinExitTime':
-          if (value != null) {
-            result.recycleBinExitTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.recycleBinExitTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -171,56 +160,62 @@ class ImageRecycleBinInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImageRecycleBinInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImageRecycleBinInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ImageRecycleBinInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.imageId != null) {
-      result
+    final ImageRecycleBinInfo(
+      :imageId,
+      :name,
+      :description,
+      :recycleBinEnterTime,
+      :recycleBinExitTime
+    ) = object;
+    if (imageId != null) {
+      result$
         ..add(const _i2.XmlElementName('ImageId'))
         ..add(serializers.serialize(
-          payload.imageId!,
+          imageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.name != null) {
-      result
+    if (name != null) {
+      result$
         ..add(const _i2.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.recycleBinEnterTime != null) {
-      result
+    if (recycleBinEnterTime != null) {
+      result$
         ..add(const _i2.XmlElementName('RecycleBinEnterTime'))
         ..add(serializers.serialize(
-          payload.recycleBinEnterTime!,
+          recycleBinEnterTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.recycleBinExitTime != null) {
-      result
+    if (recycleBinExitTime != null) {
+      result$
         ..add(const _i2.XmlElementName('RecycleBinExitTime'))
         ..add(serializers.serialize(
-          payload.recycleBinExitTime!,
+          recycleBinExitTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

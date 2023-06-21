@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.search_transit_gateway_routes_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -147,16 +148,18 @@ class SearchTransitGatewayRoutesRequestEc2QuerySerializer
     final result = SearchTransitGatewayRoutesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TransitGatewayRouteTableId':
           result.transitGatewayRouteTableId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Filter':
           result.filters.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'Filter',
@@ -169,19 +172,16 @@ class SearchTransitGatewayRoutesRequestEc2QuerySerializer
               [FullType(_i3.Filter)],
             ),
           ) as _i4.BuiltList<_i3.Filter>));
-          break;
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -191,47 +191,52 @@ class SearchTransitGatewayRoutesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SearchTransitGatewayRoutesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SearchTransitGatewayRoutesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'SearchTransitGatewayRoutesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final SearchTransitGatewayRoutesRequest(
+      :transitGatewayRouteTableId,
+      :filters,
+      :maxResults,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('TransitGatewayRouteTableId'))
       ..add(serializers.serialize(
-        payload.transitGatewayRouteTableId,
+        transitGatewayRouteTableId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Filter'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'Filter',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.filters,
+        filters,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(_i3.Filter)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

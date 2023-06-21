@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.bundle_task_error;
+part of 'bundle_task_error.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

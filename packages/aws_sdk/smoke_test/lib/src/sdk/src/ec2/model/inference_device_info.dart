@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.inference_device_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,34 +99,28 @@ class InferenceDeviceInfoEc2QuerySerializer
     final result = InferenceDeviceInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'count':
-          if (value != null) {
-            result.count = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.count = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'manufacturer':
-          if (value != null) {
-            result.manufacturer = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.manufacturer = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -135,40 +130,40 @@ class InferenceDeviceInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InferenceDeviceInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InferenceDeviceInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'InferenceDeviceInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.count != null) {
-      result
+    final InferenceDeviceInfo(:count, :name, :manufacturer) = object;
+    if (count != null) {
+      result$
         ..add(const _i2.XmlElementName('Count'))
         ..add(serializers.serialize(
-          payload.count!,
+          count,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.name != null) {
-      result
+    if (name != null) {
+      result$
         ..add(const _i2.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.manufacturer != null) {
-      result
+    if (manufacturer != null) {
+      result$
         ..add(const _i2.XmlElementName('Manufacturer'))
         ..add(serializers.serialize(
-          payload.manufacturer!,
+          manufacturer,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

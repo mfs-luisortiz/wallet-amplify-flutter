@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_flow_logs_result;
+part of 'create_flow_logs_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

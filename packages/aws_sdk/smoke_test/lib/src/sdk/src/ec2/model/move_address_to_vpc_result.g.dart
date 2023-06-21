@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.move_address_to_vpc_result;
+part of 'move_address_to_vpc_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

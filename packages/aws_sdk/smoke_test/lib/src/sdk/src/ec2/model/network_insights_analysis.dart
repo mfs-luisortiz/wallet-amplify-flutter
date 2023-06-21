@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_insights_analysis; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -224,164 +225,126 @@ class NetworkInsightsAnalysisEc2QuerySerializer
     final result = NetworkInsightsAnalysisBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsAnalysisId':
-          if (value != null) {
-            result.networkInsightsAnalysisId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsAnalysisId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInsightsAnalysisArn':
-          if (value != null) {
-            result.networkInsightsAnalysisArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsAnalysisArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInsightsPathId':
-          if (value != null) {
-            result.networkInsightsPathId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsPathId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'filterInArnSet':
-          if (value != null) {
-            result.filterInArns.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i7.BuiltList<String>));
-          }
-          break;
+          result.filterInArns.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i7.BuiltList<String>));
         case 'startDate':
-          if (value != null) {
-            result.startDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.startDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisStatus),
-            ) as _i2.AnalysisStatus);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisStatus),
+          ) as _i2.AnalysisStatus);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'warningMessage':
-          if (value != null) {
-            result.warningMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.warningMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkPathFound':
           result.networkPathFound = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'forwardPathComponentSet':
-          if (value != null) {
-            result.forwardPathComponents
-                .replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i3.PathComponent)],
-              ),
-            ) as _i7.BuiltList<_i3.PathComponent>));
-          }
-          break;
+          result.forwardPathComponents
+              .replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i3.PathComponent)],
+            ),
+          ) as _i7.BuiltList<_i3.PathComponent>));
         case 'returnPathComponentSet':
-          if (value != null) {
-            result.returnPathComponents
-                .replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i3.PathComponent)],
-              ),
-            ) as _i7.BuiltList<_i3.PathComponent>));
-          }
-          break;
+          result.returnPathComponents.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i3.PathComponent)],
+            ),
+          ) as _i7.BuiltList<_i3.PathComponent>));
         case 'explanationSet':
-          if (value != null) {
-            result.explanations.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i4.Explanation)],
-              ),
-            ) as _i7.BuiltList<_i4.Explanation>));
-          }
-          break;
+          result.explanations.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i4.Explanation)],
+            ),
+          ) as _i7.BuiltList<_i4.Explanation>));
         case 'alternatePathHintSet':
-          if (value != null) {
-            result.alternatePathHints.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i5.AlternatePathHint)],
-              ),
-            ) as _i7.BuiltList<_i5.AlternatePathHint>));
-          }
-          break;
+          result.alternatePathHints.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i5.AlternatePathHint)],
+            ),
+          ) as _i7.BuiltList<_i5.AlternatePathHint>));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i6.Tag)],
-              ),
-            ) as _i7.BuiltList<_i6.Tag>));
-          }
-          break;
+          result.tags.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i6.Tag)],
+            ),
+          ) as _i7.BuiltList<_i6.Tag>));
       }
     }
 
@@ -391,168 +354,183 @@ class NetworkInsightsAnalysisEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInsightsAnalysis object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInsightsAnalysis);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'NetworkInsightsAnalysisResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsAnalysisId != null) {
-      result
+    final NetworkInsightsAnalysis(
+      :networkInsightsAnalysisId,
+      :networkInsightsAnalysisArn,
+      :networkInsightsPathId,
+      :filterInArns,
+      :startDate,
+      :status,
+      :statusMessage,
+      :warningMessage,
+      :networkPathFound,
+      :forwardPathComponents,
+      :returnPathComponents,
+      :explanations,
+      :alternatePathHints,
+      :tags
+    ) = object;
+    if (networkInsightsAnalysisId != null) {
+      result$
         ..add(const _i8.XmlElementName('NetworkInsightsAnalysisId'))
         ..add(serializers.serialize(
-          payload.networkInsightsAnalysisId!,
+          networkInsightsAnalysisId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInsightsAnalysisArn != null) {
-      result
+    if (networkInsightsAnalysisArn != null) {
+      result$
         ..add(const _i8.XmlElementName('NetworkInsightsAnalysisArn'))
         ..add(serializers.serialize(
-          payload.networkInsightsAnalysisArn!,
+          networkInsightsAnalysisArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInsightsPathId != null) {
-      result
+    if (networkInsightsPathId != null) {
+      result$
         ..add(const _i8.XmlElementName('NetworkInsightsPathId'))
         ..add(serializers.serialize(
-          payload.networkInsightsPathId!,
+          networkInsightsPathId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.filterInArns != null) {
-      result
+    if (filterInArns != null) {
+      result$
         ..add(const _i8.XmlElementName('FilterInArnSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filterInArns!,
+          filterInArns,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.startDate != null) {
-      result
+    if (startDate != null) {
+      result$
         ..add(const _i8.XmlElementName('StartDate'))
         ..add(serializers.serialize(
-          payload.startDate!,
+          startDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i8.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i2.AnalysisStatus),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i8.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.warningMessage != null) {
-      result
+    if (warningMessage != null) {
+      result$
         ..add(const _i8.XmlElementName('WarningMessage'))
         ..add(serializers.serialize(
-          payload.warningMessage!,
+          warningMessage,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i8.XmlElementName('NetworkPathFound'))
       ..add(serializers.serialize(
-        payload.networkPathFound,
+        networkPathFound,
         specifiedType: const FullType(bool),
       ));
-    if (payload.forwardPathComponents != null) {
-      result
+    if (forwardPathComponents != null) {
+      result$
         ..add(const _i8.XmlElementName('ForwardPathComponentSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.forwardPathComponents!,
+          forwardPathComponents,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i3.PathComponent)],
           ),
         ));
     }
-    if (payload.returnPathComponents != null) {
-      result
+    if (returnPathComponents != null) {
+      result$
         ..add(const _i8.XmlElementName('ReturnPathComponentSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.returnPathComponents!,
+          returnPathComponents,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i3.PathComponent)],
           ),
         ));
     }
-    if (payload.explanations != null) {
-      result
+    if (explanations != null) {
+      result$
         ..add(const _i8.XmlElementName('ExplanationSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.explanations!,
+          explanations,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i4.Explanation)],
           ),
         ));
     }
-    if (payload.alternatePathHints != null) {
-      result
+    if (alternatePathHints != null) {
+      result$
         ..add(const _i8.XmlElementName('AlternatePathHintSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.alternatePathHints!,
+          alternatePathHints,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i5.AlternatePathHint)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i8.XmlElementName('TagSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i6.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

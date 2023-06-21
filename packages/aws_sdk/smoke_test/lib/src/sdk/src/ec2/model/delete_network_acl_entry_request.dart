@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_network_acl_entry_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -126,34 +127,33 @@ class DeleteNetworkAclEntryRequestEc2QuerySerializer
     final result = DeleteNetworkAclEntryRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'egress':
           result.egress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'networkAclId':
           result.networkAclId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ruleNumber':
           result.ruleNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -163,40 +163,45 @@ class DeleteNetworkAclEntryRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteNetworkAclEntryRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteNetworkAclEntryRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DeleteNetworkAclEntryRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DeleteNetworkAclEntryRequest(
+      :dryRun,
+      :egress,
+      :networkAclId,
+      :ruleNumber
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Egress'))
       ..add(serializers.serialize(
-        payload.egress,
+        egress,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('NetworkAclId'))
       ..add(serializers.serialize(
-        payload.networkAclId,
+        networkAclId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('RuleNumber'))
       ..add(serializers.serialize(
-        payload.ruleNumber,
+        ruleNumber,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

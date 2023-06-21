@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_coip_pool_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -78,18 +79,18 @@ class DeleteCoipPoolResultEc2QuerySerializer
     final result = DeleteCoipPoolResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'coipPool':
-          if (value != null) {
-            result.coipPool.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CoipPool),
-            ) as _i2.CoipPool));
-          }
-          break;
+          result.coipPool.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CoipPool),
+          ) as _i2.CoipPool));
       }
     }
 
@@ -99,24 +100,24 @@ class DeleteCoipPoolResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteCoipPoolResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteCoipPoolResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteCoipPoolResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.coipPool != null) {
-      result
+    final DeleteCoipPoolResult(:coipPool) = object;
+    if (coipPool != null) {
+      result$
         ..add(const _i3.XmlElementName('CoipPool'))
         ..add(serializers.serialize(
-          payload.coipPool!,
+          coipPool,
           specifiedType: const FullType(_i2.CoipPool),
         ));
     }
-    return result;
+    return result$;
   }
 }

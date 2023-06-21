@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.bundle_instance_request;
+part of 'bundle_instance_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

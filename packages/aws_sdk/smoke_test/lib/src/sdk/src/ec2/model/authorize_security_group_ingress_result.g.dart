@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.authorize_security_group_ingress_result;
+part of 'authorize_security_group_ingress_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

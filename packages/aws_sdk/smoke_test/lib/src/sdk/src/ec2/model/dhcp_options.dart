@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.dhcp_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -112,56 +113,47 @@ class DhcpOptionsEc2QuerySerializer
     final result = DhcpOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dhcpConfigurationSet':
-          if (value != null) {
-            result.dhcpConfigurations.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.DhcpConfiguration)],
-              ),
-            ) as _i4.BuiltList<_i2.DhcpConfiguration>));
-          }
-          break;
+          result.dhcpConfigurations.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.DhcpConfiguration)],
+            ),
+          ) as _i4.BuiltList<_i2.DhcpConfiguration>));
         case 'dhcpOptionsId':
-          if (value != null) {
-            result.dhcpOptionsId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.dhcpOptionsId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -171,62 +163,63 @@ class DhcpOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DhcpOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DhcpOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'DhcpOptionsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.dhcpConfigurations != null) {
-      result
+    final DhcpOptions(:dhcpConfigurations, :dhcpOptionsId, :ownerId, :tags) =
+        object;
+    if (dhcpConfigurations != null) {
+      result$
         ..add(const _i5.XmlElementName('DhcpConfigurationSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.dhcpConfigurations!,
+          dhcpConfigurations,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.DhcpConfiguration)],
           ),
         ));
     }
-    if (payload.dhcpOptionsId != null) {
-      result
+    if (dhcpOptionsId != null) {
+      result$
         ..add(const _i5.XmlElementName('DhcpOptionsId'))
         ..add(serializers.serialize(
-          payload.dhcpOptionsId!,
+          dhcpOptionsId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i5.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

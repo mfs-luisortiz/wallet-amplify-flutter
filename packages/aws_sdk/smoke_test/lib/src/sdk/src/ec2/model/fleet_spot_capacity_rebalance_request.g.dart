@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.fleet_spot_capacity_rebalance_request;
+part of 'fleet_spot_capacity_rebalance_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

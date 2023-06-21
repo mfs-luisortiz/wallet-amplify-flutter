@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.security_group; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -153,96 +154,74 @@ class SecurityGroupEc2QuerySerializer
     final result = SecurityGroupBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupDescription':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipPermissions':
-          if (value != null) {
-            result.ipPermissions.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.IpPermission)],
-              ),
-            ) as _i4.BuiltList<_i2.IpPermission>));
-          }
-          break;
+          result.ipPermissions.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.IpPermission)],
+            ),
+          ) as _i4.BuiltList<_i2.IpPermission>));
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupId':
-          if (value != null) {
-            result.groupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipPermissionsEgress':
-          if (value != null) {
-            result.ipPermissionsEgress
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.IpPermission)],
-              ),
-            ) as _i4.BuiltList<_i2.IpPermission>));
-          }
-          break;
+          result.ipPermissionsEgress.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.IpPermission)],
+            ),
+          ) as _i4.BuiltList<_i2.IpPermission>));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -252,101 +231,110 @@ class SecurityGroupEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SecurityGroup object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SecurityGroup);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'SecurityGroupResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final SecurityGroup(
+      :description,
+      :groupName,
+      :ipPermissions,
+      :ownerId,
+      :groupId,
+      :ipPermissionsEgress,
+      :tags,
+      :vpcId
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i5.XmlElementName('GroupDescription'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupName != null) {
-      result
+    if (groupName != null) {
+      result$
         ..add(const _i5.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipPermissions != null) {
-      result
+    if (ipPermissions != null) {
+      result$
         ..add(const _i5.XmlElementName('IpPermissions'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipPermissions!,
+          ipPermissions,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.IpPermission)],
           ),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i5.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupId != null) {
-      result
+    if (groupId != null) {
+      result$
         ..add(const _i5.XmlElementName('GroupId'))
         ..add(serializers.serialize(
-          payload.groupId!,
+          groupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipPermissionsEgress != null) {
-      result
+    if (ipPermissionsEgress != null) {
+      result$
         ..add(const _i5.XmlElementName('IpPermissionsEgress'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipPermissionsEgress!,
+          ipPermissionsEgress,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.IpPermission)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i5.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

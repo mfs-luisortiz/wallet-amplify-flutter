@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_image_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -173,73 +174,60 @@ class ExportImageRequestEc2QuerySerializer
     final result = ExportImageRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'DiskImageFormat':
-          result.diskImageFormat = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(_i3.DiskImageFormat),
-          ) as _i3.DiskImageFormat);
-          break;
-        case 'DryRun':
-          result.dryRun = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(bool),
-          ) as bool);
-          break;
-        case 'ImageId':
-          result.imageId = (serializers.deserialize(
-            value!,
+          result.clientToken = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'Description':
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'DiskImageFormat':
+          result.diskImageFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DiskImageFormat),
+          ) as _i3.DiskImageFormat);
+        case 'DryRun':
+          result.dryRun = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
+        case 'ImageId':
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'S3ExportLocation':
           result.s3ExportLocation.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i4.ExportTaskS3LocationRequest),
           ) as _i4.ExportTaskS3LocationRequest));
-          break;
         case 'RoleName':
-          if (value != null) {
-            result.roleName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.roleName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i5.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i5.TagSpecification>));
       }
     }
 
@@ -249,79 +237,88 @@ class ExportImageRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportImageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportImageRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ExportImageRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientToken != null) {
-      result
+    final ExportImageRequest(
+      :clientToken,
+      :description,
+      :diskImageFormat,
+      :dryRun,
+      :imageId,
+      :s3ExportLocation,
+      :roleName,
+      :tagSpecifications
+    ) = object;
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DiskImageFormat'))
       ..add(serializers.serialize(
-        payload.diskImageFormat,
+        diskImageFormat,
         specifiedType: const FullType.nullable(_i3.DiskImageFormat),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ImageId'))
       ..add(serializers.serialize(
-        payload.imageId,
+        imageId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('S3ExportLocation'))
       ..add(serializers.serialize(
-        payload.s3ExportLocation,
+        s3ExportLocation,
         specifiedType: const FullType(_i4.ExportTaskS3LocationRequest),
       ));
-    if (payload.roleName != null) {
-      result
+    if (roleName != null) {
+      result$
         ..add(const _i1.XmlElementName('RoleName'))
         ..add(serializers.serialize(
-          payload.roleName!,
+          roleName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

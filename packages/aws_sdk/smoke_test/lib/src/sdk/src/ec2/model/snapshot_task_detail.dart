@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.snapshot_task_detail; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -185,94 +186,68 @@ class SnapshotTaskDetailEc2QuerySerializer
     final result = SnapshotTaskDetailBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'diskImageSize':
           result.diskImageSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'format':
-          if (value != null) {
-            result.format = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.format = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'kmsKeyId':
-          if (value != null) {
-            result.kmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'progress':
-          if (value != null) {
-            result.progress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.progress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'url':
-          if (value != null) {
-            result.url = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.url = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'userBucket':
-          if (value != null) {
-            result.userBucket.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.UserBucketDetails),
-            ) as _i2.UserBucketDetails));
-          }
-          break;
+          result.userBucket.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.UserBucketDetails),
+          ) as _i2.UserBucketDetails));
       }
     }
 
@@ -282,100 +257,112 @@ class SnapshotTaskDetailEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SnapshotTaskDetail object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SnapshotTaskDetail);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'SnapshotTaskDetailResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final SnapshotTaskDetail(
+      :description,
+      :diskImageSize,
+      :encrypted,
+      :format,
+      :kmsKeyId,
+      :progress,
+      :snapshotId,
+      :status,
+      :statusMessage,
+      :url,
+      :userBucket
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('DiskImageSize'))
       ..add(serializers.serialize(
-        payload.diskImageSize,
+        diskImageSize,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    if (payload.format != null) {
-      result
+    if (format != null) {
+      result$
         ..add(const _i3.XmlElementName('Format'))
         ..add(serializers.serialize(
-          payload.format!,
+          format,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.kmsKeyId != null) {
-      result
+    if (kmsKeyId != null) {
+      result$
         ..add(const _i3.XmlElementName('KmsKeyId'))
         ..add(serializers.serialize(
-          payload.kmsKeyId!,
+          kmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.progress != null) {
-      result
+    if (progress != null) {
+      result$
         ..add(const _i3.XmlElementName('Progress'))
         ..add(serializers.serialize(
-          payload.progress!,
+          progress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.snapshotId != null) {
-      result
+    if (snapshotId != null) {
+      result$
         ..add(const _i3.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i3.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.url != null) {
-      result
+    if (url != null) {
+      result$
         ..add(const _i3.XmlElementName('Url'))
         ..add(serializers.serialize(
-          payload.url!,
+          url,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.userBucket != null) {
-      result
+    if (userBucket != null) {
+      result$
         ..add(const _i3.XmlElementName('UserBucket'))
         ..add(serializers.serialize(
-          payload.userBucket!,
+          userBucket,
           specifiedType: const FullType(_i2.UserBucketDetails),
         ));
     }
-    return result;
+    return result$;
   }
 }

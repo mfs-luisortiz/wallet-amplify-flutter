@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_multicast_group; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -190,95 +191,69 @@ class TransitGatewayMulticastGroupEc2QuerySerializer
     final result = TransitGatewayMulticastGroupBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupIpAddress':
-          if (value != null) {
-            result.groupIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayAttachmentId':
-          if (value != null) {
-            result.transitGatewayAttachmentId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceId':
-          if (value != null) {
-            result.resourceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayAttachmentResourceType),
-            ) as _i2.TransitGatewayAttachmentResourceType);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayAttachmentResourceType),
+          ) as _i2.TransitGatewayAttachmentResourceType);
         case 'resourceOwnerId':
-          if (value != null) {
-            result.resourceOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupMember':
           result.groupMember = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'groupSource':
           result.groupSource = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'memberType':
-          if (value != null) {
-            result.memberType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.MembershipType),
-            ) as _i3.MembershipType);
-          }
-          break;
+          result.memberType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.MembershipType),
+          ) as _i3.MembershipType);
         case 'sourceType':
-          if (value != null) {
-            result.sourceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.MembershipType),
-            ) as _i3.MembershipType);
-          }
-          break;
+          result.sourceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.MembershipType),
+          ) as _i3.MembershipType);
       }
     }
 
@@ -288,101 +263,113 @@ class TransitGatewayMulticastGroupEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayMulticastGroup object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayMulticastGroup);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'TransitGatewayMulticastGroupResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupIpAddress != null) {
-      result
+    final TransitGatewayMulticastGroup(
+      :groupIpAddress,
+      :transitGatewayAttachmentId,
+      :subnetId,
+      :resourceId,
+      :resourceType,
+      :resourceOwnerId,
+      :networkInterfaceId,
+      :groupMember,
+      :groupSource,
+      :memberType,
+      :sourceType
+    ) = object;
+    if (groupIpAddress != null) {
+      result$
         ..add(const _i4.XmlElementName('GroupIpAddress'))
         ..add(serializers.serialize(
-          payload.groupIpAddress!,
+          groupIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayAttachmentId != null) {
-      result
+    if (transitGatewayAttachmentId != null) {
+      result$
         ..add(const _i4.XmlElementName('TransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.transitGatewayAttachmentId!,
+          transitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i4.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceId != null) {
-      result
+    if (resourceId != null) {
+      result$
         ..add(const _i4.XmlElementName('ResourceId'))
         ..add(serializers.serialize(
-          payload.resourceId!,
+          resourceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i4.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType:
               const FullType.nullable(_i2.TransitGatewayAttachmentResourceType),
         ));
     }
-    if (payload.resourceOwnerId != null) {
-      result
+    if (resourceOwnerId != null) {
+      result$
         ..add(const _i4.XmlElementName('ResourceOwnerId'))
         ..add(serializers.serialize(
-          payload.resourceOwnerId!,
+          resourceOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('GroupMember'))
       ..add(serializers.serialize(
-        payload.groupMember,
+        groupMember,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('GroupSource'))
       ..add(serializers.serialize(
-        payload.groupSource,
+        groupSource,
         specifiedType: const FullType(bool),
       ));
-    if (payload.memberType != null) {
-      result
+    if (memberType != null) {
+      result$
         ..add(const _i4.XmlElementName('MemberType'))
         ..add(serializers.serialize(
-          payload.memberType!,
+          memberType,
           specifiedType: const FullType.nullable(_i3.MembershipType),
         ));
     }
-    if (payload.sourceType != null) {
-      result
+    if (sourceType != null) {
+      result$
         ..add(const _i4.XmlElementName('SourceType'))
         ..add(serializers.serialize(
-          payload.sourceType!,
+          sourceType,
           specifiedType: const FullType.nullable(_i3.MembershipType),
         ));
     }
-    return result;
+    return result$;
   }
 }

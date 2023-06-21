@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associated_target_network;
+part of 'associated_target_network.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

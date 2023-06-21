@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_launch_template_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -79,18 +80,18 @@ class DeleteLaunchTemplateResultEc2QuerySerializer
     final result = DeleteLaunchTemplateResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplate':
-          if (value != null) {
-            result.launchTemplate.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.LaunchTemplate),
-            ) as _i2.LaunchTemplate));
-          }
-          break;
+          result.launchTemplate.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.LaunchTemplate),
+          ) as _i2.LaunchTemplate));
       }
     }
 
@@ -100,24 +101,24 @@ class DeleteLaunchTemplateResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteLaunchTemplateResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteLaunchTemplateResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteLaunchTemplateResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplate != null) {
-      result
+    final DeleteLaunchTemplateResult(:launchTemplate) = object;
+    if (launchTemplate != null) {
+      result$
         ..add(const _i3.XmlElementName('LaunchTemplate'))
         ..add(serializers.serialize(
-          payload.launchTemplate!,
+          launchTemplate,
           specifiedType: const FullType(_i2.LaunchTemplate),
         ));
     }
-    return result;
+    return result$;
   }
 }

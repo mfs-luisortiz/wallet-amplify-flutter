@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ptr_update_status;
+part of 'ptr_update_status.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

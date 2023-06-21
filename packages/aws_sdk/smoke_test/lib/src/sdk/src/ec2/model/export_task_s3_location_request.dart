@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_task_s3_location_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -90,24 +91,23 @@ class ExportTaskS3LocationRequestEc2QuerySerializer
     final result = ExportTaskS3LocationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'S3Bucket':
           result.s3Bucket = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'S3Prefix':
-          if (value != null) {
-            result.s3Prefix = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.s3Prefix = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -117,30 +117,30 @@ class ExportTaskS3LocationRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportTaskS3LocationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportTaskS3LocationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ExportTaskS3LocationRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ExportTaskS3LocationRequest(:s3Bucket, :s3Prefix) = object;
+    result$
       ..add(const _i2.XmlElementName('S3Bucket'))
       ..add(serializers.serialize(
-        payload.s3Bucket,
+        s3Bucket,
         specifiedType: const FullType(String),
       ));
-    if (payload.s3Prefix != null) {
-      result
+    if (s3Prefix != null) {
+      result$
         ..add(const _i2.XmlElementName('S3Prefix'))
         ..add(serializers.serialize(
-          payload.s3Prefix!,
+          s3Prefix,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

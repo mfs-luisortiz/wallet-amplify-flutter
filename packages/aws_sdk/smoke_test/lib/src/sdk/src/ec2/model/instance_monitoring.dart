@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_monitoring; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,26 +90,23 @@ class InstanceMonitoringEc2QuerySerializer
     final result = InstanceMonitoringBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'monitoring':
-          if (value != null) {
-            result.monitoring.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Monitoring),
-            ) as _i2.Monitoring));
-          }
-          break;
+          result.monitoring.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Monitoring),
+          ) as _i2.Monitoring));
       }
     }
 
@@ -118,32 +116,32 @@ class InstanceMonitoringEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceMonitoring object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceMonitoring);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceMonitoringResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final InstanceMonitoring(:instanceId, :monitoring) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.monitoring != null) {
-      result
+    if (monitoring != null) {
+      result$
         ..add(const _i3.XmlElementName('Monitoring'))
         ..add(serializers.serialize(
-          payload.monitoring!,
+          monitoring,
           specifiedType: const FullType(_i2.Monitoring),
         ));
     }
-    return result;
+    return result$;
   }
 }

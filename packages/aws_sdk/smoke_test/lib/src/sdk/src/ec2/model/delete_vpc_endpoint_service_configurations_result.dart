@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_vpc_endpoint_service_configurations_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -86,25 +87,25 @@ class DeleteVpcEndpointServiceConfigurationsResultEc2QuerySerializer extends _i4
     final result = DeleteVpcEndpointServiceConfigurationsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'unsuccessful':
-          if (value != null) {
-            result.unsuccessful.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.UnsuccessfulItem)],
-              ),
-            ) as _i3.BuiltList<_i2.UnsuccessfulItem>));
-          }
-          break;
+          result.unsuccessful.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.UnsuccessfulItem)],
+            ),
+          ) as _i3.BuiltList<_i2.UnsuccessfulItem>));
       }
     }
 
@@ -114,31 +115,31 @@ class DeleteVpcEndpointServiceConfigurationsResultEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteVpcEndpointServiceConfigurationsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteVpcEndpointServiceConfigurationsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DeleteVpcEndpointServiceConfigurationsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.unsuccessful != null) {
-      result
+    final DeleteVpcEndpointServiceConfigurationsResult(:unsuccessful) = object;
+    if (unsuccessful != null) {
+      result$
         ..add(const _i4.XmlElementName('Unsuccessful'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.unsuccessful!,
+          unsuccessful,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.UnsuccessfulItem)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

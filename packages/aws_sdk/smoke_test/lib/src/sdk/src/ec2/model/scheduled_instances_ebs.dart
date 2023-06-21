@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instances_ebs; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -144,50 +145,43 @@ class ScheduledInstancesEbsEc2QuerySerializer
     final result = ScheduledInstancesEbsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DeleteOnTermination':
           result.deleteOnTermination = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Iops':
           result.iops = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'SnapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'VolumeSize':
           result.volumeSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'VolumeType':
-          if (value != null) {
-            result.volumeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -197,56 +191,63 @@ class ScheduledInstancesEbsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstancesEbs object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstancesEbs);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ScheduledInstancesEbsResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ScheduledInstancesEbs(
+      :deleteOnTermination,
+      :encrypted,
+      :iops,
+      :snapshotId,
+      :volumeSize,
+      :volumeType
+    ) = object;
+    result$
       ..add(const _i2.XmlElementName('DeleteOnTermination'))
       ..add(serializers.serialize(
-        payload.deleteOnTermination,
+        deleteOnTermination,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('Iops'))
       ..add(serializers.serialize(
-        payload.iops,
+        iops,
         specifiedType: const FullType(int),
       ));
-    if (payload.snapshotId != null) {
-      result
+    if (snapshotId != null) {
+      result$
         ..add(const _i2.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('VolumeSize'))
       ..add(serializers.serialize(
-        payload.volumeSize,
+        volumeSize,
         specifiedType: const FullType(int),
       ));
-    if (payload.volumeType != null) {
-      result
+    if (volumeType != null) {
+      result$
         ..add(const _i2.XmlElementName('VolumeType'))
         ..add(serializers.serialize(
-          payload.volumeType!,
+          volumeType,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

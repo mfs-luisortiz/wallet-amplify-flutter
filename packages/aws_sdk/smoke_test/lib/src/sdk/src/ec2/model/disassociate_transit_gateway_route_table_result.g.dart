@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disassociate_transit_gateway_route_table_result;
+part of 'disassociate_transit_gateway_route_table_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

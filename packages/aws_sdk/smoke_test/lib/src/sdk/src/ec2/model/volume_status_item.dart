@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_status_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -147,87 +148,69 @@ class VolumeStatusItemEc2QuerySerializer
     final result = VolumeStatusItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'actionsSet':
-          if (value != null) {
-            result.actions.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i2.VolumeStatusAction)],
-              ),
-            ) as _i6.BuiltList<_i2.VolumeStatusAction>));
-          }
-          break;
+          result.actions.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i2.VolumeStatusAction)],
+            ),
+          ) as _i6.BuiltList<_i2.VolumeStatusAction>));
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'outpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventsSet':
-          if (value != null) {
-            result.events.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.VolumeStatusEvent)],
-              ),
-            ) as _i6.BuiltList<_i3.VolumeStatusEvent>));
-          }
-          break;
+          result.events.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.VolumeStatusEvent)],
+            ),
+          ) as _i6.BuiltList<_i3.VolumeStatusEvent>));
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'volumeStatus':
-          if (value != null) {
-            result.volumeStatus.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.VolumeStatusInfo),
-            ) as _i4.VolumeStatusInfo));
-          }
-          break;
+          result.volumeStatus.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.VolumeStatusInfo),
+          ) as _i4.VolumeStatusInfo));
         case 'attachmentStatuses':
-          if (value != null) {
-            result.attachmentStatuses.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.VolumeStatusAttachmentStatus)],
-              ),
-            ) as _i6.BuiltList<_i5.VolumeStatusAttachmentStatus>));
-          }
-          break;
+          result.attachmentStatuses.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.VolumeStatusAttachmentStatus)],
+            ),
+          ) as _i6.BuiltList<_i5.VolumeStatusAttachmentStatus>));
       }
     }
 
@@ -237,93 +220,101 @@ class VolumeStatusItemEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeStatusItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeStatusItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'VolumeStatusItemResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.actions != null) {
-      result
+    final VolumeStatusItem(
+      :actions,
+      :availabilityZone,
+      :outpostArn,
+      :events,
+      :volumeId,
+      :volumeStatus,
+      :attachmentStatuses
+    ) = object;
+    if (actions != null) {
+      result$
         ..add(const _i7.XmlElementName('ActionsSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.actions!,
+          actions,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i2.VolumeStatusAction)],
           ),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i7.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i7.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.events != null) {
-      result
+    if (events != null) {
+      result$
         ..add(const _i7.XmlElementName('EventsSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.events!,
+          events,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.VolumeStatusEvent)],
           ),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i7.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.volumeStatus != null) {
-      result
+    if (volumeStatus != null) {
+      result$
         ..add(const _i7.XmlElementName('VolumeStatus'))
         ..add(serializers.serialize(
-          payload.volumeStatus!,
+          volumeStatus,
           specifiedType: const FullType(_i4.VolumeStatusInfo),
         ));
     }
-    if (payload.attachmentStatuses != null) {
-      result
+    if (attachmentStatuses != null) {
+      result$
         ..add(const _i7.XmlElementName('AttachmentStatuses'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.attachmentStatuses!,
+          attachmentStatuses,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.VolumeStatusAttachmentStatus)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

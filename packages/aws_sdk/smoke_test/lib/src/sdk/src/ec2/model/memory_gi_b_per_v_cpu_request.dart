@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.memory_gi_b_per_v_cpu_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -94,22 +95,23 @@ class MemoryGiBPerVCpuRequestEc2QuerySerializer
     final result = MemoryGiBPerVCpuRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Min':
           result.min = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'Max':
           result.max = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
       }
     }
 
@@ -119,28 +121,28 @@ class MemoryGiBPerVCpuRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    MemoryGiBPerVCpuRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as MemoryGiBPerVCpuRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'MemoryGiBPerVCpuRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final MemoryGiBPerVCpuRequest(:min, :max) = object;
+    result$
       ..add(const _i2.XmlElementName('Min'))
       ..add(serializers.serialize(
-        payload.min,
+        min,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('Max'))
       ..add(serializers.serialize(
-        payload.max,
+        max,
         specifiedType: const FullType(double),
       ));
-    return result;
+    return result$;
   }
 }

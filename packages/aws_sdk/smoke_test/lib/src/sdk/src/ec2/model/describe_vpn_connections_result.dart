@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_vpn_connections_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -88,25 +89,25 @@ class DescribeVpnConnectionsResultEc2QuerySerializer
     final result = DescribeVpnConnectionsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpnConnectionSet':
-          if (value != null) {
-            result.vpnConnections.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.VpnConnection)],
-              ),
-            ) as _i3.BuiltList<_i2.VpnConnection>));
-          }
-          break;
+          result.vpnConnections.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.VpnConnection)],
+            ),
+          ) as _i3.BuiltList<_i2.VpnConnection>));
       }
     }
 
@@ -116,31 +117,31 @@ class DescribeVpnConnectionsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeVpnConnectionsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeVpnConnectionsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeVpnConnectionsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpnConnections != null) {
-      result
+    final DescribeVpnConnectionsResult(:vpnConnections) = object;
+    if (vpnConnections != null) {
+      result$
         ..add(const _i4.XmlElementName('VpnConnectionSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.vpnConnections!,
+          vpnConnections,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.VpnConnection)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

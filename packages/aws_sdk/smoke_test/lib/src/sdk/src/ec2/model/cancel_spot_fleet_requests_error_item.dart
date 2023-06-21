@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cancel_spot_fleet_requests_error_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,26 +96,23 @@ class CancelSpotFleetRequestsErrorItemEc2QuerySerializer
     final result = CancelSpotFleetRequestsErrorItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'error':
-          if (value != null) {
-            result.error.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CancelSpotFleetRequestsError),
-            ) as _i2.CancelSpotFleetRequestsError));
-          }
-          break;
+          result.error.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CancelSpotFleetRequestsError),
+          ) as _i2.CancelSpotFleetRequestsError));
         case 'spotFleetRequestId':
-          if (value != null) {
-            result.spotFleetRequestId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotFleetRequestId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -124,32 +122,33 @@ class CancelSpotFleetRequestsErrorItemEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CancelSpotFleetRequestsErrorItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CancelSpotFleetRequestsErrorItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CancelSpotFleetRequestsErrorItemResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.error != null) {
-      result
+    final CancelSpotFleetRequestsErrorItem(:error, :spotFleetRequestId) =
+        object;
+    if (error != null) {
+      result$
         ..add(const _i3.XmlElementName('Error'))
         ..add(serializers.serialize(
-          payload.error!,
+          error,
           specifiedType: const FullType(_i2.CancelSpotFleetRequestsError),
         ));
     }
-    if (payload.spotFleetRequestId != null) {
-      result
+    if (spotFleetRequestId != null) {
+      result$
         ..add(const _i3.XmlElementName('SpotFleetRequestId'))
         ..add(serializers.serialize(
-          payload.spotFleetRequestId!,
+          spotFleetRequestId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disassociate_trunk_interface_result;
+part of 'disassociate_trunk_interface_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

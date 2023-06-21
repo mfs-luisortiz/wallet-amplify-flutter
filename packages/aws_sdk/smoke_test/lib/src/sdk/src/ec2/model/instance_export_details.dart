@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_export_details; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,26 +92,23 @@ class InstanceExportDetailsEc2QuerySerializer
     final result = InstanceExportDetailsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetEnvironment':
-          if (value != null) {
-            result.targetEnvironment = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ExportEnvironment),
-            ) as _i2.ExportEnvironment);
-          }
-          break;
+          result.targetEnvironment = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ExportEnvironment),
+          ) as _i2.ExportEnvironment);
       }
     }
 
@@ -120,32 +118,32 @@ class InstanceExportDetailsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceExportDetails object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceExportDetails);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceExportDetailsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final InstanceExportDetails(:instanceId, :targetEnvironment) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.targetEnvironment != null) {
-      result
+    if (targetEnvironment != null) {
+      result$
         ..add(const _i3.XmlElementName('TargetEnvironment'))
         ..add(serializers.serialize(
-          payload.targetEnvironment!,
+          targetEnvironment,
           specifiedType: const FullType.nullable(_i2.ExportEnvironment),
         ));
     }
-    return result;
+    return result$;
   }
 }

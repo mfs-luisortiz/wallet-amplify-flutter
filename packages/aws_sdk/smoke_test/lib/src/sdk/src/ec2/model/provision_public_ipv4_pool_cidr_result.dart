@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.provision_public_ipv4_pool_cidr_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,26 +100,23 @@ class ProvisionPublicIpv4PoolCidrResultEc2QuerySerializer
     final result = ProvisionPublicIpv4PoolCidrResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'poolId':
-          if (value != null) {
-            result.poolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.poolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'poolAddressRange':
-          if (value != null) {
-            result.poolAddressRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PublicIpv4PoolRange),
-            ) as _i2.PublicIpv4PoolRange));
-          }
-          break;
+          result.poolAddressRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PublicIpv4PoolRange),
+          ) as _i2.PublicIpv4PoolRange));
       }
     }
 
@@ -128,32 +126,33 @@ class ProvisionPublicIpv4PoolCidrResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ProvisionPublicIpv4PoolCidrResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ProvisionPublicIpv4PoolCidrResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ProvisionPublicIpv4PoolCidrResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.poolId != null) {
-      result
+    final ProvisionPublicIpv4PoolCidrResult(:poolId, :poolAddressRange) =
+        object;
+    if (poolId != null) {
+      result$
         ..add(const _i3.XmlElementName('PoolId'))
         ..add(serializers.serialize(
-          payload.poolId!,
+          poolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.poolAddressRange != null) {
-      result
+    if (poolAddressRange != null) {
+      result$
         ..add(const _i3.XmlElementName('PoolAddressRange'))
         ..add(serializers.serialize(
-          payload.poolAddressRange!,
+          poolAddressRange,
           specifiedType: const FullType(_i2.PublicIpv4PoolRange),
         ));
     }
-    return result;
+    return result$;
   }
 }

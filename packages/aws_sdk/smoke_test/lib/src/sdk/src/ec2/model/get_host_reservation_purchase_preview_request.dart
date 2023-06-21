@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_host_reservation_purchase_preview_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,10 +102,13 @@ class GetHostReservationPurchasePreviewRequestEc2QuerySerializer extends _i1
     final result = GetHostReservationPurchasePreviewRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'HostIdSet':
           result.hostIdSet.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -117,13 +121,11 @@ class GetHostReservationPurchasePreviewRequestEc2QuerySerializer extends _i1
               [FullType(String)],
             ),
           ) as _i3.BuiltList<String>));
-          break;
         case 'OfferingId':
           result.offeringId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -133,35 +135,36 @@ class GetHostReservationPurchasePreviewRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetHostReservationPurchasePreviewRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetHostReservationPurchasePreviewRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetHostReservationPurchasePreviewRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetHostReservationPurchasePreviewRequest(:hostIdSet, :offeringId) =
+        object;
+    result$
       ..add(const _i1.XmlElementName('HostIdSet'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.hostIdSet,
+        hostIdSet,
         specifiedType: const FullType.nullable(
           _i3.BuiltList,
           [FullType(String)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('OfferingId'))
       ..add(serializers.serialize(
-        payload.offeringId,
+        offeringId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

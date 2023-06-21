@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_dhcp_options_request;
+part of 'create_dhcp_options_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

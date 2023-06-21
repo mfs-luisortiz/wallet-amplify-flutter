@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_storage_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -115,50 +116,40 @@ class InstanceStorageInfoEc2QuerySerializer
     final result = InstanceStorageInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'totalSizeInGB':
-          if (value != null) {
-            result.totalSizeInGb = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Int64),
-            ) as _i2.Int64);
-          }
-          break;
+          result.totalSizeInGb = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Int64),
+          ) as _i2.Int64);
         case 'disks':
-          if (value != null) {
-            result.disks.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.DiskInfo)],
-              ),
-            ) as _i6.BuiltList<_i3.DiskInfo>));
-          }
-          break;
+          result.disks.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.DiskInfo)],
+            ),
+          ) as _i6.BuiltList<_i3.DiskInfo>));
         case 'nvmeSupport':
-          if (value != null) {
-            result.nvmeSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.EphemeralNvmeSupport),
-            ) as _i4.EphemeralNvmeSupport);
-          }
-          break;
+          result.nvmeSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.EphemeralNvmeSupport),
+          ) as _i4.EphemeralNvmeSupport);
         case 'encryptionSupport':
-          if (value != null) {
-            result.encryptionSupport = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i5.InstanceStorageEncryptionSupport),
-            ) as _i5.InstanceStorageEncryptionSupport);
-          }
-          break;
+          result.encryptionSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.InstanceStorageEncryptionSupport),
+          ) as _i5.InstanceStorageEncryptionSupport);
       }
     }
 
@@ -168,56 +159,61 @@ class InstanceStorageInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStorageInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStorageInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'InstanceStorageInfoResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.totalSizeInGb != null) {
-      result
+    final InstanceStorageInfo(
+      :totalSizeInGb,
+      :disks,
+      :nvmeSupport,
+      :encryptionSupport
+    ) = object;
+    if (totalSizeInGb != null) {
+      result$
         ..add(const _i7.XmlElementName('TotalSizeInGB'))
         ..add(serializers.serialize(
-          payload.totalSizeInGb!,
+          totalSizeInGb,
           specifiedType: const FullType.nullable(_i2.Int64),
         ));
     }
-    if (payload.disks != null) {
-      result
+    if (disks != null) {
+      result$
         ..add(const _i7.XmlElementName('Disks'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.disks!,
+          disks,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.DiskInfo)],
           ),
         ));
     }
-    if (payload.nvmeSupport != null) {
-      result
+    if (nvmeSupport != null) {
+      result$
         ..add(const _i7.XmlElementName('NvmeSupport'))
         ..add(serializers.serialize(
-          payload.nvmeSupport!,
+          nvmeSupport,
           specifiedType: const FullType.nullable(_i4.EphemeralNvmeSupport),
         ));
     }
-    if (payload.encryptionSupport != null) {
-      result
+    if (encryptionSupport != null) {
+      result$
         ..add(const _i7.XmlElementName('EncryptionSupport'))
         ..add(serializers.serialize(
-          payload.encryptionSupport!,
+          encryptionSupport,
           specifiedType:
               const FullType.nullable(_i5.InstanceStorageEncryptionSupport),
         ));
     }
-    return result;
+    return result$;
   }
 }

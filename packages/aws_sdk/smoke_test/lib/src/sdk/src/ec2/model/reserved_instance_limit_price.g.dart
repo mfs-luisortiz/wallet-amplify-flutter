@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.reserved_instance_limit_price;
+part of 'reserved_instance_limit_price.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

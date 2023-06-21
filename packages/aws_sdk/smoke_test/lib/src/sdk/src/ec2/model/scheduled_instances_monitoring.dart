@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instances_monitoring; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -79,16 +80,18 @@ class ScheduledInstancesMonitoringEc2QuerySerializer
     final result = ScheduledInstancesMonitoringBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Enabled':
           result.enabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -98,22 +101,22 @@ class ScheduledInstancesMonitoringEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstancesMonitoring object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstancesMonitoring);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ScheduledInstancesMonitoringResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ScheduledInstancesMonitoring(:enabled) = object;
+    result$
       ..add(const _i2.XmlElementName('Enabled'))
       ..add(serializers.serialize(
-        payload.enabled,
+        enabled,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

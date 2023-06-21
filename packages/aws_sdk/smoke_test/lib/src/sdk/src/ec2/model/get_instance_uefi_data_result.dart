@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_instance_uefi_data_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -94,26 +95,23 @@ class GetInstanceUefiDataResultEc2QuerySerializer
     final result = GetInstanceUefiDataResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'uefiData':
-          if (value != null) {
-            result.uefiData = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.uefiData = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -123,32 +121,32 @@ class GetInstanceUefiDataResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetInstanceUefiDataResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetInstanceUefiDataResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GetInstanceUefiDataResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final GetInstanceUefiDataResult(:instanceId, :uefiData) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.uefiData != null) {
-      result
+    if (uefiData != null) {
+      result$
         ..add(const _i2.XmlElementName('UefiData'))
         ..add(serializers.serialize(
-          payload.uefiData!,
+          uefiData,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

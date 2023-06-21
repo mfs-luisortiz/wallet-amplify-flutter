@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_address_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -77,18 +78,18 @@ class AssociateAddressResultEc2QuerySerializer
     final result = AssociateAddressResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -98,24 +99,24 @@ class AssociateAddressResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateAddressResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateAddressResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'AssociateAddressResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationId != null) {
-      result
+    final AssociateAddressResult(:associationId) = object;
+    if (associationId != null) {
+      result$
         ..add(const _i2.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

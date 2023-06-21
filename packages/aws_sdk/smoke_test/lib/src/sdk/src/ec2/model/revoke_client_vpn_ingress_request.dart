@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.revoke_client_vpn_ingress_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -134,42 +135,38 @@ class RevokeClientVpnIngressRequestEc2QuerySerializer
     final result = RevokeClientVpnIngressRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientVpnEndpointId':
           result.clientVpnEndpointId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TargetNetworkCidr':
           result.targetNetworkCidr = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AccessGroupId':
-          if (value != null) {
-            result.accessGroupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.accessGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RevokeAllGroups':
           result.revokeAllGroups = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -179,48 +176,54 @@ class RevokeClientVpnIngressRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RevokeClientVpnIngressRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RevokeClientVpnIngressRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'RevokeClientVpnIngressRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final RevokeClientVpnIngressRequest(
+      :clientVpnEndpointId,
+      :targetNetworkCidr,
+      :accessGroupId,
+      :revokeAllGroups,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ClientVpnEndpointId'))
       ..add(serializers.serialize(
-        payload.clientVpnEndpointId,
+        clientVpnEndpointId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TargetNetworkCidr'))
       ..add(serializers.serialize(
-        payload.targetNetworkCidr,
+        targetNetworkCidr,
         specifiedType: const FullType(String),
       ));
-    if (payload.accessGroupId != null) {
-      result
+    if (accessGroupId != null) {
+      result$
         ..add(const _i1.XmlElementName('AccessGroupId'))
         ..add(serializers.serialize(
-          payload.accessGroupId!,
+          accessGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('RevokeAllGroups'))
       ..add(serializers.serialize(
-        payload.revokeAllGroups,
+        revokeAllGroups,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

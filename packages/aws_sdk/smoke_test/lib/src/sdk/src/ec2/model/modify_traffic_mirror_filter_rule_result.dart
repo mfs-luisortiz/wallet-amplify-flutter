@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_traffic_mirror_filter_rule_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class ModifyTrafficMirrorFilterRuleResultEc2QuerySerializer extends _i3
     final result = ModifyTrafficMirrorFilterRuleResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorFilterRule':
-          if (value != null) {
-            result.trafficMirrorFilterRule.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TrafficMirrorFilterRule),
-            ) as _i2.TrafficMirrorFilterRule));
-          }
-          break;
+          result.trafficMirrorFilterRule.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TrafficMirrorFilterRule),
+          ) as _i2.TrafficMirrorFilterRule));
       }
     }
 
@@ -106,24 +107,25 @@ class ModifyTrafficMirrorFilterRuleResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyTrafficMirrorFilterRuleResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyTrafficMirrorFilterRuleResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ModifyTrafficMirrorFilterRuleResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorFilterRule != null) {
-      result
+    final ModifyTrafficMirrorFilterRuleResult(:trafficMirrorFilterRule) =
+        object;
+    if (trafficMirrorFilterRule != null) {
+      result$
         ..add(const _i3.XmlElementName('TrafficMirrorFilterRule'))
         ..add(serializers.serialize(
-          payload.trafficMirrorFilterRule!,
+          trafficMirrorFilterRule,
           specifiedType: const FullType(_i2.TrafficMirrorFilterRule),
         ));
     }
-    return result;
+    return result$;
   }
 }

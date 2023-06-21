@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.restore_snapshot_from_recycle_bin_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -183,86 +184,63 @@ class RestoreSnapshotFromRecycleBinResultEc2QuerySerializer extends _i3
     final result = RestoreSnapshotFromRecycleBinResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'outpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'progress':
-          if (value != null) {
-            result.progress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.progress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'startTime':
-          if (value != null) {
-            result.startTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.startTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'status':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SnapshotState),
-            ) as _i2.SnapshotState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SnapshotState),
+          ) as _i2.SnapshotState);
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'volumeSize':
           result.volumeSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -272,92 +250,103 @@ class RestoreSnapshotFromRecycleBinResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RestoreSnapshotFromRecycleBinResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RestoreSnapshotFromRecycleBinResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'RestoreSnapshotFromRecycleBinResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.snapshotId != null) {
-      result
+    final RestoreSnapshotFromRecycleBinResult(
+      :snapshotId,
+      :outpostArn,
+      :description,
+      :encrypted,
+      :ownerId,
+      :progress,
+      :startTime,
+      :state,
+      :volumeId,
+      :volumeSize
+    ) = object;
+    if (snapshotId != null) {
+      result$
         ..add(const _i3.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i3.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i3.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.progress != null) {
-      result
+    if (progress != null) {
+      result$
         ..add(const _i3.XmlElementName('Progress'))
         ..add(serializers.serialize(
-          payload.progress!,
+          progress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.startTime != null) {
-      result
+    if (startTime != null) {
+      result$
         ..add(const _i3.XmlElementName('StartTime'))
         ..add(serializers.serialize(
-          payload.startTime!,
+          startTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.SnapshotState),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i3.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('VolumeSize'))
       ..add(serializers.serialize(
-        payload.volumeSize,
+        volumeSize,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

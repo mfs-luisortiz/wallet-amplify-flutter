@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_peering_attachment_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,18 +82,18 @@ class TransitGatewayPeeringAttachmentOptionsEc2QuerySerializer extends _i3
     final result = TransitGatewayPeeringAttachmentOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dynamicRouting':
-          if (value != null) {
-            result.dynamicRouting = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DynamicRoutingValue),
-            ) as _i2.DynamicRoutingValue);
-          }
-          break;
+          result.dynamicRouting = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DynamicRoutingValue),
+          ) as _i2.DynamicRoutingValue);
       }
     }
 
@@ -102,24 +103,24 @@ class TransitGatewayPeeringAttachmentOptionsEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayPeeringAttachmentOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayPeeringAttachmentOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'TransitGatewayPeeringAttachmentOptionsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.dynamicRouting != null) {
-      result
+    final TransitGatewayPeeringAttachmentOptions(:dynamicRouting) = object;
+    if (dynamicRouting != null) {
+      result$
         ..add(const _i3.XmlElementName('DynamicRouting'))
         ..add(serializers.serialize(
-          payload.dynamicRouting!,
+          dynamicRouting,
           specifiedType: const FullType.nullable(_i2.DynamicRoutingValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

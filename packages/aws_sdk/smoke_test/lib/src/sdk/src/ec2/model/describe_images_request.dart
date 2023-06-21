@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_images_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -221,82 +222,71 @@ class DescribeImagesRequestEc2QuerySerializer
     final result = DescribeImagesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ExecutableBy':
-          if (value != null) {
-            result.executableUsers.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'ExecutableBy',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.executableUsers.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'ExecutableBy',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i4.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i4.BuiltList<_i3.Filter>));
         case 'ImageId':
-          if (value != null) {
-            result.imageIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'ImageId',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.imageIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'ImageId',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'Owner':
-          if (value != null) {
-            result.owners.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Owner',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.owners.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Owner',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'IncludeDeprecated':
           result.includeDeprecated = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -306,88 +296,95 @@ class DescribeImagesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeImagesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeImagesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeImagesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.executableUsers != null) {
-      result
+    final DescribeImagesRequest(
+      :executableUsers,
+      :filters,
+      :imageIds,
+      :owners,
+      :includeDeprecated,
+      :dryRun
+    ) = object;
+    if (executableUsers != null) {
+      result$
         ..add(const _i1.XmlElementName('ExecutableBy'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'ExecutableBy',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.executableUsers!,
+          executableUsers,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.filters != null) {
-      result
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    if (payload.imageIds != null) {
-      result
+    if (imageIds != null) {
+      result$
         ..add(const _i1.XmlElementName('ImageId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'ImageId',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.imageIds!,
+          imageIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.owners != null) {
-      result
+    if (owners != null) {
+      result$
         ..add(const _i1.XmlElementName('Owner'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Owner',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.owners!,
+          owners,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('IncludeDeprecated'))
       ..add(serializers.serialize(
-        payload.includeDeprecated,
+        includeDeprecated,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

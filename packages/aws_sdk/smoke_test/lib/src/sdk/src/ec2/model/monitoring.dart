@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.monitoring; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -72,18 +73,18 @@ class MonitoringEc2QuerySerializer
     final result = MonitoringBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.MonitoringState),
-            ) as _i2.MonitoringState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.MonitoringState),
+          ) as _i2.MonitoringState);
       }
     }
 
@@ -93,24 +94,24 @@ class MonitoringEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Monitoring object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Monitoring);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'MonitoringResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.state != null) {
-      result
+    final Monitoring(:state) = object;
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.MonitoringState),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_network_interface_attribute_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -137,57 +138,45 @@ class DescribeNetworkInterfaceAttributeResultEc2QuerySerializer extends _i7
     final result = DescribeNetworkInterfaceAttributeResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attachment':
-          if (value != null) {
-            result.attachment.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NetworkInterfaceAttachment),
-            ) as _i2.NetworkInterfaceAttachment));
-          }
-          break;
+          result.attachment.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NetworkInterfaceAttachment),
+          ) as _i2.NetworkInterfaceAttachment));
         case 'description':
-          if (value != null) {
-            result.description.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeValue),
-            ) as _i3.AttributeValue));
-          }
-          break;
+          result.description.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeValue),
+          ) as _i3.AttributeValue));
         case 'groupSet':
-          if (value != null) {
-            result.groups.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.GroupIdentifier)],
-              ),
-            ) as _i6.BuiltList<_i4.GroupIdentifier>));
-          }
-          break;
+          result.groups.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.GroupIdentifier)],
+            ),
+          ) as _i6.BuiltList<_i4.GroupIdentifier>));
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceDestCheck':
-          if (value != null) {
-            result.sourceDestCheck.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.AttributeBooleanValue),
-            ) as _i5.AttributeBooleanValue));
-          }
-          break;
+          result.sourceDestCheck.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.AttributeBooleanValue),
+          ) as _i5.AttributeBooleanValue));
       }
     }
 
@@ -197,63 +186,69 @@ class DescribeNetworkInterfaceAttributeResultEc2QuerySerializer extends _i7
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeNetworkInterfaceAttributeResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeNetworkInterfaceAttributeResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'DescribeNetworkInterfaceAttributeResultResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attachment != null) {
-      result
+    final DescribeNetworkInterfaceAttributeResult(
+      :attachment,
+      :description,
+      :groups,
+      :networkInterfaceId,
+      :sourceDestCheck
+    ) = object;
+    if (attachment != null) {
+      result$
         ..add(const _i7.XmlElementName('Attachment'))
         ..add(serializers.serialize(
-          payload.attachment!,
+          attachment,
           specifiedType: const FullType(_i2.NetworkInterfaceAttachment),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i7.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(_i3.AttributeValue),
         ));
     }
-    if (payload.groups != null) {
-      result
+    if (groups != null) {
+      result$
         ..add(const _i7.XmlElementName('GroupSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groups!,
+          groups,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.GroupIdentifier)],
           ),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i7.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceDestCheck != null) {
-      result
+    if (sourceDestCheck != null) {
+      result$
         ..add(const _i7.XmlElementName('SourceDestCheck'))
         ..add(serializers.serialize(
-          payload.sourceDestCheck!,
+          sourceDestCheck,
           specifiedType: const FullType(_i5.AttributeBooleanValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

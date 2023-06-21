@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.destination_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,30 +108,28 @@ class DestinationOptionsRequestEc2QuerySerializer
     final result = DestinationOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'FileFormat':
-          if (value != null) {
-            result.fileFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DestinationFileFormat),
-            ) as _i2.DestinationFileFormat);
-          }
-          break;
+          result.fileFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DestinationFileFormat),
+          ) as _i2.DestinationFileFormat);
         case 'HiveCompatiblePartitions':
           result.hiveCompatiblePartitions = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'PerHourPartition':
           result.perHourPartition = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -140,36 +139,40 @@ class DestinationOptionsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DestinationOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DestinationOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DestinationOptionsRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.fileFormat != null) {
-      result
+    final DestinationOptionsRequest(
+      :fileFormat,
+      :hiveCompatiblePartitions,
+      :perHourPartition
+    ) = object;
+    if (fileFormat != null) {
+      result$
         ..add(const _i3.XmlElementName('FileFormat'))
         ..add(serializers.serialize(
-          payload.fileFormat!,
+          fileFormat,
           specifiedType: const FullType.nullable(_i2.DestinationFileFormat),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('HiveCompatiblePartitions'))
       ..add(serializers.serialize(
-        payload.hiveCompatiblePartitions,
+        hiveCompatiblePartitions,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('PerHourPartition'))
       ..add(serializers.serialize(
-        payload.perHourPartition,
+        perHourPartition,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cancel_spot_fleet_requests_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,16 +120,18 @@ class CancelSpotFleetRequestsRequestEc2QuerySerializer
     final result = CancelSpotFleetRequestsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'spotFleetRequestId':
           result.spotFleetRequestIds.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -141,13 +144,11 @@ class CancelSpotFleetRequestsRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i3.BuiltList<String>));
-          break;
         case 'terminateInstances':
           result.terminateInstances = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -157,41 +158,45 @@ class CancelSpotFleetRequestsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CancelSpotFleetRequestsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CancelSpotFleetRequestsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CancelSpotFleetRequestsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CancelSpotFleetRequestsRequest(
+      :dryRun,
+      :spotFleetRequestIds,
+      :terminateInstances
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('SpotFleetRequestId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.spotFleetRequestIds,
+        spotFleetRequestIds,
         specifiedType: const FullType.nullable(
           _i3.BuiltList,
           [FullType(String)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TerminateInstances'))
       ..add(serializers.serialize(
-        payload.terminateInstances,
+        terminateInstances,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

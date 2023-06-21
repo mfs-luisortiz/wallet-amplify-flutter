@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.gpu_device_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,42 +110,33 @@ class GpuDeviceInfoEc2QuerySerializer
     final result = GpuDeviceInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'manufacturer':
-          if (value != null) {
-            result.manufacturer = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.manufacturer = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'count':
-          if (value != null) {
-            result.count = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.count = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'memoryInfo':
-          if (value != null) {
-            result.memoryInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.GpuDeviceMemoryInfo),
-            ) as _i2.GpuDeviceMemoryInfo));
-          }
-          break;
+          result.memoryInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.GpuDeviceMemoryInfo),
+          ) as _i2.GpuDeviceMemoryInfo));
       }
     }
 
@@ -154,48 +146,48 @@ class GpuDeviceInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GpuDeviceInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GpuDeviceInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'GpuDeviceInfoResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.name != null) {
-      result
+    final GpuDeviceInfo(:name, :manufacturer, :count, :memoryInfo) = object;
+    if (name != null) {
+      result$
         ..add(const _i3.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.manufacturer != null) {
-      result
+    if (manufacturer != null) {
+      result$
         ..add(const _i3.XmlElementName('Manufacturer'))
         ..add(serializers.serialize(
-          payload.manufacturer!,
+          manufacturer,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.count != null) {
-      result
+    if (count != null) {
+      result$
         ..add(const _i3.XmlElementName('Count'))
         ..add(serializers.serialize(
-          payload.count!,
+          count,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.memoryInfo != null) {
-      result
+    if (memoryInfo != null) {
+      result$
         ..add(const _i3.XmlElementName('MemoryInfo'))
         ..add(serializers.serialize(
-          payload.memoryInfo!,
+          memoryInfo,
           specifiedType: const FullType(_i2.GpuDeviceMemoryInfo),
         ));
     }
-    return result;
+    return result$;
   }
 }

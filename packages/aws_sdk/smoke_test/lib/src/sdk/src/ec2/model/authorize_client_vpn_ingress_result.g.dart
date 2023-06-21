@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.authorize_client_vpn_ingress_result;
+part of 'authorize_client_vpn_ingress_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

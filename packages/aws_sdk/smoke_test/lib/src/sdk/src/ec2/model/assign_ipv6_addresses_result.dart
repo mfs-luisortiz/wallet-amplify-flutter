@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.assign_ipv6_addresses_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,50 +110,43 @@ class AssignIpv6AddressesResultEc2QuerySerializer
     final result = AssignIpv6AddressesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'assignedIpv6Addresses':
-          if (value != null) {
-            result.assignedIpv6Addresses
-                .replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.assignedIpv6Addresses
+              .replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'assignedIpv6PrefixSet':
-          if (value != null) {
-            result.assignedIpv6Prefixes
-                .replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.assignedIpv6Prefixes.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -162,54 +156,58 @@ class AssignIpv6AddressesResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssignIpv6AddressesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssignIpv6AddressesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AssignIpv6AddressesResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.assignedIpv6Addresses != null) {
-      result
+    final AssignIpv6AddressesResult(
+      :assignedIpv6Addresses,
+      :assignedIpv6Prefixes,
+      :networkInterfaceId
+    ) = object;
+    if (assignedIpv6Addresses != null) {
+      result$
         ..add(const _i3.XmlElementName('AssignedIpv6Addresses'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.assignedIpv6Addresses!,
+          assignedIpv6Addresses,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.assignedIpv6Prefixes != null) {
-      result
+    if (assignedIpv6Prefixes != null) {
+      result$
         ..add(const _i3.XmlElementName('AssignedIpv6PrefixSet'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.assignedIpv6Prefixes!,
+          assignedIpv6Prefixes,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

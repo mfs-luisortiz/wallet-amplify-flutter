@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_subnets_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,33 +96,30 @@ class DescribeSubnetsResultEc2QuerySerializer
     final result = DescribeSubnetsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'subnetSet':
-          if (value != null) {
-            result.subnets.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.Subnet)],
-              ),
-            ) as _i3.BuiltList<_i2.Subnet>));
-          }
-          break;
+          result.subnets.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.Subnet)],
+            ),
+          ) as _i3.BuiltList<_i2.Subnet>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -131,39 +129,39 @@ class DescribeSubnetsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeSubnetsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeSubnetsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeSubnetsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.subnets != null) {
-      result
+    final DescribeSubnetsResult(:subnets, :nextToken) = object;
+    if (subnets != null) {
+      result$
         ..add(const _i4.XmlElementName('SubnetSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.subnets!,
+          subnets,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.Subnet)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.traffic_mirror_filter_rule;
+part of 'traffic_mirror_filter_rule.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpn_connection_device_type; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,42 +110,33 @@ class VpnConnectionDeviceTypeEc2QuerySerializer
     final result = VpnConnectionDeviceTypeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpnConnectionDeviceTypeId':
-          if (value != null) {
-            result.vpnConnectionDeviceTypeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpnConnectionDeviceTypeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vendor':
-          if (value != null) {
-            result.vendor = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vendor = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'software':
-          if (value != null) {
-            result.software = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.software = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -154,48 +146,53 @@ class VpnConnectionDeviceTypeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpnConnectionDeviceType object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpnConnectionDeviceType);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'VpnConnectionDeviceTypeResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpnConnectionDeviceTypeId != null) {
-      result
+    final VpnConnectionDeviceType(
+      :vpnConnectionDeviceTypeId,
+      :vendor,
+      :platform,
+      :software
+    ) = object;
+    if (vpnConnectionDeviceTypeId != null) {
+      result$
         ..add(const _i2.XmlElementName('VpnConnectionDeviceTypeId'))
         ..add(serializers.serialize(
-          payload.vpnConnectionDeviceTypeId!,
+          vpnConnectionDeviceTypeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vendor != null) {
-      result
+    if (vendor != null) {
+      result$
         ..add(const _i2.XmlElementName('Vendor'))
         ..add(serializers.serialize(
-          payload.vendor!,
+          vendor,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i2.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.software != null) {
-      result
+    if (software != null) {
+      result$
         ..add(const _i2.XmlElementName('Software'))
         ..add(serializers.serialize(
-          payload.software!,
+          software,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

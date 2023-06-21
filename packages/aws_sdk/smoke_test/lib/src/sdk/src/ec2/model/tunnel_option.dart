@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.tunnel_option; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -313,213 +314,168 @@ class TunnelOptionEc2QuerySerializer
     final result = TunnelOptionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'outsideIpAddress':
-          if (value != null) {
-            result.outsideIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outsideIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tunnelInsideCidr':
-          if (value != null) {
-            result.tunnelInsideCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.tunnelInsideCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tunnelInsideIpv6Cidr':
-          if (value != null) {
-            result.tunnelInsideIpv6Cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.tunnelInsideIpv6Cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'preSharedKey':
-          if (value != null) {
-            result.preSharedKey = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.preSharedKey = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'phase1LifetimeSeconds':
           result.phase1LifetimeSeconds = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'phase2LifetimeSeconds':
           result.phase2LifetimeSeconds = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'rekeyMarginTimeSeconds':
           result.rekeyMarginTimeSeconds = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'rekeyFuzzPercentage':
           result.rekeyFuzzPercentage = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'replayWindowSize':
           result.replayWindowSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'dpdTimeoutSeconds':
           result.dpdTimeoutSeconds = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'dpdTimeoutAction':
-          if (value != null) {
-            result.dpdTimeoutAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.dpdTimeoutAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'phase1EncryptionAlgorithmSet':
-          if (value != null) {
-            result.phase1EncryptionAlgorithms
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i2.Phase1EncryptionAlgorithmsListValue)],
-              ),
-            ) as _i10.BuiltList<_i2.Phase1EncryptionAlgorithmsListValue>));
-          }
-          break;
+          result.phase1EncryptionAlgorithms
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i2.Phase1EncryptionAlgorithmsListValue)],
+            ),
+          ) as _i10.BuiltList<_i2.Phase1EncryptionAlgorithmsListValue>));
         case 'phase2EncryptionAlgorithmSet':
-          if (value != null) {
-            result.phase2EncryptionAlgorithms
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i3.Phase2EncryptionAlgorithmsListValue)],
-              ),
-            ) as _i10.BuiltList<_i3.Phase2EncryptionAlgorithmsListValue>));
-          }
-          break;
+          result.phase2EncryptionAlgorithms
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i3.Phase2EncryptionAlgorithmsListValue)],
+            ),
+          ) as _i10.BuiltList<_i3.Phase2EncryptionAlgorithmsListValue>));
         case 'phase1IntegrityAlgorithmSet':
-          if (value != null) {
-            result.phase1IntegrityAlgorithms
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i4.Phase1IntegrityAlgorithmsListValue)],
-              ),
-            ) as _i10.BuiltList<_i4.Phase1IntegrityAlgorithmsListValue>));
-          }
-          break;
+          result.phase1IntegrityAlgorithms
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i4.Phase1IntegrityAlgorithmsListValue)],
+            ),
+          ) as _i10.BuiltList<_i4.Phase1IntegrityAlgorithmsListValue>));
         case 'phase2IntegrityAlgorithmSet':
-          if (value != null) {
-            result.phase2IntegrityAlgorithms
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i5.Phase2IntegrityAlgorithmsListValue)],
-              ),
-            ) as _i10.BuiltList<_i5.Phase2IntegrityAlgorithmsListValue>));
-          }
-          break;
+          result.phase2IntegrityAlgorithms
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i5.Phase2IntegrityAlgorithmsListValue)],
+            ),
+          ) as _i10.BuiltList<_i5.Phase2IntegrityAlgorithmsListValue>));
         case 'phase1DHGroupNumberSet':
-          if (value != null) {
-            result.phase1DhGroupNumbers
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i6.Phase1DhGroupNumbersListValue)],
-              ),
-            ) as _i10.BuiltList<_i6.Phase1DhGroupNumbersListValue>));
-          }
-          break;
+          result.phase1DhGroupNumbers
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i6.Phase1DhGroupNumbersListValue)],
+            ),
+          ) as _i10.BuiltList<_i6.Phase1DhGroupNumbersListValue>));
         case 'phase2DHGroupNumberSet':
-          if (value != null) {
-            result.phase2DhGroupNumbers
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i7.Phase2DhGroupNumbersListValue)],
-              ),
-            ) as _i10.BuiltList<_i7.Phase2DhGroupNumbersListValue>));
-          }
-          break;
+          result.phase2DhGroupNumbers
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i7.Phase2DhGroupNumbersListValue)],
+            ),
+          ) as _i10.BuiltList<_i7.Phase2DhGroupNumbersListValue>));
         case 'ikeVersionSet':
-          if (value != null) {
-            result.ikeVersions.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i8.IkeVersionsListValue)],
-              ),
-            ) as _i10.BuiltList<_i8.IkeVersionsListValue>));
-          }
-          break;
+          result.ikeVersions.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i8.IkeVersionsListValue)],
+            ),
+          ) as _i10.BuiltList<_i8.IkeVersionsListValue>));
         case 'startupAction':
-          if (value != null) {
-            result.startupAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.startupAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'logOptions':
-          if (value != null) {
-            result.logOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.VpnTunnelLogOptions),
-            ) as _i9.VpnTunnelLogOptions));
-          }
-          break;
+          result.logOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.VpnTunnelLogOptions),
+          ) as _i9.VpnTunnelLogOptions));
       }
     }
 
@@ -529,213 +485,234 @@ class TunnelOptionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TunnelOption object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TunnelOption);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i11.XmlElementName(
         'TunnelOptionResponse',
         _i11.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.outsideIpAddress != null) {
-      result
+    final TunnelOption(
+      :outsideIpAddress,
+      :tunnelInsideCidr,
+      :tunnelInsideIpv6Cidr,
+      :preSharedKey,
+      :phase1LifetimeSeconds,
+      :phase2LifetimeSeconds,
+      :rekeyMarginTimeSeconds,
+      :rekeyFuzzPercentage,
+      :replayWindowSize,
+      :dpdTimeoutSeconds,
+      :dpdTimeoutAction,
+      :phase1EncryptionAlgorithms,
+      :phase2EncryptionAlgorithms,
+      :phase1IntegrityAlgorithms,
+      :phase2IntegrityAlgorithms,
+      :phase1DhGroupNumbers,
+      :phase2DhGroupNumbers,
+      :ikeVersions,
+      :startupAction,
+      :logOptions
+    ) = object;
+    if (outsideIpAddress != null) {
+      result$
         ..add(const _i11.XmlElementName('OutsideIpAddress'))
         ..add(serializers.serialize(
-          payload.outsideIpAddress!,
+          outsideIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tunnelInsideCidr != null) {
-      result
+    if (tunnelInsideCidr != null) {
+      result$
         ..add(const _i11.XmlElementName('TunnelInsideCidr'))
         ..add(serializers.serialize(
-          payload.tunnelInsideCidr!,
+          tunnelInsideCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tunnelInsideIpv6Cidr != null) {
-      result
+    if (tunnelInsideIpv6Cidr != null) {
+      result$
         ..add(const _i11.XmlElementName('TunnelInsideIpv6Cidr'))
         ..add(serializers.serialize(
-          payload.tunnelInsideIpv6Cidr!,
+          tunnelInsideIpv6Cidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.preSharedKey != null) {
-      result
+    if (preSharedKey != null) {
+      result$
         ..add(const _i11.XmlElementName('PreSharedKey'))
         ..add(serializers.serialize(
-          payload.preSharedKey!,
+          preSharedKey,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i11.XmlElementName('Phase1LifetimeSeconds'))
       ..add(serializers.serialize(
-        payload.phase1LifetimeSeconds,
+        phase1LifetimeSeconds,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i11.XmlElementName('Phase2LifetimeSeconds'))
       ..add(serializers.serialize(
-        payload.phase2LifetimeSeconds,
+        phase2LifetimeSeconds,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i11.XmlElementName('RekeyMarginTimeSeconds'))
       ..add(serializers.serialize(
-        payload.rekeyMarginTimeSeconds,
+        rekeyMarginTimeSeconds,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i11.XmlElementName('RekeyFuzzPercentage'))
       ..add(serializers.serialize(
-        payload.rekeyFuzzPercentage,
+        rekeyFuzzPercentage,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i11.XmlElementName('ReplayWindowSize'))
       ..add(serializers.serialize(
-        payload.replayWindowSize,
+        replayWindowSize,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i11.XmlElementName('DpdTimeoutSeconds'))
       ..add(serializers.serialize(
-        payload.dpdTimeoutSeconds,
+        dpdTimeoutSeconds,
         specifiedType: const FullType(int),
       ));
-    if (payload.dpdTimeoutAction != null) {
-      result
+    if (dpdTimeoutAction != null) {
+      result$
         ..add(const _i11.XmlElementName('DpdTimeoutAction'))
         ..add(serializers.serialize(
-          payload.dpdTimeoutAction!,
+          dpdTimeoutAction,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.phase1EncryptionAlgorithms != null) {
-      result
+    if (phase1EncryptionAlgorithms != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase1EncryptionAlgorithmSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase1EncryptionAlgorithms!,
+          phase1EncryptionAlgorithms,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i2.Phase1EncryptionAlgorithmsListValue)],
           ),
         ));
     }
-    if (payload.phase2EncryptionAlgorithms != null) {
-      result
+    if (phase2EncryptionAlgorithms != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase2EncryptionAlgorithmSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase2EncryptionAlgorithms!,
+          phase2EncryptionAlgorithms,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i3.Phase2EncryptionAlgorithmsListValue)],
           ),
         ));
     }
-    if (payload.phase1IntegrityAlgorithms != null) {
-      result
+    if (phase1IntegrityAlgorithms != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase1IntegrityAlgorithmSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase1IntegrityAlgorithms!,
+          phase1IntegrityAlgorithms,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i4.Phase1IntegrityAlgorithmsListValue)],
           ),
         ));
     }
-    if (payload.phase2IntegrityAlgorithms != null) {
-      result
+    if (phase2IntegrityAlgorithms != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase2IntegrityAlgorithmSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase2IntegrityAlgorithms!,
+          phase2IntegrityAlgorithms,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i5.Phase2IntegrityAlgorithmsListValue)],
           ),
         ));
     }
-    if (payload.phase1DhGroupNumbers != null) {
-      result
+    if (phase1DhGroupNumbers != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase1DHGroupNumberSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase1DhGroupNumbers!,
+          phase1DhGroupNumbers,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i6.Phase1DhGroupNumbersListValue)],
           ),
         ));
     }
-    if (payload.phase2DhGroupNumbers != null) {
-      result
+    if (phase2DhGroupNumbers != null) {
+      result$
         ..add(const _i11.XmlElementName('Phase2DHGroupNumberSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.phase2DhGroupNumbers!,
+          phase2DhGroupNumbers,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i7.Phase2DhGroupNumbersListValue)],
           ),
         ));
     }
-    if (payload.ikeVersions != null) {
-      result
+    if (ikeVersions != null) {
+      result$
         ..add(const _i11.XmlElementName('IkeVersionSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ikeVersions!,
+          ikeVersions,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i8.IkeVersionsListValue)],
           ),
         ));
     }
-    if (payload.startupAction != null) {
-      result
+    if (startupAction != null) {
+      result$
         ..add(const _i11.XmlElementName('StartupAction'))
         ..add(serializers.serialize(
-          payload.startupAction!,
+          startupAction,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.logOptions != null) {
-      result
+    if (logOptions != null) {
+      result$
         ..add(const _i11.XmlElementName('LogOptions'))
         ..add(serializers.serialize(
-          payload.logOptions!,
+          logOptions,
           specifiedType: const FullType(_i9.VpnTunnelLogOptions),
         ));
     }
-    return result;
+    return result$;
   }
 }

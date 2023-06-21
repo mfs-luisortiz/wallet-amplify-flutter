@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.restore_snapshot_tier_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -125,36 +126,33 @@ class RestoreSnapshotTierRequestEc2QuerySerializer
     final result = RestoreSnapshotTierRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'SnapshotId':
           result.snapshotId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TemporaryRestoreDays':
-          if (value != null) {
-            result.temporaryRestoreDays = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.temporaryRestoreDays = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'PermanentRestore':
           result.permanentRestore = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -164,42 +162,47 @@ class RestoreSnapshotTierRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RestoreSnapshotTierRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RestoreSnapshotTierRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'RestoreSnapshotTierRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final RestoreSnapshotTierRequest(
+      :snapshotId,
+      :temporaryRestoreDays,
+      :permanentRestore,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('SnapshotId'))
       ..add(serializers.serialize(
-        payload.snapshotId,
+        snapshotId,
         specifiedType: const FullType(String),
       ));
-    if (payload.temporaryRestoreDays != null) {
-      result
+    if (temporaryRestoreDays != null) {
+      result$
         ..add(const _i1.XmlElementName('TemporaryRestoreDays'))
         ..add(serializers.serialize(
-          payload.temporaryRestoreDays!,
+          temporaryRestoreDays,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('PermanentRestore'))
       ..add(serializers.serialize(
-        payload.permanentRestore,
+        permanentRestore,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

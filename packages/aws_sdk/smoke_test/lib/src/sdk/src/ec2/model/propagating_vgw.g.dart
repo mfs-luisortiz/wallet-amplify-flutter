@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.propagating_vgw;
+part of 'propagating_vgw.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

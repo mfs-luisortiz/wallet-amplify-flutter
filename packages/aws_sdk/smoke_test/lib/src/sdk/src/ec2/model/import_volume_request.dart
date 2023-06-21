@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_volume_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,42 +132,38 @@ class ImportVolumeRequestEc2QuerySerializer
     final result = ImportVolumeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
           result.availabilityZone = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'image':
           result.image.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.DiskImageDetail),
           ) as _i3.DiskImageDetail));
-          break;
         case 'volume':
           result.volume.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i4.VolumeDetail),
           ) as _i4.VolumeDetail));
-          break;
       }
     }
 
@@ -176,48 +173,54 @@ class ImportVolumeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportVolumeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportVolumeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ImportVolumeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ImportVolumeRequest(
+      :availabilityZone,
+      :description,
+      :dryRun,
+      :image,
+      :volume
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('AvailabilityZone'))
       ..add(serializers.serialize(
-        payload.availabilityZone,
+        availabilityZone,
         specifiedType: const FullType(String),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Image'))
       ..add(serializers.serialize(
-        payload.image,
+        image,
         specifiedType: const FullType(_i3.DiskImageDetail),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Volume'))
       ..add(serializers.serialize(
-        payload.volume,
+        volume,
         specifiedType: const FullType(_i4.VolumeDetail),
       ));
-    return result;
+    return result$;
   }
 }

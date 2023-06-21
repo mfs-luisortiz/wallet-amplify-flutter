@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_capacity_reservations_request;
+part of 'describe_capacity_reservations_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

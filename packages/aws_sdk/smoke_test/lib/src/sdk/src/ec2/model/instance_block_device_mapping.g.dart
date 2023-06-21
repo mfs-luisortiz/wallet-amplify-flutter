@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_block_device_mapping;
+part of 'instance_block_device_mapping.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.reset_network_interface_attribute_request;
+part of 'reset_network_interface_attribute_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

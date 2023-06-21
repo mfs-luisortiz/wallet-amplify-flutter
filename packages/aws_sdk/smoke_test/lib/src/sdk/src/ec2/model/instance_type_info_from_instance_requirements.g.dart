@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_type_info_from_instance_requirements;
+part of 'instance_type_info_from_instance_requirements.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

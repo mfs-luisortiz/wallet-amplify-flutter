@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_spot_instance_requests_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -220,61 +221,53 @@ class DescribeSpotInstanceRequestsRequestEc2QuerySerializer extends _i1
     final result = DescribeSpotInstanceRequestsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i4.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i4.BuiltList<_i3.Filter>));
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'SpotInstanceRequestId':
-          if (value != null) {
-            result.spotInstanceRequestIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'SpotInstanceRequestId',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.spotInstanceRequestIds
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'SpotInstanceRequestId',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -284,66 +277,72 @@ class DescribeSpotInstanceRequestsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeSpotInstanceRequestsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeSpotInstanceRequestsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeSpotInstanceRequestsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.filters != null) {
-      result
+    final DescribeSpotInstanceRequestsRequest(
+      :filters,
+      :dryRun,
+      :spotInstanceRequestIds,
+      :nextToken,
+      :maxResults
+    ) = object;
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.spotInstanceRequestIds != null) {
-      result
+    if (spotInstanceRequestIds != null) {
+      result$
         ..add(const _i1.XmlElementName('SpotInstanceRequestId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'SpotInstanceRequestId',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.spotInstanceRequestIds!,
+          spotInstanceRequestIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

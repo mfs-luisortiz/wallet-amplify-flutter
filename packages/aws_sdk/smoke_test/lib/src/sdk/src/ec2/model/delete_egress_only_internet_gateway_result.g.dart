@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_egress_only_internet_gateway_result;
+part of 'delete_egress_only_internet_gateway_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

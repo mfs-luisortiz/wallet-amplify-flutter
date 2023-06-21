@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ipv4_prefix_specification;
+part of 'ipv4_prefix_specification.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ebs_optimized_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,58 +128,43 @@ class EbsOptimizedInfoEc2QuerySerializer
     final result = EbsOptimizedInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'baselineBandwidthInMbps':
-          if (value != null) {
-            result.baselineBandwidthInMbps = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.baselineBandwidthInMbps = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'baselineThroughputInMBps':
-          if (value != null) {
-            result.baselineThroughputInMBps = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.baselineThroughputInMBps = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
         case 'baselineIops':
-          if (value != null) {
-            result.baselineIops = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.baselineIops = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'maximumBandwidthInMbps':
-          if (value != null) {
-            result.maximumBandwidthInMbps = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumBandwidthInMbps = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'maximumThroughputInMBps':
-          if (value != null) {
-            result.maximumThroughputInMBps = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.maximumThroughputInMBps = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
         case 'maximumIops':
-          if (value != null) {
-            result.maximumIops = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumIops = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -188,64 +174,71 @@ class EbsOptimizedInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EbsOptimizedInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EbsOptimizedInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'EbsOptimizedInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.baselineBandwidthInMbps != null) {
-      result
+    final EbsOptimizedInfo(
+      :baselineBandwidthInMbps,
+      :baselineThroughputInMBps,
+      :baselineIops,
+      :maximumBandwidthInMbps,
+      :maximumThroughputInMBps,
+      :maximumIops
+    ) = object;
+    if (baselineBandwidthInMbps != null) {
+      result$
         ..add(const _i2.XmlElementName('BaselineBandwidthInMbps'))
         ..add(serializers.serialize(
-          payload.baselineBandwidthInMbps!,
+          baselineBandwidthInMbps,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.baselineThroughputInMBps != null) {
-      result
+    if (baselineThroughputInMBps != null) {
+      result$
         ..add(const _i2.XmlElementName('BaselineThroughputInMBps'))
         ..add(serializers.serialize(
-          payload.baselineThroughputInMBps!,
+          baselineThroughputInMBps,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    if (payload.baselineIops != null) {
-      result
+    if (baselineIops != null) {
+      result$
         ..add(const _i2.XmlElementName('BaselineIops'))
         ..add(serializers.serialize(
-          payload.baselineIops!,
+          baselineIops,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.maximumBandwidthInMbps != null) {
-      result
+    if (maximumBandwidthInMbps != null) {
+      result$
         ..add(const _i2.XmlElementName('MaximumBandwidthInMbps'))
         ..add(serializers.serialize(
-          payload.maximumBandwidthInMbps!,
+          maximumBandwidthInMbps,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.maximumThroughputInMBps != null) {
-      result
+    if (maximumThroughputInMBps != null) {
+      result$
         ..add(const _i2.XmlElementName('MaximumThroughputInMBps'))
         ..add(serializers.serialize(
-          payload.maximumThroughputInMBps!,
+          maximumThroughputInMBps,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    if (payload.maximumIops != null) {
-      result
+    if (maximumIops != null) {
+      result$
         ..add(const _i2.XmlElementName('MaximumIops'))
         ..add(serializers.serialize(
-          payload.maximumIops!,
+          maximumIops,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

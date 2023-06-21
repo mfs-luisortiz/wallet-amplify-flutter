@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.request_spot_launch_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -257,166 +258,121 @@ class RequestSpotLaunchSpecificationEc2QuerySerializer
     final result = RequestSpotLaunchSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'SecurityGroupId':
-          if (value != null) {
-            result.securityGroupIds.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i8.BuiltList<String>));
-          }
-          break;
+          result.securityGroupIds.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i8.BuiltList<String>));
         case 'SecurityGroup':
-          if (value != null) {
-            result.securityGroups.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i8.BuiltList<String>));
-          }
-          break;
+          result.securityGroups.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i8.BuiltList<String>));
         case 'addressingType':
-          if (value != null) {
-            result.addressingType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.addressingType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'blockDeviceMapping':
-          if (value != null) {
-            result.blockDeviceMappings
-                .replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i2.BlockDeviceMapping)],
-              ),
-            ) as _i8.BuiltList<_i2.BlockDeviceMapping>));
-          }
-          break;
+          result.blockDeviceMappings.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i2.BlockDeviceMapping)],
+            ),
+          ) as _i8.BuiltList<_i2.BlockDeviceMapping>));
         case 'ebsOptimized':
           result.ebsOptimized = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'iamInstanceProfile':
-          if (value != null) {
-            result.iamInstanceProfile.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.IamInstanceProfileSpecification),
-            ) as _i3.IamInstanceProfileSpecification));
-          }
-          break;
+          result.iamInstanceProfile.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.IamInstanceProfileSpecification),
+          ) as _i3.IamInstanceProfileSpecification));
         case 'imageId':
-          if (value != null) {
-            result.imageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceType),
-            ) as _i4.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceType),
+          ) as _i4.InstanceType);
         case 'kernelId':
-          if (value != null) {
-            result.kernelId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kernelId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'keyName':
-          if (value != null) {
-            result.keyName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.keyName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'monitoring':
-          if (value != null) {
-            result.monitoring.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.RunInstancesMonitoringEnabled),
-            ) as _i5.RunInstancesMonitoringEnabled));
-          }
-          break;
+          result.monitoring.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.RunInstancesMonitoringEnabled),
+          ) as _i5.RunInstancesMonitoringEnabled));
         case 'NetworkInterface':
-          if (value != null) {
-            result.networkInterfaces.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i6.InstanceNetworkInterfaceSpecification)],
-              ),
-            ) as _i8.BuiltList<_i6.InstanceNetworkInterfaceSpecification>));
-          }
-          break;
+          result.networkInterfaces.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i6.InstanceNetworkInterfaceSpecification)],
+            ),
+          ) as _i8.BuiltList<_i6.InstanceNetworkInterfaceSpecification>));
         case 'placement':
-          if (value != null) {
-            result.placement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.SpotPlacement),
-            ) as _i7.SpotPlacement));
-          }
-          break;
+          result.placement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.SpotPlacement),
+          ) as _i7.SpotPlacement));
         case 'ramdiskId':
-          if (value != null) {
-            result.ramdiskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ramdiskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'userData':
-          if (value != null) {
-            result.userData = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.userData = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -426,170 +382,187 @@ class RequestSpotLaunchSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RequestSpotLaunchSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RequestSpotLaunchSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i9.XmlElementName(
         'RequestSpotLaunchSpecificationResponse',
         _i9.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.securityGroupIds != null) {
-      result
+    final RequestSpotLaunchSpecification(
+      :securityGroupIds,
+      :securityGroups,
+      :addressingType,
+      :blockDeviceMappings,
+      :ebsOptimized,
+      :iamInstanceProfile,
+      :imageId,
+      :instanceType,
+      :kernelId,
+      :keyName,
+      :monitoring,
+      :networkInterfaces,
+      :placement,
+      :ramdiskId,
+      :subnetId,
+      :userData
+    ) = object;
+    if (securityGroupIds != null) {
+      result$
         ..add(const _i9.XmlElementName('SecurityGroupId'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroupIds!,
+          securityGroupIds,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.securityGroups != null) {
-      result
+    if (securityGroups != null) {
+      result$
         ..add(const _i9.XmlElementName('SecurityGroup'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroups!,
+          securityGroups,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.addressingType != null) {
-      result
+    if (addressingType != null) {
+      result$
         ..add(const _i9.XmlElementName('AddressingType'))
         ..add(serializers.serialize(
-          payload.addressingType!,
+          addressingType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.blockDeviceMappings != null) {
-      result
+    if (blockDeviceMappings != null) {
+      result$
         ..add(const _i9.XmlElementName('BlockDeviceMapping'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.blockDeviceMappings!,
+          blockDeviceMappings,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i2.BlockDeviceMapping)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i9.XmlElementName('EbsOptimized'))
       ..add(serializers.serialize(
-        payload.ebsOptimized,
+        ebsOptimized,
         specifiedType: const FullType(bool),
       ));
-    if (payload.iamInstanceProfile != null) {
-      result
+    if (iamInstanceProfile != null) {
+      result$
         ..add(const _i9.XmlElementName('IamInstanceProfile'))
         ..add(serializers.serialize(
-          payload.iamInstanceProfile!,
+          iamInstanceProfile,
           specifiedType: const FullType(_i3.IamInstanceProfileSpecification),
         ));
     }
-    if (payload.imageId != null) {
-      result
+    if (imageId != null) {
+      result$
         ..add(const _i9.XmlElementName('ImageId'))
         ..add(serializers.serialize(
-          payload.imageId!,
+          imageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i9.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i4.InstanceType),
         ));
     }
-    if (payload.kernelId != null) {
-      result
+    if (kernelId != null) {
+      result$
         ..add(const _i9.XmlElementName('KernelId'))
         ..add(serializers.serialize(
-          payload.kernelId!,
+          kernelId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.keyName != null) {
-      result
+    if (keyName != null) {
+      result$
         ..add(const _i9.XmlElementName('KeyName'))
         ..add(serializers.serialize(
-          payload.keyName!,
+          keyName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.monitoring != null) {
-      result
+    if (monitoring != null) {
+      result$
         ..add(const _i9.XmlElementName('Monitoring'))
         ..add(serializers.serialize(
-          payload.monitoring!,
+          monitoring,
           specifiedType: const FullType(_i5.RunInstancesMonitoringEnabled),
         ));
     }
-    if (payload.networkInterfaces != null) {
-      result
+    if (networkInterfaces != null) {
+      result$
         ..add(const _i9.XmlElementName('NetworkInterface'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.networkInterfaces!,
+          networkInterfaces,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i6.InstanceNetworkInterfaceSpecification)],
           ),
         ));
     }
-    if (payload.placement != null) {
-      result
+    if (placement != null) {
+      result$
         ..add(const _i9.XmlElementName('Placement'))
         ..add(serializers.serialize(
-          payload.placement!,
+          placement,
           specifiedType: const FullType(_i7.SpotPlacement),
         ));
     }
-    if (payload.ramdiskId != null) {
-      result
+    if (ramdiskId != null) {
+      result$
         ..add(const _i9.XmlElementName('RamdiskId'))
         ..add(serializers.serialize(
-          payload.ramdiskId!,
+          ramdiskId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i9.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.userData != null) {
-      result
+    if (userData != null) {
+      result$
         ..add(const _i9.XmlElementName('UserData'))
         ..add(serializers.serialize(
-          payload.userData!,
+          userData,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

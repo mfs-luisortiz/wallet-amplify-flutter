@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disable_fast_launch_request;
+part of 'disable_fast_launch_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

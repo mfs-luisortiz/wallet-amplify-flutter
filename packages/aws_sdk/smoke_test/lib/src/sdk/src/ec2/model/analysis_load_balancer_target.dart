@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.analysis_load_balancer_target; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -115,40 +116,33 @@ class AnalysisLoadBalancerTargetEc2QuerySerializer
     final result = AnalysisLoadBalancerTargetBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'address':
-          if (value != null) {
-            result.address = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.address = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instance':
-          if (value != null) {
-            result.instance.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.instance.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'port':
           result.port = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -158,46 +152,51 @@ class AnalysisLoadBalancerTargetEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AnalysisLoadBalancerTarget object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AnalysisLoadBalancerTarget);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AnalysisLoadBalancerTargetResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.address != null) {
-      result
+    final AnalysisLoadBalancerTarget(
+      :address,
+      :availabilityZone,
+      :instance,
+      :port
+    ) = object;
+    if (address != null) {
+      result$
         ..add(const _i3.XmlElementName('Address'))
         ..add(serializers.serialize(
-          payload.address!,
+          address,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i3.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instance != null) {
-      result
+    if (instance != null) {
+      result$
         ..add(const _i3.XmlElementName('Instance'))
         ..add(serializers.serialize(
-          payload.instance!,
+          instance,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Port'))
       ..add(serializers.serialize(
-        payload.port,
+        port,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

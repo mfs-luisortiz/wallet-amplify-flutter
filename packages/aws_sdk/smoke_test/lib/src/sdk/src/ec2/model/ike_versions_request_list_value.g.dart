@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ike_versions_request_list_value;
+part of 'ike_versions_request_list_value.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

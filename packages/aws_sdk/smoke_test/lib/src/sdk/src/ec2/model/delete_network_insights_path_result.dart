@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_network_insights_path_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class DeleteNetworkInsightsPathResultEc2QuerySerializer
     final result = DeleteNetworkInsightsPathResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsPathId':
-          if (value != null) {
-            result.networkInsightsPathId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsPathId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -103,24 +104,24 @@ class DeleteNetworkInsightsPathResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteNetworkInsightsPathResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteNetworkInsightsPathResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'DeleteNetworkInsightsPathResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsPathId != null) {
-      result
+    final DeleteNetworkInsightsPathResult(:networkInsightsPathId) = object;
+    if (networkInsightsPathId != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkInsightsPathId'))
         ..add(serializers.serialize(
-          payload.networkInsightsPathId!,
+          networkInsightsPathId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

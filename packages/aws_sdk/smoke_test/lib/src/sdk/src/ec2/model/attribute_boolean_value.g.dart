@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.attribute_boolean_value;
+part of 'attribute_boolean_value.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

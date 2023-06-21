@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_dhcp_options_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -78,18 +79,18 @@ class CreateDhcpOptionsResultEc2QuerySerializer
     final result = CreateDhcpOptionsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dhcpOptions':
-          if (value != null) {
-            result.dhcpOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DhcpOptions),
-            ) as _i2.DhcpOptions));
-          }
-          break;
+          result.dhcpOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DhcpOptions),
+          ) as _i2.DhcpOptions));
       }
     }
 
@@ -99,24 +100,24 @@ class CreateDhcpOptionsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateDhcpOptionsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateDhcpOptionsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateDhcpOptionsResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.dhcpOptions != null) {
-      result
+    final CreateDhcpOptionsResult(:dhcpOptions) = object;
+    if (dhcpOptions != null) {
+      result$
         ..add(const _i3.XmlElementName('DhcpOptions'))
         ..add(serializers.serialize(
-          payload.dhcpOptions!,
+          dhcpOptions,
           specifiedType: const FullType(_i2.DhcpOptions),
         ));
     }
-    return result;
+    return result$;
   }
 }

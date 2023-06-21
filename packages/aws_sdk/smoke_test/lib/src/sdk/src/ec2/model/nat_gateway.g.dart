@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.nat_gateway;
+part of 'nat_gateway.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

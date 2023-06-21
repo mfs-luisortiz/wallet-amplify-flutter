@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_vpc_peering_connection_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class CreateVpcPeeringConnectionResultEc2QuerySerializer
     final result = CreateVpcPeeringConnectionResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpcPeeringConnection':
-          if (value != null) {
-            result.vpcPeeringConnection.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpcPeeringConnection),
-            ) as _i2.VpcPeeringConnection));
-          }
-          break;
+          result.vpcPeeringConnection.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpcPeeringConnection),
+          ) as _i2.VpcPeeringConnection));
       }
     }
 
@@ -106,24 +107,24 @@ class CreateVpcPeeringConnectionResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateVpcPeeringConnectionResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateVpcPeeringConnectionResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateVpcPeeringConnectionResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpcPeeringConnection != null) {
-      result
+    final CreateVpcPeeringConnectionResult(:vpcPeeringConnection) = object;
+    if (vpcPeeringConnection != null) {
+      result$
         ..add(const _i3.XmlElementName('VpcPeeringConnection'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnection!,
+          vpcPeeringConnection,
           specifiedType: const FullType(_i2.VpcPeeringConnection),
         ));
     }
-    return result;
+    return result$;
   }
 }

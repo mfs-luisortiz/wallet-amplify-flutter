@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_subnet_cidr_block_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,22 +101,23 @@ class AssociateSubnetCidrBlockRequestEc2QuerySerializer
     final result = AssociateSubnetCidrBlockRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipv6CidrBlock':
           result.ipv6CidrBlock = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'subnetId':
           result.subnetId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -125,28 +127,28 @@ class AssociateSubnetCidrBlockRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateSubnetCidrBlockRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateSubnetCidrBlockRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'AssociateSubnetCidrBlockRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final AssociateSubnetCidrBlockRequest(:ipv6CidrBlock, :subnetId) = object;
+    result$
       ..add(const _i1.XmlElementName('Ipv6CidrBlock'))
       ..add(serializers.serialize(
-        payload.ipv6CidrBlock,
+        ipv6CidrBlock,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('SubnetId'))
       ..add(serializers.serialize(
-        payload.subnetId,
+        subnetId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

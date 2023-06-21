@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.dns_servers_options_modify_structure; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,31 +99,30 @@ class DnsServersOptionsModifyStructureEc2QuerySerializer
     final result = DnsServersOptionsModifyStructureBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CustomDnsServers':
-          if (value != null) {
-            result.customDnsServers.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.customDnsServers.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'Enabled':
           result.enabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -132,37 +132,38 @@ class DnsServersOptionsModifyStructureEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DnsServersOptionsModifyStructure object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DnsServersOptionsModifyStructure);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DnsServersOptionsModifyStructureResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.customDnsServers != null) {
-      result
+    final DnsServersOptionsModifyStructure(:customDnsServers, :enabled) =
+        object;
+    if (customDnsServers != null) {
+      result$
         ..add(const _i3.XmlElementName('CustomDnsServers'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.customDnsServers!,
+          customDnsServers,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Enabled'))
       ..add(serializers.serialize(
-        payload.enabled,
+        enabled,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

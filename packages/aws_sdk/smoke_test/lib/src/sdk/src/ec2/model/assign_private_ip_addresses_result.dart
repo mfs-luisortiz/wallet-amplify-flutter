@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.assign_private_ip_addresses_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,50 +117,43 @@ class AssignPrivateIpAddressesResultEc2QuerySerializer
     final result = AssignPrivateIpAddressesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'assignedPrivateIpAddressesSet':
-          if (value != null) {
-            result.assignedPrivateIpAddresses
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.AssignedPrivateIpAddress)],
-              ),
-            ) as _i4.BuiltList<_i2.AssignedPrivateIpAddress>));
-          }
-          break;
+          result.assignedPrivateIpAddresses
+              .replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.AssignedPrivateIpAddress)],
+            ),
+          ) as _i4.BuiltList<_i2.AssignedPrivateIpAddress>));
         case 'assignedIpv4PrefixSet':
-          if (value != null) {
-            result.assignedIpv4Prefixes
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Ipv4PrefixSpecification)],
-              ),
-            ) as _i4.BuiltList<_i3.Ipv4PrefixSpecification>));
-          }
-          break;
+          result.assignedIpv4Prefixes.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Ipv4PrefixSpecification)],
+            ),
+          ) as _i4.BuiltList<_i3.Ipv4PrefixSpecification>));
       }
     }
 
@@ -169,54 +163,58 @@ class AssignPrivateIpAddressesResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssignPrivateIpAddressesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssignPrivateIpAddressesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'AssignPrivateIpAddressesResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInterfaceId != null) {
-      result
+    final AssignPrivateIpAddressesResult(
+      :networkInterfaceId,
+      :assignedPrivateIpAddresses,
+      :assignedIpv4Prefixes
+    ) = object;
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.assignedPrivateIpAddresses != null) {
-      result
+    if (assignedPrivateIpAddresses != null) {
+      result$
         ..add(const _i5.XmlElementName('AssignedPrivateIpAddressesSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.assignedPrivateIpAddresses!,
+          assignedPrivateIpAddresses,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.AssignedPrivateIpAddress)],
           ),
         ));
     }
-    if (payload.assignedIpv4Prefixes != null) {
-      result
+    if (assignedIpv4Prefixes != null) {
+      result$
         ..add(const _i5.XmlElementName('AssignedIpv4PrefixSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.assignedIpv4Prefixes!,
+          assignedIpv4Prefixes,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Ipv4PrefixSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

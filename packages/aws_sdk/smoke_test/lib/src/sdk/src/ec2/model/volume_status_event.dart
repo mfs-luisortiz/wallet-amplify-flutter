@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_status_event; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,58 +128,43 @@ class VolumeStatusEventEc2QuerySerializer
     final result = VolumeStatusEventBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventId':
-          if (value != null) {
-            result.eventId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventType':
-          if (value != null) {
-            result.eventType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'notAfter':
-          if (value != null) {
-            result.notAfter = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.notAfter = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'notBefore':
-          if (value != null) {
-            result.notBefore = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.notBefore = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -188,64 +174,71 @@ class VolumeStatusEventEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeStatusEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeStatusEvent);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'VolumeStatusEventResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final VolumeStatusEvent(
+      :description,
+      :eventId,
+      :eventType,
+      :notAfter,
+      :notBefore,
+      :instanceId
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.eventId != null) {
-      result
+    if (eventId != null) {
+      result$
         ..add(const _i2.XmlElementName('EventId'))
         ..add(serializers.serialize(
-          payload.eventId!,
+          eventId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.eventType != null) {
-      result
+    if (eventType != null) {
+      result$
         ..add(const _i2.XmlElementName('EventType'))
         ..add(serializers.serialize(
-          payload.eventType!,
+          eventType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.notAfter != null) {
-      result
+    if (notAfter != null) {
+      result$
         ..add(const _i2.XmlElementName('NotAfter'))
         ..add(serializers.serialize(
-          payload.notAfter!,
+          notAfter,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.notBefore != null) {
-      result
+    if (notBefore != null) {
+      result$
         ..add(const _i2.XmlElementName('NotBefore'))
         ..add(serializers.serialize(
-          payload.notBefore!,
+          notBefore,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

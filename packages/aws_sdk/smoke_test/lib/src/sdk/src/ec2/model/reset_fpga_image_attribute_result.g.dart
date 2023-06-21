@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.reset_fpga_image_attribute_result;
+part of 'reset_fpga_image_attribute_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

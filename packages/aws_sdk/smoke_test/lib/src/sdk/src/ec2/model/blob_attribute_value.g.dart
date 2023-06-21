@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.blob_attribute_value;
+part of 'blob_attribute_value.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

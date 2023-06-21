@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_queued_reserved_instances_result;
+part of 'delete_queued_reserved_instances_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

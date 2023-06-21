@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.stale_ip_permission;
+part of 'stale_ip_permission.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

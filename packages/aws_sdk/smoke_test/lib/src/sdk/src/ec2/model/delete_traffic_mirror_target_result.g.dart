@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_traffic_mirror_target_result;
+part of 'delete_traffic_mirror_target_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

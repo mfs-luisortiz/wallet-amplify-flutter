@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpc_peering_connection_state_reason; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,27 +96,24 @@ class VpcPeeringConnectionStateReasonEc2QuerySerializer
     final result = VpcPeeringConnectionStateReasonBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'code':
-          if (value != null) {
-            result.code = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.VpcPeeringConnectionStateReasonCode),
-            ) as _i2.VpcPeeringConnectionStateReasonCode);
-          }
-          break;
+          result.code = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.VpcPeeringConnectionStateReasonCode),
+          ) as _i2.VpcPeeringConnectionStateReasonCode);
         case 'message':
-          if (value != null) {
-            result.message = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.message = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -125,33 +123,33 @@ class VpcPeeringConnectionStateReasonEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpcPeeringConnectionStateReason object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpcPeeringConnectionStateReason);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'VpcPeeringConnectionStateReasonResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.code != null) {
-      result
+    final VpcPeeringConnectionStateReason(:code, :message) = object;
+    if (code != null) {
+      result$
         ..add(const _i3.XmlElementName('Code'))
         ..add(serializers.serialize(
-          payload.code!,
+          code,
           specifiedType:
               const FullType.nullable(_i2.VpcPeeringConnectionStateReasonCode),
         ));
     }
-    if (payload.message != null) {
-      result
+    if (message != null) {
+      result$
         ..add(const _i3.XmlElementName('Message'))
         ..add(serializers.serialize(
-          payload.message!,
+          message,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

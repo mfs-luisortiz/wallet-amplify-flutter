@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.replace_route_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -251,140 +252,98 @@ class ReplaceRouteRequestEc2QuerySerializer
     final result = ReplaceRouteRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'destinationIpv6CidrBlock':
-          if (value != null) {
-            result.destinationIpv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'DestinationPrefixListId':
-          if (value != null) {
-            result.destinationPrefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'dryRun':
-          result.dryRun = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(bool),
-          ) as bool);
-          break;
-        case 'VpcEndpointId':
-          if (value != null) {
-            result.vpcEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'egressOnlyInternetGatewayId':
-          if (value != null) {
-            result.egressOnlyInternetGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'gatewayId':
-          if (value != null) {
-            result.gatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'LocalTarget':
-          result.localTarget = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(bool),
-          ) as bool);
-          break;
-        case 'natGatewayId':
-          if (value != null) {
-            result.natGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'TransitGatewayId':
-          if (value != null) {
-            result.transitGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'LocalGatewayId':
-          if (value != null) {
-            result.localGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'CarrierGatewayId':
-          if (value != null) {
-            result.carrierGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'routeTableId':
-          result.routeTableId = (serializers.deserialize(
-            value!,
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'destinationIpv6CidrBlock':
+          result.destinationIpv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'DestinationPrefixListId':
+          result.destinationPrefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'dryRun':
+          result.dryRun = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
+        case 'VpcEndpointId':
+          result.vpcEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'egressOnlyInternetGatewayId':
+          result.egressOnlyInternetGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'gatewayId':
+          result.gatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'instanceId':
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'LocalTarget':
+          result.localTarget = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
+        case 'natGatewayId':
+          result.natGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'TransitGatewayId':
+          result.transitGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'LocalGatewayId':
+          result.localGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'CarrierGatewayId':
+          result.carrierGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'networkInterfaceId':
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'routeTableId':
+          result.routeTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcPeeringConnectionId':
-          if (value != null) {
-            result.vpcPeeringConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcPeeringConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'CoreNetworkArn':
-          if (value != null) {
-            result.coreNetworkArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.coreNetworkArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -394,146 +353,164 @@ class ReplaceRouteRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReplaceRouteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReplaceRouteRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ReplaceRouteRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidrBlock != null) {
-      result
+    final ReplaceRouteRequest(
+      :destinationCidrBlock,
+      :destinationIpv6CidrBlock,
+      :destinationPrefixListId,
+      :dryRun,
+      :vpcEndpointId,
+      :egressOnlyInternetGatewayId,
+      :gatewayId,
+      :instanceId,
+      :localTarget,
+      :natGatewayId,
+      :transitGatewayId,
+      :localGatewayId,
+      :carrierGatewayId,
+      :networkInterfaceId,
+      :routeTableId,
+      :vpcPeeringConnectionId,
+      :coreNetworkArn
+    ) = object;
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationIpv6CidrBlock != null) {
-      result
+    if (destinationIpv6CidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationIpv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationIpv6CidrBlock!,
+          destinationIpv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationPrefixListId != null) {
-      result
+    if (destinationPrefixListId != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationPrefixListId'))
         ..add(serializers.serialize(
-          payload.destinationPrefixListId!,
+          destinationPrefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.vpcEndpointId != null) {
-      result
+    if (vpcEndpointId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpcEndpointId'))
         ..add(serializers.serialize(
-          payload.vpcEndpointId!,
+          vpcEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.egressOnlyInternetGatewayId != null) {
-      result
+    if (egressOnlyInternetGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('EgressOnlyInternetGatewayId'))
         ..add(serializers.serialize(
-          payload.egressOnlyInternetGatewayId!,
+          egressOnlyInternetGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.gatewayId != null) {
-      result
+    if (gatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('GatewayId'))
         ..add(serializers.serialize(
-          payload.gatewayId!,
+          gatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('LocalTarget'))
       ..add(serializers.serialize(
-        payload.localTarget,
+        localTarget,
         specifiedType: const FullType(bool),
       ));
-    if (payload.natGatewayId != null) {
-      result
+    if (natGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('NatGatewayId'))
         ..add(serializers.serialize(
-          payload.natGatewayId!,
+          natGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayId != null) {
-      result
+    if (transitGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('TransitGatewayId'))
         ..add(serializers.serialize(
-          payload.transitGatewayId!,
+          transitGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.localGatewayId != null) {
-      result
+    if (localGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('LocalGatewayId'))
         ..add(serializers.serialize(
-          payload.localGatewayId!,
+          localGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.carrierGatewayId != null) {
-      result
+    if (carrierGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('CarrierGatewayId'))
         ..add(serializers.serialize(
-          payload.carrierGatewayId!,
+          carrierGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i1.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('RouteTableId'))
       ..add(serializers.serialize(
-        payload.routeTableId,
+        routeTableId,
         specifiedType: const FullType(String),
       ));
-    if (payload.vpcPeeringConnectionId != null) {
-      result
+    if (vpcPeeringConnectionId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpcPeeringConnectionId'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnectionId!,
+          vpcPeeringConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.coreNetworkArn != null) {
-      result
+    if (coreNetworkArn != null) {
+      result$
         ..add(const _i1.XmlElementName('CoreNetworkArn'))
         ..add(serializers.serialize(
-          payload.coreNetworkArn!,
+          coreNetworkArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

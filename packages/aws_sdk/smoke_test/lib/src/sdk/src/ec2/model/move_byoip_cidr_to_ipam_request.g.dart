@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.move_byoip_cidr_to_ipam_request;
+part of 'move_byoip_cidr_to_ipam_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

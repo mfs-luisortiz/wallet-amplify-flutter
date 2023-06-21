@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.last_error;
+part of 'last_error.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

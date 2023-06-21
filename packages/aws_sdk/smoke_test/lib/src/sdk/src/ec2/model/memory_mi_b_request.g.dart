@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.memory_mi_b_request;
+part of 'memory_mi_b_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

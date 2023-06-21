@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associate_route_table_result;
+part of 'associate_route_table_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

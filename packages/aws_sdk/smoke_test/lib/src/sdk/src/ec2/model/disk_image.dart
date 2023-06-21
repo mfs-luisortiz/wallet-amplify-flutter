@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disk_image; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,34 +100,28 @@ class DiskImageEc2QuerySerializer
     final result = DiskImageBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Image':
-          if (value != null) {
-            result.image.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DiskImageDetail),
-            ) as _i2.DiskImageDetail));
-          }
-          break;
+          result.image.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DiskImageDetail),
+          ) as _i2.DiskImageDetail));
         case 'Volume':
-          if (value != null) {
-            result.volume.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VolumeDetail),
-            ) as _i3.VolumeDetail));
-          }
-          break;
+          result.volume.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VolumeDetail),
+          ) as _i3.VolumeDetail));
       }
     }
 
@@ -136,40 +131,40 @@ class DiskImageEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DiskImage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DiskImage);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DiskImageResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final DiskImage(:description, :image, :volume) = object;
+    if (description != null) {
+      result$
         ..add(const _i4.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.image != null) {
-      result
+    if (image != null) {
+      result$
         ..add(const _i4.XmlElementName('Image'))
         ..add(serializers.serialize(
-          payload.image!,
+          image,
           specifiedType: const FullType(_i2.DiskImageDetail),
         ));
     }
-    if (payload.volume != null) {
-      result
+    if (volume != null) {
+      result$
         ..add(const _i4.XmlElementName('Volume'))
         ..add(serializers.serialize(
-          payload.volume!,
+          volume,
           specifiedType: const FullType(_i3.VolumeDetail),
         ));
     }
-    return result;
+    return result$;
   }
 }

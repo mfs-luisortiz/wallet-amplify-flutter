@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.phase1_integrity_algorithms_list_value; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -77,18 +78,18 @@ class Phase1IntegrityAlgorithmsListValueEc2QuerySerializer
     final result = Phase1IntegrityAlgorithmsListValueBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'value':
-          if (value != null) {
-            result.value = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.value = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -98,24 +99,24 @@ class Phase1IntegrityAlgorithmsListValueEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Phase1IntegrityAlgorithmsListValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Phase1IntegrityAlgorithmsListValue);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'Phase1IntegrityAlgorithmsListValueResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.value != null) {
-      result
+    final Phase1IntegrityAlgorithmsListValue(:value) = object;
+    if (value != null) {
+      result$
         ..add(const _i2.XmlElementName('Value'))
         ..add(serializers.serialize(
-          payload.value!,
+          value,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

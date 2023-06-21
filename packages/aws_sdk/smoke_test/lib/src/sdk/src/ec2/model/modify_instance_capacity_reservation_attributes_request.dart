@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_instance_capacity_reservation_attributes_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,29 +119,29 @@ class ModifyInstanceCapacityReservationAttributesRequestEc2QuerySerializer
     final result = ModifyInstanceCapacityReservationAttributesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
           result.instanceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'CapacityReservationSpecification':
           result.capacityReservationSpecification
               .replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.CapacityReservationSpecification),
           ) as _i3.CapacityReservationSpecification));
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -150,35 +151,38 @@ class ModifyInstanceCapacityReservationAttributesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyInstanceCapacityReservationAttributesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as ModifyInstanceCapacityReservationAttributesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyInstanceCapacityReservationAttributesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyInstanceCapacityReservationAttributesRequest(
+      :instanceId,
+      :capacityReservationSpecification,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('CapacityReservationSpecification'))
       ..add(serializers.serialize(
-        payload.capacityReservationSpecification,
+        capacityReservationSpecification,
         specifiedType: const FullType(_i3.CapacityReservationSpecification),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

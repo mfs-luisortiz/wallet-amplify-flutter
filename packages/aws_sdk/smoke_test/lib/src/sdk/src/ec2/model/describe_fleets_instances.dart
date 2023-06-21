@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_fleets_instances; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -126,58 +127,46 @@ class DescribeFleetsInstancesEc2QuerySerializer
     final result = DescribeFleetsInstancesBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplateAndOverrides':
-          if (value != null) {
-            result.launchTemplateAndOverrides.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.LaunchTemplateAndOverridesResponse),
-            ) as _i2.LaunchTemplateAndOverridesResponse));
-          }
-          break;
+          result.launchTemplateAndOverrides.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.LaunchTemplateAndOverridesResponse),
+          ) as _i2.LaunchTemplateAndOverridesResponse));
         case 'lifecycle':
-          if (value != null) {
-            result.lifecycle = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceLifecycle),
-            ) as _i3.InstanceLifecycle);
-          }
-          break;
+          result.lifecycle = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceLifecycle),
+          ) as _i3.InstanceLifecycle);
         case 'instanceIds':
-          if (value != null) {
-            result.instanceIds.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.instanceIds.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceType),
-            ) as _i4.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceType),
+          ) as _i4.InstanceType);
         case 'platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.PlatformValues),
-            ) as _i5.PlatformValues);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.PlatformValues),
+          ) as _i5.PlatformValues);
       }
     }
 
@@ -187,63 +176,69 @@ class DescribeFleetsInstancesEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeFleetsInstances object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeFleetsInstances);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'DescribeFleetsInstancesResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateAndOverrides != null) {
-      result
+    final DescribeFleetsInstances(
+      :launchTemplateAndOverrides,
+      :lifecycle,
+      :instanceIds,
+      :instanceType,
+      :platform
+    ) = object;
+    if (launchTemplateAndOverrides != null) {
+      result$
         ..add(const _i7.XmlElementName('LaunchTemplateAndOverrides'))
         ..add(serializers.serialize(
-          payload.launchTemplateAndOverrides!,
+          launchTemplateAndOverrides,
           specifiedType: const FullType(_i2.LaunchTemplateAndOverridesResponse),
         ));
     }
-    if (payload.lifecycle != null) {
-      result
+    if (lifecycle != null) {
+      result$
         ..add(const _i7.XmlElementName('Lifecycle'))
         ..add(serializers.serialize(
-          payload.lifecycle!,
+          lifecycle,
           specifiedType: const FullType.nullable(_i3.InstanceLifecycle),
         ));
     }
-    if (payload.instanceIds != null) {
-      result
+    if (instanceIds != null) {
+      result$
         ..add(const _i7.XmlElementName('InstanceIds'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instanceIds!,
+          instanceIds,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i7.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i4.InstanceType),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i7.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType.nullable(_i5.PlatformValues),
         ));
     }
-    return result;
+    return result$;
   }
 }

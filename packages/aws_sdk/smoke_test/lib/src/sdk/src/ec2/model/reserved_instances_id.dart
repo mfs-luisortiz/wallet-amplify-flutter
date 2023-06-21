@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reserved_instances_id; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -72,18 +73,18 @@ class ReservedInstancesIdEc2QuerySerializer
     final result = ReservedInstancesIdBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'reservedInstancesId':
-          if (value != null) {
-            result.reservedInstancesId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservedInstancesId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -93,24 +94,24 @@ class ReservedInstancesIdEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservedInstancesId object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservedInstancesId);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ReservedInstancesIdResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.reservedInstancesId != null) {
-      result
+    final ReservedInstancesId(:reservedInstancesId) = object;
+    if (reservedInstancesId != null) {
+      result$
         ..add(const _i2.XmlElementName('ReservedInstancesId'))
         ..add(serializers.serialize(
-          payload.reservedInstancesId!,
+          reservedInstancesId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

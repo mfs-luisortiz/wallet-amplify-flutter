@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disable_image_deprecation_request;
+part of 'disable_image_deprecation_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

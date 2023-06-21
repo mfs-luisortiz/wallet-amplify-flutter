@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_fleet_error; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -111,43 +112,34 @@ class CreateFleetErrorEc2QuerySerializer
     final result = CreateFleetErrorBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplateAndOverrides':
-          if (value != null) {
-            result.launchTemplateAndOverrides.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.LaunchTemplateAndOverridesResponse),
-            ) as _i2.LaunchTemplateAndOverridesResponse));
-          }
-          break;
+          result.launchTemplateAndOverrides.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.LaunchTemplateAndOverridesResponse),
+          ) as _i2.LaunchTemplateAndOverridesResponse));
         case 'lifecycle':
-          if (value != null) {
-            result.lifecycle = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceLifecycle),
-            ) as _i3.InstanceLifecycle);
-          }
-          break;
+          result.lifecycle = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceLifecycle),
+          ) as _i3.InstanceLifecycle);
         case 'errorCode':
-          if (value != null) {
-            result.errorCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.errorCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'errorMessage':
-          if (value != null) {
-            result.errorMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.errorMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -157,48 +149,53 @@ class CreateFleetErrorEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateFleetError object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateFleetError);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'CreateFleetErrorResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateAndOverrides != null) {
-      result
+    final CreateFleetError(
+      :launchTemplateAndOverrides,
+      :lifecycle,
+      :errorCode,
+      :errorMessage
+    ) = object;
+    if (launchTemplateAndOverrides != null) {
+      result$
         ..add(const _i4.XmlElementName('LaunchTemplateAndOverrides'))
         ..add(serializers.serialize(
-          payload.launchTemplateAndOverrides!,
+          launchTemplateAndOverrides,
           specifiedType: const FullType(_i2.LaunchTemplateAndOverridesResponse),
         ));
     }
-    if (payload.lifecycle != null) {
-      result
+    if (lifecycle != null) {
+      result$
         ..add(const _i4.XmlElementName('Lifecycle'))
         ..add(serializers.serialize(
-          payload.lifecycle!,
+          lifecycle,
           specifiedType: const FullType.nullable(_i3.InstanceLifecycle),
         ));
     }
-    if (payload.errorCode != null) {
-      result
+    if (errorCode != null) {
+      result$
         ..add(const _i4.XmlElementName('ErrorCode'))
         ..add(serializers.serialize(
-          payload.errorCode!,
+          errorCode,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.errorMessage != null) {
-      result
+    if (errorMessage != null) {
+      result$
         ..add(const _i4.XmlElementName('ErrorMessage'))
         ..add(serializers.serialize(
-          payload.errorMessage!,
+          errorMessage,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

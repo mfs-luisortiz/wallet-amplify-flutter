@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_peering_attachment; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -172,91 +173,66 @@ class TransitGatewayPeeringAttachmentEc2QuerySerializer
     final result = TransitGatewayPeeringAttachmentBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayAttachmentId':
-          if (value != null) {
-            result.transitGatewayAttachmentId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'accepterTransitGatewayAttachmentId':
-          if (value != null) {
-            result.accepterTransitGatewayAttachmentId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.accepterTransitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'requesterTgwInfo':
-          if (value != null) {
-            result.requesterTgwInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PeeringTgwInfo),
-            ) as _i2.PeeringTgwInfo));
-          }
-          break;
+          result.requesterTgwInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PeeringTgwInfo),
+          ) as _i2.PeeringTgwInfo));
         case 'accepterTgwInfo':
-          if (value != null) {
-            result.accepterTgwInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PeeringTgwInfo),
-            ) as _i2.PeeringTgwInfo));
-          }
-          break;
+          result.accepterTgwInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PeeringTgwInfo),
+          ) as _i2.PeeringTgwInfo));
         case 'options':
-          if (value != null) {
-            result.options.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.TransitGatewayPeeringAttachmentOptions),
-            ) as _i3.TransitGatewayPeeringAttachmentOptions));
-          }
-          break;
+          result.options.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.TransitGatewayPeeringAttachmentOptions),
+          ) as _i3.TransitGatewayPeeringAttachmentOptions));
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.PeeringAttachmentStatus),
-            ) as _i4.PeeringAttachmentStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.PeeringAttachmentStatus),
+          ) as _i4.PeeringAttachmentStatus));
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.TransitGatewayAttachmentState),
-            ) as _i5.TransitGatewayAttachmentState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.TransitGatewayAttachmentState),
+          ) as _i5.TransitGatewayAttachmentState);
         case 'creationTime':
-          if (value != null) {
-            result.creationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.creationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i6.Tag)],
-              ),
-            ) as _i7.BuiltList<_i6.Tag>));
-          }
-          break;
+          result.tags.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i6.Tag)],
+            ),
+          ) as _i7.BuiltList<_i6.Tag>));
       }
     }
 
@@ -266,97 +242,107 @@ class TransitGatewayPeeringAttachmentEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayPeeringAttachment object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayPeeringAttachment);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'TransitGatewayPeeringAttachmentResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayAttachmentId != null) {
-      result
+    final TransitGatewayPeeringAttachment(
+      :transitGatewayAttachmentId,
+      :accepterTransitGatewayAttachmentId,
+      :requesterTgwInfo,
+      :accepterTgwInfo,
+      :options,
+      :status,
+      :state,
+      :creationTime,
+      :tags
+    ) = object;
+    if (transitGatewayAttachmentId != null) {
+      result$
         ..add(const _i8.XmlElementName('TransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.transitGatewayAttachmentId!,
+          transitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.accepterTransitGatewayAttachmentId != null) {
-      result
+    if (accepterTransitGatewayAttachmentId != null) {
+      result$
         ..add(const _i8.XmlElementName('AccepterTransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.accepterTransitGatewayAttachmentId!,
+          accepterTransitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.requesterTgwInfo != null) {
-      result
+    if (requesterTgwInfo != null) {
+      result$
         ..add(const _i8.XmlElementName('RequesterTgwInfo'))
         ..add(serializers.serialize(
-          payload.requesterTgwInfo!,
+          requesterTgwInfo,
           specifiedType: const FullType(_i2.PeeringTgwInfo),
         ));
     }
-    if (payload.accepterTgwInfo != null) {
-      result
+    if (accepterTgwInfo != null) {
+      result$
         ..add(const _i8.XmlElementName('AccepterTgwInfo'))
         ..add(serializers.serialize(
-          payload.accepterTgwInfo!,
+          accepterTgwInfo,
           specifiedType: const FullType(_i2.PeeringTgwInfo),
         ));
     }
-    if (payload.options != null) {
-      result
+    if (options != null) {
+      result$
         ..add(const _i8.XmlElementName('Options'))
         ..add(serializers.serialize(
-          payload.options!,
+          options,
           specifiedType:
               const FullType(_i3.TransitGatewayPeeringAttachmentOptions),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i8.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i4.PeeringAttachmentStatus),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i8.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType:
               const FullType.nullable(_i5.TransitGatewayAttachmentState),
         ));
     }
-    if (payload.creationTime != null) {
-      result
+    if (creationTime != null) {
+      result$
         ..add(const _i8.XmlElementName('CreationTime'))
         ..add(serializers.serialize(
-          payload.creationTime!,
+          creationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i8.XmlElementName('TagSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i6.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

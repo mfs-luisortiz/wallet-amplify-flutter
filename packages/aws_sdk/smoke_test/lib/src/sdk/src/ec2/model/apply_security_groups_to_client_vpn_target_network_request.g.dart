@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.apply_security_groups_to_client_vpn_target_network_request;
+part of 'apply_security_groups_to_client_vpn_target_network_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

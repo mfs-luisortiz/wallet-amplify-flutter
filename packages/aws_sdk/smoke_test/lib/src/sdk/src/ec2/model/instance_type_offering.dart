@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_type_offering; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,34 +102,28 @@ class InstanceTypeOfferingEc2QuerySerializer
     final result = InstanceTypeOfferingBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'locationType':
-          if (value != null) {
-            result.locationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.LocationType),
-            ) as _i3.LocationType);
-          }
-          break;
+          result.locationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.LocationType),
+          ) as _i3.LocationType);
         case 'location':
-          if (value != null) {
-            result.location = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.location = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -138,40 +133,41 @@ class InstanceTypeOfferingEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceTypeOffering object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceTypeOffering);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'InstanceTypeOfferingResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceType != null) {
-      result
+    final InstanceTypeOffering(:instanceType, :locationType, :location) =
+        object;
+    if (instanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.locationType != null) {
-      result
+    if (locationType != null) {
+      result$
         ..add(const _i4.XmlElementName('LocationType'))
         ..add(serializers.serialize(
-          payload.locationType!,
+          locationType,
           specifiedType: const FullType.nullable(_i3.LocationType),
         ));
     }
-    if (payload.location != null) {
-      result
+    if (location != null) {
+      result$
         ..add(const _i4.XmlElementName('Location'))
         ..add(serializers.serialize(
-          payload.location!,
+          location,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

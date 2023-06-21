@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipv6_range; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,26 +90,23 @@ class Ipv6RangeEc2QuerySerializer
     final result = Ipv6RangeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidrIpv6':
-          if (value != null) {
-            result.cidrIpv6 = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrIpv6 = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -118,32 +116,32 @@ class Ipv6RangeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Ipv6Range object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Ipv6Range);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'Ipv6RangeResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrIpv6 != null) {
-      result
+    final Ipv6Range(:cidrIpv6, :description) = object;
+    if (cidrIpv6 != null) {
+      result$
         ..add(const _i2.XmlElementName('CidrIpv6'))
         ..add(serializers.serialize(
-          payload.cidrIpv6!,
+          cidrIpv6,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

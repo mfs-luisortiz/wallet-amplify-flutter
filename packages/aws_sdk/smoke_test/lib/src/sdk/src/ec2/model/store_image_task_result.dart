@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.store_image_task_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -142,64 +143,48 @@ class StoreImageTaskResultEc2QuerySerializer
     final result = StoreImageTaskResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'amiId':
-          if (value != null) {
-            result.amiId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.amiId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'taskStartTime':
-          if (value != null) {
-            result.taskStartTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.taskStartTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'bucket':
-          if (value != null) {
-            result.bucket = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.bucket = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 's3objectKey':
-          if (value != null) {
-            result.s3ObjectKey = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.s3ObjectKey = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'progressPercentage':
           result.progressPercentage = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'storeTaskState':
-          if (value != null) {
-            result.storeTaskState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.storeTaskState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'storeTaskFailureReason':
-          if (value != null) {
-            result.storeTaskFailureReason = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.storeTaskFailureReason = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -209,70 +194,78 @@ class StoreImageTaskResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    StoreImageTaskResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as StoreImageTaskResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'StoreImageTaskResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.amiId != null) {
-      result
+    final StoreImageTaskResult(
+      :amiId,
+      :taskStartTime,
+      :bucket,
+      :s3ObjectKey,
+      :progressPercentage,
+      :storeTaskState,
+      :storeTaskFailureReason
+    ) = object;
+    if (amiId != null) {
+      result$
         ..add(const _i2.XmlElementName('AmiId'))
         ..add(serializers.serialize(
-          payload.amiId!,
+          amiId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.taskStartTime != null) {
-      result
+    if (taskStartTime != null) {
+      result$
         ..add(const _i2.XmlElementName('TaskStartTime'))
         ..add(serializers.serialize(
-          payload.taskStartTime!,
+          taskStartTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.bucket != null) {
-      result
+    if (bucket != null) {
+      result$
         ..add(const _i2.XmlElementName('Bucket'))
         ..add(serializers.serialize(
-          payload.bucket!,
+          bucket,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.s3ObjectKey != null) {
-      result
+    if (s3ObjectKey != null) {
+      result$
         ..add(const _i2.XmlElementName('S3objectKey'))
         ..add(serializers.serialize(
-          payload.s3ObjectKey!,
+          s3ObjectKey,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('ProgressPercentage'))
       ..add(serializers.serialize(
-        payload.progressPercentage,
+        progressPercentage,
         specifiedType: const FullType(int),
       ));
-    if (payload.storeTaskState != null) {
-      result
+    if (storeTaskState != null) {
+      result$
         ..add(const _i2.XmlElementName('StoreTaskState'))
         ..add(serializers.serialize(
-          payload.storeTaskState!,
+          storeTaskState,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.storeTaskFailureReason != null) {
-      result
+    if (storeTaskFailureReason != null) {
+      result$
         ..add(const _i2.XmlElementName('StoreTaskFailureReason'))
         ..add(serializers.serialize(
-          payload.storeTaskFailureReason!,
+          storeTaskFailureReason,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

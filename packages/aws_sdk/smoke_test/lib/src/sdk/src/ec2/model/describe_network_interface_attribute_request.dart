@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_network_interface_attribute_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,30 +119,28 @@ class DescribeNetworkInterfaceAttributeRequestEc2QuerySerializer extends _i1
     final result = DescribeNetworkInterfaceAttributeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attribute':
-          if (value != null) {
-            result.attribute = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.NetworkInterfaceAttribute),
-            ) as _i3.NetworkInterfaceAttribute);
-          }
-          break;
+          result.attribute = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.NetworkInterfaceAttribute),
+          ) as _i3.NetworkInterfaceAttribute);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'networkInterfaceId':
           result.networkInterfaceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -151,36 +150,40 @@ class DescribeNetworkInterfaceAttributeRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeNetworkInterfaceAttributeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeNetworkInterfaceAttributeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeNetworkInterfaceAttributeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attribute != null) {
-      result
+    final DescribeNetworkInterfaceAttributeRequest(
+      :attribute,
+      :dryRun,
+      :networkInterfaceId
+    ) = object;
+    if (attribute != null) {
+      result$
         ..add(const _i1.XmlElementName('Attribute'))
         ..add(serializers.serialize(
-          payload.attribute!,
+          attribute,
           specifiedType: const FullType.nullable(_i3.NetworkInterfaceAttribute),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('NetworkInterfaceId'))
       ..add(serializers.serialize(
-        payload.networkInterfaceId,
+        networkInterfaceId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

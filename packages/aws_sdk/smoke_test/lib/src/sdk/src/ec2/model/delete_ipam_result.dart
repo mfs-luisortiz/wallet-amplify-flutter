@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_ipam_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -76,18 +77,18 @@ class DeleteIpamResultEc2QuerySerializer
     final result = DeleteIpamResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipam':
-          if (value != null) {
-            result.ipam.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Ipam),
-            ) as _i2.Ipam));
-          }
-          break;
+          result.ipam.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Ipam),
+          ) as _i2.Ipam));
       }
     }
 
@@ -97,24 +98,24 @@ class DeleteIpamResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteIpamResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteIpamResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteIpamResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipam != null) {
-      result
+    final DeleteIpamResult(:ipam) = object;
+    if (ipam != null) {
+      result$
         ..add(const _i3.XmlElementName('Ipam'))
         ..add(serializers.serialize(
-          payload.ipam!,
+          ipam,
           specifiedType: const FullType(_i2.Ipam),
         ));
     }
-    return result;
+    return result$;
   }
 }

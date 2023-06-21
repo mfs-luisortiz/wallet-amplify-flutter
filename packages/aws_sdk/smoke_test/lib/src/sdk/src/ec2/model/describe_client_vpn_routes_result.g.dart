@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_client_vpn_routes_result;
+part of 'describe_client_vpn_routes_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

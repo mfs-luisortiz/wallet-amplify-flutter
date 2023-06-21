@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.carrier_gateway; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -121,57 +122,45 @@ class CarrierGatewayEc2QuerySerializer
     final result = CarrierGatewayBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'carrierGatewayId':
-          if (value != null) {
-            result.carrierGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.carrierGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CarrierGatewayState),
-            ) as _i2.CarrierGatewayState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CarrierGatewayState),
+          ) as _i2.CarrierGatewayState);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -181,63 +170,64 @@ class CarrierGatewayEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CarrierGateway object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CarrierGateway);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'CarrierGatewayResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.carrierGatewayId != null) {
-      result
+    final CarrierGateway(:carrierGatewayId, :vpcId, :state, :ownerId, :tags) =
+        object;
+    if (carrierGatewayId != null) {
+      result$
         ..add(const _i5.XmlElementName('CarrierGatewayId'))
         ..add(serializers.serialize(
-          payload.carrierGatewayId!,
+          carrierGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i5.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i5.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.CarrierGatewayState),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i5.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

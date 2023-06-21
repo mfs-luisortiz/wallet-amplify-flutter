@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.local_gateway_virtual_interface;
+part of 'local_gateway_virtual_interface.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

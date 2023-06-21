@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.client_vpn_route; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -139,66 +140,48 @@ class ClientVpnRouteEc2QuerySerializer
     final result = ClientVpnRouteBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientVpnEndpointId':
-          if (value != null) {
-            result.clientVpnEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientVpnEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destinationCidr':
-          if (value != null) {
-            result.destinationCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetSubnet':
-          if (value != null) {
-            result.targetSubnet = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.targetSubnet = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'origin':
-          if (value != null) {
-            result.origin = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.origin = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClientVpnRouteStatus),
-            ) as _i2.ClientVpnRouteStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnRouteStatus),
+          ) as _i2.ClientVpnRouteStatus));
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -208,72 +191,80 @@ class ClientVpnRouteEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClientVpnRoute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClientVpnRoute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ClientVpnRouteResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientVpnEndpointId != null) {
-      result
+    final ClientVpnRoute(
+      :clientVpnEndpointId,
+      :destinationCidr,
+      :targetSubnet,
+      :type,
+      :origin,
+      :status,
+      :description
+    ) = object;
+    if (clientVpnEndpointId != null) {
+      result$
         ..add(const _i3.XmlElementName('ClientVpnEndpointId'))
         ..add(serializers.serialize(
-          payload.clientVpnEndpointId!,
+          clientVpnEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationCidr != null) {
-      result
+    if (destinationCidr != null) {
+      result$
         ..add(const _i3.XmlElementName('DestinationCidr'))
         ..add(serializers.serialize(
-          payload.destinationCidr!,
+          destinationCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.targetSubnet != null) {
-      result
+    if (targetSubnet != null) {
+      result$
         ..add(const _i3.XmlElementName('TargetSubnet'))
         ..add(serializers.serialize(
-          payload.targetSubnet!,
+          targetSubnet,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i3.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.origin != null) {
-      result
+    if (origin != null) {
+      result$
         ..add(const _i3.XmlElementName('Origin'))
         ..add(serializers.serialize(
-          payload.origin!,
+          origin,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.ClientVpnRouteStatus),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

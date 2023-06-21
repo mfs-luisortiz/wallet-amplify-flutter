@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_iam_instance_profile_associations_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,54 +132,47 @@ class DescribeIamInstanceProfileAssociationsRequestEc2QuerySerializer
     final result = DescribeIamInstanceProfileAssociationsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AssociationId':
-          if (value != null) {
-            result.associationIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'AssociationId',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.associationIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'AssociationId',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i4.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i4.BuiltList<_i3.Filter>));
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -188,60 +182,65 @@ class DescribeIamInstanceProfileAssociationsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeIamInstanceProfileAssociationsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeIamInstanceProfileAssociationsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeIamInstanceProfileAssociationsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationIds != null) {
-      result
+    final DescribeIamInstanceProfileAssociationsRequest(
+      :associationIds,
+      :filters,
+      :maxResults,
+      :nextToken
+    ) = object;
+    if (associationIds != null) {
+      result$
         ..add(const _i1.XmlElementName('AssociationId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'AssociationId',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.associationIds!,
+          associationIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.filters != null) {
-      result
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

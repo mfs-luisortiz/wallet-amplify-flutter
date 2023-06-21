@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.peering_connection_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,30 +119,30 @@ class PeeringConnectionOptionsRequestEc2QuerySerializer
     final result = PeeringConnectionOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AllowDnsResolutionFromRemoteVpc':
           result.allowDnsResolutionFromRemoteVpc = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'AllowEgressFromLocalClassicLinkToRemoteVpc':
           result.allowEgressFromLocalClassicLinkToRemoteVpc =
               (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'AllowEgressFromLocalVpcToRemoteClassicLink':
           result.allowEgressFromLocalVpcToRemoteClassicLink =
               (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -151,36 +152,40 @@ class PeeringConnectionOptionsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PeeringConnectionOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PeeringConnectionOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PeeringConnectionOptionsRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final PeeringConnectionOptionsRequest(
+      :allowDnsResolutionFromRemoteVpc,
+      :allowEgressFromLocalClassicLinkToRemoteVpc,
+      :allowEgressFromLocalVpcToRemoteClassicLink
+    ) = object;
+    result$
       ..add(const _i2.XmlElementName('AllowDnsResolutionFromRemoteVpc'))
       ..add(serializers.serialize(
-        payload.allowDnsResolutionFromRemoteVpc,
+        allowDnsResolutionFromRemoteVpc,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName(
           'AllowEgressFromLocalClassicLinkToRemoteVpc'))
       ..add(serializers.serialize(
-        payload.allowEgressFromLocalClassicLinkToRemoteVpc,
+        allowEgressFromLocalClassicLinkToRemoteVpc,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName(
           'AllowEgressFromLocalVpcToRemoteClassicLink'))
       ..add(serializers.serialize(
-        payload.allowEgressFromLocalVpcToRemoteClassicLink,
+        allowEgressFromLocalVpcToRemoteClassicLink,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

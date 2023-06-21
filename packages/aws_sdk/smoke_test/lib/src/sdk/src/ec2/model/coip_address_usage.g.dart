@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.coip_address_usage;
+part of 'coip_address_usage.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

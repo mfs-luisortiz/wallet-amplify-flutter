@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.storage; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -71,18 +72,18 @@ class StorageEc2QuerySerializer
     final result = StorageBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'S3':
-          if (value != null) {
-            result.s3.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.S3Storage),
-            ) as _i2.S3Storage));
-          }
-          break;
+          result.s3.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.S3Storage),
+          ) as _i2.S3Storage));
       }
     }
 
@@ -92,24 +93,24 @@ class StorageEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Storage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Storage);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'StorageResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.s3 != null) {
-      result
+    final Storage(:s3) = object;
+    if (s3 != null) {
+      result$
         ..add(const _i3.XmlElementName('S3'))
         ..add(serializers.serialize(
-          payload.s3!,
+          s3,
           specifiedType: const FullType(_i2.S3Storage),
         ));
     }
-    return result;
+    return result$;
   }
 }

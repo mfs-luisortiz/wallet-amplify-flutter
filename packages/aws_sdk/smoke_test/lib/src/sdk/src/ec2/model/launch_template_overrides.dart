@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_overrides; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -157,62 +158,48 @@ class LaunchTemplateOverridesEc2QuerySerializer
     final result = LaunchTemplateOverridesBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'spotPrice':
-          if (value != null) {
-            result.spotPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'weightedCapacity':
           result.weightedCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'priority':
           result.priority = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'instanceRequirements':
-          if (value != null) {
-            result.instanceRequirements.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceRequirements),
-            ) as _i3.InstanceRequirements));
-          }
-          break;
+          result.instanceRequirements.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceRequirements),
+          ) as _i3.InstanceRequirements));
       }
     }
 
@@ -222,68 +209,76 @@ class LaunchTemplateOverridesEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplateOverrides object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplateOverrides);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LaunchTemplateOverridesResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceType != null) {
-      result
+    final LaunchTemplateOverrides(
+      :instanceType,
+      :spotPrice,
+      :subnetId,
+      :availabilityZone,
+      :weightedCapacity,
+      :priority,
+      :instanceRequirements
+    ) = object;
+    if (instanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.spotPrice != null) {
-      result
+    if (spotPrice != null) {
+      result$
         ..add(const _i4.XmlElementName('SpotPrice'))
         ..add(serializers.serialize(
-          payload.spotPrice!,
+          spotPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i4.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('WeightedCapacity'))
       ..add(serializers.serialize(
-        payload.weightedCapacity,
+        weightedCapacity,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('Priority'))
       ..add(serializers.serialize(
-        payload.priority,
+        priority,
         specifiedType: const FullType(double),
       ));
-    if (payload.instanceRequirements != null) {
-      result
+    if (instanceRequirements != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceRequirements'))
         ..add(serializers.serialize(
-          payload.instanceRequirements!,
+          instanceRequirements,
           specifiedType: const FullType(_i3.InstanceRequirements),
         ));
     }
-    return result;
+    return result$;
   }
 }

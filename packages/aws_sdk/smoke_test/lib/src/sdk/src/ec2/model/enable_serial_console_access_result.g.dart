@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.enable_serial_console_access_result;
+part of 'enable_serial_console_access_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

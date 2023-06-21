@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_vpn_connection_device_sample_configuration_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,19 @@ class GetVpnConnectionDeviceSampleConfigurationResultEc2QuerySerializer
     final result = GetVpnConnectionDeviceSampleConfigurationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpnConnectionDeviceSampleConfiguration':
-          if (value != null) {
-            result.vpnConnectionDeviceSampleConfiguration =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpnConnectionDeviceSampleConfiguration =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -107,25 +108,27 @@ class GetVpnConnectionDeviceSampleConfigurationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetVpnConnectionDeviceSampleConfigurationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetVpnConnectionDeviceSampleConfigurationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GetVpnConnectionDeviceSampleConfigurationResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpnConnectionDeviceSampleConfiguration != null) {
-      result
+    final GetVpnConnectionDeviceSampleConfigurationResult(
+      :vpnConnectionDeviceSampleConfiguration
+    ) = object;
+    if (vpnConnectionDeviceSampleConfiguration != null) {
+      result$
         ..add(
             const _i2.XmlElementName('VpnConnectionDeviceSampleConfiguration'))
         ..add(serializers.serialize(
-          payload.vpnConnectionDeviceSampleConfiguration!,
+          vpnConnectionDeviceSampleConfiguration,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

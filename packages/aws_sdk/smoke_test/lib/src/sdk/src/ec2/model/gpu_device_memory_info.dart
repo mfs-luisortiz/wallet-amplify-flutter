@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.gpu_device_memory_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -72,18 +73,18 @@ class GpuDeviceMemoryInfoEc2QuerySerializer
     final result = GpuDeviceMemoryInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'sizeInMiB':
-          if (value != null) {
-            result.sizeInMib = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.sizeInMib = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -93,24 +94,24 @@ class GpuDeviceMemoryInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GpuDeviceMemoryInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GpuDeviceMemoryInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GpuDeviceMemoryInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.sizeInMib != null) {
-      result
+    final GpuDeviceMemoryInfo(:sizeInMib) = object;
+    if (sizeInMib != null) {
+      result$
         ..add(const _i2.XmlElementName('SizeInMiB'))
         ..add(serializers.serialize(
-          payload.sizeInMib!,
+          sizeInMib,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

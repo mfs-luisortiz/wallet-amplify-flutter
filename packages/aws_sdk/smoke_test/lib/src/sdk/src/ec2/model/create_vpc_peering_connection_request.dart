@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_vpc_peering_connection_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -150,63 +151,50 @@ class CreateVpcPeeringConnectionRequestEc2QuerySerializer
     final result = CreateVpcPeeringConnectionRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'peerOwnerId':
-          if (value != null) {
-            result.peerOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peerVpcId':
-          if (value != null) {
-            result.peerVpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerVpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'PeerRegion':
-          if (value != null) {
-            result.peerRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TagSpecification)],
-              ),
-            ) as _i4.BuiltList<_i3.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TagSpecification)],
+            ),
+          ) as _i4.BuiltList<_i3.TagSpecification>));
       }
     }
 
@@ -216,69 +204,76 @@ class CreateVpcPeeringConnectionRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateVpcPeeringConnectionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateVpcPeeringConnectionRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateVpcPeeringConnectionRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateVpcPeeringConnectionRequest(
+      :dryRun,
+      :peerOwnerId,
+      :peerVpcId,
+      :vpcId,
+      :peerRegion,
+      :tagSpecifications
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.peerOwnerId != null) {
-      result
+    if (peerOwnerId != null) {
+      result$
         ..add(const _i1.XmlElementName('PeerOwnerId'))
         ..add(serializers.serialize(
-          payload.peerOwnerId!,
+          peerOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peerVpcId != null) {
-      result
+    if (peerVpcId != null) {
+      result$
         ..add(const _i1.XmlElementName('PeerVpcId'))
         ..add(serializers.serialize(
-          payload.peerVpcId!,
+          peerVpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peerRegion != null) {
-      result
+    if (peerRegion != null) {
+      result$
         ..add(const _i1.XmlElementName('PeerRegion'))
         ..add(serializers.serialize(
-          payload.peerRegion!,
+          peerRegion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

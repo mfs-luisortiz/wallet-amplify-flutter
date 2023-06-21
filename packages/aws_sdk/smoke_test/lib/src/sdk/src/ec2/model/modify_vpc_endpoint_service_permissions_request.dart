@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_endpoint_service_permissions_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -128,54 +129,48 @@ class ModifyVpcEndpointServicePermissionsRequestEc2QuerySerializer extends _i1
     final result = ModifyVpcEndpointServicePermissionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ServiceId':
           result.serviceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AddAllowedPrincipals':
-          if (value != null) {
-            result.addAllowedPrincipals
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i3.BuiltList<String>));
-          }
-          break;
+          result.addAllowedPrincipals.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i3.BuiltList<String>));
         case 'RemoveAllowedPrincipals':
-          if (value != null) {
-            result.removeAllowedPrincipals
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i3.BuiltList<String>));
-          }
-          break;
+          result.removeAllowedPrincipals
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i3.BuiltList<String>));
       }
     }
 
@@ -185,58 +180,63 @@ class ModifyVpcEndpointServicePermissionsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcEndpointServicePermissionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcEndpointServicePermissionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpcEndpointServicePermissionsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVpcEndpointServicePermissionsRequest(
+      :dryRun,
+      :serviceId,
+      :addAllowedPrincipals,
+      :removeAllowedPrincipals
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ServiceId'))
       ..add(serializers.serialize(
-        payload.serviceId,
+        serviceId,
         specifiedType: const FullType(String),
       ));
-    if (payload.addAllowedPrincipals != null) {
-      result
+    if (addAllowedPrincipals != null) {
+      result$
         ..add(const _i1.XmlElementName('AddAllowedPrincipals'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addAllowedPrincipals!,
+          addAllowedPrincipals,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.removeAllowedPrincipals != null) {
-      result
+    if (removeAllowedPrincipals != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveAllowedPrincipals'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeAllowedPrincipals!,
+          removeAllowedPrincipals,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

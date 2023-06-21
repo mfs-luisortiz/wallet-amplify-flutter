@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.inference_accelerator_info;
+part of 'inference_accelerator_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

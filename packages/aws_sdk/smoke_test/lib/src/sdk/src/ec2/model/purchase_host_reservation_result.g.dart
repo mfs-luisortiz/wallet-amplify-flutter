@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.purchase_host_reservation_result;
+part of 'purchase_host_reservation_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

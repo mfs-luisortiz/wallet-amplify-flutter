@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_endpoint_connection_notification_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -86,16 +87,18 @@ class ModifyVpcEndpointConnectionNotificationResultEc2QuerySerializer
     final result = ModifyVpcEndpointConnectionNotificationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'return':
           result.returnValue = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -105,22 +108,22 @@ class ModifyVpcEndpointConnectionNotificationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcEndpointConnectionNotificationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcEndpointConnectionNotificationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ModifyVpcEndpointConnectionNotificationResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVpcEndpointConnectionNotificationResult(:returnValue) = object;
+    result$
       ..add(const _i2.XmlElementName('Return'))
       ..add(serializers.serialize(
-        payload.returnValue,
+        returnValue,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

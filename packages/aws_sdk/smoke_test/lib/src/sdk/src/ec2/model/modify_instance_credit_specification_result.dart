@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_instance_credit_specification_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -112,43 +113,39 @@ class ModifyInstanceCreditSpecificationResultEc2QuerySerializer extends _i5
     final result = ModifyInstanceCreditSpecificationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'successfulInstanceCreditSpecificationSet':
-          if (value != null) {
-            result.successfulInstanceCreditSpecifications
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.SuccessfulInstanceCreditSpecificationItem)],
-              ),
-            ) as _i4.BuiltList<_i2.SuccessfulInstanceCreditSpecificationItem>));
-          }
-          break;
+          result.successfulInstanceCreditSpecifications
+              .replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.SuccessfulInstanceCreditSpecificationItem)],
+            ),
+          ) as _i4.BuiltList<_i2.SuccessfulInstanceCreditSpecificationItem>));
         case 'unsuccessfulInstanceCreditSpecificationSet':
-          if (value != null) {
-            result.unsuccessfulInstanceCreditSpecifications.replace(
-                (const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.UnsuccessfulInstanceCreditSpecificationItem)],
-              ),
-            ) as _i4.BuiltList<
-                    _i3.UnsuccessfulInstanceCreditSpecificationItem>));
-          }
-          break;
+          result.unsuccessfulInstanceCreditSpecifications
+              .replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.UnsuccessfulInstanceCreditSpecificationItem)],
+            ),
+          ) as _i4.BuiltList<_i3.UnsuccessfulInstanceCreditSpecificationItem>));
       }
     }
 
@@ -158,18 +155,21 @@ class ModifyInstanceCreditSpecificationResultEc2QuerySerializer extends _i5
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyInstanceCreditSpecificationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyInstanceCreditSpecificationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ModifyInstanceCreditSpecificationResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.successfulInstanceCreditSpecifications != null) {
-      result
+    final ModifyInstanceCreditSpecificationResult(
+      :successfulInstanceCreditSpecifications,
+      :unsuccessfulInstanceCreditSpecifications
+    ) = object;
+    if (successfulInstanceCreditSpecifications != null) {
+      result$
         ..add(const _i5.XmlElementName(
             'SuccessfulInstanceCreditSpecificationSet'))
         ..add(const _i5.XmlBuiltListSerializer(
@@ -177,15 +177,15 @@ class ModifyInstanceCreditSpecificationResultEc2QuerySerializer extends _i5
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.successfulInstanceCreditSpecifications!,
+          successfulInstanceCreditSpecifications,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.SuccessfulInstanceCreditSpecificationItem)],
           ),
         ));
     }
-    if (payload.unsuccessfulInstanceCreditSpecifications != null) {
-      result
+    if (unsuccessfulInstanceCreditSpecifications != null) {
+      result$
         ..add(const _i5.XmlElementName(
             'UnsuccessfulInstanceCreditSpecificationSet'))
         ..add(const _i5.XmlBuiltListSerializer(
@@ -193,13 +193,13 @@ class ModifyInstanceCreditSpecificationResultEc2QuerySerializer extends _i5
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.unsuccessfulInstanceCreditSpecifications!,
+          unsuccessfulInstanceCreditSpecifications,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.UnsuccessfulInstanceCreditSpecificationItem)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

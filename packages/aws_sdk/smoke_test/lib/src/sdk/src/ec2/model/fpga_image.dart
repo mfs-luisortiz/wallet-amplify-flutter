@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fpga_image; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -227,140 +228,102 @@ class FpgaImageEc2QuerySerializer
     final result = FpgaImageBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'fpgaImageId':
-          if (value != null) {
-            result.fpgaImageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fpgaImageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'fpgaImageGlobalId':
-          if (value != null) {
-            result.fpgaImageGlobalId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fpgaImageGlobalId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'shellVersion':
-          if (value != null) {
-            result.shellVersion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.shellVersion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'pciId':
-          if (value != null) {
-            result.pciId.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PciId),
-            ) as _i2.PciId));
-          }
-          break;
+          result.pciId.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PciId),
+          ) as _i2.PciId));
         case 'state':
-          if (value != null) {
-            result.state.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.FpgaImageState),
-            ) as _i3.FpgaImageState));
-          }
-          break;
+          result.state.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.FpgaImageState),
+          ) as _i3.FpgaImageState));
         case 'createTime':
-          if (value != null) {
-            result.createTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'updateTime':
-          if (value != null) {
-            result.updateTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.updateTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerAlias':
-          if (value != null) {
-            result.ownerAlias = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerAlias = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'productCodes':
-          if (value != null) {
-            result.productCodes.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.ProductCode)],
-              ),
-            ) as _i6.BuiltList<_i4.ProductCode>));
-          }
-          break;
+          result.productCodes.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.ProductCode)],
+            ),
+          ) as _i6.BuiltList<_i4.ProductCode>));
         case 'tags':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
         case 'public':
           result.public = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'dataRetentionSupport':
           result.dataRetentionSupport = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -370,146 +333,162 @@ class FpgaImageEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FpgaImage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FpgaImage);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'FpgaImageResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.fpgaImageId != null) {
-      result
+    final FpgaImage(
+      :fpgaImageId,
+      :fpgaImageGlobalId,
+      :name,
+      :description,
+      :shellVersion,
+      :pciId,
+      :state,
+      :createTime,
+      :updateTime,
+      :ownerId,
+      :ownerAlias,
+      :productCodes,
+      :tags,
+      :public,
+      :dataRetentionSupport
+    ) = object;
+    if (fpgaImageId != null) {
+      result$
         ..add(const _i7.XmlElementName('FpgaImageId'))
         ..add(serializers.serialize(
-          payload.fpgaImageId!,
+          fpgaImageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.fpgaImageGlobalId != null) {
-      result
+    if (fpgaImageGlobalId != null) {
+      result$
         ..add(const _i7.XmlElementName('FpgaImageGlobalId'))
         ..add(serializers.serialize(
-          payload.fpgaImageGlobalId!,
+          fpgaImageGlobalId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.name != null) {
-      result
+    if (name != null) {
+      result$
         ..add(const _i7.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i7.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.shellVersion != null) {
-      result
+    if (shellVersion != null) {
+      result$
         ..add(const _i7.XmlElementName('ShellVersion'))
         ..add(serializers.serialize(
-          payload.shellVersion!,
+          shellVersion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.pciId != null) {
-      result
+    if (pciId != null) {
+      result$
         ..add(const _i7.XmlElementName('PciId'))
         ..add(serializers.serialize(
-          payload.pciId!,
+          pciId,
           specifiedType: const FullType(_i2.PciId),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i7.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType(_i3.FpgaImageState),
         ));
     }
-    if (payload.createTime != null) {
-      result
+    if (createTime != null) {
+      result$
         ..add(const _i7.XmlElementName('CreateTime'))
         ..add(serializers.serialize(
-          payload.createTime!,
+          createTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.updateTime != null) {
-      result
+    if (updateTime != null) {
+      result$
         ..add(const _i7.XmlElementName('UpdateTime'))
         ..add(serializers.serialize(
-          payload.updateTime!,
+          updateTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i7.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerAlias != null) {
-      result
+    if (ownerAlias != null) {
+      result$
         ..add(const _i7.XmlElementName('OwnerAlias'))
         ..add(serializers.serialize(
-          payload.ownerAlias!,
+          ownerAlias,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.productCodes != null) {
-      result
+    if (productCodes != null) {
+      result$
         ..add(const _i7.XmlElementName('ProductCodes'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.productCodes!,
+          productCodes,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.ProductCode)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('Tags'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('Public'))
       ..add(serializers.serialize(
-        payload.public,
+        public,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i7.XmlElementName('DataRetentionSupport'))
       ..add(serializers.serialize(
-        payload.dataRetentionSupport,
+        dataRetentionSupport,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

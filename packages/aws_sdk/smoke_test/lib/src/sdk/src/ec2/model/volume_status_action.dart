@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_status_action; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,42 +109,33 @@ class VolumeStatusActionEc2QuerySerializer
     final result = VolumeStatusActionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'code':
-          if (value != null) {
-            result.code = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.code = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventId':
-          if (value != null) {
-            result.eventId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventType':
-          if (value != null) {
-            result.eventType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -153,48 +145,49 @@ class VolumeStatusActionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeStatusAction object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeStatusAction);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'VolumeStatusActionResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.code != null) {
-      result
+    final VolumeStatusAction(:code, :description, :eventId, :eventType) =
+        object;
+    if (code != null) {
+      result$
         ..add(const _i2.XmlElementName('Code'))
         ..add(serializers.serialize(
-          payload.code!,
+          code,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.eventId != null) {
-      result
+    if (eventId != null) {
+      result$
         ..add(const _i2.XmlElementName('EventId'))
         ..add(serializers.serialize(
-          payload.eventId!,
+          eventId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.eventType != null) {
-      result
+    if (eventType != null) {
+      result$
         ..add(const _i2.XmlElementName('EventType'))
         ..add(serializers.serialize(
-          payload.eventType!,
+          eventType,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

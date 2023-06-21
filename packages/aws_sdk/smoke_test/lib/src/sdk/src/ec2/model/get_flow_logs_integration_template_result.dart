@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_flow_logs_integration_template_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,18 +82,18 @@ class GetFlowLogsIntegrationTemplateResultEc2QuerySerializer extends _i2
     final result = GetFlowLogsIntegrationTemplateResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'result':
-          if (value != null) {
-            result.result = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.result = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -102,24 +103,24 @@ class GetFlowLogsIntegrationTemplateResultEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetFlowLogsIntegrationTemplateResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetFlowLogsIntegrationTemplateResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GetFlowLogsIntegrationTemplateResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.result != null) {
-      result
+    final GetFlowLogsIntegrationTemplateResult(:result) = object;
+    if (result != null) {
+      result$
         ..add(const _i2.XmlElementName('Result'))
         ..add(serializers.serialize(
-          payload.result!,
+          result,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_flow_logs_integration_template_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -125,34 +126,33 @@ class GetFlowLogsIntegrationTemplateRequestEc2QuerySerializer extends _i1
     final result = GetFlowLogsIntegrationTemplateRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'FlowLogId':
           result.flowLogId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ConfigDeliveryS3DestinationArn':
           result.configDeliveryS3DestinationArn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'IntegrateService':
           result.integrateServices.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.IntegrateServices),
           ) as _i3.IntegrateServices));
-          break;
       }
     }
 
@@ -162,40 +162,45 @@ class GetFlowLogsIntegrationTemplateRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetFlowLogsIntegrationTemplateRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetFlowLogsIntegrationTemplateRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetFlowLogsIntegrationTemplateRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetFlowLogsIntegrationTemplateRequest(
+      :dryRun,
+      :flowLogId,
+      :configDeliveryS3DestinationArn,
+      :integrateServices
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('FlowLogId'))
       ..add(serializers.serialize(
-        payload.flowLogId,
+        flowLogId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ConfigDeliveryS3DestinationArn'))
       ..add(serializers.serialize(
-        payload.configDeliveryS3DestinationArn,
+        configDeliveryS3DestinationArn,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('IntegrateService'))
       ..add(serializers.serialize(
-        payload.integrateServices,
+        integrateServices,
         specifiedType: const FullType(_i3.IntegrateServices),
       ));
-    return result;
+    return result$;
   }
 }

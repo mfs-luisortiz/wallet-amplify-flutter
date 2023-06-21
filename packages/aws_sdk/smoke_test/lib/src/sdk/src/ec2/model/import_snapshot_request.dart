@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_snapshot_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -195,85 +196,65 @@ class ImportSnapshotRequestEc2QuerySerializer
     final result = ImportSnapshotRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientData':
-          if (value != null) {
-            result.clientData.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ClientData),
-            ) as _i3.ClientData));
-          }
-          break;
+          result.clientData.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ClientData),
+          ) as _i3.ClientData));
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DiskContainer':
-          if (value != null) {
-            result.diskContainer.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.SnapshotDiskContainer),
-            ) as _i4.SnapshotDiskContainer));
-          }
-          break;
+          result.diskContainer.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.SnapshotDiskContainer),
+          ) as _i4.SnapshotDiskContainer));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'KmsKeyId':
-          if (value != null) {
-            result.kmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RoleName':
-          if (value != null) {
-            result.roleName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.roleName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i5.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i5.TagSpecification>));
       }
     }
 
@@ -283,91 +264,101 @@ class ImportSnapshotRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportSnapshotRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportSnapshotRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ImportSnapshotRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientData != null) {
-      result
+    final ImportSnapshotRequest(
+      :clientData,
+      :clientToken,
+      :description,
+      :diskContainer,
+      :dryRun,
+      :encrypted,
+      :kmsKeyId,
+      :roleName,
+      :tagSpecifications
+    ) = object;
+    if (clientData != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientData'))
         ..add(serializers.serialize(
-          payload.clientData!,
+          clientData,
           specifiedType: const FullType(_i3.ClientData),
         ));
     }
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.diskContainer != null) {
-      result
+    if (diskContainer != null) {
+      result$
         ..add(const _i1.XmlElementName('DiskContainer'))
         ..add(serializers.serialize(
-          payload.diskContainer!,
+          diskContainer,
           specifiedType: const FullType(_i4.SnapshotDiskContainer),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    if (payload.kmsKeyId != null) {
-      result
+    if (kmsKeyId != null) {
+      result$
         ..add(const _i1.XmlElementName('KmsKeyId'))
         ..add(serializers.serialize(
-          payload.kmsKeyId!,
+          kmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.roleName != null) {
-      result
+    if (roleName != null) {
+      result$
         ..add(const _i1.XmlElementName('RoleName'))
         ..add(serializers.serialize(
-          payload.roleName!,
+          roleName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

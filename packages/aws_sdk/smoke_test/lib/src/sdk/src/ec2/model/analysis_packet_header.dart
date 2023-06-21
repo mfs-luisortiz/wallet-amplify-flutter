@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.analysis_packet_header; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,80 +128,67 @@ class AnalysisPacketHeaderEc2QuerySerializer
     final result = AnalysisPacketHeaderBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationAddressSet':
-          if (value != null) {
-            result.destinationAddresses
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i3.BuiltList<String>));
-          }
-          break;
+          result.destinationAddresses.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i3.BuiltList<String>));
         case 'destinationPortRangeSet':
-          if (value != null) {
-            result.destinationPortRanges
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.PortRange)],
-              ),
-            ) as _i3.BuiltList<_i2.PortRange>));
-          }
-          break;
+          result.destinationPortRanges
+              .replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.PortRange)],
+            ),
+          ) as _i3.BuiltList<_i2.PortRange>));
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceAddressSet':
-          if (value != null) {
-            result.sourceAddresses.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i3.BuiltList<String>));
-          }
-          break;
+          result.sourceAddresses.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i3.BuiltList<String>));
         case 'sourcePortRangeSet':
-          if (value != null) {
-            result.sourcePortRanges.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.PortRange)],
-              ),
-            ) as _i3.BuiltList<_i2.PortRange>));
-          }
-          break;
+          result.sourcePortRanges.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.PortRange)],
+            ),
+          ) as _i3.BuiltList<_i2.PortRange>));
       }
     }
 
@@ -210,84 +198,90 @@ class AnalysisPacketHeaderEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AnalysisPacketHeader object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AnalysisPacketHeader);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'AnalysisPacketHeaderResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationAddresses != null) {
-      result
+    final AnalysisPacketHeader(
+      :destinationAddresses,
+      :destinationPortRanges,
+      :protocol,
+      :sourceAddresses,
+      :sourcePortRanges
+    ) = object;
+    if (destinationAddresses != null) {
+      result$
         ..add(const _i4.XmlElementName('DestinationAddressSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.destinationAddresses!,
+          destinationAddresses,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.destinationPortRanges != null) {
-      result
+    if (destinationPortRanges != null) {
+      result$
         ..add(const _i4.XmlElementName('DestinationPortRangeSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.destinationPortRanges!,
+          destinationPortRanges,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.PortRange)],
           ),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i4.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceAddresses != null) {
-      result
+    if (sourceAddresses != null) {
+      result$
         ..add(const _i4.XmlElementName('SourceAddressSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.sourceAddresses!,
+          sourceAddresses,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.sourcePortRanges != null) {
-      result
+    if (sourcePortRanges != null) {
+      result$
         ..add(const _i4.XmlElementName('SourcePortRangeSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.sourcePortRanges!,
+          sourcePortRanges,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.PortRange)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

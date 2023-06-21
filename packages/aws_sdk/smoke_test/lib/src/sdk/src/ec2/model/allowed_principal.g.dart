@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.allowed_principal;
+part of 'allowed_principal.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

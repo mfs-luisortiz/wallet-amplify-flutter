@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vgw_telemetry; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,56 +132,43 @@ class VgwTelemetryEc2QuerySerializer
     final result = VgwTelemetryBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'acceptedRouteCount':
           result.acceptedRouteCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'lastStatusChange':
-          if (value != null) {
-            result.lastStatusChange = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.lastStatusChange = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'outsideIpAddress':
-          if (value != null) {
-            result.outsideIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outsideIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TelemetryStatus),
-            ) as _i2.TelemetryStatus);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TelemetryStatus),
+          ) as _i2.TelemetryStatus);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'certificateArn':
-          if (value != null) {
-            result.certificateArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.certificateArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -190,62 +178,69 @@ class VgwTelemetryEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VgwTelemetry object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VgwTelemetry);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'VgwTelemetryResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final VgwTelemetry(
+      :acceptedRouteCount,
+      :lastStatusChange,
+      :outsideIpAddress,
+      :status,
+      :statusMessage,
+      :certificateArn
+    ) = object;
+    result$
       ..add(const _i3.XmlElementName('AcceptedRouteCount'))
       ..add(serializers.serialize(
-        payload.acceptedRouteCount,
+        acceptedRouteCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.lastStatusChange != null) {
-      result
+    if (lastStatusChange != null) {
+      result$
         ..add(const _i3.XmlElementName('LastStatusChange'))
         ..add(serializers.serialize(
-          payload.lastStatusChange!,
+          lastStatusChange,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.outsideIpAddress != null) {
-      result
+    if (outsideIpAddress != null) {
+      result$
         ..add(const _i3.XmlElementName('OutsideIpAddress'))
         ..add(serializers.serialize(
-          payload.outsideIpAddress!,
+          outsideIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i2.TelemetryStatus),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i3.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.certificateArn != null) {
-      result
+    if (certificateArn != null) {
+      result$
         ..add(const _i3.XmlElementName('CertificateArn'))
         ..add(serializers.serialize(
-          payload.certificateArn!,
+          certificateArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

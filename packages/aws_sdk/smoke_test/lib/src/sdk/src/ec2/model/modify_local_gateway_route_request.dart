@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_local_gateway_route_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -133,45 +134,38 @@ class ModifyLocalGatewayRouteRequestEc2QuerySerializer
     final result = ModifyLocalGatewayRouteRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DestinationCidrBlock':
           result.destinationCidrBlock = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'LocalGatewayRouteTableId':
           result.localGatewayRouteTableId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'LocalGatewayVirtualInterfaceGroupId':
-          if (value != null) {
-            result.localGatewayVirtualInterfaceGroupId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayVirtualInterfaceGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'NetworkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -181,50 +175,56 @@ class ModifyLocalGatewayRouteRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyLocalGatewayRouteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyLocalGatewayRouteRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyLocalGatewayRouteRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyLocalGatewayRouteRequest(
+      :destinationCidrBlock,
+      :localGatewayRouteTableId,
+      :localGatewayVirtualInterfaceGroupId,
+      :networkInterfaceId,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DestinationCidrBlock'))
       ..add(serializers.serialize(
-        payload.destinationCidrBlock,
+        destinationCidrBlock,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('LocalGatewayRouteTableId'))
       ..add(serializers.serialize(
-        payload.localGatewayRouteTableId,
+        localGatewayRouteTableId,
         specifiedType: const FullType(String),
       ));
-    if (payload.localGatewayVirtualInterfaceGroupId != null) {
-      result
+    if (localGatewayVirtualInterfaceGroupId != null) {
+      result$
         ..add(const _i1.XmlElementName('LocalGatewayVirtualInterfaceGroupId'))
         ..add(serializers.serialize(
-          payload.localGatewayVirtualInterfaceGroupId!,
+          localGatewayVirtualInterfaceGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i1.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

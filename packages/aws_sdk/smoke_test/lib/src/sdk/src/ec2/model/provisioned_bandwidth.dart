@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.provisioned_bandwidth; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,50 +120,38 @@ class ProvisionedBandwidthEc2QuerySerializer
     final result = ProvisionedBandwidthBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'provisionTime':
-          if (value != null) {
-            result.provisionTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.provisionTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'provisioned':
-          if (value != null) {
-            result.provisioned = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.provisioned = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'requestTime':
-          if (value != null) {
-            result.requestTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.requestTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'requested':
-          if (value != null) {
-            result.requested = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.requested = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -172,56 +161,62 @@ class ProvisionedBandwidthEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ProvisionedBandwidth object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ProvisionedBandwidth);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ProvisionedBandwidthResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.provisionTime != null) {
-      result
+    final ProvisionedBandwidth(
+      :provisionTime,
+      :provisioned,
+      :requestTime,
+      :requested,
+      :status
+    ) = object;
+    if (provisionTime != null) {
+      result$
         ..add(const _i2.XmlElementName('ProvisionTime'))
         ..add(serializers.serialize(
-          payload.provisionTime!,
+          provisionTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.provisioned != null) {
-      result
+    if (provisioned != null) {
+      result$
         ..add(const _i2.XmlElementName('Provisioned'))
         ..add(serializers.serialize(
-          payload.provisioned!,
+          provisioned,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.requestTime != null) {
-      result
+    if (requestTime != null) {
+      result$
         ..add(const _i2.XmlElementName('RequestTime'))
         ..add(serializers.serialize(
-          payload.requestTime!,
+          requestTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.requested != null) {
-      result
+    if (requested != null) {
+      result$
         ..add(const _i2.XmlElementName('Requested'))
         ..add(serializers.serialize(
-          payload.requested!,
+          requested,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i2.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

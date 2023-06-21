@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.phase1_integrity_algorithms_list_value;
+part of 'phase1_integrity_algorithms_list_value.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

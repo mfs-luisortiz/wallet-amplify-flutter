@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_state_change; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,34 +100,28 @@ class InstanceStateChangeEc2QuerySerializer
     final result = InstanceStateChangeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'currentState':
-          if (value != null) {
-            result.currentState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceState),
-            ) as _i2.InstanceState));
-          }
-          break;
+          result.currentState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceState),
+          ) as _i2.InstanceState));
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'previousState':
-          if (value != null) {
-            result.previousState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceState),
-            ) as _i2.InstanceState));
-          }
-          break;
+          result.previousState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceState),
+          ) as _i2.InstanceState));
       }
     }
 
@@ -136,40 +131,41 @@ class InstanceStateChangeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStateChange object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStateChange);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceStateChangeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.currentState != null) {
-      result
+    final InstanceStateChange(:currentState, :instanceId, :previousState) =
+        object;
+    if (currentState != null) {
+      result$
         ..add(const _i3.XmlElementName('CurrentState'))
         ..add(serializers.serialize(
-          payload.currentState!,
+          currentState,
           specifiedType: const FullType(_i2.InstanceState),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.previousState != null) {
-      result
+    if (previousState != null) {
+      result$
         ..add(const _i3.XmlElementName('PreviousState'))
         ..add(serializers.serialize(
-          payload.previousState!,
+          previousState,
           specifiedType: const FullType(_i2.InstanceState),
         ));
     }
-    return result;
+    return result$;
   }
 }

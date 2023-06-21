@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.start_instances_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -111,10 +112,13 @@ class StartInstancesRequestEc2QuerySerializer
     final result = StartInstancesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
           result.instanceIds.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'InstanceId',
@@ -127,21 +131,16 @@ class StartInstancesRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i3.BuiltList<String>));
-          break;
         case 'additionalInfo':
-          if (value != null) {
-            result.additionalInfo = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.additionalInfo = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -151,43 +150,44 @@ class StartInstancesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    StartInstancesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as StartInstancesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'StartInstancesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final StartInstancesRequest(:instanceIds, :additionalInfo, :dryRun) =
+        object;
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'InstanceId',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.instanceIds,
+        instanceIds,
         specifiedType: const FullType.nullable(
           _i3.BuiltList,
           [FullType(String)],
         ),
       ));
-    if (payload.additionalInfo != null) {
-      result
+    if (additionalInfo != null) {
+      result$
         ..add(const _i1.XmlElementName('AdditionalInfo'))
         ..add(serializers.serialize(
-          payload.additionalInfo!,
+          additionalInfo,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

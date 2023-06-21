@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_transit_gateway_policy_table_request;
+part of 'delete_transit_gateway_policy_table_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

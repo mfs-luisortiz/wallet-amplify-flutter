@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_local_gateway_route_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -113,28 +114,28 @@ class DeleteLocalGatewayRouteRequestEc2QuerySerializer
     final result = DeleteLocalGatewayRouteRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DestinationCidrBlock':
           result.destinationCidrBlock = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'LocalGatewayRouteTableId':
           result.localGatewayRouteTableId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -144,34 +145,38 @@ class DeleteLocalGatewayRouteRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteLocalGatewayRouteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteLocalGatewayRouteRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DeleteLocalGatewayRouteRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DeleteLocalGatewayRouteRequest(
+      :destinationCidrBlock,
+      :localGatewayRouteTableId,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DestinationCidrBlock'))
       ..add(serializers.serialize(
-        payload.destinationCidrBlock,
+        destinationCidrBlock,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('LocalGatewayRouteTableId'))
       ..add(serializers.serialize(
-        payload.localGatewayRouteTableId,
+        localGatewayRouteTableId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

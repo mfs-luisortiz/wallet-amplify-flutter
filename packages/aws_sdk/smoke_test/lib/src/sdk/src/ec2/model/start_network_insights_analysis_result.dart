@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.start_network_insights_analysis_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class StartNetworkInsightsAnalysisResultEc2QuerySerializer
     final result = StartNetworkInsightsAnalysisResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsAnalysis':
-          if (value != null) {
-            result.networkInsightsAnalysis.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NetworkInsightsAnalysis),
-            ) as _i2.NetworkInsightsAnalysis));
-          }
-          break;
+          result.networkInsightsAnalysis.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NetworkInsightsAnalysis),
+          ) as _i2.NetworkInsightsAnalysis));
       }
     }
 
@@ -106,24 +107,24 @@ class StartNetworkInsightsAnalysisResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    StartNetworkInsightsAnalysisResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as StartNetworkInsightsAnalysisResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'StartNetworkInsightsAnalysisResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsAnalysis != null) {
-      result
+    final StartNetworkInsightsAnalysisResult(:networkInsightsAnalysis) = object;
+    if (networkInsightsAnalysis != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkInsightsAnalysis'))
         ..add(serializers.serialize(
-          payload.networkInsightsAnalysis!,
+          networkInsightsAnalysis,
           specifiedType: const FullType(_i2.NetworkInsightsAnalysis),
         ));
     }
-    return result;
+    return result$;
   }
 }

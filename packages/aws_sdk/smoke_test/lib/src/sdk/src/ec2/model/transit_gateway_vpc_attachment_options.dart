@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_vpc_attachment_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,34 +109,28 @@ class TransitGatewayVpcAttachmentOptionsEc2QuerySerializer
     final result = TransitGatewayVpcAttachmentOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dnsSupport':
-          if (value != null) {
-            result.dnsSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DnsSupportValue),
-            ) as _i2.DnsSupportValue);
-          }
-          break;
+          result.dnsSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DnsSupportValue),
+          ) as _i2.DnsSupportValue);
         case 'ipv6Support':
-          if (value != null) {
-            result.ipv6Support = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.Ipv6SupportValue),
-            ) as _i3.Ipv6SupportValue);
-          }
-          break;
+          result.ipv6Support = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.Ipv6SupportValue),
+          ) as _i3.Ipv6SupportValue);
         case 'applianceModeSupport':
-          if (value != null) {
-            result.applianceModeSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.ApplianceModeSupportValue),
-            ) as _i4.ApplianceModeSupportValue);
-          }
-          break;
+          result.applianceModeSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.ApplianceModeSupportValue),
+          ) as _i4.ApplianceModeSupportValue);
       }
     }
 
@@ -145,40 +140,44 @@ class TransitGatewayVpcAttachmentOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayVpcAttachmentOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayVpcAttachmentOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TransitGatewayVpcAttachmentOptionsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.dnsSupport != null) {
-      result
+    final TransitGatewayVpcAttachmentOptions(
+      :dnsSupport,
+      :ipv6Support,
+      :applianceModeSupport
+    ) = object;
+    if (dnsSupport != null) {
+      result$
         ..add(const _i5.XmlElementName('DnsSupport'))
         ..add(serializers.serialize(
-          payload.dnsSupport!,
+          dnsSupport,
           specifiedType: const FullType.nullable(_i2.DnsSupportValue),
         ));
     }
-    if (payload.ipv6Support != null) {
-      result
+    if (ipv6Support != null) {
+      result$
         ..add(const _i5.XmlElementName('Ipv6Support'))
         ..add(serializers.serialize(
-          payload.ipv6Support!,
+          ipv6Support,
           specifiedType: const FullType.nullable(_i3.Ipv6SupportValue),
         ));
     }
-    if (payload.applianceModeSupport != null) {
-      result
+    if (applianceModeSupport != null) {
+      result$
         ..add(const _i5.XmlElementName('ApplianceModeSupport'))
         ..add(serializers.serialize(
-          payload.applianceModeSupport!,
+          applianceModeSupport,
           specifiedType: const FullType.nullable(_i4.ApplianceModeSupportValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

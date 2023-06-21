@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.account_attribute; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,33 +92,30 @@ class AccountAttributeEc2QuerySerializer
     final result = AccountAttributeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attributeName':
-          if (value != null) {
-            result.attributeName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.attributeName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'attributeValueSet':
-          if (value != null) {
-            result.attributeValues.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.AccountAttributeValue)],
-              ),
-            ) as _i3.BuiltList<_i2.AccountAttributeValue>));
-          }
-          break;
+          result.attributeValues.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.AccountAttributeValue)],
+            ),
+          ) as _i3.BuiltList<_i2.AccountAttributeValue>));
       }
     }
 
@@ -127,39 +125,39 @@ class AccountAttributeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AccountAttribute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AccountAttribute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'AccountAttributeResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attributeName != null) {
-      result
+    final AccountAttribute(:attributeName, :attributeValues) = object;
+    if (attributeName != null) {
+      result$
         ..add(const _i4.XmlElementName('AttributeName'))
         ..add(serializers.serialize(
-          payload.attributeName!,
+          attributeName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.attributeValues != null) {
-      result
+    if (attributeValues != null) {
+      result$
         ..add(const _i4.XmlElementName('AttributeValueSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.attributeValues!,
+          attributeValues,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.AccountAttributeValue)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_transit_gateway_routes_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,18 +82,18 @@ class ExportTransitGatewayRoutesResultEc2QuerySerializer
     final result = ExportTransitGatewayRoutesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 's3Location':
-          if (value != null) {
-            result.s3Location = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.s3Location = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -102,24 +103,24 @@ class ExportTransitGatewayRoutesResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportTransitGatewayRoutesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportTransitGatewayRoutesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ExportTransitGatewayRoutesResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.s3Location != null) {
-      result
+    final ExportTransitGatewayRoutesResult(:s3Location) = object;
+    if (s3Location != null) {
+      result$
         ..add(const _i2.XmlElementName('S3Location'))
         ..add(serializers.serialize(
-          payload.s3Location!,
+          s3Location,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disk_image_detail; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -104,28 +105,28 @@ class DiskImageDetailEc2QuerySerializer
     final result = DiskImageDetailBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'bytes':
           result.bytes = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'format':
           result.format = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.DiskImageFormat),
           ) as _i3.DiskImageFormat);
-          break;
         case 'importManifestUrl':
           result.importManifestUrl = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -135,34 +136,34 @@ class DiskImageDetailEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DiskImageDetail object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DiskImageDetail);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DiskImageDetailResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DiskImageDetail(:bytes, :format, :importManifestUrl) = object;
+    result$
       ..add(const _i4.XmlElementName('Bytes'))
       ..add(serializers.serialize(
-        payload.bytes,
+        bytes,
         specifiedType: const FullType(_i2.Int64),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('Format'))
       ..add(serializers.serialize(
-        payload.format,
+        format,
         specifiedType: const FullType.nullable(_i3.DiskImageFormat),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('ImportManifestUrl'))
       ..add(serializers.serialize(
-        payload.importManifestUrl,
+        importManifestUrl,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

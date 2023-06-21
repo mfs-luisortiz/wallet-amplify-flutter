@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_traffic_mirror_session_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class ModifyTrafficMirrorSessionResultEc2QuerySerializer
     final result = ModifyTrafficMirrorSessionResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorSession':
-          if (value != null) {
-            result.trafficMirrorSession.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TrafficMirrorSession),
-            ) as _i2.TrafficMirrorSession));
-          }
-          break;
+          result.trafficMirrorSession.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TrafficMirrorSession),
+          ) as _i2.TrafficMirrorSession));
       }
     }
 
@@ -106,24 +107,24 @@ class ModifyTrafficMirrorSessionResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyTrafficMirrorSessionResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyTrafficMirrorSessionResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ModifyTrafficMirrorSessionResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorSession != null) {
-      result
+    final ModifyTrafficMirrorSessionResult(:trafficMirrorSession) = object;
+    if (trafficMirrorSession != null) {
+      result$
         ..add(const _i3.XmlElementName('TrafficMirrorSession'))
         ..add(serializers.serialize(
-          payload.trafficMirrorSession!,
+          trafficMirrorSession,
           specifiedType: const FullType(_i2.TrafficMirrorSession),
         ));
     }
-    return result;
+    return result$;
   }
 }

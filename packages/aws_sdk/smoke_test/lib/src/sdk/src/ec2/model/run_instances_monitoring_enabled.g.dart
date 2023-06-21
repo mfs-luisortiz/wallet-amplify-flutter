@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.run_instances_monitoring_enabled;
+part of 'run_instances_monitoring_enabled.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

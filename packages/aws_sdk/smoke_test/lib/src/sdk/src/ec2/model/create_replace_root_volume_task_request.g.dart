@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_replace_root_volume_task_request;
+part of 'create_replace_root_volume_task_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

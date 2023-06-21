@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_enclave_certificate_iam_role_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,34 +108,28 @@ class AssociateEnclaveCertificateIamRoleResultEc2QuerySerializer extends _i2
     final result = AssociateEnclaveCertificateIamRoleResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'certificateS3BucketName':
-          if (value != null) {
-            result.certificateS3BucketName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.certificateS3BucketName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'certificateS3ObjectKey':
-          if (value != null) {
-            result.certificateS3ObjectKey = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.certificateS3ObjectKey = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'encryptionKmsKeyId':
-          if (value != null) {
-            result.encryptionKmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.encryptionKmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -144,40 +139,44 @@ class AssociateEnclaveCertificateIamRoleResultEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateEnclaveCertificateIamRoleResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateEnclaveCertificateIamRoleResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'AssociateEnclaveCertificateIamRoleResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.certificateS3BucketName != null) {
-      result
+    final AssociateEnclaveCertificateIamRoleResult(
+      :certificateS3BucketName,
+      :certificateS3ObjectKey,
+      :encryptionKmsKeyId
+    ) = object;
+    if (certificateS3BucketName != null) {
+      result$
         ..add(const _i2.XmlElementName('CertificateS3BucketName'))
         ..add(serializers.serialize(
-          payload.certificateS3BucketName!,
+          certificateS3BucketName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.certificateS3ObjectKey != null) {
-      result
+    if (certificateS3ObjectKey != null) {
+      result$
         ..add(const _i2.XmlElementName('CertificateS3ObjectKey'))
         ..add(serializers.serialize(
-          payload.certificateS3ObjectKey!,
+          certificateS3ObjectKey,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.encryptionKmsKeyId != null) {
-      result
+    if (encryptionKmsKeyId != null) {
+      result$
         ..add(const _i2.XmlElementName('EncryptionKmsKeyId'))
         ..add(serializers.serialize(
-          payload.encryptionKmsKeyId!,
+          encryptionKmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

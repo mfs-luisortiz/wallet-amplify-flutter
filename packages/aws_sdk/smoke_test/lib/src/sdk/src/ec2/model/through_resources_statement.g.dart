@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.through_resources_statement;
+part of 'through_resources_statement.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

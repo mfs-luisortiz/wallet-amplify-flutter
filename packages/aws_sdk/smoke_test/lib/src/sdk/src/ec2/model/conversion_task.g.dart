@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.conversion_task;
+part of 'conversion_task.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

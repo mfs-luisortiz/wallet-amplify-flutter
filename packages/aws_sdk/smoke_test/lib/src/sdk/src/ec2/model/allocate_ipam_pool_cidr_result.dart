@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.allocate_ipam_pool_cidr_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class AllocateIpamPoolCidrResultEc2QuerySerializer
     final result = AllocateIpamPoolCidrResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipamPoolAllocation':
-          if (value != null) {
-            result.ipamPoolAllocation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamPoolAllocation),
-            ) as _i2.IpamPoolAllocation));
-          }
-          break;
+          result.ipamPoolAllocation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamPoolAllocation),
+          ) as _i2.IpamPoolAllocation));
       }
     }
 
@@ -103,24 +104,24 @@ class AllocateIpamPoolCidrResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AllocateIpamPoolCidrResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AllocateIpamPoolCidrResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AllocateIpamPoolCidrResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipamPoolAllocation != null) {
-      result
+    final AllocateIpamPoolCidrResult(:ipamPoolAllocation) = object;
+    if (ipamPoolAllocation != null) {
+      result$
         ..add(const _i3.XmlElementName('IpamPoolAllocation'))
         ..add(serializers.serialize(
-          payload.ipamPoolAllocation!,
+          ipamPoolAllocation,
           specifiedType: const FullType(_i2.IpamPoolAllocation),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.get_instance_uefi_data_result;
+part of 'get_instance_uefi_data_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

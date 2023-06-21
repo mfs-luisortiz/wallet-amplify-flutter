@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.host_reservation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -218,132 +219,97 @@ class HostReservationEc2QuerySerializer
     final result = HostReservationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'count':
           result.count = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'currencyCode':
-          if (value != null) {
-            result.currencyCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CurrencyCodeValues),
-            ) as _i2.CurrencyCodeValues);
-          }
-          break;
+          result.currencyCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CurrencyCodeValues),
+          ) as _i2.CurrencyCodeValues);
         case 'duration':
           result.duration = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'end':
-          if (value != null) {
-            result.end = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.end = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'hostIdSet':
-          if (value != null) {
-            result.hostIdSet.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.hostIdSet.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'hostReservationId':
-          if (value != null) {
-            result.hostReservationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hostReservationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'hourlyPrice':
-          if (value != null) {
-            result.hourlyPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hourlyPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceFamily':
-          if (value != null) {
-            result.instanceFamily = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceFamily = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'offeringId':
-          if (value != null) {
-            result.offeringId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.offeringId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'paymentOption':
-          if (value != null) {
-            result.paymentOption = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.PaymentOption),
-            ) as _i3.PaymentOption);
-          }
-          break;
+          result.paymentOption = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PaymentOption),
+          ) as _i3.PaymentOption);
         case 'start':
-          if (value != null) {
-            result.start = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.start = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.ReservationState),
-            ) as _i4.ReservationState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.ReservationState),
+          ) as _i4.ReservationState);
         case 'upfrontPrice':
-          if (value != null) {
-            result.upfrontPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.upfrontPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
       }
     }
 
@@ -353,138 +319,153 @@ class HostReservationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    HostReservation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as HostReservation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'HostReservationResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final HostReservation(
+      :count,
+      :currencyCode,
+      :duration,
+      :end,
+      :hostIdSet,
+      :hostReservationId,
+      :hourlyPrice,
+      :instanceFamily,
+      :offeringId,
+      :paymentOption,
+      :start,
+      :state,
+      :upfrontPrice,
+      :tags
+    ) = object;
+    result$
       ..add(const _i7.XmlElementName('Count'))
       ..add(serializers.serialize(
-        payload.count,
+        count,
         specifiedType: const FullType(int),
       ));
-    if (payload.currencyCode != null) {
-      result
+    if (currencyCode != null) {
+      result$
         ..add(const _i7.XmlElementName('CurrencyCode'))
         ..add(serializers.serialize(
-          payload.currencyCode!,
+          currencyCode,
           specifiedType: const FullType.nullable(_i2.CurrencyCodeValues),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('Duration'))
       ..add(serializers.serialize(
-        payload.duration,
+        duration,
         specifiedType: const FullType(int),
       ));
-    if (payload.end != null) {
-      result
+    if (end != null) {
+      result$
         ..add(const _i7.XmlElementName('End'))
         ..add(serializers.serialize(
-          payload.end!,
+          end,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.hostIdSet != null) {
-      result
+    if (hostIdSet != null) {
+      result$
         ..add(const _i7.XmlElementName('HostIdSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.hostIdSet!,
+          hostIdSet,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.hostReservationId != null) {
-      result
+    if (hostReservationId != null) {
+      result$
         ..add(const _i7.XmlElementName('HostReservationId'))
         ..add(serializers.serialize(
-          payload.hostReservationId!,
+          hostReservationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.hourlyPrice != null) {
-      result
+    if (hourlyPrice != null) {
+      result$
         ..add(const _i7.XmlElementName('HourlyPrice'))
         ..add(serializers.serialize(
-          payload.hourlyPrice!,
+          hourlyPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceFamily != null) {
-      result
+    if (instanceFamily != null) {
+      result$
         ..add(const _i7.XmlElementName('InstanceFamily'))
         ..add(serializers.serialize(
-          payload.instanceFamily!,
+          instanceFamily,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.offeringId != null) {
-      result
+    if (offeringId != null) {
+      result$
         ..add(const _i7.XmlElementName('OfferingId'))
         ..add(serializers.serialize(
-          payload.offeringId!,
+          offeringId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.paymentOption != null) {
-      result
+    if (paymentOption != null) {
+      result$
         ..add(const _i7.XmlElementName('PaymentOption'))
         ..add(serializers.serialize(
-          payload.paymentOption!,
+          paymentOption,
           specifiedType: const FullType.nullable(_i3.PaymentOption),
         ));
     }
-    if (payload.start != null) {
-      result
+    if (start != null) {
+      result$
         ..add(const _i7.XmlElementName('Start'))
         ..add(serializers.serialize(
-          payload.start!,
+          start,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i7.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i4.ReservationState),
         ));
     }
-    if (payload.upfrontPrice != null) {
-      result
+    if (upfrontPrice != null) {
+      result$
         ..add(const _i7.XmlElementName('UpfrontPrice'))
         ..add(serializers.serialize(
-          payload.upfrontPrice!,
+          upfrontPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.deregister_instance_tag_attribute_request;
+part of 'deregister_instance_tag_attribute_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

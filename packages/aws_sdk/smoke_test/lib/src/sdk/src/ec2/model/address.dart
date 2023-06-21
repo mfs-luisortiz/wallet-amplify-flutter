@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.address; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -209,129 +210,90 @@ class AddressEc2QuerySerializer
     final result = AddressBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'publicIp':
-          if (value != null) {
-            result.publicIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'allocationId':
-          if (value != null) {
-            result.allocationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.allocationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'domain':
-          if (value != null) {
-            result.domain = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DomainType),
-            ) as _i2.DomainType);
-          }
-          break;
+          result.domain = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DomainType),
+          ) as _i2.DomainType);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceOwnerId':
-          if (value != null) {
-            result.networkInterfaceOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateIpAddress':
-          if (value != null) {
-            result.privateIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
         case 'publicIpv4Pool':
-          if (value != null) {
-            result.publicIpv4Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIpv4Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkBorderGroup':
-          if (value != null) {
-            result.networkBorderGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkBorderGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'customerOwnedIp':
-          if (value != null) {
-            result.customerOwnedIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerOwnedIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'customerOwnedIpv4Pool':
-          if (value != null) {
-            result.customerOwnedIpv4Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerOwnedIpv4Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'carrierIp':
-          if (value != null) {
-            result.carrierIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.carrierIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -341,135 +303,150 @@ class AddressEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Address object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Address);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'AddressResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final Address(
+      :instanceId,
+      :publicIp,
+      :allocationId,
+      :associationId,
+      :domain,
+      :networkInterfaceId,
+      :networkInterfaceOwnerId,
+      :privateIpAddress,
+      :tags,
+      :publicIpv4Pool,
+      :networkBorderGroup,
+      :customerOwnedIp,
+      :customerOwnedIpv4Pool,
+      :carrierIp
+    ) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.publicIp != null) {
-      result
+    if (publicIp != null) {
+      result$
         ..add(const _i5.XmlElementName('PublicIp'))
         ..add(serializers.serialize(
-          payload.publicIp!,
+          publicIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.allocationId != null) {
-      result
+    if (allocationId != null) {
+      result$
         ..add(const _i5.XmlElementName('AllocationId'))
         ..add(serializers.serialize(
-          payload.allocationId!,
+          allocationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.associationId != null) {
-      result
+    if (associationId != null) {
+      result$
         ..add(const _i5.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.domain != null) {
-      result
+    if (domain != null) {
+      result$
         ..add(const _i5.XmlElementName('Domain'))
         ..add(serializers.serialize(
-          payload.domain!,
+          domain,
           specifiedType: const FullType.nullable(_i2.DomainType),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceOwnerId != null) {
-      result
+    if (networkInterfaceOwnerId != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInterfaceOwnerId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceOwnerId!,
+          networkInterfaceOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateIpAddress != null) {
-      result
+    if (privateIpAddress != null) {
+      result$
         ..add(const _i5.XmlElementName('PrivateIpAddress'))
         ..add(serializers.serialize(
-          payload.privateIpAddress!,
+          privateIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    if (payload.publicIpv4Pool != null) {
-      result
+    if (publicIpv4Pool != null) {
+      result$
         ..add(const _i5.XmlElementName('PublicIpv4Pool'))
         ..add(serializers.serialize(
-          payload.publicIpv4Pool!,
+          publicIpv4Pool,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkBorderGroup != null) {
-      result
+    if (networkBorderGroup != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkBorderGroup'))
         ..add(serializers.serialize(
-          payload.networkBorderGroup!,
+          networkBorderGroup,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.customerOwnedIp != null) {
-      result
+    if (customerOwnedIp != null) {
+      result$
         ..add(const _i5.XmlElementName('CustomerOwnedIp'))
         ..add(serializers.serialize(
-          payload.customerOwnedIp!,
+          customerOwnedIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.customerOwnedIpv4Pool != null) {
-      result
+    if (customerOwnedIpv4Pool != null) {
+      result$
         ..add(const _i5.XmlElementName('CustomerOwnedIpv4Pool'))
         ..add(serializers.serialize(
-          payload.customerOwnedIpv4Pool!,
+          customerOwnedIpv4Pool,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.carrierIp != null) {
-      result
+    if (carrierIp != null) {
+      result$
         ..add(const _i5.XmlElementName('CarrierIp'))
         ..add(serializers.serialize(
-          payload.carrierIp!,
+          carrierIp,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

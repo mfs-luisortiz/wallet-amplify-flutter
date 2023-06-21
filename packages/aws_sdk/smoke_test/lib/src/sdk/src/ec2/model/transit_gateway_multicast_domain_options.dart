@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_multicast_domain_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,35 +110,29 @@ class TransitGatewayMulticastDomainOptionsEc2QuerySerializer extends _i5
     final result = TransitGatewayMulticastDomainOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'igmpv2Support':
-          if (value != null) {
-            result.igmpv2Support = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Igmpv2SupportValue),
-            ) as _i2.Igmpv2SupportValue);
-          }
-          break;
+          result.igmpv2Support = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Igmpv2SupportValue),
+          ) as _i2.Igmpv2SupportValue);
         case 'staticSourcesSupport':
-          if (value != null) {
-            result.staticSourcesSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.StaticSourcesSupportValue),
-            ) as _i3.StaticSourcesSupportValue);
-          }
-          break;
+          result.staticSourcesSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.StaticSourcesSupportValue),
+          ) as _i3.StaticSourcesSupportValue);
         case 'autoAcceptSharedAssociations':
-          if (value != null) {
-            result.autoAcceptSharedAssociations = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.AutoAcceptSharedAssociationsValue),
-            ) as _i4.AutoAcceptSharedAssociationsValue);
-          }
-          break;
+          result.autoAcceptSharedAssociations = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.AutoAcceptSharedAssociationsValue),
+          ) as _i4.AutoAcceptSharedAssociationsValue);
       }
     }
 
@@ -147,41 +142,45 @@ class TransitGatewayMulticastDomainOptionsEc2QuerySerializer extends _i5
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayMulticastDomainOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayMulticastDomainOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TransitGatewayMulticastDomainOptionsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.igmpv2Support != null) {
-      result
+    final TransitGatewayMulticastDomainOptions(
+      :igmpv2Support,
+      :staticSourcesSupport,
+      :autoAcceptSharedAssociations
+    ) = object;
+    if (igmpv2Support != null) {
+      result$
         ..add(const _i5.XmlElementName('Igmpv2Support'))
         ..add(serializers.serialize(
-          payload.igmpv2Support!,
+          igmpv2Support,
           specifiedType: const FullType.nullable(_i2.Igmpv2SupportValue),
         ));
     }
-    if (payload.staticSourcesSupport != null) {
-      result
+    if (staticSourcesSupport != null) {
+      result$
         ..add(const _i5.XmlElementName('StaticSourcesSupport'))
         ..add(serializers.serialize(
-          payload.staticSourcesSupport!,
+          staticSourcesSupport,
           specifiedType: const FullType.nullable(_i3.StaticSourcesSupportValue),
         ));
     }
-    if (payload.autoAcceptSharedAssociations != null) {
-      result
+    if (autoAcceptSharedAssociations != null) {
+      result$
         ..add(const _i5.XmlElementName('AutoAcceptSharedAssociations'))
         ..add(serializers.serialize(
-          payload.autoAcceptSharedAssociations!,
+          autoAcceptSharedAssociations,
           specifiedType:
               const FullType.nullable(_i4.AutoAcceptSharedAssociationsValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

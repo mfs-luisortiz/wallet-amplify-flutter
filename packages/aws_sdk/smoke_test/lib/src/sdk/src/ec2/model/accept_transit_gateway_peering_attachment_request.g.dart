@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.accept_transit_gateway_peering_attachment_request;
+part of 'accept_transit_gateway_peering_attachment_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

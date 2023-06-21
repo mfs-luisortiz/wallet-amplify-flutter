@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.license_configuration;
+part of 'license_configuration.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

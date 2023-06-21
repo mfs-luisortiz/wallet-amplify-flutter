@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.attach_network_interface_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -102,24 +103,23 @@ class AttachNetworkInterfaceResultEc2QuerySerializer
     final result = AttachNetworkInterfaceResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attachmentId':
-          if (value != null) {
-            result.attachmentId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.attachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkCardIndex':
           result.networkCardIndex = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -129,30 +129,31 @@ class AttachNetworkInterfaceResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AttachNetworkInterfaceResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AttachNetworkInterfaceResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'AttachNetworkInterfaceResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attachmentId != null) {
-      result
+    final AttachNetworkInterfaceResult(:attachmentId, :networkCardIndex) =
+        object;
+    if (attachmentId != null) {
+      result$
         ..add(const _i2.XmlElementName('AttachmentId'))
         ..add(serializers.serialize(
-          payload.attachmentId!,
+          attachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('NetworkCardIndex'))
       ..add(serializers.serialize(
-        payload.networkCardIndex,
+        networkCardIndex,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

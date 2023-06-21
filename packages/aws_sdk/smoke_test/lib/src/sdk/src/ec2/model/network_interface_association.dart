@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_interface_association; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -142,66 +143,48 @@ class NetworkInterfaceAssociationEc2QuerySerializer
     final result = NetworkInterfaceAssociationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'allocationId':
-          if (value != null) {
-            result.allocationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.allocationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipOwnerId':
-          if (value != null) {
-            result.ipOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'publicDnsName':
-          if (value != null) {
-            result.publicDnsName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicDnsName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'publicIp':
-          if (value != null) {
-            result.publicIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'customerOwnedIp':
-          if (value != null) {
-            result.customerOwnedIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerOwnedIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'carrierIp':
-          if (value != null) {
-            result.carrierIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.carrierIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -211,72 +194,80 @@ class NetworkInterfaceAssociationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInterfaceAssociation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInterfaceAssociation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'NetworkInterfaceAssociationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationId != null) {
-      result
+    final NetworkInterfaceAssociation(
+      :allocationId,
+      :associationId,
+      :ipOwnerId,
+      :publicDnsName,
+      :publicIp,
+      :customerOwnedIp,
+      :carrierIp
+    ) = object;
+    if (allocationId != null) {
+      result$
         ..add(const _i2.XmlElementName('AllocationId'))
         ..add(serializers.serialize(
-          payload.allocationId!,
+          allocationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.associationId != null) {
-      result
+    if (associationId != null) {
+      result$
         ..add(const _i2.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipOwnerId != null) {
-      result
+    if (ipOwnerId != null) {
+      result$
         ..add(const _i2.XmlElementName('IpOwnerId'))
         ..add(serializers.serialize(
-          payload.ipOwnerId!,
+          ipOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.publicDnsName != null) {
-      result
+    if (publicDnsName != null) {
+      result$
         ..add(const _i2.XmlElementName('PublicDnsName'))
         ..add(serializers.serialize(
-          payload.publicDnsName!,
+          publicDnsName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.publicIp != null) {
-      result
+    if (publicIp != null) {
+      result$
         ..add(const _i2.XmlElementName('PublicIp'))
         ..add(serializers.serialize(
-          payload.publicIp!,
+          publicIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.customerOwnedIp != null) {
-      result
+    if (customerOwnedIp != null) {
+      result$
         ..add(const _i2.XmlElementName('CustomerOwnedIp'))
         ..add(serializers.serialize(
-          payload.customerOwnedIp!,
+          customerOwnedIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.carrierIp != null) {
-      result
+    if (carrierIp != null) {
+      result$
         ..add(const _i2.XmlElementName('CarrierIp'))
         ..add(serializers.serialize(
-          payload.carrierIp!,
+          carrierIp,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

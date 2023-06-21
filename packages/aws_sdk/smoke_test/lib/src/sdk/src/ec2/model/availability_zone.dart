@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.availability_zone; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -190,105 +191,75 @@ class AvailabilityZoneEc2QuerySerializer
     final result = AvailabilityZoneBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'zoneState':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AvailabilityZoneState),
-            ) as _i2.AvailabilityZoneState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AvailabilityZoneState),
+          ) as _i2.AvailabilityZoneState);
         case 'optInStatus':
-          if (value != null) {
-            result.optInStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AvailabilityZoneOptInStatus),
-            ) as _i3.AvailabilityZoneOptInStatus);
-          }
-          break;
+          result.optInStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AvailabilityZoneOptInStatus),
+          ) as _i3.AvailabilityZoneOptInStatus);
         case 'messageSet':
-          if (value != null) {
-            result.messages.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.AvailabilityZoneMessage)],
-              ),
-            ) as _i5.BuiltList<_i4.AvailabilityZoneMessage>));
-          }
-          break;
+          result.messages.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.AvailabilityZoneMessage)],
+            ),
+          ) as _i5.BuiltList<_i4.AvailabilityZoneMessage>));
         case 'regionName':
-          if (value != null) {
-            result.regionName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.regionName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'zoneName':
-          if (value != null) {
-            result.zoneName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.zoneName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'zoneId':
-          if (value != null) {
-            result.zoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.zoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkBorderGroup':
-          if (value != null) {
-            result.networkBorderGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkBorderGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'zoneType':
-          if (value != null) {
-            result.zoneType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.zoneType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'parentZoneName':
-          if (value != null) {
-            result.parentZoneName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.parentZoneName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'parentZoneId':
-          if (value != null) {
-            result.parentZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.parentZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -298,112 +269,124 @@ class AvailabilityZoneEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AvailabilityZone object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AvailabilityZone);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'AvailabilityZoneResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.state != null) {
-      result
+    final AvailabilityZone(
+      :state,
+      :optInStatus,
+      :messages,
+      :regionName,
+      :zoneName,
+      :zoneId,
+      :groupName,
+      :networkBorderGroup,
+      :zoneType,
+      :parentZoneName,
+      :parentZoneId
+    ) = object;
+    if (state != null) {
+      result$
         ..add(const _i6.XmlElementName('ZoneState'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.AvailabilityZoneState),
         ));
     }
-    if (payload.optInStatus != null) {
-      result
+    if (optInStatus != null) {
+      result$
         ..add(const _i6.XmlElementName('OptInStatus'))
         ..add(serializers.serialize(
-          payload.optInStatus!,
+          optInStatus,
           specifiedType:
               const FullType.nullable(_i3.AvailabilityZoneOptInStatus),
         ));
     }
-    if (payload.messages != null) {
-      result
+    if (messages != null) {
+      result$
         ..add(const _i6.XmlElementName('MessageSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.messages!,
+          messages,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.AvailabilityZoneMessage)],
           ),
         ));
     }
-    if (payload.regionName != null) {
-      result
+    if (regionName != null) {
+      result$
         ..add(const _i6.XmlElementName('RegionName'))
         ..add(serializers.serialize(
-          payload.regionName!,
+          regionName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.zoneName != null) {
-      result
+    if (zoneName != null) {
+      result$
         ..add(const _i6.XmlElementName('ZoneName'))
         ..add(serializers.serialize(
-          payload.zoneName!,
+          zoneName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.zoneId != null) {
-      result
+    if (zoneId != null) {
+      result$
         ..add(const _i6.XmlElementName('ZoneId'))
         ..add(serializers.serialize(
-          payload.zoneId!,
+          zoneId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupName != null) {
-      result
+    if (groupName != null) {
+      result$
         ..add(const _i6.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkBorderGroup != null) {
-      result
+    if (networkBorderGroup != null) {
+      result$
         ..add(const _i6.XmlElementName('NetworkBorderGroup'))
         ..add(serializers.serialize(
-          payload.networkBorderGroup!,
+          networkBorderGroup,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.zoneType != null) {
-      result
+    if (zoneType != null) {
+      result$
         ..add(const _i6.XmlElementName('ZoneType'))
         ..add(serializers.serialize(
-          payload.zoneType!,
+          zoneType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.parentZoneName != null) {
-      result
+    if (parentZoneName != null) {
+      result$
         ..add(const _i6.XmlElementName('ParentZoneName'))
         ..add(serializers.serialize(
-          payload.parentZoneName!,
+          parentZoneName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.parentZoneId != null) {
-      result
+    if (parentZoneId != null) {
+      result$
         ..add(const _i6.XmlElementName('ParentZoneId'))
         ..add(serializers.serialize(
-          payload.parentZoneId!,
+          parentZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

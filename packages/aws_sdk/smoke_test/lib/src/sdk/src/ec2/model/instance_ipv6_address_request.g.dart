@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_ipv6_address_request;
+part of 'instance_ipv6_address_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

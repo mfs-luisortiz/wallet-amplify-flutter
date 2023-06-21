@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.active_instance; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,42 +110,33 @@ class ActiveInstanceEc2QuerySerializer
     final result = ActiveInstanceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'spotInstanceRequestId':
-          if (value != null) {
-            result.spotInstanceRequestId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotInstanceRequestId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceHealth':
-          if (value != null) {
-            result.instanceHealth = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceHealthStatus),
-            ) as _i2.InstanceHealthStatus);
-          }
-          break;
+          result.instanceHealth = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceHealthStatus),
+          ) as _i2.InstanceHealthStatus);
       }
     }
 
@@ -154,48 +146,53 @@ class ActiveInstanceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ActiveInstance object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ActiveInstance);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ActiveInstanceResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final ActiveInstance(
+      :instanceId,
+      :instanceType,
+      :spotInstanceRequestId,
+      :instanceHealth
+    ) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spotInstanceRequestId != null) {
-      result
+    if (spotInstanceRequestId != null) {
+      result$
         ..add(const _i3.XmlElementName('SpotInstanceRequestId'))
         ..add(serializers.serialize(
-          payload.spotInstanceRequestId!,
+          spotInstanceRequestId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceHealth != null) {
-      result
+    if (instanceHealth != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceHealth'))
         ..add(serializers.serialize(
-          payload.instanceHealth!,
+          instanceHealth,
           specifiedType: const FullType.nullable(_i2.InstanceHealthStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

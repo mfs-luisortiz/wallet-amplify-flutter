@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.modify_transit_gateway_prefix_list_reference_request;
+part of 'modify_transit_gateway_prefix_list_reference_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

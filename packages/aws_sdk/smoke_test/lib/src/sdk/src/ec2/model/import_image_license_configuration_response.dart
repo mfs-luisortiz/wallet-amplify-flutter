@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_image_license_configuration_response; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -79,18 +80,18 @@ class ImportImageLicenseConfigurationResponseEc2QuerySerializer extends _i2
     final result = ImportImageLicenseConfigurationResponseBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'licenseConfigurationArn':
-          if (value != null) {
-            result.licenseConfigurationArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.licenseConfigurationArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -100,24 +101,25 @@ class ImportImageLicenseConfigurationResponseEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportImageLicenseConfigurationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportImageLicenseConfigurationResponse);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ImportImageLicenseConfigurationResponseResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.licenseConfigurationArn != null) {
-      result
+    final ImportImageLicenseConfigurationResponse(:licenseConfigurationArn) =
+        object;
+    if (licenseConfigurationArn != null) {
+      result$
         ..add(const _i2.XmlElementName('LicenseConfigurationArn'))
         ..add(serializers.serialize(
-          payload.licenseConfigurationArn!,
+          licenseConfigurationArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

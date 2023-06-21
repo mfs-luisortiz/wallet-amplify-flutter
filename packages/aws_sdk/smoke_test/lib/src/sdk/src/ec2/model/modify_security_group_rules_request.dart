@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_security_group_rules_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,16 +117,18 @@ class ModifySecurityGroupRulesRequestEc2QuerySerializer
     final result = ModifySecurityGroupRulesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'GroupId':
           result.groupId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'SecurityGroupRule':
           result.securityGroupRules.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -138,13 +141,11 @@ class ModifySecurityGroupRulesRequestEc2QuerySerializer
               [FullType(_i3.SecurityGroupRuleUpdate)],
             ),
           ) as _i4.BuiltList<_i3.SecurityGroupRuleUpdate>));
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -154,41 +155,45 @@ class ModifySecurityGroupRulesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifySecurityGroupRulesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifySecurityGroupRulesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifySecurityGroupRulesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifySecurityGroupRulesRequest(
+      :groupId,
+      :securityGroupRules,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('GroupId'))
       ..add(serializers.serialize(
-        payload.groupId,
+        groupId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('SecurityGroupRule'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.securityGroupRules,
+        securityGroupRules,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(_i3.SecurityGroupRuleUpdate)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

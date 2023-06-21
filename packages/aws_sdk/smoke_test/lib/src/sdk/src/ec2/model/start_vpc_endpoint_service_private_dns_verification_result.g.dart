@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.start_vpc_endpoint_service_private_dns_verification_result;
+part of 'start_vpc_endpoint_service_private_dns_verification_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

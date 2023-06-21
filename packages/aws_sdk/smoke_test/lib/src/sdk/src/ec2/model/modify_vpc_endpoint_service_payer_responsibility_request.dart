@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_endpoint_service_payer_responsibility_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -117,28 +118,28 @@ class ModifyVpcEndpointServicePayerResponsibilityRequestEc2QuerySerializer
     final result = ModifyVpcEndpointServicePayerResponsibilityRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ServiceId':
           result.serviceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PayerResponsibility':
           result.payerResponsibility = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.PayerResponsibility),
           ) as _i3.PayerResponsibility);
-          break;
       }
     }
 
@@ -148,35 +149,38 @@ class ModifyVpcEndpointServicePayerResponsibilityRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcEndpointServicePayerResponsibilityRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as ModifyVpcEndpointServicePayerResponsibilityRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpcEndpointServicePayerResponsibilityRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVpcEndpointServicePayerResponsibilityRequest(
+      :dryRun,
+      :serviceId,
+      :payerResponsibility
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ServiceId'))
       ..add(serializers.serialize(
-        payload.serviceId,
+        serviceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PayerResponsibility'))
       ..add(serializers.serialize(
-        payload.payerResponsibility,
+        payerResponsibility,
         specifiedType: const FullType.nullable(_i3.PayerResponsibility),
       ));
-    return result;
+    return result$;
   }
 }

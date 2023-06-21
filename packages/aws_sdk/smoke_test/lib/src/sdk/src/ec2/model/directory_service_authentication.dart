@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.directory_service_authentication; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -77,18 +78,18 @@ class DirectoryServiceAuthenticationEc2QuerySerializer
     final result = DirectoryServiceAuthenticationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'directoryId':
-          if (value != null) {
-            result.directoryId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.directoryId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -98,24 +99,24 @@ class DirectoryServiceAuthenticationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DirectoryServiceAuthentication object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DirectoryServiceAuthentication);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'DirectoryServiceAuthenticationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.directoryId != null) {
-      result
+    final DirectoryServiceAuthentication(:directoryId) = object;
+    if (directoryId != null) {
+      result$
         ..add(const _i2.XmlElementName('DirectoryId'))
         ..add(serializers.serialize(
-          payload.directoryId!,
+          directoryId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

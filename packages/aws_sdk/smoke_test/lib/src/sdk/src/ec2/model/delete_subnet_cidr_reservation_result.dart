@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_subnet_cidr_reservation_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,18 @@ class DeleteSubnetCidrReservationResultEc2QuerySerializer
     final result = DeleteSubnetCidrReservationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'deletedSubnetCidrReservation':
-          if (value != null) {
-            result.deletedSubnetCidrReservation
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SubnetCidrReservation),
-            ) as _i2.SubnetCidrReservation));
-          }
-          break;
+          result.deletedSubnetCidrReservation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SubnetCidrReservation),
+          ) as _i2.SubnetCidrReservation));
       }
     }
 
@@ -107,24 +107,25 @@ class DeleteSubnetCidrReservationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteSubnetCidrReservationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteSubnetCidrReservationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteSubnetCidrReservationResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.deletedSubnetCidrReservation != null) {
-      result
+    final DeleteSubnetCidrReservationResult(:deletedSubnetCidrReservation) =
+        object;
+    if (deletedSubnetCidrReservation != null) {
+      result$
         ..add(const _i3.XmlElementName('DeletedSubnetCidrReservation'))
         ..add(serializers.serialize(
-          payload.deletedSubnetCidrReservation!,
+          deletedSubnetCidrReservation,
           specifiedType: const FullType(_i2.SubnetCidrReservation),
         ));
     }
-    return result;
+    return result$;
   }
 }

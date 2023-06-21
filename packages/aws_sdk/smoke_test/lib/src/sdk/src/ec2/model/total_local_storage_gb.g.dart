@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.total_local_storage_gb;
+part of 'total_local_storage_gb.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.coip_pool;
+part of 'coip_pool.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

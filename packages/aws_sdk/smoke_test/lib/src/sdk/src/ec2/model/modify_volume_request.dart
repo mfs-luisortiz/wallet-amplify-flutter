@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_volume_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -188,54 +189,48 @@ class ModifyVolumeRequestEc2QuerySerializer
     final result = ModifyVolumeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'VolumeId':
           result.volumeId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Size':
           result.size = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'VolumeType':
-          if (value != null) {
-            result.volumeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VolumeType),
-            ) as _i3.VolumeType);
-          }
-          break;
+          result.volumeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VolumeType),
+          ) as _i3.VolumeType);
         case 'Iops':
           result.iops = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'Throughput':
           result.throughput = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'MultiAttachEnabled':
           result.multiAttachEnabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -245,60 +240,68 @@ class ModifyVolumeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVolumeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVolumeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVolumeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVolumeRequest(
+      :dryRun,
+      :volumeId,
+      :size,
+      :volumeType,
+      :iops,
+      :throughput,
+      :multiAttachEnabled
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VolumeId'))
       ..add(serializers.serialize(
-        payload.volumeId,
+        volumeId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Size'))
       ..add(serializers.serialize(
-        payload.size,
+        size,
         specifiedType: const FullType(int),
       ));
-    if (payload.volumeType != null) {
-      result
+    if (volumeType != null) {
+      result$
         ..add(const _i1.XmlElementName('VolumeType'))
         ..add(serializers.serialize(
-          payload.volumeType!,
+          volumeType,
           specifiedType: const FullType.nullable(_i3.VolumeType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Iops'))
       ..add(serializers.serialize(
-        payload.iops,
+        iops,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Throughput'))
       ..add(serializers.serialize(
-        payload.throughput,
+        throughput,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MultiAttachEnabled'))
       ..add(serializers.serialize(
-        payload.multiAttachEnabled,
+        multiAttachEnabled,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

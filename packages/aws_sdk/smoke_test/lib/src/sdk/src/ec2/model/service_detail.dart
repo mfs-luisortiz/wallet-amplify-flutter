@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.service_detail; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -243,168 +244,131 @@ class ServiceDetailEc2QuerySerializer
     final result = ServiceDetailBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'serviceName':
-          if (value != null) {
-            result.serviceName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.serviceName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'serviceId':
-          if (value != null) {
-            result.serviceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.serviceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'serviceType':
-          if (value != null) {
-            result.serviceType.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i2.ServiceTypeDetail)],
-              ),
-            ) as _i8.BuiltList<_i2.ServiceTypeDetail>));
-          }
-          break;
+          result.serviceType.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i2.ServiceTypeDetail)],
+            ),
+          ) as _i8.BuiltList<_i2.ServiceTypeDetail>));
         case 'availabilityZoneSet':
-          if (value != null) {
-            result.availabilityZones.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i8.BuiltList<String>));
-          }
-          break;
+          result.availabilityZones.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i8.BuiltList<String>));
         case 'owner':
-          if (value != null) {
-            result.owner = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.owner = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'baseEndpointDnsNameSet':
-          if (value != null) {
-            result.baseEndpointDnsNames
-                .replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i8.BuiltList<String>));
-          }
-          break;
+          result.baseEndpointDnsNames.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i8.BuiltList<String>));
         case 'privateDnsName':
-          if (value != null) {
-            result.privateDnsName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateDnsName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateDnsNameSet':
-          if (value != null) {
-            result.privateDnsNames.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i3.PrivateDnsDetails)],
-              ),
-            ) as _i8.BuiltList<_i3.PrivateDnsDetails>));
-          }
-          break;
+          result.privateDnsNames.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i3.PrivateDnsDetails)],
+            ),
+          ) as _i8.BuiltList<_i3.PrivateDnsDetails>));
         case 'vpcEndpointPolicySupported':
           result.vpcEndpointPolicySupported = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'acceptanceRequired':
           result.acceptanceRequired = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'managesVpcEndpoints':
           result.managesVpcEndpoints = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'payerResponsibility':
-          if (value != null) {
-            result.payerResponsibility = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.PayerResponsibility),
-            ) as _i4.PayerResponsibility);
-          }
-          break;
+          result.payerResponsibility = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.PayerResponsibility),
+          ) as _i4.PayerResponsibility);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i8.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i8.BuiltList<_i5.Tag>));
         case 'privateDnsNameVerificationState':
-          if (value != null) {
-            result.privateDnsNameVerificationState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.DnsNameState),
-            ) as _i6.DnsNameState);
-          }
-          break;
+          result.privateDnsNameVerificationState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.DnsNameState),
+          ) as _i6.DnsNameState);
         case 'supportedIpAddressTypeSet':
-          if (value != null) {
-            result.supportedIpAddressTypes
-                .replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i7.ServiceConnectivityType)],
-              ),
-            ) as _i8.BuiltList<_i7.ServiceConnectivityType>));
-          }
-          break;
+          result.supportedIpAddressTypes
+              .replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i7.ServiceConnectivityType)],
+            ),
+          ) as _i8.BuiltList<_i7.ServiceConnectivityType>));
       }
     }
 
@@ -414,172 +378,188 @@ class ServiceDetailEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ServiceDetail object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ServiceDetail);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i9.XmlElementName(
         'ServiceDetailResponse',
         _i9.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.serviceName != null) {
-      result
+    final ServiceDetail(
+      :serviceName,
+      :serviceId,
+      :serviceType,
+      :availabilityZones,
+      :owner,
+      :baseEndpointDnsNames,
+      :privateDnsName,
+      :privateDnsNames,
+      :vpcEndpointPolicySupported,
+      :acceptanceRequired,
+      :managesVpcEndpoints,
+      :payerResponsibility,
+      :tags,
+      :privateDnsNameVerificationState,
+      :supportedIpAddressTypes
+    ) = object;
+    if (serviceName != null) {
+      result$
         ..add(const _i9.XmlElementName('ServiceName'))
         ..add(serializers.serialize(
-          payload.serviceName!,
+          serviceName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.serviceId != null) {
-      result
+    if (serviceId != null) {
+      result$
         ..add(const _i9.XmlElementName('ServiceId'))
         ..add(serializers.serialize(
-          payload.serviceId!,
+          serviceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.serviceType != null) {
-      result
+    if (serviceType != null) {
+      result$
         ..add(const _i9.XmlElementName('ServiceType'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.serviceType!,
+          serviceType,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i2.ServiceTypeDetail)],
           ),
         ));
     }
-    if (payload.availabilityZones != null) {
-      result
+    if (availabilityZones != null) {
+      result$
         ..add(const _i9.XmlElementName('AvailabilityZoneSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.availabilityZones!,
+          availabilityZones,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.owner != null) {
-      result
+    if (owner != null) {
+      result$
         ..add(const _i9.XmlElementName('Owner'))
         ..add(serializers.serialize(
-          payload.owner!,
+          owner,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.baseEndpointDnsNames != null) {
-      result
+    if (baseEndpointDnsNames != null) {
+      result$
         ..add(const _i9.XmlElementName('BaseEndpointDnsNameSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.baseEndpointDnsNames!,
+          baseEndpointDnsNames,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.privateDnsName != null) {
-      result
+    if (privateDnsName != null) {
+      result$
         ..add(const _i9.XmlElementName('PrivateDnsName'))
         ..add(serializers.serialize(
-          payload.privateDnsName!,
+          privateDnsName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateDnsNames != null) {
-      result
+    if (privateDnsNames != null) {
+      result$
         ..add(const _i9.XmlElementName('PrivateDnsNameSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.privateDnsNames!,
+          privateDnsNames,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i3.PrivateDnsDetails)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i9.XmlElementName('VpcEndpointPolicySupported'))
       ..add(serializers.serialize(
-        payload.vpcEndpointPolicySupported,
+        vpcEndpointPolicySupported,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i9.XmlElementName('AcceptanceRequired'))
       ..add(serializers.serialize(
-        payload.acceptanceRequired,
+        acceptanceRequired,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i9.XmlElementName('ManagesVpcEndpoints'))
       ..add(serializers.serialize(
-        payload.managesVpcEndpoints,
+        managesVpcEndpoints,
         specifiedType: const FullType(bool),
       ));
-    if (payload.payerResponsibility != null) {
-      result
+    if (payerResponsibility != null) {
+      result$
         ..add(const _i9.XmlElementName('PayerResponsibility'))
         ..add(serializers.serialize(
-          payload.payerResponsibility!,
+          payerResponsibility,
           specifiedType: const FullType.nullable(_i4.PayerResponsibility),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i9.XmlElementName('TagSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    if (payload.privateDnsNameVerificationState != null) {
-      result
+    if (privateDnsNameVerificationState != null) {
+      result$
         ..add(const _i9.XmlElementName('PrivateDnsNameVerificationState'))
         ..add(serializers.serialize(
-          payload.privateDnsNameVerificationState!,
+          privateDnsNameVerificationState,
           specifiedType: const FullType.nullable(_i6.DnsNameState),
         ));
     }
-    if (payload.supportedIpAddressTypes != null) {
-      result
+    if (supportedIpAddressTypes != null) {
+      result$
         ..add(const _i9.XmlElementName('SupportedIpAddressTypeSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedIpAddressTypes!,
+          supportedIpAddressTypes,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i7.ServiceConnectivityType)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_event_window; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -146,81 +147,63 @@ class InstanceEventWindowEc2QuerySerializer
     final result = InstanceEventWindowBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceEventWindowId':
-          if (value != null) {
-            result.instanceEventWindowId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceEventWindowId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'timeRangeSet':
-          if (value != null) {
-            result.timeRanges.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i2.InstanceEventWindowTimeRange)],
-              ),
-            ) as _i6.BuiltList<_i2.InstanceEventWindowTimeRange>));
-          }
-          break;
+          result.timeRanges.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i2.InstanceEventWindowTimeRange)],
+            ),
+          ) as _i6.BuiltList<_i2.InstanceEventWindowTimeRange>));
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'cronExpression':
-          if (value != null) {
-            result.cronExpression = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cronExpression = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'associationTarget':
-          if (value != null) {
-            result.associationTarget.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.InstanceEventWindowAssociationTarget),
-            ) as _i3.InstanceEventWindowAssociationTarget));
-          }
-          break;
+          result.associationTarget.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.InstanceEventWindowAssociationTarget),
+          ) as _i3.InstanceEventWindowAssociationTarget));
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceEventWindowState),
-            ) as _i4.InstanceEventWindowState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceEventWindowState),
+          ) as _i4.InstanceEventWindowState);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
       }
     }
 
@@ -230,87 +213,95 @@ class InstanceEventWindowEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceEventWindow object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceEventWindow);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'InstanceEventWindowResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceEventWindowId != null) {
-      result
+    final InstanceEventWindow(
+      :instanceEventWindowId,
+      :timeRanges,
+      :name,
+      :cronExpression,
+      :associationTarget,
+      :state,
+      :tags
+    ) = object;
+    if (instanceEventWindowId != null) {
+      result$
         ..add(const _i7.XmlElementName('InstanceEventWindowId'))
         ..add(serializers.serialize(
-          payload.instanceEventWindowId!,
+          instanceEventWindowId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.timeRanges != null) {
-      result
+    if (timeRanges != null) {
+      result$
         ..add(const _i7.XmlElementName('TimeRangeSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.timeRanges!,
+          timeRanges,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i2.InstanceEventWindowTimeRange)],
           ),
         ));
     }
-    if (payload.name != null) {
-      result
+    if (name != null) {
+      result$
         ..add(const _i7.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.cronExpression != null) {
-      result
+    if (cronExpression != null) {
+      result$
         ..add(const _i7.XmlElementName('CronExpression'))
         ..add(serializers.serialize(
-          payload.cronExpression!,
+          cronExpression,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.associationTarget != null) {
-      result
+    if (associationTarget != null) {
+      result$
         ..add(const _i7.XmlElementName('AssociationTarget'))
         ..add(serializers.serialize(
-          payload.associationTarget!,
+          associationTarget,
           specifiedType:
               const FullType(_i3.InstanceEventWindowAssociationTarget),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i7.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i4.InstanceEventWindowState),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_transit_gateway_multicast_domain_associations_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -106,34 +107,31 @@ class GetTransitGatewayMulticastDomainAssociationsResultEc2QuerySerializer
     final result = GetTransitGatewayMulticastDomainAssociationsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'multicastDomainAssociations':
-          if (value != null) {
-            result.multicastDomainAssociations
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.TransitGatewayMulticastDomainAssociation)],
-              ),
-            ) as _i3.BuiltList<_i2.TransitGatewayMulticastDomainAssociation>));
-          }
-          break;
+          result.multicastDomainAssociations
+              .replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.TransitGatewayMulticastDomainAssociation)],
+            ),
+          ) as _i3.BuiltList<_i2.TransitGatewayMulticastDomainAssociation>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -143,40 +141,42 @@ class GetTransitGatewayMulticastDomainAssociationsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetTransitGatewayMulticastDomainAssociationsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as GetTransitGatewayMulticastDomainAssociationsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'GetTransitGatewayMulticastDomainAssociationsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.multicastDomainAssociations != null) {
-      result
+    final GetTransitGatewayMulticastDomainAssociationsResult(
+      :multicastDomainAssociations,
+      :nextToken
+    ) = object;
+    if (multicastDomainAssociations != null) {
+      result$
         ..add(const _i4.XmlElementName('MulticastDomainAssociations'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.multicastDomainAssociations!,
+          multicastDomainAssociations,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.TransitGatewayMulticastDomainAssociation)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_network_interface_permission_result;
+part of 'delete_network_interface_permission_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

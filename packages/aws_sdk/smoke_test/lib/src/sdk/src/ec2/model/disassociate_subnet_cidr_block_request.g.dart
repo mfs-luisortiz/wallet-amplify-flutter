@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disassociate_subnet_cidr_block_request;
+part of 'disassociate_subnet_cidr_block_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

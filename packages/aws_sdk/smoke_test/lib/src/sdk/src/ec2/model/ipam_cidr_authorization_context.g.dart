@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ipam_cidr_authorization_context;
+part of 'ipam_cidr_authorization_context.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

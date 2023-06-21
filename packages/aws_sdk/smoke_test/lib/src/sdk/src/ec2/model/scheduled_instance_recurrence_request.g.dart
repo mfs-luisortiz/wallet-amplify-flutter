@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.scheduled_instance_recurrence_request;
+part of 'scheduled_instance_recurrence_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

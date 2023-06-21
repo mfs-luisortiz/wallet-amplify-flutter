@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_instance_export_task_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class CreateInstanceExportTaskResultEc2QuerySerializer
     final result = CreateInstanceExportTaskResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'exportTask':
-          if (value != null) {
-            result.exportTask.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ExportTask),
-            ) as _i2.ExportTask));
-          }
-          break;
+          result.exportTask.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ExportTask),
+          ) as _i2.ExportTask));
       }
     }
 
@@ -103,24 +104,24 @@ class CreateInstanceExportTaskResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateInstanceExportTaskResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateInstanceExportTaskResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateInstanceExportTaskResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.exportTask != null) {
-      result
+    final CreateInstanceExportTaskResult(:exportTask) = object;
+    if (exportTask != null) {
+      result$
         ..add(const _i3.XmlElementName('ExportTask'))
         ..add(serializers.serialize(
-          payload.exportTask!,
+          exportTask,
           specifiedType: const FullType(_i2.ExportTask),
         ));
     }
-    return result;
+    return result$;
   }
 }

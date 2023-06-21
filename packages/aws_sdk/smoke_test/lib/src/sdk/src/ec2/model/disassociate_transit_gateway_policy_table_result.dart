@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disassociate_transit_gateway_policy_table_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,19 @@ class DisassociateTransitGatewayPolicyTableResultEc2QuerySerializer extends _i3
     final result = DisassociateTransitGatewayPolicyTableResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'association':
-          if (value != null) {
-            result.association.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayPolicyTableAssociation),
-            ) as _i2.TransitGatewayPolicyTableAssociation));
-          }
-          break;
+          result.association.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayPolicyTableAssociation),
+          ) as _i2.TransitGatewayPolicyTableAssociation));
       }
     }
 
@@ -107,25 +108,25 @@ class DisassociateTransitGatewayPolicyTableResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DisassociateTransitGatewayPolicyTableResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DisassociateTransitGatewayPolicyTableResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DisassociateTransitGatewayPolicyTableResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.association != null) {
-      result
+    final DisassociateTransitGatewayPolicyTableResult(:association) = object;
+    if (association != null) {
+      result$
         ..add(const _i3.XmlElementName('Association'))
         ..add(serializers.serialize(
-          payload.association!,
+          association,
           specifiedType:
               const FullType(_i2.TransitGatewayPolicyTableAssociation),
         ));
     }
-    return result;
+    return result$;
   }
 }

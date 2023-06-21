@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_launch_template_versions_response_error_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,40 +120,33 @@ class DeleteLaunchTemplateVersionsResponseErrorItemEc2QuerySerializer
     final result = DeleteLaunchTemplateVersionsResponseErrorItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplateId':
-          if (value != null) {
-            result.launchTemplateId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.launchTemplateId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'launchTemplateName':
-          if (value != null) {
-            result.launchTemplateName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.launchTemplateName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'versionNumber':
           result.versionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'responseError':
-          if (value != null) {
-            result.responseError.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ResponseError),
-            ) as _i3.ResponseError));
-          }
-          break;
+          result.responseError.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ResponseError),
+          ) as _i3.ResponseError));
       }
     }
 
@@ -162,46 +156,51 @@ class DeleteLaunchTemplateVersionsResponseErrorItemEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteLaunchTemplateVersionsResponseErrorItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteLaunchTemplateVersionsResponseErrorItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DeleteLaunchTemplateVersionsResponseErrorItemResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateId != null) {
-      result
+    final DeleteLaunchTemplateVersionsResponseErrorItem(
+      :launchTemplateId,
+      :launchTemplateName,
+      :versionNumber,
+      :responseError
+    ) = object;
+    if (launchTemplateId != null) {
+      result$
         ..add(const _i4.XmlElementName('LaunchTemplateId'))
         ..add(serializers.serialize(
-          payload.launchTemplateId!,
+          launchTemplateId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.launchTemplateName != null) {
-      result
+    if (launchTemplateName != null) {
+      result$
         ..add(const _i4.XmlElementName('LaunchTemplateName'))
         ..add(serializers.serialize(
-          payload.launchTemplateName!,
+          launchTemplateName,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('VersionNumber'))
       ..add(serializers.serialize(
-        payload.versionNumber,
+        versionNumber,
         specifiedType: const FullType(_i2.Int64),
       ));
-    if (payload.responseError != null) {
-      result
+    if (responseError != null) {
+      result$
         ..add(const _i4.XmlElementName('ResponseError'))
         ..add(serializers.serialize(
-          payload.responseError!,
+          responseError,
           specifiedType: const FullType(_i3.ResponseError),
         ));
     }
-    return result;
+    return result$;
   }
 }

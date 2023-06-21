@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_managed_prefix_list_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class ModifyManagedPrefixListResultEc2QuerySerializer
     final result = ModifyManagedPrefixListResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'prefixList':
-          if (value != null) {
-            result.prefixList.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ManagedPrefixList),
-            ) as _i2.ManagedPrefixList));
-          }
-          break;
+          result.prefixList.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ManagedPrefixList),
+          ) as _i2.ManagedPrefixList));
       }
     }
 
@@ -103,24 +104,24 @@ class ModifyManagedPrefixListResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyManagedPrefixListResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyManagedPrefixListResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ModifyManagedPrefixListResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.prefixList != null) {
-      result
+    final ModifyManagedPrefixListResult(:prefixList) = object;
+    if (prefixList != null) {
+      result$
         ..add(const _i3.XmlElementName('PrefixList'))
         ..add(serializers.serialize(
-          payload.prefixList!,
+          prefixList,
           specifiedType: const FullType(_i2.ManagedPrefixList),
         ));
     }
-    return result;
+    return result$;
   }
 }

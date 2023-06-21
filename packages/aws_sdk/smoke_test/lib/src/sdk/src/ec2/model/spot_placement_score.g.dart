@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.spot_placement_score;
+part of 'spot_placement_score.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_placement_group_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -79,18 +80,18 @@ class CreatePlacementGroupResultEc2QuerySerializer
     final result = CreatePlacementGroupResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'placementGroup':
-          if (value != null) {
-            result.placementGroup.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PlacementGroup),
-            ) as _i2.PlacementGroup));
-          }
-          break;
+          result.placementGroup.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PlacementGroup),
+          ) as _i2.PlacementGroup));
       }
     }
 
@@ -100,24 +101,24 @@ class CreatePlacementGroupResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreatePlacementGroupResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreatePlacementGroupResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreatePlacementGroupResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.placementGroup != null) {
-      result
+    final CreatePlacementGroupResult(:placementGroup) = object;
+    if (placementGroup != null) {
+      result$
         ..add(const _i3.XmlElementName('PlacementGroup'))
         ..add(serializers.serialize(
-          payload.placementGroup!,
+          placementGroup,
           specifiedType: const FullType(_i2.PlacementGroup),
         ));
     }
-    return result;
+    return result$;
   }
 }

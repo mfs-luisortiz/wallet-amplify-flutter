@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_ebs_default_kms_key_id_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,18 +82,18 @@ class ModifyEbsDefaultKmsKeyIdResultEc2QuerySerializer
     final result = ModifyEbsDefaultKmsKeyIdResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'kmsKeyId':
-          if (value != null) {
-            result.kmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -102,24 +103,24 @@ class ModifyEbsDefaultKmsKeyIdResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyEbsDefaultKmsKeyIdResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyEbsDefaultKmsKeyIdResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ModifyEbsDefaultKmsKeyIdResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.kmsKeyId != null) {
-      result
+    final ModifyEbsDefaultKmsKeyIdResult(:kmsKeyId) = object;
+    if (kmsKeyId != null) {
+      result$
         ..add(const _i2.XmlElementName('KmsKeyId'))
         ..add(serializers.serialize(
-          payload.kmsKeyId!,
+          kmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

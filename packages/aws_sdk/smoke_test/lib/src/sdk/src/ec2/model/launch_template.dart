@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -145,69 +146,55 @@ class LaunchTemplateEc2QuerySerializer
     final result = LaunchTemplateBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplateId':
-          if (value != null) {
-            result.launchTemplateId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.launchTemplateId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'launchTemplateName':
-          if (value != null) {
-            result.launchTemplateName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.launchTemplateName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'createTime':
-          if (value != null) {
-            result.createTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'createdBy':
-          if (value != null) {
-            result.createdBy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.createdBy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'defaultVersionNumber':
           result.defaultVersionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'latestVersionNumber':
           result.latestVersionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -217,75 +204,83 @@ class LaunchTemplateEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplate object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplate);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'LaunchTemplateResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateId != null) {
-      result
+    final LaunchTemplate(
+      :launchTemplateId,
+      :launchTemplateName,
+      :createTime,
+      :createdBy,
+      :defaultVersionNumber,
+      :latestVersionNumber,
+      :tags
+    ) = object;
+    if (launchTemplateId != null) {
+      result$
         ..add(const _i5.XmlElementName('LaunchTemplateId'))
         ..add(serializers.serialize(
-          payload.launchTemplateId!,
+          launchTemplateId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.launchTemplateName != null) {
-      result
+    if (launchTemplateName != null) {
+      result$
         ..add(const _i5.XmlElementName('LaunchTemplateName'))
         ..add(serializers.serialize(
-          payload.launchTemplateName!,
+          launchTemplateName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.createTime != null) {
-      result
+    if (createTime != null) {
+      result$
         ..add(const _i5.XmlElementName('CreateTime'))
         ..add(serializers.serialize(
-          payload.createTime!,
+          createTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.createdBy != null) {
-      result
+    if (createdBy != null) {
+      result$
         ..add(const _i5.XmlElementName('CreatedBy'))
         ..add(serializers.serialize(
-          payload.createdBy!,
+          createdBy,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('DefaultVersionNumber'))
       ..add(serializers.serialize(
-        payload.defaultVersionNumber,
+        defaultVersionNumber,
         specifiedType: const FullType(_i2.Int64),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('LatestVersionNumber'))
       ..add(serializers.serialize(
-        payload.latestVersionNumber,
+        latestVersionNumber,
         specifiedType: const FullType(_i2.Int64),
       ));
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

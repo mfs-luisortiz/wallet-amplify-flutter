@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_addresses_result;
+part of 'describe_addresses_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

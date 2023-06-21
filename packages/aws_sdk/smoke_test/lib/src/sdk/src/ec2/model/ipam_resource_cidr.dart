@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipam_resource_cidr; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -233,137 +234,95 @@ class IpamResourceCidrEc2QuerySerializer
     final result = IpamResourceCidrBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipamId':
-          if (value != null) {
-            result.ipamId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeId':
-          if (value != null) {
-            result.ipamScopeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamScopeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamPoolId':
-          if (value != null) {
-            result.ipamPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceRegion':
-          if (value != null) {
-            result.resourceRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceOwnerId':
-          if (value != null) {
-            result.resourceOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceId':
-          if (value != null) {
-            result.resourceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceName':
-          if (value != null) {
-            result.resourceName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceCidr':
-          if (value != null) {
-            result.resourceCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamResourceType),
-            ) as _i2.IpamResourceType);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamResourceType),
+          ) as _i2.IpamResourceType);
         case 'resourceTagSet':
-          if (value != null) {
-            result.resourceTags.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i3.IpamResourceTag)],
-              ),
-            ) as _i7.BuiltList<_i3.IpamResourceTag>));
-          }
-          break;
+          result.resourceTags.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i3.IpamResourceTag)],
+            ),
+          ) as _i7.BuiltList<_i3.IpamResourceTag>));
         case 'ipUsage':
-          if (value != null) {
-            result.ipUsage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.ipUsage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
         case 'complianceStatus':
-          if (value != null) {
-            result.complianceStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.IpamComplianceStatus),
-            ) as _i4.IpamComplianceStatus);
-          }
-          break;
+          result.complianceStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.IpamComplianceStatus),
+          ) as _i4.IpamComplianceStatus);
         case 'managementState':
-          if (value != null) {
-            result.managementState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.IpamManagementState),
-            ) as _i5.IpamManagementState);
-          }
-          break;
+          result.managementState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.IpamManagementState),
+          ) as _i5.IpamManagementState);
         case 'overlapStatus':
-          if (value != null) {
-            result.overlapStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.IpamOverlapStatus),
-            ) as _i6.IpamOverlapStatus);
-          }
-          break;
+          result.overlapStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.IpamOverlapStatus),
+          ) as _i6.IpamOverlapStatus);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -373,143 +332,159 @@ class IpamResourceCidrEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpamResourceCidr object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpamResourceCidr);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'IpamResourceCidrResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipamId != null) {
-      result
+    final IpamResourceCidr(
+      :ipamId,
+      :ipamScopeId,
+      :ipamPoolId,
+      :resourceRegion,
+      :resourceOwnerId,
+      :resourceId,
+      :resourceName,
+      :resourceCidr,
+      :resourceType,
+      :resourceTags,
+      :ipUsage,
+      :complianceStatus,
+      :managementState,
+      :overlapStatus,
+      :vpcId
+    ) = object;
+    if (ipamId != null) {
+      result$
         ..add(const _i8.XmlElementName('IpamId'))
         ..add(serializers.serialize(
-          payload.ipamId!,
+          ipamId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeId != null) {
-      result
+    if (ipamScopeId != null) {
+      result$
         ..add(const _i8.XmlElementName('IpamScopeId'))
         ..add(serializers.serialize(
-          payload.ipamScopeId!,
+          ipamScopeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamPoolId != null) {
-      result
+    if (ipamPoolId != null) {
+      result$
         ..add(const _i8.XmlElementName('IpamPoolId'))
         ..add(serializers.serialize(
-          payload.ipamPoolId!,
+          ipamPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceRegion != null) {
-      result
+    if (resourceRegion != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceRegion'))
         ..add(serializers.serialize(
-          payload.resourceRegion!,
+          resourceRegion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceOwnerId != null) {
-      result
+    if (resourceOwnerId != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceOwnerId'))
         ..add(serializers.serialize(
-          payload.resourceOwnerId!,
+          resourceOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceId != null) {
-      result
+    if (resourceId != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceId'))
         ..add(serializers.serialize(
-          payload.resourceId!,
+          resourceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceName != null) {
-      result
+    if (resourceName != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceName'))
         ..add(serializers.serialize(
-          payload.resourceName!,
+          resourceName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceCidr != null) {
-      result
+    if (resourceCidr != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceCidr'))
         ..add(serializers.serialize(
-          payload.resourceCidr!,
+          resourceCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType: const FullType.nullable(_i2.IpamResourceType),
         ));
     }
-    if (payload.resourceTags != null) {
-      result
+    if (resourceTags != null) {
+      result$
         ..add(const _i8.XmlElementName('ResourceTagSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.resourceTags!,
+          resourceTags,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i3.IpamResourceTag)],
           ),
         ));
     }
-    if (payload.ipUsage != null) {
-      result
+    if (ipUsage != null) {
+      result$
         ..add(const _i8.XmlElementName('IpUsage'))
         ..add(serializers.serialize(
-          payload.ipUsage!,
+          ipUsage,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    if (payload.complianceStatus != null) {
-      result
+    if (complianceStatus != null) {
+      result$
         ..add(const _i8.XmlElementName('ComplianceStatus'))
         ..add(serializers.serialize(
-          payload.complianceStatus!,
+          complianceStatus,
           specifiedType: const FullType.nullable(_i4.IpamComplianceStatus),
         ));
     }
-    if (payload.managementState != null) {
-      result
+    if (managementState != null) {
+      result$
         ..add(const _i8.XmlElementName('ManagementState'))
         ..add(serializers.serialize(
-          payload.managementState!,
+          managementState,
           specifiedType: const FullType.nullable(_i5.IpamManagementState),
         ));
     }
-    if (payload.overlapStatus != null) {
-      result
+    if (overlapStatus != null) {
+      result$
         ..add(const _i8.XmlElementName('OverlapStatus'))
         ..add(serializers.serialize(
-          payload.overlapStatus!,
+          overlapStatus,
           specifiedType: const FullType.nullable(_i6.IpamOverlapStatus),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i8.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

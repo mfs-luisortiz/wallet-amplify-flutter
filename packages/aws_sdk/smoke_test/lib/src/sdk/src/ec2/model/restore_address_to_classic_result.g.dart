@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.restore_address_to_classic_result;
+part of 'restore_address_to_classic_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

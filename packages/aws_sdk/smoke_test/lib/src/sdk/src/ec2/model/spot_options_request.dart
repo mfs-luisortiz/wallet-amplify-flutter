@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -185,68 +186,54 @@ class SpotOptionsRequestEc2QuerySerializer
     final result = SpotOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AllocationStrategy':
-          if (value != null) {
-            result.allocationStrategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SpotAllocationStrategy),
-            ) as _i2.SpotAllocationStrategy);
-          }
-          break;
+          result.allocationStrategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SpotAllocationStrategy),
+          ) as _i2.SpotAllocationStrategy);
         case 'MaintenanceStrategies':
-          if (value != null) {
-            result.maintenanceStrategies.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.FleetSpotMaintenanceStrategiesRequest),
-            ) as _i3.FleetSpotMaintenanceStrategiesRequest));
-          }
-          break;
+          result.maintenanceStrategies.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.FleetSpotMaintenanceStrategiesRequest),
+          ) as _i3.FleetSpotMaintenanceStrategiesRequest));
         case 'InstanceInterruptionBehavior':
-          if (value != null) {
-            result.instanceInterruptionBehavior = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.SpotInstanceInterruptionBehavior),
-            ) as _i4.SpotInstanceInterruptionBehavior);
-          }
-          break;
+          result.instanceInterruptionBehavior = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.SpotInstanceInterruptionBehavior),
+          ) as _i4.SpotInstanceInterruptionBehavior);
         case 'InstancePoolsToUseCount':
           result.instancePoolsToUseCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'SingleInstanceType':
           result.singleInstanceType = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'SingleAvailabilityZone':
           result.singleAvailabilityZone = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'MinTargetCapacity':
           result.minTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'MaxTotalPrice':
-          if (value != null) {
-            result.maxTotalPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.maxTotalPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -256,74 +243,83 @@ class SpotOptionsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'SpotOptionsRequestResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationStrategy != null) {
-      result
+    final SpotOptionsRequest(
+      :allocationStrategy,
+      :maintenanceStrategies,
+      :instanceInterruptionBehavior,
+      :instancePoolsToUseCount,
+      :singleInstanceType,
+      :singleAvailabilityZone,
+      :minTargetCapacity,
+      :maxTotalPrice
+    ) = object;
+    if (allocationStrategy != null) {
+      result$
         ..add(const _i5.XmlElementName('AllocationStrategy'))
         ..add(serializers.serialize(
-          payload.allocationStrategy!,
+          allocationStrategy,
           specifiedType: const FullType.nullable(_i2.SpotAllocationStrategy),
         ));
     }
-    if (payload.maintenanceStrategies != null) {
-      result
+    if (maintenanceStrategies != null) {
+      result$
         ..add(const _i5.XmlElementName('MaintenanceStrategies'))
         ..add(serializers.serialize(
-          payload.maintenanceStrategies!,
+          maintenanceStrategies,
           specifiedType:
               const FullType(_i3.FleetSpotMaintenanceStrategiesRequest),
         ));
     }
-    if (payload.instanceInterruptionBehavior != null) {
-      result
+    if (instanceInterruptionBehavior != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceInterruptionBehavior'))
         ..add(serializers.serialize(
-          payload.instanceInterruptionBehavior!,
+          instanceInterruptionBehavior,
           specifiedType:
               const FullType.nullable(_i4.SpotInstanceInterruptionBehavior),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('InstancePoolsToUseCount'))
       ..add(serializers.serialize(
-        payload.instancePoolsToUseCount,
+        instancePoolsToUseCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('SingleInstanceType'))
       ..add(serializers.serialize(
-        payload.singleInstanceType,
+        singleInstanceType,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('SingleAvailabilityZone'))
       ..add(serializers.serialize(
-        payload.singleAvailabilityZone,
+        singleAvailabilityZone,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('MinTargetCapacity'))
       ..add(serializers.serialize(
-        payload.minTargetCapacity,
+        minTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.maxTotalPrice != null) {
-      result
+    if (maxTotalPrice != null) {
+      result$
         ..add(const _i5.XmlElementName('MaxTotalPrice'))
         ..add(serializers.serialize(
-          payload.maxTotalPrice!,
+          maxTotalPrice,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

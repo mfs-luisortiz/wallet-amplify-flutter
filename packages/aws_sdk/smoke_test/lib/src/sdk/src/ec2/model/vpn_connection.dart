@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpn_connection; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -227,151 +228,109 @@ class VpnConnectionEc2QuerySerializer
     final result = VpnConnectionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'customerGatewayConfiguration':
-          if (value != null) {
-            result.customerGatewayConfiguration = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerGatewayConfiguration = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'customerGatewayId':
-          if (value != null) {
-            result.customerGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'category':
-          if (value != null) {
-            result.category = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.category = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpnState),
-            ) as _i2.VpnState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpnState),
+          ) as _i2.VpnState);
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.GatewayType),
-            ) as _i3.GatewayType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.GatewayType),
+          ) as _i3.GatewayType);
         case 'vpnConnectionId':
-          if (value != null) {
-            result.vpnConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpnConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpnGatewayId':
-          if (value != null) {
-            result.vpnGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpnGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayId':
-          if (value != null) {
-            result.transitGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'coreNetworkArn':
-          if (value != null) {
-            result.coreNetworkArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.coreNetworkArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'coreNetworkAttachmentArn':
-          if (value != null) {
-            result.coreNetworkAttachmentArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.coreNetworkAttachmentArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'gatewayAssociationState':
-          if (value != null) {
-            result.gatewayAssociationState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.GatewayAssociationState),
-            ) as _i4.GatewayAssociationState);
-          }
-          break;
+          result.gatewayAssociationState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.GatewayAssociationState),
+          ) as _i4.GatewayAssociationState);
         case 'options':
-          if (value != null) {
-            result.options.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.VpnConnectionOptions),
-            ) as _i5.VpnConnectionOptions));
-          }
-          break;
+          result.options.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.VpnConnectionOptions),
+          ) as _i5.VpnConnectionOptions));
         case 'routes':
-          if (value != null) {
-            result.routes.replace((const _i10.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i10.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i9.BuiltList,
-                [FullType(_i6.VpnStaticRoute)],
-              ),
-            ) as _i9.BuiltList<_i6.VpnStaticRoute>));
-          }
-          break;
+          result.routes.replace((const _i10.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i10.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i9.BuiltList,
+              [FullType(_i6.VpnStaticRoute)],
+            ),
+          ) as _i9.BuiltList<_i6.VpnStaticRoute>));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i10.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i10.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i9.BuiltList,
-                [FullType(_i7.Tag)],
-              ),
-            ) as _i9.BuiltList<_i7.Tag>));
-          }
-          break;
+          result.tags.replace((const _i10.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i10.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i9.BuiltList,
+              [FullType(_i7.Tag)],
+            ),
+          ) as _i9.BuiltList<_i7.Tag>));
         case 'vgwTelemetry':
-          if (value != null) {
-            result.vgwTelemetry.replace((const _i10.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i10.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i9.BuiltList,
-                [FullType(_i8.VgwTelemetry)],
-              ),
-            ) as _i9.BuiltList<_i8.VgwTelemetry>));
-          }
-          break;
+          result.vgwTelemetry.replace((const _i10.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i10.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i9.BuiltList,
+              [FullType(_i8.VgwTelemetry)],
+            ),
+          ) as _i9.BuiltList<_i8.VgwTelemetry>));
       }
     }
 
@@ -381,157 +340,173 @@ class VpnConnectionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpnConnection object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpnConnection);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i10.XmlElementName(
         'VpnConnectionResponse',
         _i10.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.customerGatewayConfiguration != null) {
-      result
+    final VpnConnection(
+      :customerGatewayConfiguration,
+      :customerGatewayId,
+      :category,
+      :state,
+      :type,
+      :vpnConnectionId,
+      :vpnGatewayId,
+      :transitGatewayId,
+      :coreNetworkArn,
+      :coreNetworkAttachmentArn,
+      :gatewayAssociationState,
+      :options,
+      :routes,
+      :tags,
+      :vgwTelemetry
+    ) = object;
+    if (customerGatewayConfiguration != null) {
+      result$
         ..add(const _i10.XmlElementName('CustomerGatewayConfiguration'))
         ..add(serializers.serialize(
-          payload.customerGatewayConfiguration!,
+          customerGatewayConfiguration,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.customerGatewayId != null) {
-      result
+    if (customerGatewayId != null) {
+      result$
         ..add(const _i10.XmlElementName('CustomerGatewayId'))
         ..add(serializers.serialize(
-          payload.customerGatewayId!,
+          customerGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.category != null) {
-      result
+    if (category != null) {
+      result$
         ..add(const _i10.XmlElementName('Category'))
         ..add(serializers.serialize(
-          payload.category!,
+          category,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i10.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.VpnState),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i10.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i3.GatewayType),
         ));
     }
-    if (payload.vpnConnectionId != null) {
-      result
+    if (vpnConnectionId != null) {
+      result$
         ..add(const _i10.XmlElementName('VpnConnectionId'))
         ..add(serializers.serialize(
-          payload.vpnConnectionId!,
+          vpnConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpnGatewayId != null) {
-      result
+    if (vpnGatewayId != null) {
+      result$
         ..add(const _i10.XmlElementName('VpnGatewayId'))
         ..add(serializers.serialize(
-          payload.vpnGatewayId!,
+          vpnGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayId != null) {
-      result
+    if (transitGatewayId != null) {
+      result$
         ..add(const _i10.XmlElementName('TransitGatewayId'))
         ..add(serializers.serialize(
-          payload.transitGatewayId!,
+          transitGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.coreNetworkArn != null) {
-      result
+    if (coreNetworkArn != null) {
+      result$
         ..add(const _i10.XmlElementName('CoreNetworkArn'))
         ..add(serializers.serialize(
-          payload.coreNetworkArn!,
+          coreNetworkArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.coreNetworkAttachmentArn != null) {
-      result
+    if (coreNetworkAttachmentArn != null) {
+      result$
         ..add(const _i10.XmlElementName('CoreNetworkAttachmentArn'))
         ..add(serializers.serialize(
-          payload.coreNetworkAttachmentArn!,
+          coreNetworkAttachmentArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.gatewayAssociationState != null) {
-      result
+    if (gatewayAssociationState != null) {
+      result$
         ..add(const _i10.XmlElementName('GatewayAssociationState'))
         ..add(serializers.serialize(
-          payload.gatewayAssociationState!,
+          gatewayAssociationState,
           specifiedType: const FullType.nullable(_i4.GatewayAssociationState),
         ));
     }
-    if (payload.options != null) {
-      result
+    if (options != null) {
+      result$
         ..add(const _i10.XmlElementName('Options'))
         ..add(serializers.serialize(
-          payload.options!,
+          options,
           specifiedType: const FullType(_i5.VpnConnectionOptions),
         ));
     }
-    if (payload.routes != null) {
-      result
+    if (routes != null) {
+      result$
         ..add(const _i10.XmlElementName('Routes'))
         ..add(const _i10.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i10.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.routes!,
+          routes,
           specifiedType: const FullType.nullable(
             _i9.BuiltList,
             [FullType(_i6.VpnStaticRoute)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i10.XmlElementName('TagSet'))
         ..add(const _i10.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i10.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i9.BuiltList,
             [FullType(_i7.Tag)],
           ),
         ));
     }
-    if (payload.vgwTelemetry != null) {
-      result
+    if (vgwTelemetry != null) {
+      result$
         ..add(const _i10.XmlElementName('VgwTelemetry'))
         ..add(const _i10.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i10.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.vgwTelemetry!,
+          vgwTelemetry,
           specifiedType: const FullType.nullable(
             _i9.BuiltList,
             [FullType(_i8.VgwTelemetry)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

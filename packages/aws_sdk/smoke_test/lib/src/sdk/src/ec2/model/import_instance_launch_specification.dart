@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_instance_launch_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -193,110 +194,82 @@ class ImportInstanceLaunchSpecificationEc2QuerySerializer
     final result = ImportInstanceLaunchSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'additionalInfo':
-          if (value != null) {
-            result.additionalInfo = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.additionalInfo = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'architecture':
-          if (value != null) {
-            result.architecture = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ArchitectureValues),
-            ) as _i2.ArchitectureValues);
-          }
-          break;
+          result.architecture = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ArchitectureValues),
+          ) as _i2.ArchitectureValues);
         case 'GroupId':
-          if (value != null) {
-            result.groupIds.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'SecurityGroupId',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i7.BuiltList<String>));
-          }
-          break;
+          result.groupIds.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'SecurityGroupId',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i7.BuiltList<String>));
         case 'GroupName':
-          if (value != null) {
-            result.groupNames.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'SecurityGroup',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i7.BuiltList<String>));
-          }
-          break;
+          result.groupNames.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'SecurityGroup',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i7.BuiltList<String>));
         case 'instanceInitiatedShutdownBehavior':
-          if (value != null) {
-            result.instanceInitiatedShutdownBehavior = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ShutdownBehavior),
-            ) as _i3.ShutdownBehavior);
-          }
-          break;
+          result.instanceInitiatedShutdownBehavior = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ShutdownBehavior),
+          ) as _i3.ShutdownBehavior);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceType),
-            ) as _i4.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceType),
+          ) as _i4.InstanceType);
         case 'monitoring':
           result.monitoring = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'placement':
-          if (value != null) {
-            result.placement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.Placement),
-            ) as _i5.Placement));
-          }
-          break;
+          result.placement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.Placement),
+          ) as _i5.Placement));
         case 'privateIpAddress':
-          if (value != null) {
-            result.privateIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'userData':
-          if (value != null) {
-            result.userData.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.UserData),
-            ) as _i6.UserData));
-          }
-          break;
+          result.userData.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.UserData),
+          ) as _i6.UserData));
       }
     }
 
@@ -306,116 +279,128 @@ class ImportInstanceLaunchSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportInstanceLaunchSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportInstanceLaunchSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'ImportInstanceLaunchSpecificationResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.additionalInfo != null) {
-      result
+    final ImportInstanceLaunchSpecification(
+      :additionalInfo,
+      :architecture,
+      :groupIds,
+      :groupNames,
+      :instanceInitiatedShutdownBehavior,
+      :instanceType,
+      :monitoring,
+      :placement,
+      :privateIpAddress,
+      :subnetId,
+      :userData
+    ) = object;
+    if (additionalInfo != null) {
+      result$
         ..add(const _i8.XmlElementName('AdditionalInfo'))
         ..add(serializers.serialize(
-          payload.additionalInfo!,
+          additionalInfo,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.architecture != null) {
-      result
+    if (architecture != null) {
+      result$
         ..add(const _i8.XmlElementName('Architecture'))
         ..add(serializers.serialize(
-          payload.architecture!,
+          architecture,
           specifiedType: const FullType.nullable(_i2.ArchitectureValues),
         ));
     }
-    if (payload.groupIds != null) {
-      result
+    if (groupIds != null) {
+      result$
         ..add(const _i8.XmlElementName('GroupId'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'SecurityGroupId',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groupIds!,
+          groupIds,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.groupNames != null) {
-      result
+    if (groupNames != null) {
+      result$
         ..add(const _i8.XmlElementName('GroupName'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'SecurityGroup',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groupNames!,
+          groupNames,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.instanceInitiatedShutdownBehavior != null) {
-      result
+    if (instanceInitiatedShutdownBehavior != null) {
+      result$
         ..add(const _i8.XmlElementName('InstanceInitiatedShutdownBehavior'))
         ..add(serializers.serialize(
-          payload.instanceInitiatedShutdownBehavior!,
+          instanceInitiatedShutdownBehavior,
           specifiedType: const FullType.nullable(_i3.ShutdownBehavior),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i8.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i4.InstanceType),
         ));
     }
-    result
+    result$
       ..add(const _i8.XmlElementName('Monitoring'))
       ..add(serializers.serialize(
-        payload.monitoring,
+        monitoring,
         specifiedType: const FullType(bool),
       ));
-    if (payload.placement != null) {
-      result
+    if (placement != null) {
+      result$
         ..add(const _i8.XmlElementName('Placement'))
         ..add(serializers.serialize(
-          payload.placement!,
+          placement,
           specifiedType: const FullType(_i5.Placement),
         ));
     }
-    if (payload.privateIpAddress != null) {
-      result
+    if (privateIpAddress != null) {
+      result$
         ..add(const _i8.XmlElementName('PrivateIpAddress'))
         ..add(serializers.serialize(
-          payload.privateIpAddress!,
+          privateIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i8.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.userData != null) {
-      result
+    if (userData != null) {
+      result$
         ..add(const _i8.XmlElementName('UserData'))
         ..add(serializers.serialize(
-          payload.userData!,
+          userData,
           specifiedType: const FullType(_i6.UserData),
         ));
     }
-    return result;
+    return result$;
   }
 }

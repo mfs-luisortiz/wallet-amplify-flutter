@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.authorize_client_vpn_ingress_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -165,58 +166,48 @@ class AuthorizeClientVpnIngressRequestEc2QuerySerializer
     final result = AuthorizeClientVpnIngressRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientVpnEndpointId':
           result.clientVpnEndpointId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TargetNetworkCidr':
           result.targetNetworkCidr = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AccessGroupId':
-          if (value != null) {
-            result.accessGroupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.accessGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AuthorizeAllGroups':
           result.authorizeAllGroups = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -226,64 +217,72 @@ class AuthorizeClientVpnIngressRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AuthorizeClientVpnIngressRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AuthorizeClientVpnIngressRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'AuthorizeClientVpnIngressRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final AuthorizeClientVpnIngressRequest(
+      :clientVpnEndpointId,
+      :targetNetworkCidr,
+      :accessGroupId,
+      :authorizeAllGroups,
+      :description,
+      :clientToken,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ClientVpnEndpointId'))
       ..add(serializers.serialize(
-        payload.clientVpnEndpointId,
+        clientVpnEndpointId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TargetNetworkCidr'))
       ..add(serializers.serialize(
-        payload.targetNetworkCidr,
+        targetNetworkCidr,
         specifiedType: const FullType(String),
       ));
-    if (payload.accessGroupId != null) {
-      result
+    if (accessGroupId != null) {
+      result$
         ..add(const _i1.XmlElementName('AccessGroupId'))
         ..add(serializers.serialize(
-          payload.accessGroupId!,
+          accessGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('AuthorizeAllGroups'))
       ..add(serializers.serialize(
-        payload.authorizeAllGroups,
+        authorizeAllGroups,
         specifiedType: const FullType(bool),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

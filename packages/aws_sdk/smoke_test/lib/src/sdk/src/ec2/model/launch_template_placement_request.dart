@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_placement_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -157,72 +158,53 @@ class LaunchTemplatePlacementRequestEc2QuerySerializer
     final result = LaunchTemplatePlacementRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AvailabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Affinity':
-          if (value != null) {
-            result.affinity = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.affinity = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'GroupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'HostId':
-          if (value != null) {
-            result.hostId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hostId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Tenancy':
-          if (value != null) {
-            result.tenancy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Tenancy),
-            ) as _i2.Tenancy);
-          }
-          break;
+          result.tenancy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Tenancy),
+          ) as _i2.Tenancy);
         case 'SpreadDomain':
-          if (value != null) {
-            result.spreadDomain = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spreadDomain = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'HostResourceGroupArn':
-          if (value != null) {
-            result.hostResourceGroupArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hostResourceGroupArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'PartitionNumber':
           result.partitionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -232,78 +214,87 @@ class LaunchTemplatePlacementRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplatePlacementRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplatePlacementRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'LaunchTemplatePlacementRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final LaunchTemplatePlacementRequest(
+      :availabilityZone,
+      :affinity,
+      :groupName,
+      :hostId,
+      :tenancy,
+      :spreadDomain,
+      :hostResourceGroupArn,
+      :partitionNumber
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i3.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.affinity != null) {
-      result
+    if (affinity != null) {
+      result$
         ..add(const _i3.XmlElementName('Affinity'))
         ..add(serializers.serialize(
-          payload.affinity!,
+          affinity,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupName != null) {
-      result
+    if (groupName != null) {
+      result$
         ..add(const _i3.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.hostId != null) {
-      result
+    if (hostId != null) {
+      result$
         ..add(const _i3.XmlElementName('HostId'))
         ..add(serializers.serialize(
-          payload.hostId!,
+          hostId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tenancy != null) {
-      result
+    if (tenancy != null) {
+      result$
         ..add(const _i3.XmlElementName('Tenancy'))
         ..add(serializers.serialize(
-          payload.tenancy!,
+          tenancy,
           specifiedType: const FullType.nullable(_i2.Tenancy),
         ));
     }
-    if (payload.spreadDomain != null) {
-      result
+    if (spreadDomain != null) {
+      result$
         ..add(const _i3.XmlElementName('SpreadDomain'))
         ..add(serializers.serialize(
-          payload.spreadDomain!,
+          spreadDomain,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.hostResourceGroupArn != null) {
-      result
+    if (hostResourceGroupArn != null) {
+      result$
         ..add(const _i3.XmlElementName('HostResourceGroupArn'))
         ..add(serializers.serialize(
-          payload.hostResourceGroupArn!,
+          hostResourceGroupArn,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('PartitionNumber'))
       ..add(serializers.serialize(
-        payload.partitionNumber,
+        partitionNumber,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

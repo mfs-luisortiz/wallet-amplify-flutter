@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.apply_security_groups_to_client_vpn_target_network_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -126,22 +127,23 @@ class ApplySecurityGroupsToClientVpnTargetNetworkRequestEc2QuerySerializer
     final result = ApplySecurityGroupsToClientVpnTargetNetworkRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientVpnEndpointId':
           result.clientVpnEndpointId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'VpcId':
           result.vpcId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'SecurityGroupId':
           result.securityGroupIds.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -154,13 +156,11 @@ class ApplySecurityGroupsToClientVpnTargetNetworkRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i3.BuiltList<String>));
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -170,48 +170,52 @@ class ApplySecurityGroupsToClientVpnTargetNetworkRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ApplySecurityGroupsToClientVpnTargetNetworkRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as ApplySecurityGroupsToClientVpnTargetNetworkRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ApplySecurityGroupsToClientVpnTargetNetworkRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ApplySecurityGroupsToClientVpnTargetNetworkRequest(
+      :clientVpnEndpointId,
+      :vpcId,
+      :securityGroupIds,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ClientVpnEndpointId'))
       ..add(serializers.serialize(
-        payload.clientVpnEndpointId,
+        clientVpnEndpointId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VpcId'))
       ..add(serializers.serialize(
-        payload.vpcId,
+        vpcId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('SecurityGroupId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.securityGroupIds,
+        securityGroupIds,
         specifiedType: const FullType.nullable(
           _i3.BuiltList,
           [FullType(String)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

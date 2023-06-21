@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reservation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,64 +128,52 @@ class ReservationEc2QuerySerializer
     final result = ReservationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupSet':
-          if (value != null) {
-            result.groups.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.GroupIdentifier)],
-              ),
-            ) as _i4.BuiltList<_i2.GroupIdentifier>));
-          }
-          break;
+          result.groups.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.GroupIdentifier)],
+            ),
+          ) as _i4.BuiltList<_i2.GroupIdentifier>));
         case 'instancesSet':
-          if (value != null) {
-            result.instances.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Instance)],
-              ),
-            ) as _i4.BuiltList<_i3.Instance>));
-          }
-          break;
+          result.instances.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Instance)],
+            ),
+          ) as _i4.BuiltList<_i3.Instance>));
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'requesterId':
-          if (value != null) {
-            result.requesterId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.requesterId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'reservationId':
-          if (value != null) {
-            result.reservationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -194,70 +183,76 @@ class ReservationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Reservation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Reservation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ReservationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groups != null) {
-      result
+    final Reservation(
+      :groups,
+      :instances,
+      :ownerId,
+      :requesterId,
+      :reservationId
+    ) = object;
+    if (groups != null) {
+      result$
         ..add(const _i5.XmlElementName('GroupSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groups!,
+          groups,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.GroupIdentifier)],
           ),
         ));
     }
-    if (payload.instances != null) {
-      result
+    if (instances != null) {
+      result$
         ..add(const _i5.XmlElementName('InstancesSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instances!,
+          instances,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Instance)],
           ),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i5.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.requesterId != null) {
-      result
+    if (requesterId != null) {
+      result$
         ..add(const _i5.XmlElementName('RequesterId'))
         ..add(serializers.serialize(
-          payload.requesterId!,
+          requesterId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.reservationId != null) {
-      result
+    if (reservationId != null) {
+      result$
         ..add(const _i5.XmlElementName('ReservationId'))
         ..add(serializers.serialize(
-          payload.reservationId!,
+          reservationId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

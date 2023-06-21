@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.classic_load_balancers_config; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,26 +82,25 @@ class ClassicLoadBalancersConfigEc2QuerySerializer
     final result = ClassicLoadBalancersConfigBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'classicLoadBalancers':
-          if (value != null) {
-            result.classicLoadBalancers
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.ClassicLoadBalancer)],
-              ),
-            ) as _i3.BuiltList<_i2.ClassicLoadBalancer>));
-          }
-          break;
+          result.classicLoadBalancers.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.ClassicLoadBalancer)],
+            ),
+          ) as _i3.BuiltList<_i2.ClassicLoadBalancer>));
       }
     }
 
@@ -110,31 +110,31 @@ class ClassicLoadBalancersConfigEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClassicLoadBalancersConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClassicLoadBalancersConfig);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'ClassicLoadBalancersConfigResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.classicLoadBalancers != null) {
-      result
+    final ClassicLoadBalancersConfig(:classicLoadBalancers) = object;
+    if (classicLoadBalancers != null) {
+      result$
         ..add(const _i4.XmlElementName('ClassicLoadBalancers'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.classicLoadBalancers!,
+          classicLoadBalancers,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.ClassicLoadBalancer)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

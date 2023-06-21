@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.cancel_reserved_instances_listing_result;
+part of 'cancel_reserved_instances_listing_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

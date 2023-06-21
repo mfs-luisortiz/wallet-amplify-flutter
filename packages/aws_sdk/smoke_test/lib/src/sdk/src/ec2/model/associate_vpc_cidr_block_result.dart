@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_vpc_cidr_block_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,34 +109,28 @@ class AssociateVpcCidrBlockResultEc2QuerySerializer
     final result = AssociateVpcCidrBlockResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipv6CidrBlockAssociation':
-          if (value != null) {
-            result.ipv6CidrBlockAssociation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpcIpv6CidrBlockAssociation),
-            ) as _i2.VpcIpv6CidrBlockAssociation));
-          }
-          break;
+          result.ipv6CidrBlockAssociation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpcIpv6CidrBlockAssociation),
+          ) as _i2.VpcIpv6CidrBlockAssociation));
         case 'cidrBlockAssociation':
-          if (value != null) {
-            result.cidrBlockAssociation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VpcCidrBlockAssociation),
-            ) as _i3.VpcCidrBlockAssociation));
-          }
-          break;
+          result.cidrBlockAssociation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VpcCidrBlockAssociation),
+          ) as _i3.VpcCidrBlockAssociation));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -145,40 +140,44 @@ class AssociateVpcCidrBlockResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateVpcCidrBlockResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateVpcCidrBlockResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'AssociateVpcCidrBlockResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipv6CidrBlockAssociation != null) {
-      result
+    final AssociateVpcCidrBlockResult(
+      :ipv6CidrBlockAssociation,
+      :cidrBlockAssociation,
+      :vpcId
+    ) = object;
+    if (ipv6CidrBlockAssociation != null) {
+      result$
         ..add(const _i4.XmlElementName('Ipv6CidrBlockAssociation'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlockAssociation!,
+          ipv6CidrBlockAssociation,
           specifiedType: const FullType(_i2.VpcIpv6CidrBlockAssociation),
         ));
     }
-    if (payload.cidrBlockAssociation != null) {
-      result
+    if (cidrBlockAssociation != null) {
+      result$
         ..add(const _i4.XmlElementName('CidrBlockAssociation'))
         ..add(serializers.serialize(
-          payload.cidrBlockAssociation!,
+          cidrBlockAssociation,
           specifiedType: const FullType(_i3.VpcCidrBlockAssociation),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i4.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

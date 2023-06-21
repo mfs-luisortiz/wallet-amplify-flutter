@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.deprovision_public_ipv4_pool_cidr_result;
+part of 'deprovision_public_ipv4_pool_cidr_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

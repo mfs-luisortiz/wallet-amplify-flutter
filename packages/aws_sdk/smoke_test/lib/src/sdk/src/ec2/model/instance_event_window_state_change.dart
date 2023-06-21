@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_event_window_state_change; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,26 +96,23 @@ class InstanceEventWindowStateChangeEc2QuerySerializer
     final result = InstanceEventWindowStateChangeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceEventWindowId':
-          if (value != null) {
-            result.instanceEventWindowId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceEventWindowId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceEventWindowState),
-            ) as _i2.InstanceEventWindowState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceEventWindowState),
+          ) as _i2.InstanceEventWindowState);
       }
     }
 
@@ -124,32 +122,33 @@ class InstanceEventWindowStateChangeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceEventWindowStateChange object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceEventWindowStateChange);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceEventWindowStateChangeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceEventWindowId != null) {
-      result
+    final InstanceEventWindowStateChange(:instanceEventWindowId, :state) =
+        object;
+    if (instanceEventWindowId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceEventWindowId'))
         ..add(serializers.serialize(
-          payload.instanceEventWindowId!,
+          instanceEventWindowId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.InstanceEventWindowState),
         ));
     }
-    return result;
+    return result$;
   }
 }

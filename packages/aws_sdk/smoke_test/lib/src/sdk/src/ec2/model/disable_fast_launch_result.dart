@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disable_fast_launch_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -174,82 +175,60 @@ class DisableFastLaunchResultEc2QuerySerializer
     final result = DisableFastLaunchResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'imageId':
-          if (value != null) {
-            result.imageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.FastLaunchResourceType),
-            ) as _i2.FastLaunchResourceType);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FastLaunchResourceType),
+          ) as _i2.FastLaunchResourceType);
         case 'snapshotConfiguration':
-          if (value != null) {
-            result.snapshotConfiguration.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.FastLaunchSnapshotConfigurationResponse),
-            ) as _i3.FastLaunchSnapshotConfigurationResponse));
-          }
-          break;
+          result.snapshotConfiguration.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.FastLaunchSnapshotConfigurationResponse),
+          ) as _i3.FastLaunchSnapshotConfigurationResponse));
         case 'launchTemplate':
-          if (value != null) {
-            result.launchTemplate.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i4.FastLaunchLaunchTemplateSpecificationResponse),
-            ) as _i4.FastLaunchLaunchTemplateSpecificationResponse));
-          }
-          break;
+          result.launchTemplate.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i4.FastLaunchLaunchTemplateSpecificationResponse),
+          ) as _i4.FastLaunchLaunchTemplateSpecificationResponse));
         case 'maxParallelLaunches':
           result.maxParallelLaunches = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.FastLaunchStateCode),
-            ) as _i5.FastLaunchStateCode);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.FastLaunchStateCode),
+          ) as _i5.FastLaunchStateCode);
         case 'stateTransitionReason':
-          if (value != null) {
-            result.stateTransitionReason = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.stateTransitionReason = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'stateTransitionTime':
-          if (value != null) {
-            result.stateTransitionTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.stateTransitionTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -259,88 +238,98 @@ class DisableFastLaunchResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DisableFastLaunchResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DisableFastLaunchResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'DisableFastLaunchResultResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.imageId != null) {
-      result
+    final DisableFastLaunchResult(
+      :imageId,
+      :resourceType,
+      :snapshotConfiguration,
+      :launchTemplate,
+      :maxParallelLaunches,
+      :ownerId,
+      :state,
+      :stateTransitionReason,
+      :stateTransitionTime
+    ) = object;
+    if (imageId != null) {
+      result$
         ..add(const _i6.XmlElementName('ImageId'))
         ..add(serializers.serialize(
-          payload.imageId!,
+          imageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i6.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType: const FullType.nullable(_i2.FastLaunchResourceType),
         ));
     }
-    if (payload.snapshotConfiguration != null) {
-      result
+    if (snapshotConfiguration != null) {
+      result$
         ..add(const _i6.XmlElementName('SnapshotConfiguration'))
         ..add(serializers.serialize(
-          payload.snapshotConfiguration!,
+          snapshotConfiguration,
           specifiedType:
               const FullType(_i3.FastLaunchSnapshotConfigurationResponse),
         ));
     }
-    if (payload.launchTemplate != null) {
-      result
+    if (launchTemplate != null) {
+      result$
         ..add(const _i6.XmlElementName('LaunchTemplate'))
         ..add(serializers.serialize(
-          payload.launchTemplate!,
+          launchTemplate,
           specifiedType:
               const FullType(_i4.FastLaunchLaunchTemplateSpecificationResponse),
         ));
     }
-    result
+    result$
       ..add(const _i6.XmlElementName('MaxParallelLaunches'))
       ..add(serializers.serialize(
-        payload.maxParallelLaunches,
+        maxParallelLaunches,
         specifiedType: const FullType(int),
       ));
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i6.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i6.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i5.FastLaunchStateCode),
         ));
     }
-    if (payload.stateTransitionReason != null) {
-      result
+    if (stateTransitionReason != null) {
+      result$
         ..add(const _i6.XmlElementName('StateTransitionReason'))
         ..add(serializers.serialize(
-          payload.stateTransitionReason!,
+          stateTransitionReason,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.stateTransitionTime != null) {
-      result
+    if (stateTransitionTime != null) {
+      result$
         ..add(const _i6.XmlElementName('StateTransitionTime'))
         ..add(serializers.serialize(
-          payload.stateTransitionTime!,
+          stateTransitionTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

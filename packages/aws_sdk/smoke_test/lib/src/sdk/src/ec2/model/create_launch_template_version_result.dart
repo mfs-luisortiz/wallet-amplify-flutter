@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_launch_template_version_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,26 +102,23 @@ class CreateLaunchTemplateVersionResultEc2QuerySerializer
     final result = CreateLaunchTemplateVersionResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'launchTemplateVersion':
-          if (value != null) {
-            result.launchTemplateVersion.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.LaunchTemplateVersion),
-            ) as _i2.LaunchTemplateVersion));
-          }
-          break;
+          result.launchTemplateVersion.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.LaunchTemplateVersion),
+          ) as _i2.LaunchTemplateVersion));
         case 'warning':
-          if (value != null) {
-            result.warning.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ValidationWarning),
-            ) as _i3.ValidationWarning));
-          }
-          break;
+          result.warning.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ValidationWarning),
+          ) as _i3.ValidationWarning));
       }
     }
 
@@ -130,32 +128,33 @@ class CreateLaunchTemplateVersionResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateLaunchTemplateVersionResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateLaunchTemplateVersionResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'CreateLaunchTemplateVersionResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateVersion != null) {
-      result
+    final CreateLaunchTemplateVersionResult(:launchTemplateVersion, :warning) =
+        object;
+    if (launchTemplateVersion != null) {
+      result$
         ..add(const _i4.XmlElementName('LaunchTemplateVersion'))
         ..add(serializers.serialize(
-          payload.launchTemplateVersion!,
+          launchTemplateVersion,
           specifiedType: const FullType(_i2.LaunchTemplateVersion),
         ));
     }
-    if (payload.warning != null) {
-      result
+    if (warning != null) {
+      result$
         ..add(const _i4.XmlElementName('Warning'))
         ..add(serializers.serialize(
-          payload.warning!,
+          warning,
           specifiedType: const FullType(_i3.ValidationWarning),
         ));
     }
-    return result;
+    return result$;
   }
 }

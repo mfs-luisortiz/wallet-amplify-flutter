@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_interface_permission_state; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,27 +96,24 @@ class NetworkInterfacePermissionStateEc2QuerySerializer
     final result = NetworkInterfacePermissionStateBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.NetworkInterfacePermissionStateCode),
-            ) as _i2.NetworkInterfacePermissionStateCode);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.NetworkInterfacePermissionStateCode),
+          ) as _i2.NetworkInterfacePermissionStateCode);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -125,33 +123,33 @@ class NetworkInterfacePermissionStateEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInterfacePermissionState object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInterfacePermissionState);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'NetworkInterfacePermissionStateResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.state != null) {
-      result
+    final NetworkInterfacePermissionState(:state, :statusMessage) = object;
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType:
               const FullType.nullable(_i2.NetworkInterfacePermissionStateCode),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i3.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

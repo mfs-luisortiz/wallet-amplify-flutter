@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_store_image_tasks_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,34 +102,31 @@ class DescribeStoreImageTasksResultEc2QuerySerializer
     final result = DescribeStoreImageTasksResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'storeImageTaskResultSet':
-          if (value != null) {
-            result.storeImageTaskResults
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.StoreImageTaskResult)],
-              ),
-            ) as _i3.BuiltList<_i2.StoreImageTaskResult>));
-          }
-          break;
+          result.storeImageTaskResults
+              .replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.StoreImageTaskResult)],
+            ),
+          ) as _i3.BuiltList<_i2.StoreImageTaskResult>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -138,39 +136,40 @@ class DescribeStoreImageTasksResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeStoreImageTasksResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeStoreImageTasksResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeStoreImageTasksResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.storeImageTaskResults != null) {
-      result
+    final DescribeStoreImageTasksResult(:storeImageTaskResults, :nextToken) =
+        object;
+    if (storeImageTaskResults != null) {
+      result$
         ..add(const _i4.XmlElementName('StoreImageTaskResultSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.storeImageTaskResults!,
+          storeImageTaskResults,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.StoreImageTaskResult)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.accept_transit_gateway_peering_attachment_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,20 +86,19 @@ class AcceptTransitGatewayPeeringAttachmentResultEc2QuerySerializer extends _i3
     final result = AcceptTransitGatewayPeeringAttachmentResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayPeeringAttachment':
-          if (value != null) {
-            result.transitGatewayPeeringAttachment
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayPeeringAttachment),
-            ) as _i2.TransitGatewayPeeringAttachment));
-          }
-          break;
+          result.transitGatewayPeeringAttachment
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayPeeringAttachment),
+          ) as _i2.TransitGatewayPeeringAttachment));
       }
     }
 
@@ -108,24 +108,26 @@ class AcceptTransitGatewayPeeringAttachmentResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AcceptTransitGatewayPeeringAttachmentResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AcceptTransitGatewayPeeringAttachmentResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AcceptTransitGatewayPeeringAttachmentResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayPeeringAttachment != null) {
-      result
+    final AcceptTransitGatewayPeeringAttachmentResult(
+      :transitGatewayPeeringAttachment
+    ) = object;
+    if (transitGatewayPeeringAttachment != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayPeeringAttachment'))
         ..add(serializers.serialize(
-          payload.transitGatewayPeeringAttachment!,
+          transitGatewayPeeringAttachment,
           specifiedType: const FullType(_i2.TransitGatewayPeeringAttachment),
         ));
     }
-    return result;
+    return result$;
   }
 }

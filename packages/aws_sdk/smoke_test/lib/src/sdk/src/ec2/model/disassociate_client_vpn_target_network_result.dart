@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disassociate_client_vpn_target_network_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,26 +100,23 @@ class DisassociateClientVpnTargetNetworkResultEc2QuerySerializer extends _i3
     final result = DisassociateClientVpnTargetNetworkResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AssociationStatus),
-            ) as _i2.AssociationStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AssociationStatus),
+          ) as _i2.AssociationStatus));
       }
     }
 
@@ -128,32 +126,33 @@ class DisassociateClientVpnTargetNetworkResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DisassociateClientVpnTargetNetworkResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DisassociateClientVpnTargetNetworkResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DisassociateClientVpnTargetNetworkResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationId != null) {
-      result
+    final DisassociateClientVpnTargetNetworkResult(:associationId, :status) =
+        object;
+    if (associationId != null) {
+      result$
         ..add(const _i3.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.AssociationStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

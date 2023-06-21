@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.attach_volume_request;
+part of 'attach_volume_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

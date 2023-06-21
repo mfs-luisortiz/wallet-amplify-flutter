@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_regions_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -80,25 +81,25 @@ class DescribeRegionsResultEc2QuerySerializer
     final result = DescribeRegionsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'regionInfo':
-          if (value != null) {
-            result.regions.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.Region)],
-              ),
-            ) as _i3.BuiltList<_i2.Region>));
-          }
-          break;
+          result.regions.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.Region)],
+            ),
+          ) as _i3.BuiltList<_i2.Region>));
       }
     }
 
@@ -108,31 +109,31 @@ class DescribeRegionsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeRegionsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeRegionsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeRegionsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.regions != null) {
-      result
+    final DescribeRegionsResult(:regions) = object;
+    if (regions != null) {
+      result$
         ..add(const _i4.XmlElementName('RegionInfo'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.regions!,
+          regions,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.Region)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

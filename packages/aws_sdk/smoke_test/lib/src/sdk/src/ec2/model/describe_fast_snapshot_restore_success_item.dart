@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_fast_snapshot_restore_success_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -189,98 +190,68 @@ class DescribeFastSnapshotRestoreSuccessItemEc2QuerySerializer extends _i3
     final result = DescribeFastSnapshotRestoreSuccessItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.FastSnapshotRestoreStateCode),
-            ) as _i2.FastSnapshotRestoreStateCode);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FastSnapshotRestoreStateCode),
+          ) as _i2.FastSnapshotRestoreStateCode);
         case 'stateTransitionReason':
-          if (value != null) {
-            result.stateTransitionReason = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.stateTransitionReason = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerAlias':
-          if (value != null) {
-            result.ownerAlias = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerAlias = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'enablingTime':
-          if (value != null) {
-            result.enablingTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.enablingTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'optimizingTime':
-          if (value != null) {
-            result.optimizingTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.optimizingTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'enabledTime':
-          if (value != null) {
-            result.enabledTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.enabledTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'disablingTime':
-          if (value != null) {
-            result.disablingTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.disablingTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'disabledTime':
-          if (value != null) {
-            result.disabledTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.disabledTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -290,105 +261,117 @@ class DescribeFastSnapshotRestoreSuccessItemEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeFastSnapshotRestoreSuccessItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeFastSnapshotRestoreSuccessItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DescribeFastSnapshotRestoreSuccessItemResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.snapshotId != null) {
-      result
+    final DescribeFastSnapshotRestoreSuccessItem(
+      :snapshotId,
+      :availabilityZone,
+      :state,
+      :stateTransitionReason,
+      :ownerId,
+      :ownerAlias,
+      :enablingTime,
+      :optimizingTime,
+      :enabledTime,
+      :disablingTime,
+      :disabledTime
+    ) = object;
+    if (snapshotId != null) {
+      result$
         ..add(const _i3.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i3.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType:
               const FullType.nullable(_i2.FastSnapshotRestoreStateCode),
         ));
     }
-    if (payload.stateTransitionReason != null) {
-      result
+    if (stateTransitionReason != null) {
+      result$
         ..add(const _i3.XmlElementName('StateTransitionReason'))
         ..add(serializers.serialize(
-          payload.stateTransitionReason!,
+          stateTransitionReason,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i3.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerAlias != null) {
-      result
+    if (ownerAlias != null) {
+      result$
         ..add(const _i3.XmlElementName('OwnerAlias'))
         ..add(serializers.serialize(
-          payload.ownerAlias!,
+          ownerAlias,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.enablingTime != null) {
-      result
+    if (enablingTime != null) {
+      result$
         ..add(const _i3.XmlElementName('EnablingTime'))
         ..add(serializers.serialize(
-          payload.enablingTime!,
+          enablingTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.optimizingTime != null) {
-      result
+    if (optimizingTime != null) {
+      result$
         ..add(const _i3.XmlElementName('OptimizingTime'))
         ..add(serializers.serialize(
-          payload.optimizingTime!,
+          optimizingTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.enabledTime != null) {
-      result
+    if (enabledTime != null) {
+      result$
         ..add(const _i3.XmlElementName('EnabledTime'))
         ..add(serializers.serialize(
-          payload.enabledTime!,
+          enabledTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.disablingTime != null) {
-      result
+    if (disablingTime != null) {
+      result$
         ..add(const _i3.XmlElementName('DisablingTime'))
         ..add(serializers.serialize(
-          payload.disablingTime!,
+          disablingTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.disabledTime != null) {
-      result
+    if (disabledTime != null) {
+      result$
         ..add(const _i3.XmlElementName('DisabledTime'))
         ..add(serializers.serialize(
-          payload.disabledTime!,
+          disabledTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

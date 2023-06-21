@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.revoke_client_vpn_ingress_request;
+part of 'revoke_client_vpn_ingress_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

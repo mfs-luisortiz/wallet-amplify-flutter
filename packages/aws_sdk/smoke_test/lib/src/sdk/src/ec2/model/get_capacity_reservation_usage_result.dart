@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_capacity_reservation_usage_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -167,69 +168,55 @@ class GetCapacityReservationUsageResultEc2QuerySerializer
     final result = GetCapacityReservationUsageResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'capacityReservationId':
-          if (value != null) {
-            result.capacityReservationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.capacityReservationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'totalInstanceCount':
           result.totalInstanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'availableInstanceCount':
           result.availableInstanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CapacityReservationState),
-            ) as _i2.CapacityReservationState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CapacityReservationState),
+          ) as _i2.CapacityReservationState);
         case 'instanceUsageSet':
-          if (value != null) {
-            result.instanceUsages.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.InstanceUsage)],
-              ),
-            ) as _i4.BuiltList<_i3.InstanceUsage>));
-          }
-          break;
+          result.instanceUsages.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.InstanceUsage)],
+            ),
+          ) as _i4.BuiltList<_i3.InstanceUsage>));
       }
     }
 
@@ -239,75 +226,83 @@ class GetCapacityReservationUsageResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetCapacityReservationUsageResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetCapacityReservationUsageResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'GetCapacityReservationUsageResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.nextToken != null) {
-      result
+    final GetCapacityReservationUsageResult(
+      :nextToken,
+      :capacityReservationId,
+      :instanceType,
+      :totalInstanceCount,
+      :availableInstanceCount,
+      :state,
+      :instanceUsages
+    ) = object;
+    if (nextToken != null) {
+      result$
         ..add(const _i5.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.capacityReservationId != null) {
-      result
+    if (capacityReservationId != null) {
+      result$
         ..add(const _i5.XmlElementName('CapacityReservationId'))
         ..add(serializers.serialize(
-          payload.capacityReservationId!,
+          capacityReservationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('TotalInstanceCount'))
       ..add(serializers.serialize(
-        payload.totalInstanceCount,
+        totalInstanceCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('AvailableInstanceCount'))
       ..add(serializers.serialize(
-        payload.availableInstanceCount,
+        availableInstanceCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i5.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.CapacityReservationState),
         ));
     }
-    if (payload.instanceUsages != null) {
-      result
+    if (instanceUsages != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceUsageSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instanceUsages!,
+          instanceUsages,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.InstanceUsage)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

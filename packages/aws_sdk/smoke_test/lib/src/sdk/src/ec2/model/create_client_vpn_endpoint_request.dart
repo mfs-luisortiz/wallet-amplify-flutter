@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_client_vpn_endpoint_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -321,22 +322,23 @@ class CreateClientVpnEndpointRequestEc2QuerySerializer
     final result = CreateClientVpnEndpointRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ClientCidrBlock':
           result.clientCidrBlock = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ServerCertificateArn':
           result.serverCertificateArn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Authentication':
           result.authenticationOptions.replace(
               (const _i1.XmlBuiltListSerializer(
@@ -349,138 +351,102 @@ class CreateClientVpnEndpointRequestEc2QuerySerializer
               [FullType(_i3.ClientVpnAuthenticationRequest)],
             ),
           ) as _i10.BuiltList<_i3.ClientVpnAuthenticationRequest>));
-          break;
         case 'ConnectionLogOptions':
           result.connectionLogOptions.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i4.ConnectionLogOptions),
           ) as _i4.ConnectionLogOptions));
-          break;
         case 'DnsServers':
-          if (value != null) {
-            result.dnsServers.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.dnsServers.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'TransportProtocol':
-          if (value != null) {
-            result.transportProtocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.TransportProtocol),
-            ) as _i5.TransportProtocol);
-          }
-          break;
+          result.transportProtocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.TransportProtocol),
+          ) as _i5.TransportProtocol);
         case 'VpnPort':
           result.vpnPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SplitTunnel':
           result.splitTunnel = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i6.TagSpecification)],
-              ),
-            ) as _i10.BuiltList<_i6.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i6.TagSpecification)],
+            ),
+          ) as _i10.BuiltList<_i6.TagSpecification>));
         case 'SecurityGroupId':
-          if (value != null) {
-            result.securityGroupIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.securityGroupIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'VpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SelfServicePortal':
-          if (value != null) {
-            result.selfServicePortal = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.SelfServicePortal),
-            ) as _i7.SelfServicePortal);
-          }
-          break;
+          result.selfServicePortal = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.SelfServicePortal),
+          ) as _i7.SelfServicePortal);
         case 'ClientConnectOptions':
-          if (value != null) {
-            result.clientConnectOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.ClientConnectOptions),
-            ) as _i8.ClientConnectOptions));
-          }
-          break;
+          result.clientConnectOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.ClientConnectOptions),
+          ) as _i8.ClientConnectOptions));
         case 'SessionTimeoutHours':
           result.sessionTimeoutHours = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ClientLoginBannerOptions':
-          if (value != null) {
-            result.clientLoginBannerOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.ClientLoginBannerOptions),
-            ) as _i9.ClientLoginBannerOptions));
-          }
-          break;
+          result.clientLoginBannerOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.ClientLoginBannerOptions),
+          ) as _i9.ClientLoginBannerOptions));
       }
     }
 
@@ -490,171 +456,190 @@ class CreateClientVpnEndpointRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateClientVpnEndpointRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateClientVpnEndpointRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateClientVpnEndpointRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateClientVpnEndpointRequest(
+      :clientCidrBlock,
+      :serverCertificateArn,
+      :authenticationOptions,
+      :connectionLogOptions,
+      :dnsServers,
+      :transportProtocol,
+      :vpnPort,
+      :description,
+      :splitTunnel,
+      :dryRun,
+      :clientToken,
+      :tagSpecifications,
+      :securityGroupIds,
+      :vpcId,
+      :selfServicePortal,
+      :clientConnectOptions,
+      :sessionTimeoutHours,
+      :clientLoginBannerOptions
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ClientCidrBlock'))
       ..add(serializers.serialize(
-        payload.clientCidrBlock,
+        clientCidrBlock,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ServerCertificateArn'))
       ..add(serializers.serialize(
-        payload.serverCertificateArn,
+        serverCertificateArn,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Authentication'))
       ..add(
           const _i1.XmlBuiltListSerializer(indexer: _i1.XmlIndexer.ec2QueryList)
               .serialize(
         serializers,
-        payload.authenticationOptions,
+        authenticationOptions,
         specifiedType: const FullType.nullable(
           _i10.BuiltList,
           [FullType(_i3.ClientVpnAuthenticationRequest)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ConnectionLogOptions'))
       ..add(serializers.serialize(
-        payload.connectionLogOptions,
+        connectionLogOptions,
         specifiedType: const FullType(_i4.ConnectionLogOptions),
       ));
-    if (payload.dnsServers != null) {
-      result
+    if (dnsServers != null) {
+      result$
         ..add(const _i1.XmlElementName('DnsServers'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.dnsServers!,
+          dnsServers,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.transportProtocol != null) {
-      result
+    if (transportProtocol != null) {
+      result$
         ..add(const _i1.XmlElementName('TransportProtocol'))
         ..add(serializers.serialize(
-          payload.transportProtocol!,
+          transportProtocol,
           specifiedType: const FullType.nullable(_i5.TransportProtocol),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('VpnPort'))
       ..add(serializers.serialize(
-        payload.vpnPort,
+        vpnPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SplitTunnel'))
       ..add(serializers.serialize(
-        payload.splitTunnel,
+        splitTunnel,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i6.TagSpecification)],
           ),
         ));
     }
-    if (payload.securityGroupIds != null) {
-      result
+    if (securityGroupIds != null) {
+      result$
         ..add(const _i1.XmlElementName('SecurityGroupId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroupIds!,
+          securityGroupIds,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.selfServicePortal != null) {
-      result
+    if (selfServicePortal != null) {
+      result$
         ..add(const _i1.XmlElementName('SelfServicePortal'))
         ..add(serializers.serialize(
-          payload.selfServicePortal!,
+          selfServicePortal,
           specifiedType: const FullType.nullable(_i7.SelfServicePortal),
         ));
     }
-    if (payload.clientConnectOptions != null) {
-      result
+    if (clientConnectOptions != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientConnectOptions'))
         ..add(serializers.serialize(
-          payload.clientConnectOptions!,
+          clientConnectOptions,
           specifiedType: const FullType(_i8.ClientConnectOptions),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SessionTimeoutHours'))
       ..add(serializers.serialize(
-        payload.sessionTimeoutHours,
+        sessionTimeoutHours,
         specifiedType: const FullType(int),
       ));
-    if (payload.clientLoginBannerOptions != null) {
-      result
+    if (clientLoginBannerOptions != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientLoginBannerOptions'))
         ..add(serializers.serialize(
-          payload.clientLoginBannerOptions!,
+          clientLoginBannerOptions,
           specifiedType: const FullType(_i9.ClientLoginBannerOptions),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.processor_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,34 +92,31 @@ class ProcessorInfoEc2QuerySerializer
     final result = ProcessorInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'supportedArchitectures':
-          if (value != null) {
-            result.supportedArchitectures
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.ArchitectureType)],
-              ),
-            ) as _i3.BuiltList<_i2.ArchitectureType>));
-          }
-          break;
+          result.supportedArchitectures
+              .replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.ArchitectureType)],
+            ),
+          ) as _i3.BuiltList<_i2.ArchitectureType>));
         case 'sustainedClockSpeedInGhz':
-          if (value != null) {
-            result.sustainedClockSpeedInGhz = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.sustainedClockSpeedInGhz = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
       }
     }
 
@@ -128,39 +126,40 @@ class ProcessorInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ProcessorInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ProcessorInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'ProcessorInfoResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.supportedArchitectures != null) {
-      result
+    final ProcessorInfo(:supportedArchitectures, :sustainedClockSpeedInGhz) =
+        object;
+    if (supportedArchitectures != null) {
+      result$
         ..add(const _i4.XmlElementName('SupportedArchitectures'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedArchitectures!,
+          supportedArchitectures,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.ArchitectureType)],
           ),
         ));
     }
-    if (payload.sustainedClockSpeedInGhz != null) {
-      result
+    if (sustainedClockSpeedInGhz != null) {
+      result$
         ..add(const _i4.XmlElementName('SustainedClockSpeedInGhz'))
         ..add(serializers.serialize(
-          payload.sustainedClockSpeedInGhz!,
+          sustainedClockSpeedInGhz,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    return result;
+    return result$;
   }
 }

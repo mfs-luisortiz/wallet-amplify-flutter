@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.inference_device_info;
+part of 'inference_device_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

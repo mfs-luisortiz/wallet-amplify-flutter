@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_image_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -176,97 +177,70 @@ class ExportImageResultEc2QuerySerializer
     final result = ExportImageResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'diskImageFormat':
-          if (value != null) {
-            result.diskImageFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DiskImageFormat),
-            ) as _i2.DiskImageFormat);
-          }
-          break;
+          result.diskImageFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DiskImageFormat),
+          ) as _i2.DiskImageFormat);
         case 'exportImageTaskId':
-          if (value != null) {
-            result.exportImageTaskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.exportImageTaskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'imageId':
-          if (value != null) {
-            result.imageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'roleName':
-          if (value != null) {
-            result.roleName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.roleName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'progress':
-          if (value != null) {
-            result.progress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.progress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 's3ExportLocation':
-          if (value != null) {
-            result.s3ExportLocation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ExportTaskS3Location),
-            ) as _i3.ExportTaskS3Location));
-          }
-          break;
+          result.s3ExportLocation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ExportTaskS3Location),
+          ) as _i3.ExportTaskS3Location));
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
       }
     }
 
@@ -276,103 +250,114 @@ class ExportImageResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportImageResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportImageResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'ExportImageResultResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final ExportImageResult(
+      :description,
+      :diskImageFormat,
+      :exportImageTaskId,
+      :imageId,
+      :roleName,
+      :progress,
+      :s3ExportLocation,
+      :status,
+      :statusMessage,
+      :tags
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i6.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.diskImageFormat != null) {
-      result
+    if (diskImageFormat != null) {
+      result$
         ..add(const _i6.XmlElementName('DiskImageFormat'))
         ..add(serializers.serialize(
-          payload.diskImageFormat!,
+          diskImageFormat,
           specifiedType: const FullType.nullable(_i2.DiskImageFormat),
         ));
     }
-    if (payload.exportImageTaskId != null) {
-      result
+    if (exportImageTaskId != null) {
+      result$
         ..add(const _i6.XmlElementName('ExportImageTaskId'))
         ..add(serializers.serialize(
-          payload.exportImageTaskId!,
+          exportImageTaskId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.imageId != null) {
-      result
+    if (imageId != null) {
+      result$
         ..add(const _i6.XmlElementName('ImageId'))
         ..add(serializers.serialize(
-          payload.imageId!,
+          imageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.roleName != null) {
-      result
+    if (roleName != null) {
+      result$
         ..add(const _i6.XmlElementName('RoleName'))
         ..add(serializers.serialize(
-          payload.roleName!,
+          roleName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.progress != null) {
-      result
+    if (progress != null) {
+      result$
         ..add(const _i6.XmlElementName('Progress'))
         ..add(serializers.serialize(
-          payload.progress!,
+          progress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.s3ExportLocation != null) {
-      result
+    if (s3ExportLocation != null) {
+      result$
         ..add(const _i6.XmlElementName('S3ExportLocation'))
         ..add(serializers.serialize(
-          payload.s3ExportLocation!,
+          s3ExportLocation,
           specifiedType: const FullType(_i3.ExportTaskS3Location),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i6.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i6.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

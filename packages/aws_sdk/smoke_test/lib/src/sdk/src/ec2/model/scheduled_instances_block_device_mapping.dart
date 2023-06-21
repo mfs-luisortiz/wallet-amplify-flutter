@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instances_block_device_mapping; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -117,42 +118,33 @@ class ScheduledInstancesBlockDeviceMappingEc2QuerySerializer extends _i3
     final result = ScheduledInstancesBlockDeviceMappingBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DeviceName':
-          if (value != null) {
-            result.deviceName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deviceName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Ebs':
-          if (value != null) {
-            result.ebs.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ScheduledInstancesEbs),
-            ) as _i2.ScheduledInstancesEbs));
-          }
-          break;
+          result.ebs.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ScheduledInstancesEbs),
+          ) as _i2.ScheduledInstancesEbs));
         case 'NoDevice':
-          if (value != null) {
-            result.noDevice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.noDevice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'VirtualName':
-          if (value != null) {
-            result.virtualName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.virtualName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -162,48 +154,53 @@ class ScheduledInstancesBlockDeviceMappingEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstancesBlockDeviceMapping object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstancesBlockDeviceMapping);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ScheduledInstancesBlockDeviceMappingResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.deviceName != null) {
-      result
+    final ScheduledInstancesBlockDeviceMapping(
+      :deviceName,
+      :ebs,
+      :noDevice,
+      :virtualName
+    ) = object;
+    if (deviceName != null) {
+      result$
         ..add(const _i3.XmlElementName('DeviceName'))
         ..add(serializers.serialize(
-          payload.deviceName!,
+          deviceName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ebs != null) {
-      result
+    if (ebs != null) {
+      result$
         ..add(const _i3.XmlElementName('Ebs'))
         ..add(serializers.serialize(
-          payload.ebs!,
+          ebs,
           specifiedType: const FullType(_i2.ScheduledInstancesEbs),
         ));
     }
-    if (payload.noDevice != null) {
-      result
+    if (noDevice != null) {
+      result$
         ..add(const _i3.XmlElementName('NoDevice'))
         ..add(serializers.serialize(
-          payload.noDevice!,
+          noDevice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.virtualName != null) {
-      result
+    if (virtualName != null) {
+      result$
         ..add(const _i3.XmlElementName('VirtualName'))
         ..add(serializers.serialize(
-          payload.virtualName!,
+          virtualName,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

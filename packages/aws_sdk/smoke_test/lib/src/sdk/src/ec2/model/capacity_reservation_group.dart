@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.capacity_reservation_group; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -90,26 +91,23 @@ class CapacityReservationGroupEc2QuerySerializer
     final result = CapacityReservationGroupBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupArn':
-          if (value != null) {
-            result.groupArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -119,32 +117,32 @@ class CapacityReservationGroupEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CapacityReservationGroup object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CapacityReservationGroup);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CapacityReservationGroupResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupArn != null) {
-      result
+    final CapacityReservationGroup(:groupArn, :ownerId) = object;
+    if (groupArn != null) {
+      result$
         ..add(const _i2.XmlElementName('GroupArn'))
         ..add(serializers.serialize(
-          payload.groupArn!,
+          groupArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i2.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_network_insights_path_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class CreateNetworkInsightsPathResultEc2QuerySerializer
     final result = CreateNetworkInsightsPathResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsPath':
-          if (value != null) {
-            result.networkInsightsPath.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NetworkInsightsPath),
-            ) as _i2.NetworkInsightsPath));
-          }
-          break;
+          result.networkInsightsPath.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NetworkInsightsPath),
+          ) as _i2.NetworkInsightsPath));
       }
     }
 
@@ -106,24 +107,24 @@ class CreateNetworkInsightsPathResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateNetworkInsightsPathResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateNetworkInsightsPathResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateNetworkInsightsPathResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsPath != null) {
-      result
+    final CreateNetworkInsightsPathResult(:networkInsightsPath) = object;
+    if (networkInsightsPath != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkInsightsPath'))
         ..add(serializers.serialize(
-          payload.networkInsightsPath!,
+          networkInsightsPath,
           specifiedType: const FullType(_i2.NetworkInsightsPath),
         ));
     }
-    return result;
+    return result$;
   }
 }

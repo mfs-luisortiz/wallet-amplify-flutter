@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_ipv6_pools_result;
+part of 'describe_ipv6_pools_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

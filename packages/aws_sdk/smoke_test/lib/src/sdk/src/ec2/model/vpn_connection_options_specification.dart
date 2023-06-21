@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpn_connection_options_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -204,93 +205,69 @@ class VpnConnectionOptionsSpecificationEc2QuerySerializer
     final result = VpnConnectionOptionsSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'EnableAcceleration':
           result.enableAcceleration = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'staticRoutesOnly':
           result.staticRoutesOnly = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'TunnelInsideIpVersion':
-          if (value != null) {
-            result.tunnelInsideIpVersion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TunnelInsideIpVersion),
-            ) as _i2.TunnelInsideIpVersion);
-          }
-          break;
+          result.tunnelInsideIpVersion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TunnelInsideIpVersion),
+          ) as _i2.TunnelInsideIpVersion);
         case 'TunnelOptions':
-          if (value != null) {
-            result.tunnelOptions.replace((const _i5.XmlBuiltListSerializer(
-                    indexer: _i5.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.VpnTunnelOptionsSpecification)],
-              ),
-            ) as _i4.BuiltList<_i3.VpnTunnelOptionsSpecification>));
-          }
-          break;
+          result.tunnelOptions.replace((const _i5.XmlBuiltListSerializer(
+                  indexer: _i5.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.VpnTunnelOptionsSpecification)],
+            ),
+          ) as _i4.BuiltList<_i3.VpnTunnelOptionsSpecification>));
         case 'LocalIpv4NetworkCidr':
-          if (value != null) {
-            result.localIpv4NetworkCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localIpv4NetworkCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RemoteIpv4NetworkCidr':
-          if (value != null) {
-            result.remoteIpv4NetworkCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.remoteIpv4NetworkCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LocalIpv6NetworkCidr':
-          if (value != null) {
-            result.localIpv6NetworkCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localIpv6NetworkCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RemoteIpv6NetworkCidr':
-          if (value != null) {
-            result.remoteIpv6NetworkCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.remoteIpv6NetworkCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'OutsideIpAddressType':
-          if (value != null) {
-            result.outsideIpAddressType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outsideIpAddressType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TransportTransitGatewayAttachmentId':
-          if (value != null) {
-            result.transportTransitGatewayAttachmentId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transportTransitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -300,98 +277,109 @@ class VpnConnectionOptionsSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpnConnectionOptionsSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpnConnectionOptionsSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'VpnConnectionOptionsSpecificationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final VpnConnectionOptionsSpecification(
+      :enableAcceleration,
+      :staticRoutesOnly,
+      :tunnelInsideIpVersion,
+      :tunnelOptions,
+      :localIpv4NetworkCidr,
+      :remoteIpv4NetworkCidr,
+      :localIpv6NetworkCidr,
+      :remoteIpv6NetworkCidr,
+      :outsideIpAddressType,
+      :transportTransitGatewayAttachmentId
+    ) = object;
+    result$
       ..add(const _i5.XmlElementName('EnableAcceleration'))
       ..add(serializers.serialize(
-        payload.enableAcceleration,
+        enableAcceleration,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('StaticRoutesOnly'))
       ..add(serializers.serialize(
-        payload.staticRoutesOnly,
+        staticRoutesOnly,
         specifiedType: const FullType(bool),
       ));
-    if (payload.tunnelInsideIpVersion != null) {
-      result
+    if (tunnelInsideIpVersion != null) {
+      result$
         ..add(const _i5.XmlElementName('TunnelInsideIpVersion'))
         ..add(serializers.serialize(
-          payload.tunnelInsideIpVersion!,
+          tunnelInsideIpVersion,
           specifiedType: const FullType.nullable(_i2.TunnelInsideIpVersion),
         ));
     }
-    if (payload.tunnelOptions != null) {
-      result
+    if (tunnelOptions != null) {
+      result$
         ..add(const _i5.XmlElementName('TunnelOptions'))
         ..add(const _i5.XmlBuiltListSerializer(
                 indexer: _i5.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.tunnelOptions!,
+          tunnelOptions,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.VpnTunnelOptionsSpecification)],
           ),
         ));
     }
-    if (payload.localIpv4NetworkCidr != null) {
-      result
+    if (localIpv4NetworkCidr != null) {
+      result$
         ..add(const _i5.XmlElementName('LocalIpv4NetworkCidr'))
         ..add(serializers.serialize(
-          payload.localIpv4NetworkCidr!,
+          localIpv4NetworkCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.remoteIpv4NetworkCidr != null) {
-      result
+    if (remoteIpv4NetworkCidr != null) {
+      result$
         ..add(const _i5.XmlElementName('RemoteIpv4NetworkCidr'))
         ..add(serializers.serialize(
-          payload.remoteIpv4NetworkCidr!,
+          remoteIpv4NetworkCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.localIpv6NetworkCidr != null) {
-      result
+    if (localIpv6NetworkCidr != null) {
+      result$
         ..add(const _i5.XmlElementName('LocalIpv6NetworkCidr'))
         ..add(serializers.serialize(
-          payload.localIpv6NetworkCidr!,
+          localIpv6NetworkCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.remoteIpv6NetworkCidr != null) {
-      result
+    if (remoteIpv6NetworkCidr != null) {
+      result$
         ..add(const _i5.XmlElementName('RemoteIpv6NetworkCidr'))
         ..add(serializers.serialize(
-          payload.remoteIpv6NetworkCidr!,
+          remoteIpv6NetworkCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outsideIpAddressType != null) {
-      result
+    if (outsideIpAddressType != null) {
+      result$
         ..add(const _i5.XmlElementName('OutsideIpAddressType'))
         ..add(serializers.serialize(
-          payload.outsideIpAddressType!,
+          outsideIpAddressType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transportTransitGatewayAttachmentId != null) {
-      result
+    if (transportTransitGatewayAttachmentId != null) {
+      result$
         ..add(const _i5.XmlElementName('TransportTransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.transportTransitGatewayAttachmentId!,
+          transportTransitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.enable_vpc_classic_link_dns_support_request;
+part of 'enable_vpc_classic_link_dns_support_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

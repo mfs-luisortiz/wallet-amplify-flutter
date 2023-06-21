@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.baseline_ebs_bandwidth_mbps;
+part of 'baseline_ebs_bandwidth_mbps.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

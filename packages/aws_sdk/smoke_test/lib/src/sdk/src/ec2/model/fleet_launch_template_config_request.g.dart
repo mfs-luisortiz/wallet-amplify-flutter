@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.fleet_launch_template_config_request;
+part of 'fleet_launch_template_config_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

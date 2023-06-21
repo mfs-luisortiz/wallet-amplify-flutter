@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_volume_task_details; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,48 +128,38 @@ class ImportVolumeTaskDetailsEc2QuerySerializer
     final result = ImportVolumeTaskDetailsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'bytesConverted':
           result.bytesConverted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'image':
-          if (value != null) {
-            result.image.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DiskImageDescription),
-            ) as _i3.DiskImageDescription));
-          }
-          break;
+          result.image.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DiskImageDescription),
+          ) as _i3.DiskImageDescription));
         case 'volume':
-          if (value != null) {
-            result.volume.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.DiskImageVolumeDescription),
-            ) as _i4.DiskImageVolumeDescription));
-          }
-          break;
+          result.volume.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.DiskImageVolumeDescription),
+          ) as _i4.DiskImageVolumeDescription));
       }
     }
 
@@ -178,54 +169,60 @@ class ImportVolumeTaskDetailsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportVolumeTaskDetails object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportVolumeTaskDetails);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ImportVolumeTaskDetailsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final ImportVolumeTaskDetails(
+      :availabilityZone,
+      :bytesConverted,
+      :description,
+      :image,
+      :volume
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i5.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('BytesConverted'))
       ..add(serializers.serialize(
-        payload.bytesConverted,
+        bytesConverted,
         specifiedType: const FullType(_i2.Int64),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i5.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.image != null) {
-      result
+    if (image != null) {
+      result$
         ..add(const _i5.XmlElementName('Image'))
         ..add(serializers.serialize(
-          payload.image!,
+          image,
           specifiedType: const FullType(_i3.DiskImageDescription),
         ));
     }
-    if (payload.volume != null) {
-      result
+    if (volume != null) {
+      result$
         ..add(const _i5.XmlElementName('Volume'))
         ..add(serializers.serialize(
-          payload.volume!,
+          volume,
           specifiedType: const FullType(_i4.DiskImageVolumeDescription),
         ));
     }
-    return result;
+    return result$;
   }
 }

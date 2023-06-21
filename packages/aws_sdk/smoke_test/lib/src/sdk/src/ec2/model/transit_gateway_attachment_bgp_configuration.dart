@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_attachment_bgp_configuration; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,46 +131,38 @@ class TransitGatewayAttachmentBgpConfigurationEc2QuerySerializer extends _i4
     final result = TransitGatewayAttachmentBgpConfigurationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayAsn':
           result.transitGatewayAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'peerAsn':
           result.peerAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'transitGatewayAddress':
-          if (value != null) {
-            result.transitGatewayAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peerAddress':
-          if (value != null) {
-            result.peerAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'bgpStatus':
-          if (value != null) {
-            result.bgpStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.BgpStatus),
-            ) as _i3.BgpStatus);
-          }
-          break;
+          result.bgpStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.BgpStatus),
+          ) as _i3.BgpStatus);
       }
     }
 
@@ -179,52 +172,58 @@ class TransitGatewayAttachmentBgpConfigurationEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayAttachmentBgpConfiguration object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayAttachmentBgpConfiguration);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'TransitGatewayAttachmentBgpConfigurationResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final TransitGatewayAttachmentBgpConfiguration(
+      :transitGatewayAsn,
+      :peerAsn,
+      :transitGatewayAddress,
+      :peerAddress,
+      :bgpStatus
+    ) = object;
+    result$
       ..add(const _i4.XmlElementName('TransitGatewayAsn'))
       ..add(serializers.serialize(
-        payload.transitGatewayAsn,
+        transitGatewayAsn,
         specifiedType: const FullType(_i2.Int64),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('PeerAsn'))
       ..add(serializers.serialize(
-        payload.peerAsn,
+        peerAsn,
         specifiedType: const FullType(_i2.Int64),
       ));
-    if (payload.transitGatewayAddress != null) {
-      result
+    if (transitGatewayAddress != null) {
+      result$
         ..add(const _i4.XmlElementName('TransitGatewayAddress'))
         ..add(serializers.serialize(
-          payload.transitGatewayAddress!,
+          transitGatewayAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peerAddress != null) {
-      result
+    if (peerAddress != null) {
+      result$
         ..add(const _i4.XmlElementName('PeerAddress'))
         ..add(serializers.serialize(
-          payload.peerAddress!,
+          peerAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.bgpStatus != null) {
-      result
+    if (bgpStatus != null) {
+      result$
         ..add(const _i4.XmlElementName('BgpStatus'))
         ..add(serializers.serialize(
-          payload.bgpStatus!,
+          bgpStatus,
           specifiedType: const FullType.nullable(_i3.BgpStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ipam_pool_cidr_failure_reason;
+part of 'ipam_pool_cidr_failure_reason.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

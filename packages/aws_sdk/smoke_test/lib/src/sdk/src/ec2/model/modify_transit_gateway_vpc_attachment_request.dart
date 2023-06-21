@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_transit_gateway_vpc_attachment_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -137,61 +138,53 @@ class ModifyTransitGatewayVpcAttachmentRequestEc2QuerySerializer extends _i1
     final result = ModifyTransitGatewayVpcAttachmentRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TransitGatewayAttachmentId':
           result.transitGatewayAttachmentId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AddSubnetIds':
-          if (value != null) {
-            result.addSubnetIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.addSubnetIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'RemoveSubnetIds':
-          if (value != null) {
-            result.removeSubnetIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.removeSubnetIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'Options':
-          if (value != null) {
-            result.options.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i3.ModifyTransitGatewayVpcAttachmentRequestOptions),
-            ) as _i3.ModifyTransitGatewayVpcAttachmentRequestOptions));
-          }
-          break;
+          result.options.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i3.ModifyTransitGatewayVpcAttachmentRequestOptions),
+          ) as _i3.ModifyTransitGatewayVpcAttachmentRequestOptions));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -201,67 +194,73 @@ class ModifyTransitGatewayVpcAttachmentRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyTransitGatewayVpcAttachmentRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyTransitGatewayVpcAttachmentRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyTransitGatewayVpcAttachmentRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyTransitGatewayVpcAttachmentRequest(
+      :transitGatewayAttachmentId,
+      :addSubnetIds,
+      :removeSubnetIds,
+      :options,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('TransitGatewayAttachmentId'))
       ..add(serializers.serialize(
-        payload.transitGatewayAttachmentId,
+        transitGatewayAttachmentId,
         specifiedType: const FullType(String),
       ));
-    if (payload.addSubnetIds != null) {
-      result
+    if (addSubnetIds != null) {
+      result$
         ..add(const _i1.XmlElementName('AddSubnetIds'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addSubnetIds!,
+          addSubnetIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.removeSubnetIds != null) {
-      result
+    if (removeSubnetIds != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveSubnetIds'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeSubnetIds!,
+          removeSubnetIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.options != null) {
-      result
+    if (options != null) {
+      result$
         ..add(const _i1.XmlElementName('Options'))
         ..add(serializers.serialize(
-          payload.options!,
+          options,
           specifiedType: const FullType(
               _i3.ModifyTransitGatewayVpcAttachmentRequestOptions),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

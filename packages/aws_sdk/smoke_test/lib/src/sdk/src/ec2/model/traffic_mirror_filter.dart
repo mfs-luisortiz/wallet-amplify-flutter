@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.traffic_mirror_filter; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -137,86 +138,71 @@ class TrafficMirrorFilterEc2QuerySerializer
     final result = TrafficMirrorFilterBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorFilterId':
-          if (value != null) {
-            result.trafficMirrorFilterId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.trafficMirrorFilterId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ingressFilterRuleSet':
-          if (value != null) {
-            result.ingressFilterRules.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.TrafficMirrorFilterRule)],
-              ),
-            ) as _i5.BuiltList<_i2.TrafficMirrorFilterRule>));
-          }
-          break;
+          result.ingressFilterRules.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.TrafficMirrorFilterRule)],
+            ),
+          ) as _i5.BuiltList<_i2.TrafficMirrorFilterRule>));
         case 'egressFilterRuleSet':
-          if (value != null) {
-            result.egressFilterRules.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.TrafficMirrorFilterRule)],
-              ),
-            ) as _i5.BuiltList<_i2.TrafficMirrorFilterRule>));
-          }
-          break;
+          result.egressFilterRules.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.TrafficMirrorFilterRule)],
+            ),
+          ) as _i5.BuiltList<_i2.TrafficMirrorFilterRule>));
         case 'networkServiceSet':
-          if (value != null) {
-            result.networkServices.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.TrafficMirrorNetworkService)],
-              ),
-            ) as _i5.BuiltList<_i3.TrafficMirrorNetworkService>));
-          }
-          break;
+          result.networkServices.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.TrafficMirrorNetworkService)],
+            ),
+          ) as _i5.BuiltList<_i3.TrafficMirrorNetworkService>));
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
       }
     }
 
@@ -226,92 +212,99 @@ class TrafficMirrorFilterEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TrafficMirrorFilter object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TrafficMirrorFilter);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'TrafficMirrorFilterResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorFilterId != null) {
-      result
+    final TrafficMirrorFilter(
+      :trafficMirrorFilterId,
+      :ingressFilterRules,
+      :egressFilterRules,
+      :networkServices,
+      :description,
+      :tags
+    ) = object;
+    if (trafficMirrorFilterId != null) {
+      result$
         ..add(const _i6.XmlElementName('TrafficMirrorFilterId'))
         ..add(serializers.serialize(
-          payload.trafficMirrorFilterId!,
+          trafficMirrorFilterId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ingressFilterRules != null) {
-      result
+    if (ingressFilterRules != null) {
+      result$
         ..add(const _i6.XmlElementName('IngressFilterRuleSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ingressFilterRules!,
+          ingressFilterRules,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.TrafficMirrorFilterRule)],
           ),
         ));
     }
-    if (payload.egressFilterRules != null) {
-      result
+    if (egressFilterRules != null) {
+      result$
         ..add(const _i6.XmlElementName('EgressFilterRuleSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.egressFilterRules!,
+          egressFilterRules,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.TrafficMirrorFilterRule)],
           ),
         ));
     }
-    if (payload.networkServices != null) {
-      result
+    if (networkServices != null) {
+      result$
         ..add(const _i6.XmlElementName('NetworkServiceSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.networkServices!,
+          networkServices,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.TrafficMirrorNetworkService)],
           ),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i6.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

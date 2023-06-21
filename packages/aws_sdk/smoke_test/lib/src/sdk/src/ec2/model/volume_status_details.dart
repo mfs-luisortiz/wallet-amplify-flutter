@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_status_details; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -90,26 +91,23 @@ class VolumeStatusDetailsEc2QuerySerializer
     final result = VolumeStatusDetailsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VolumeStatusName),
-            ) as _i2.VolumeStatusName);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VolumeStatusName),
+          ) as _i2.VolumeStatusName);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -119,32 +117,32 @@ class VolumeStatusDetailsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeStatusDetails object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeStatusDetails);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'VolumeStatusDetailsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.name != null) {
-      result
+    final VolumeStatusDetails(:name, :status) = object;
+    if (name != null) {
+      result$
         ..add(const _i3.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType.nullable(_i2.VolumeStatusName),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

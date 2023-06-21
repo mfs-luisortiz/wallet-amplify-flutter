@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_transit_gateway_multicast_domain_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,18 @@ class DeleteTransitGatewayMulticastDomainResultEc2QuerySerializer extends _i3
     final result = DeleteTransitGatewayMulticastDomainResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayMulticastDomain':
-          if (value != null) {
-            result.transitGatewayMulticastDomain
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayMulticastDomain),
-            ) as _i2.TransitGatewayMulticastDomain));
-          }
-          break;
+          result.transitGatewayMulticastDomain.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayMulticastDomain),
+          ) as _i2.TransitGatewayMulticastDomain));
       }
     }
 
@@ -107,24 +107,26 @@ class DeleteTransitGatewayMulticastDomainResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTransitGatewayMulticastDomainResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteTransitGatewayMulticastDomainResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteTransitGatewayMulticastDomainResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayMulticastDomain != null) {
-      result
+    final DeleteTransitGatewayMulticastDomainResult(
+      :transitGatewayMulticastDomain
+    ) = object;
+    if (transitGatewayMulticastDomain != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayMulticastDomain'))
         ..add(serializers.serialize(
-          payload.transitGatewayMulticastDomain!,
+          transitGatewayMulticastDomain,
           specifiedType: const FullType(_i2.TransitGatewayMulticastDomain),
         ));
     }
-    return result;
+    return result$;
   }
 }

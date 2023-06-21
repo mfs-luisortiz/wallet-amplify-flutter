@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_endpoint_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -230,151 +231,121 @@ class ModifyVpcEndpointRequestEc2QuerySerializer
     final result = ModifyVpcEndpointRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'VpcEndpointId':
           result.vpcEndpointId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ResetPolicy':
           result.resetPolicy = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'PolicyDocument':
-          if (value != null) {
-            result.policyDocument = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.policyDocument = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AddRouteTableId':
-          if (value != null) {
-            result.addRouteTableIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.addRouteTableIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'RemoveRouteTableId':
-          if (value != null) {
-            result.removeRouteTableIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.removeRouteTableIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'AddSubnetId':
-          if (value != null) {
-            result.addSubnetIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.addSubnetIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'RemoveSubnetId':
-          if (value != null) {
-            result.removeSubnetIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.removeSubnetIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'AddSecurityGroupId':
-          if (value != null) {
-            result.addSecurityGroupIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.addSecurityGroupIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'RemoveSecurityGroupId':
-          if (value != null) {
-            result.removeSecurityGroupIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.removeSecurityGroupIds
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'IpAddressType':
-          if (value != null) {
-            result.ipAddressType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.IpAddressType),
-            ) as _i3.IpAddressType);
-          }
-          break;
+          result.ipAddressType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.IpAddressType),
+          ) as _i3.IpAddressType);
         case 'DnsOptions':
-          if (value != null) {
-            result.dnsOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.DnsOptionsSpecification),
-            ) as _i4.DnsOptionsSpecification));
-          }
-          break;
+          result.dnsOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.DnsOptionsSpecification),
+          ) as _i4.DnsOptionsSpecification));
         case 'PrivateDnsEnabled':
           result.privateDnsEnabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -384,154 +355,168 @@ class ModifyVpcEndpointRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcEndpointRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcEndpointRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpcEndpointRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVpcEndpointRequest(
+      :dryRun,
+      :vpcEndpointId,
+      :resetPolicy,
+      :policyDocument,
+      :addRouteTableIds,
+      :removeRouteTableIds,
+      :addSubnetIds,
+      :removeSubnetIds,
+      :addSecurityGroupIds,
+      :removeSecurityGroupIds,
+      :ipAddressType,
+      :dnsOptions,
+      :privateDnsEnabled
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VpcEndpointId'))
       ..add(serializers.serialize(
-        payload.vpcEndpointId,
+        vpcEndpointId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ResetPolicy'))
       ..add(serializers.serialize(
-        payload.resetPolicy,
+        resetPolicy,
         specifiedType: const FullType(bool),
       ));
-    if (payload.policyDocument != null) {
-      result
+    if (policyDocument != null) {
+      result$
         ..add(const _i1.XmlElementName('PolicyDocument'))
         ..add(serializers.serialize(
-          payload.policyDocument!,
+          policyDocument,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.addRouteTableIds != null) {
-      result
+    if (addRouteTableIds != null) {
+      result$
         ..add(const _i1.XmlElementName('AddRouteTableId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addRouteTableIds!,
+          addRouteTableIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.removeRouteTableIds != null) {
-      result
+    if (removeRouteTableIds != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveRouteTableId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeRouteTableIds!,
+          removeRouteTableIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.addSubnetIds != null) {
-      result
+    if (addSubnetIds != null) {
+      result$
         ..add(const _i1.XmlElementName('AddSubnetId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addSubnetIds!,
+          addSubnetIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.removeSubnetIds != null) {
-      result
+    if (removeSubnetIds != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveSubnetId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeSubnetIds!,
+          removeSubnetIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.addSecurityGroupIds != null) {
-      result
+    if (addSecurityGroupIds != null) {
+      result$
         ..add(const _i1.XmlElementName('AddSecurityGroupId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addSecurityGroupIds!,
+          addSecurityGroupIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.removeSecurityGroupIds != null) {
-      result
+    if (removeSecurityGroupIds != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveSecurityGroupId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeSecurityGroupIds!,
+          removeSecurityGroupIds,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.ipAddressType != null) {
-      result
+    if (ipAddressType != null) {
+      result$
         ..add(const _i1.XmlElementName('IpAddressType'))
         ..add(serializers.serialize(
-          payload.ipAddressType!,
+          ipAddressType,
           specifiedType: const FullType.nullable(_i3.IpAddressType),
         ));
     }
-    if (payload.dnsOptions != null) {
-      result
+    if (dnsOptions != null) {
+      result$
         ..add(const _i1.XmlElementName('DnsOptions'))
         ..add(serializers.serialize(
-          payload.dnsOptions!,
+          dnsOptions,
           specifiedType: const FullType(_i4.DnsOptionsSpecification),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('PrivateDnsEnabled'))
       ..add(serializers.serialize(
-        payload.privateDnsEnabled,
+        privateDnsEnabled,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

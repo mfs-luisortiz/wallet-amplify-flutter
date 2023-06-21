@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_volume_attribute_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,41 +111,35 @@ class DescribeVolumeAttributeResultEc2QuerySerializer
     final result = DescribeVolumeAttributeResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'autoEnableIO':
-          if (value != null) {
-            result.autoEnableIo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AttributeBooleanValue),
-            ) as _i2.AttributeBooleanValue));
-          }
-          break;
+          result.autoEnableIo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AttributeBooleanValue),
+          ) as _i2.AttributeBooleanValue));
         case 'productCodes':
-          if (value != null) {
-            result.productCodes.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.ProductCode)],
-              ),
-            ) as _i4.BuiltList<_i3.ProductCode>));
-          }
-          break;
+          result.productCodes.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.ProductCode)],
+            ),
+          ) as _i4.BuiltList<_i3.ProductCode>));
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -154,47 +149,51 @@ class DescribeVolumeAttributeResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeVolumeAttributeResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeVolumeAttributeResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'DescribeVolumeAttributeResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.autoEnableIo != null) {
-      result
+    final DescribeVolumeAttributeResult(
+      :autoEnableIo,
+      :productCodes,
+      :volumeId
+    ) = object;
+    if (autoEnableIo != null) {
+      result$
         ..add(const _i5.XmlElementName('AutoEnableIO'))
         ..add(serializers.serialize(
-          payload.autoEnableIo!,
+          autoEnableIo,
           specifiedType: const FullType(_i2.AttributeBooleanValue),
         ));
     }
-    if (payload.productCodes != null) {
-      result
+    if (productCodes != null) {
+      result$
         ..add(const _i5.XmlElementName('ProductCodes'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.productCodes!,
+          productCodes,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.ProductCode)],
           ),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i5.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

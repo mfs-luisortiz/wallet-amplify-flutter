@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ip_permission; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -152,90 +153,76 @@ class IpPermissionEc2QuerySerializer
     final result = IpPermissionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'fromPort':
           result.fromPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ipProtocol':
-          if (value != null) {
-            result.ipProtocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipProtocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipRanges':
-          if (value != null) {
-            result.ipRanges.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i2.IpRange)],
-              ),
-            ) as _i6.BuiltList<_i2.IpRange>));
-          }
-          break;
+          result.ipRanges.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i2.IpRange)],
+            ),
+          ) as _i6.BuiltList<_i2.IpRange>));
         case 'ipv6Ranges':
-          if (value != null) {
-            result.ipv6Ranges.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.Ipv6Range)],
-              ),
-            ) as _i6.BuiltList<_i3.Ipv6Range>));
-          }
-          break;
+          result.ipv6Ranges.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.Ipv6Range)],
+            ),
+          ) as _i6.BuiltList<_i3.Ipv6Range>));
         case 'prefixListIds':
-          if (value != null) {
-            result.prefixListIds.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.PrefixListId)],
-              ),
-            ) as _i6.BuiltList<_i4.PrefixListId>));
-          }
-          break;
+          result.prefixListIds.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.PrefixListId)],
+            ),
+          ) as _i6.BuiltList<_i4.PrefixListId>));
         case 'toPort':
           result.toPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'groups':
-          if (value != null) {
-            result.userIdGroupPairs.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.UserIdGroupPair)],
-              ),
-            ) as _i6.BuiltList<_i5.UserIdGroupPair>));
-          }
-          break;
+          result.userIdGroupPairs.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.UserIdGroupPair)],
+            ),
+          ) as _i6.BuiltList<_i5.UserIdGroupPair>));
       }
     }
 
@@ -245,96 +232,104 @@ class IpPermissionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpPermission object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpPermission);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'IpPermissionResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final IpPermission(
+      :fromPort,
+      :ipProtocol,
+      :ipRanges,
+      :ipv6Ranges,
+      :prefixListIds,
+      :toPort,
+      :userIdGroupPairs
+    ) = object;
+    result$
       ..add(const _i7.XmlElementName('FromPort'))
       ..add(serializers.serialize(
-        payload.fromPort,
+        fromPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.ipProtocol != null) {
-      result
+    if (ipProtocol != null) {
+      result$
         ..add(const _i7.XmlElementName('IpProtocol'))
         ..add(serializers.serialize(
-          payload.ipProtocol!,
+          ipProtocol,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipRanges != null) {
-      result
+    if (ipRanges != null) {
+      result$
         ..add(const _i7.XmlElementName('IpRanges'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipRanges!,
+          ipRanges,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i2.IpRange)],
           ),
         ));
     }
-    if (payload.ipv6Ranges != null) {
-      result
+    if (ipv6Ranges != null) {
+      result$
         ..add(const _i7.XmlElementName('Ipv6Ranges'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv6Ranges!,
+          ipv6Ranges,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.Ipv6Range)],
           ),
         ));
     }
-    if (payload.prefixListIds != null) {
-      result
+    if (prefixListIds != null) {
+      result$
         ..add(const _i7.XmlElementName('PrefixListIds'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.prefixListIds!,
+          prefixListIds,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.PrefixListId)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('ToPort'))
       ..add(serializers.serialize(
-        payload.toPort,
+        toPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.userIdGroupPairs != null) {
-      result
+    if (userIdGroupPairs != null) {
+      result$
         ..add(const _i7.XmlElementName('Groups'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.userIdGroupPairs!,
+          userIdGroupPairs,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.UserIdGroupPair)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

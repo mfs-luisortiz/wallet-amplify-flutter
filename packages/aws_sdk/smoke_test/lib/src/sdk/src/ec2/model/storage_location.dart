@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.storage_location; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -87,26 +88,23 @@ class StorageLocationEc2QuerySerializer
     final result = StorageLocationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Bucket':
-          if (value != null) {
-            result.bucket = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.bucket = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Key':
-          if (value != null) {
-            result.key = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.key = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -116,32 +114,32 @@ class StorageLocationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    StorageLocation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as StorageLocation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'StorageLocationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.bucket != null) {
-      result
+    final StorageLocation(:bucket, :key) = object;
+    if (bucket != null) {
+      result$
         ..add(const _i2.XmlElementName('Bucket'))
         ..add(serializers.serialize(
-          payload.bucket!,
+          bucket,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.key != null) {
-      result
+    if (key != null) {
+      result$
         ..add(const _i2.XmlElementName('Key'))
         ..add(serializers.serialize(
-          payload.key!,
+          key,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

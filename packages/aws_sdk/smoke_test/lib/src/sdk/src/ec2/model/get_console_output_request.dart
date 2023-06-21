@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_console_output_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -114,28 +115,28 @@ class GetConsoleOutputRequestEc2QuerySerializer
     final result = GetConsoleOutputRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
           result.instanceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Latest':
           result.latest = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -145,34 +146,34 @@ class GetConsoleOutputRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetConsoleOutputRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetConsoleOutputRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetConsoleOutputRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetConsoleOutputRequest(:instanceId, :dryRun, :latest) = object;
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Latest'))
       ..add(serializers.serialize(
-        payload.latest,
+        latest,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

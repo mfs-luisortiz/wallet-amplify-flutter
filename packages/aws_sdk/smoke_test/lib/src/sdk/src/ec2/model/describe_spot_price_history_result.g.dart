@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_spot_price_history_result;
+part of 'describe_spot_price_history_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

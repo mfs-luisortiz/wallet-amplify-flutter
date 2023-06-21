@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_fleet_request_config_data; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -388,226 +389,166 @@ class SpotFleetRequestConfigDataEc2QuerySerializer
     final result = SpotFleetRequestConfigDataBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'allocationStrategy':
-          if (value != null) {
-            result.allocationStrategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AllocationStrategy),
-            ) as _i2.AllocationStrategy);
-          }
-          break;
+          result.allocationStrategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AllocationStrategy),
+          ) as _i2.AllocationStrategy);
         case 'onDemandAllocationStrategy':
-          if (value != null) {
-            result.onDemandAllocationStrategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.OnDemandAllocationStrategy),
-            ) as _i3.OnDemandAllocationStrategy);
-          }
-          break;
+          result.onDemandAllocationStrategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.OnDemandAllocationStrategy),
+          ) as _i3.OnDemandAllocationStrategy);
         case 'spotMaintenanceStrategies':
-          if (value != null) {
-            result.spotMaintenanceStrategies.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.SpotMaintenanceStrategies),
-            ) as _i4.SpotMaintenanceStrategies));
-          }
-          break;
+          result.spotMaintenanceStrategies.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.SpotMaintenanceStrategies),
+          ) as _i4.SpotMaintenanceStrategies));
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'excessCapacityTerminationPolicy':
-          if (value != null) {
-            result.excessCapacityTerminationPolicy = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i5.ExcessCapacityTerminationPolicy),
-            ) as _i5.ExcessCapacityTerminationPolicy);
-          }
-          break;
-        case 'fulfilledCapacity':
-          result.fulfilledCapacity = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(double),
-          ) as double);
-          break;
-        case 'onDemandFulfilledCapacity':
-          result.onDemandFulfilledCapacity = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(double),
-          ) as double);
-          break;
-        case 'iamFleetRole':
-          result.iamFleetRole = (serializers.deserialize(
-            value!,
+          result.clientToken = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'excessCapacityTerminationPolicy':
+          result.excessCapacityTerminationPolicy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.ExcessCapacityTerminationPolicy),
+          ) as _i5.ExcessCapacityTerminationPolicy);
+        case 'fulfilledCapacity':
+          result.fulfilledCapacity = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
+        case 'onDemandFulfilledCapacity':
+          result.onDemandFulfilledCapacity = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
+        case 'iamFleetRole':
+          result.iamFleetRole = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'launchSpecifications':
-          if (value != null) {
-            result.launchSpecifications
-                .replace((const _i14.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i14.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i13.BuiltList,
-                [FullType(_i6.SpotFleetLaunchSpecification)],
-              ),
-            ) as _i13.BuiltList<_i6.SpotFleetLaunchSpecification>));
-          }
-          break;
+          result.launchSpecifications
+              .replace((const _i14.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i14.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i13.BuiltList,
+              [FullType(_i6.SpotFleetLaunchSpecification)],
+            ),
+          ) as _i13.BuiltList<_i6.SpotFleetLaunchSpecification>));
         case 'launchTemplateConfigs':
-          if (value != null) {
-            result.launchTemplateConfigs
-                .replace((const _i14.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i14.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i13.BuiltList,
-                [FullType(_i7.LaunchTemplateConfig)],
-              ),
-            ) as _i13.BuiltList<_i7.LaunchTemplateConfig>));
-          }
-          break;
+          result.launchTemplateConfigs
+              .replace((const _i14.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i14.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i13.BuiltList,
+              [FullType(_i7.LaunchTemplateConfig)],
+            ),
+          ) as _i13.BuiltList<_i7.LaunchTemplateConfig>));
         case 'spotPrice':
-          if (value != null) {
-            result.spotPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetCapacity':
           result.targetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'onDemandTargetCapacity':
           result.onDemandTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'onDemandMaxTotalPrice':
-          if (value != null) {
-            result.onDemandMaxTotalPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.onDemandMaxTotalPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'spotMaxTotalPrice':
-          if (value != null) {
-            result.spotMaxTotalPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotMaxTotalPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'terminateInstancesWithExpiration':
           result.terminateInstancesWithExpiration = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.FleetType),
-            ) as _i8.FleetType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.FleetType),
+          ) as _i8.FleetType);
         case 'validFrom':
-          if (value != null) {
-            result.validFrom = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.validFrom = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'validUntil':
-          if (value != null) {
-            result.validUntil = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.validUntil = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'replaceUnhealthyInstances':
           result.replaceUnhealthyInstances = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'instanceInterruptionBehavior':
-          if (value != null) {
-            result.instanceInterruptionBehavior = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.InstanceInterruptionBehavior),
-            ) as _i9.InstanceInterruptionBehavior);
-          }
-          break;
+          result.instanceInterruptionBehavior = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.InstanceInterruptionBehavior),
+          ) as _i9.InstanceInterruptionBehavior);
         case 'loadBalancersConfig':
-          if (value != null) {
-            result.loadBalancersConfig.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i10.LoadBalancersConfig),
-            ) as _i10.LoadBalancersConfig));
-          }
-          break;
+          result.loadBalancersConfig.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i10.LoadBalancersConfig),
+          ) as _i10.LoadBalancersConfig));
         case 'instancePoolsToUseCount':
           result.instancePoolsToUseCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'context':
-          if (value != null) {
-            result.context = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.context = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetCapacityUnitType':
-          if (value != null) {
-            result.targetCapacityUnitType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i11.TargetCapacityUnitType),
-            ) as _i11.TargetCapacityUnitType);
-          }
-          break;
+          result.targetCapacityUnitType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i11.TargetCapacityUnitType),
+          ) as _i11.TargetCapacityUnitType);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i14.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i14.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i13.BuiltList,
-                [FullType(_i12.TagSpecification)],
-              ),
-            ) as _i13.BuiltList<_i12.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i14.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i14.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i13.BuiltList,
+              [FullType(_i12.TagSpecification)],
+            ),
+          ) as _i13.BuiltList<_i12.TagSpecification>));
       }
     }
 
@@ -617,232 +558,259 @@ class SpotFleetRequestConfigDataEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotFleetRequestConfigData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotFleetRequestConfigData);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i14.XmlElementName(
         'SpotFleetRequestConfigDataResponse',
         _i14.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationStrategy != null) {
-      result
+    final SpotFleetRequestConfigData(
+      :allocationStrategy,
+      :onDemandAllocationStrategy,
+      :spotMaintenanceStrategies,
+      :clientToken,
+      :excessCapacityTerminationPolicy,
+      :fulfilledCapacity,
+      :onDemandFulfilledCapacity,
+      :iamFleetRole,
+      :launchSpecifications,
+      :launchTemplateConfigs,
+      :spotPrice,
+      :targetCapacity,
+      :onDemandTargetCapacity,
+      :onDemandMaxTotalPrice,
+      :spotMaxTotalPrice,
+      :terminateInstancesWithExpiration,
+      :type,
+      :validFrom,
+      :validUntil,
+      :replaceUnhealthyInstances,
+      :instanceInterruptionBehavior,
+      :loadBalancersConfig,
+      :instancePoolsToUseCount,
+      :context,
+      :targetCapacityUnitType,
+      :tagSpecifications
+    ) = object;
+    if (allocationStrategy != null) {
+      result$
         ..add(const _i14.XmlElementName('AllocationStrategy'))
         ..add(serializers.serialize(
-          payload.allocationStrategy!,
+          allocationStrategy,
           specifiedType: const FullType.nullable(_i2.AllocationStrategy),
         ));
     }
-    if (payload.onDemandAllocationStrategy != null) {
-      result
+    if (onDemandAllocationStrategy != null) {
+      result$
         ..add(const _i14.XmlElementName('OnDemandAllocationStrategy'))
         ..add(serializers.serialize(
-          payload.onDemandAllocationStrategy!,
+          onDemandAllocationStrategy,
           specifiedType:
               const FullType.nullable(_i3.OnDemandAllocationStrategy),
         ));
     }
-    if (payload.spotMaintenanceStrategies != null) {
-      result
+    if (spotMaintenanceStrategies != null) {
+      result$
         ..add(const _i14.XmlElementName('SpotMaintenanceStrategies'))
         ..add(serializers.serialize(
-          payload.spotMaintenanceStrategies!,
+          spotMaintenanceStrategies,
           specifiedType: const FullType(_i4.SpotMaintenanceStrategies),
         ));
     }
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i14.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.excessCapacityTerminationPolicy != null) {
-      result
+    if (excessCapacityTerminationPolicy != null) {
+      result$
         ..add(const _i14.XmlElementName('ExcessCapacityTerminationPolicy'))
         ..add(serializers.serialize(
-          payload.excessCapacityTerminationPolicy!,
+          excessCapacityTerminationPolicy,
           specifiedType:
               const FullType.nullable(_i5.ExcessCapacityTerminationPolicy),
         ));
     }
-    result
+    result$
       ..add(const _i14.XmlElementName('FulfilledCapacity'))
       ..add(serializers.serialize(
-        payload.fulfilledCapacity,
+        fulfilledCapacity,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i14.XmlElementName('OnDemandFulfilledCapacity'))
       ..add(serializers.serialize(
-        payload.onDemandFulfilledCapacity,
+        onDemandFulfilledCapacity,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i14.XmlElementName('IamFleetRole'))
       ..add(serializers.serialize(
-        payload.iamFleetRole,
+        iamFleetRole,
         specifiedType: const FullType(String),
       ));
-    if (payload.launchSpecifications != null) {
-      result
+    if (launchSpecifications != null) {
+      result$
         ..add(const _i14.XmlElementName('LaunchSpecifications'))
         ..add(const _i14.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i14.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.launchSpecifications!,
+          launchSpecifications,
           specifiedType: const FullType.nullable(
             _i13.BuiltList,
             [FullType(_i6.SpotFleetLaunchSpecification)],
           ),
         ));
     }
-    if (payload.launchTemplateConfigs != null) {
-      result
+    if (launchTemplateConfigs != null) {
+      result$
         ..add(const _i14.XmlElementName('LaunchTemplateConfigs'))
         ..add(const _i14.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i14.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.launchTemplateConfigs!,
+          launchTemplateConfigs,
           specifiedType: const FullType.nullable(
             _i13.BuiltList,
             [FullType(_i7.LaunchTemplateConfig)],
           ),
         ));
     }
-    if (payload.spotPrice != null) {
-      result
+    if (spotPrice != null) {
+      result$
         ..add(const _i14.XmlElementName('SpotPrice'))
         ..add(serializers.serialize(
-          payload.spotPrice!,
+          spotPrice,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i14.XmlElementName('TargetCapacity'))
       ..add(serializers.serialize(
-        payload.targetCapacity,
+        targetCapacity,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i14.XmlElementName('OnDemandTargetCapacity'))
       ..add(serializers.serialize(
-        payload.onDemandTargetCapacity,
+        onDemandTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.onDemandMaxTotalPrice != null) {
-      result
+    if (onDemandMaxTotalPrice != null) {
+      result$
         ..add(const _i14.XmlElementName('OnDemandMaxTotalPrice'))
         ..add(serializers.serialize(
-          payload.onDemandMaxTotalPrice!,
+          onDemandMaxTotalPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spotMaxTotalPrice != null) {
-      result
+    if (spotMaxTotalPrice != null) {
+      result$
         ..add(const _i14.XmlElementName('SpotMaxTotalPrice'))
         ..add(serializers.serialize(
-          payload.spotMaxTotalPrice!,
+          spotMaxTotalPrice,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i14.XmlElementName('TerminateInstancesWithExpiration'))
       ..add(serializers.serialize(
-        payload.terminateInstancesWithExpiration,
+        terminateInstancesWithExpiration,
         specifiedType: const FullType(bool),
       ));
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i14.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i8.FleetType),
         ));
     }
-    if (payload.validFrom != null) {
-      result
+    if (validFrom != null) {
+      result$
         ..add(const _i14.XmlElementName('ValidFrom'))
         ..add(serializers.serialize(
-          payload.validFrom!,
+          validFrom,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.validUntil != null) {
-      result
+    if (validUntil != null) {
+      result$
         ..add(const _i14.XmlElementName('ValidUntil'))
         ..add(serializers.serialize(
-          payload.validUntil!,
+          validUntil,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i14.XmlElementName('ReplaceUnhealthyInstances'))
       ..add(serializers.serialize(
-        payload.replaceUnhealthyInstances,
+        replaceUnhealthyInstances,
         specifiedType: const FullType(bool),
       ));
-    if (payload.instanceInterruptionBehavior != null) {
-      result
+    if (instanceInterruptionBehavior != null) {
+      result$
         ..add(const _i14.XmlElementName('InstanceInterruptionBehavior'))
         ..add(serializers.serialize(
-          payload.instanceInterruptionBehavior!,
+          instanceInterruptionBehavior,
           specifiedType:
               const FullType.nullable(_i9.InstanceInterruptionBehavior),
         ));
     }
-    if (payload.loadBalancersConfig != null) {
-      result
+    if (loadBalancersConfig != null) {
+      result$
         ..add(const _i14.XmlElementName('LoadBalancersConfig'))
         ..add(serializers.serialize(
-          payload.loadBalancersConfig!,
+          loadBalancersConfig,
           specifiedType: const FullType(_i10.LoadBalancersConfig),
         ));
     }
-    result
+    result$
       ..add(const _i14.XmlElementName('InstancePoolsToUseCount'))
       ..add(serializers.serialize(
-        payload.instancePoolsToUseCount,
+        instancePoolsToUseCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.context != null) {
-      result
+    if (context != null) {
+      result$
         ..add(const _i14.XmlElementName('Context'))
         ..add(serializers.serialize(
-          payload.context!,
+          context,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.targetCapacityUnitType != null) {
-      result
+    if (targetCapacityUnitType != null) {
+      result$
         ..add(const _i14.XmlElementName('TargetCapacityUnitType'))
         ..add(serializers.serialize(
-          payload.targetCapacityUnitType!,
+          targetCapacityUnitType,
           specifiedType: const FullType.nullable(_i11.TargetCapacityUnitType),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i14.XmlElementName('TagSpecification'))
         ..add(const _i14.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i14.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i13.BuiltList,
             [FullType(_i12.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

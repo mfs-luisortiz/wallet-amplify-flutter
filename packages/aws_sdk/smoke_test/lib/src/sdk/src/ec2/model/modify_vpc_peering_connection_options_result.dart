@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_peering_connection_options_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,28 +100,25 @@ class ModifyVpcPeeringConnectionOptionsResultEc2QuerySerializer extends _i3
     final result = ModifyVpcPeeringConnectionOptionsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'accepterPeeringConnectionOptions':
-          if (value != null) {
-            result.accepterPeeringConnectionOptions
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PeeringConnectionOptions),
-            ) as _i2.PeeringConnectionOptions));
-          }
-          break;
+          result.accepterPeeringConnectionOptions
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PeeringConnectionOptions),
+          ) as _i2.PeeringConnectionOptions));
         case 'requesterPeeringConnectionOptions':
-          if (value != null) {
-            result.requesterPeeringConnectionOptions
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PeeringConnectionOptions),
-            ) as _i2.PeeringConnectionOptions));
-          }
-          break;
+          result.requesterPeeringConnectionOptions
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PeeringConnectionOptions),
+          ) as _i2.PeeringConnectionOptions));
       }
     }
 
@@ -130,32 +128,35 @@ class ModifyVpcPeeringConnectionOptionsResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcPeeringConnectionOptionsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcPeeringConnectionOptionsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ModifyVpcPeeringConnectionOptionsResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.accepterPeeringConnectionOptions != null) {
-      result
+    final ModifyVpcPeeringConnectionOptionsResult(
+      :accepterPeeringConnectionOptions,
+      :requesterPeeringConnectionOptions
+    ) = object;
+    if (accepterPeeringConnectionOptions != null) {
+      result$
         ..add(const _i3.XmlElementName('AccepterPeeringConnectionOptions'))
         ..add(serializers.serialize(
-          payload.accepterPeeringConnectionOptions!,
+          accepterPeeringConnectionOptions,
           specifiedType: const FullType(_i2.PeeringConnectionOptions),
         ));
     }
-    if (payload.requesterPeeringConnectionOptions != null) {
-      result
+    if (requesterPeeringConnectionOptions != null) {
+      result$
         ..add(const _i3.XmlElementName('RequesterPeeringConnectionOptions'))
         ..add(serializers.serialize(
-          payload.requesterPeeringConnectionOptions!,
+          requesterPeeringConnectionOptions,
           specifiedType: const FullType(_i2.PeeringConnectionOptions),
         ));
     }
-    return result;
+    return result$;
   }
 }

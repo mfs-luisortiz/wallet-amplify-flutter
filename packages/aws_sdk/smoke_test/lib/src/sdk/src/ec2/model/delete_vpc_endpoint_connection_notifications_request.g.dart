@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_vpc_endpoint_connection_notifications_request;
+part of 'delete_vpc_endpoint_connection_notifications_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

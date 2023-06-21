@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_instance_export_task_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -137,51 +138,45 @@ class CreateInstanceExportTaskRequestEc2QuerySerializer
     final result = CreateInstanceExportTaskRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'exportToS3':
           result.exportToS3Task.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.ExportToS3TaskSpecification),
           ) as _i3.ExportToS3TaskSpecification));
-          break;
         case 'instanceId':
           result.instanceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'targetEnvironment':
           result.targetEnvironment = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i4.ExportEnvironment),
           ) as _i4.ExportEnvironment);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i5.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i5.TagSpecification>));
       }
     }
 
@@ -191,57 +186,63 @@ class CreateInstanceExportTaskRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateInstanceExportTaskRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateInstanceExportTaskRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateInstanceExportTaskRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final CreateInstanceExportTaskRequest(
+      :description,
+      :exportToS3Task,
+      :instanceId,
+      :targetEnvironment,
+      :tagSpecifications
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('ExportToS3'))
       ..add(serializers.serialize(
-        payload.exportToS3Task,
+        exportToS3Task,
         specifiedType: const FullType(_i3.ExportToS3TaskSpecification),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TargetEnvironment'))
       ..add(serializers.serialize(
-        payload.targetEnvironment,
+        targetEnvironment,
         specifiedType: const FullType.nullable(_i4.ExportEnvironment),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

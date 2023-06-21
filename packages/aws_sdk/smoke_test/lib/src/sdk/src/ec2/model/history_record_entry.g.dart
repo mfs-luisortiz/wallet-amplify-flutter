@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.history_record_entry;
+part of 'history_record_entry.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

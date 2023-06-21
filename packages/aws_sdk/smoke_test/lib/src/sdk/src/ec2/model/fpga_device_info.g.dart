@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.fpga_device_info;
+part of 'fpga_device_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

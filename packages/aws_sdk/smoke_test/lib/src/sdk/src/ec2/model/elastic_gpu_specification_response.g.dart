@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.elastic_gpu_specification_response;
+part of 'elastic_gpu_specification_response.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

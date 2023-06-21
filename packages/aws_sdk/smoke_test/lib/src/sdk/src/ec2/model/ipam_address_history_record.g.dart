@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ipam_address_history_record;
+part of 'ipam_address_history_record.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

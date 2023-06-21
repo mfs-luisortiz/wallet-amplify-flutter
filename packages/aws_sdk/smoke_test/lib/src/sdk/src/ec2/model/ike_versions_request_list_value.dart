@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ike_versions_request_list_value; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -74,18 +75,18 @@ class IkeVersionsRequestListValueEc2QuerySerializer
     final result = IkeVersionsRequestListValueBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Value':
-          if (value != null) {
-            result.value = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.value = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -95,24 +96,24 @@ class IkeVersionsRequestListValueEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IkeVersionsRequestListValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IkeVersionsRequestListValue);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'IkeVersionsRequestListValueResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.value != null) {
-      result
+    final IkeVersionsRequestListValue(:value) = object;
+    if (value != null) {
+      result$
         ..add(const _i2.XmlElementName('Value'))
         ..add(serializers.serialize(
-          payload.value!,
+          value,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -400,11 +400,11 @@ class StructureXmlSerializerGenerator extends StructureSerializerGenerator {
         Code.scope(
           (allocate) => '''
       final responseIterator = serialized.iterator; 
-      while (responseIterator.moveNext Function() ) {
+      while (responseIterator.moveNext()) {
         final key = responseIterator.current as String;
         responseIterator.moveNext();
         if (key.endsWith('Result')) {
-          serialized = responseIterator.current as ${allocate(DartTypes.core.iterable(DartTypes.core.object.boxed))}
+          serialized = responseIterator.current as ${allocate(DartTypes.core.iterable(DartTypes.core.object.boxed))};
         }
       }''',
         ),

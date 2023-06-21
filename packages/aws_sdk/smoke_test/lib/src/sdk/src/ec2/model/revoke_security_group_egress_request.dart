@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.revoke_security_group_egress_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -192,97 +193,77 @@ class RevokeSecurityGroupEgressRequestEc2QuerySerializer
     final result = RevokeSecurityGroupEgressRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'groupId':
           result.groupId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ipPermissions':
-          if (value != null) {
-            result.ipPermissions.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.IpPermission)],
-              ),
-            ) as _i4.BuiltList<_i3.IpPermission>));
-          }
-          break;
+          result.ipPermissions.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.IpPermission)],
+            ),
+          ) as _i4.BuiltList<_i3.IpPermission>));
         case 'SecurityGroupRuleId':
-          if (value != null) {
-            result.securityGroupRuleIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.securityGroupRuleIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'cidrIp':
-          if (value != null) {
-            result.cidrIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'fromPort':
           result.fromPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ipProtocol':
-          if (value != null) {
-            result.ipProtocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipProtocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'toPort':
           result.toPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'sourceSecurityGroupName':
-          if (value != null) {
-            result.sourceSecurityGroupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceSecurityGroupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceSecurityGroupOwnerId':
-          if (value != null) {
-            result.sourceSecurityGroupOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceSecurityGroupOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -292,102 +273,113 @@ class RevokeSecurityGroupEgressRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RevokeSecurityGroupEgressRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RevokeSecurityGroupEgressRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'RevokeSecurityGroupEgressRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final RevokeSecurityGroupEgressRequest(
+      :dryRun,
+      :groupId,
+      :ipPermissions,
+      :securityGroupRuleIds,
+      :cidrIp,
+      :fromPort,
+      :ipProtocol,
+      :toPort,
+      :sourceSecurityGroupName,
+      :sourceSecurityGroupOwnerId
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('GroupId'))
       ..add(serializers.serialize(
-        payload.groupId,
+        groupId,
         specifiedType: const FullType(String),
       ));
-    if (payload.ipPermissions != null) {
-      result
+    if (ipPermissions != null) {
+      result$
         ..add(const _i1.XmlElementName('IpPermissions'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipPermissions!,
+          ipPermissions,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.IpPermission)],
           ),
         ));
     }
-    if (payload.securityGroupRuleIds != null) {
-      result
+    if (securityGroupRuleIds != null) {
+      result$
         ..add(const _i1.XmlElementName('SecurityGroupRuleId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroupRuleIds!,
+          securityGroupRuleIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.cidrIp != null) {
-      result
+    if (cidrIp != null) {
+      result$
         ..add(const _i1.XmlElementName('CidrIp'))
         ..add(serializers.serialize(
-          payload.cidrIp!,
+          cidrIp,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('FromPort'))
       ..add(serializers.serialize(
-        payload.fromPort,
+        fromPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.ipProtocol != null) {
-      result
+    if (ipProtocol != null) {
+      result$
         ..add(const _i1.XmlElementName('IpProtocol'))
         ..add(serializers.serialize(
-          payload.ipProtocol!,
+          ipProtocol,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('ToPort'))
       ..add(serializers.serialize(
-        payload.toPort,
+        toPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.sourceSecurityGroupName != null) {
-      result
+    if (sourceSecurityGroupName != null) {
+      result$
         ..add(const _i1.XmlElementName('SourceSecurityGroupName'))
         ..add(serializers.serialize(
-          payload.sourceSecurityGroupName!,
+          sourceSecurityGroupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceSecurityGroupOwnerId != null) {
-      result
+    if (sourceSecurityGroupOwnerId != null) {
+      result$
         ..add(const _i1.XmlElementName('SourceSecurityGroupOwnerId'))
         ..add(serializers.serialize(
-          payload.sourceSecurityGroupOwnerId!,
+          sourceSecurityGroupOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

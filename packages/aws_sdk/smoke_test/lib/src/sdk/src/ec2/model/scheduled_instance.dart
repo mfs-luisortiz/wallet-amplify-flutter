@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instance; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -226,124 +227,88 @@ class ScheduledInstanceEc2QuerySerializer
     final result = ScheduledInstanceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'createDate':
-          if (value != null) {
-            result.createDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'hourlyPrice':
-          if (value != null) {
-            result.hourlyPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hourlyPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceCount':
           result.instanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkPlatform':
-          if (value != null) {
-            result.networkPlatform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkPlatform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'nextSlotStartTime':
-          if (value != null) {
-            result.nextSlotStartTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.nextSlotStartTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'previousSlotEndTime':
-          if (value != null) {
-            result.previousSlotEndTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.previousSlotEndTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'recurrence':
-          if (value != null) {
-            result.recurrence.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
-            ) as _i2.ScheduledInstanceRecurrence));
-          }
-          break;
+          result.recurrence.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
+          ) as _i2.ScheduledInstanceRecurrence));
         case 'scheduledInstanceId':
-          if (value != null) {
-            result.scheduledInstanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.scheduledInstanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'slotDurationInHours':
           result.slotDurationInHours = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'termEndDate':
-          if (value != null) {
-            result.termEndDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.termEndDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'termStartDate':
-          if (value != null) {
-            result.termStartDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.termStartDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'totalScheduledInstanceHours':
           result.totalScheduledInstanceHours = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -353,130 +318,146 @@ class ScheduledInstanceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstance object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstance);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ScheduledInstanceResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final ScheduledInstance(
+      :availabilityZone,
+      :createDate,
+      :hourlyPrice,
+      :instanceCount,
+      :instanceType,
+      :networkPlatform,
+      :nextSlotStartTime,
+      :platform,
+      :previousSlotEndTime,
+      :recurrence,
+      :scheduledInstanceId,
+      :slotDurationInHours,
+      :termEndDate,
+      :termStartDate,
+      :totalScheduledInstanceHours
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i3.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.createDate != null) {
-      result
+    if (createDate != null) {
+      result$
         ..add(const _i3.XmlElementName('CreateDate'))
         ..add(serializers.serialize(
-          payload.createDate!,
+          createDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.hourlyPrice != null) {
-      result
+    if (hourlyPrice != null) {
+      result$
         ..add(const _i3.XmlElementName('HourlyPrice'))
         ..add(serializers.serialize(
-          payload.hourlyPrice!,
+          hourlyPrice,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('InstanceCount'))
       ..add(serializers.serialize(
-        payload.instanceCount,
+        instanceCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkPlatform != null) {
-      result
+    if (networkPlatform != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkPlatform'))
         ..add(serializers.serialize(
-          payload.networkPlatform!,
+          networkPlatform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.nextSlotStartTime != null) {
-      result
+    if (nextSlotStartTime != null) {
+      result$
         ..add(const _i3.XmlElementName('NextSlotStartTime'))
         ..add(serializers.serialize(
-          payload.nextSlotStartTime!,
+          nextSlotStartTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i3.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.previousSlotEndTime != null) {
-      result
+    if (previousSlotEndTime != null) {
+      result$
         ..add(const _i3.XmlElementName('PreviousSlotEndTime'))
         ..add(serializers.serialize(
-          payload.previousSlotEndTime!,
+          previousSlotEndTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.recurrence != null) {
-      result
+    if (recurrence != null) {
+      result$
         ..add(const _i3.XmlElementName('Recurrence'))
         ..add(serializers.serialize(
-          payload.recurrence!,
+          recurrence,
           specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
         ));
     }
-    if (payload.scheduledInstanceId != null) {
-      result
+    if (scheduledInstanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('ScheduledInstanceId'))
         ..add(serializers.serialize(
-          payload.scheduledInstanceId!,
+          scheduledInstanceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('SlotDurationInHours'))
       ..add(serializers.serialize(
-        payload.slotDurationInHours,
+        slotDurationInHours,
         specifiedType: const FullType(int),
       ));
-    if (payload.termEndDate != null) {
-      result
+    if (termEndDate != null) {
+      result$
         ..add(const _i3.XmlElementName('TermEndDate'))
         ..add(serializers.serialize(
-          payload.termEndDate!,
+          termEndDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.termStartDate != null) {
-      result
+    if (termStartDate != null) {
+      result$
         ..add(const _i3.XmlElementName('TermStartDate'))
         ..add(serializers.serialize(
-          payload.termStartDate!,
+          termStartDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('TotalScheduledInstanceHours'))
       ..add(serializers.serialize(
-        payload.totalScheduledInstanceHours,
+        totalScheduledInstanceHours,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_acl_entry; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -155,70 +156,53 @@ class NetworkAclEntryEc2QuerySerializer
     final result = NetworkAclEntryBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidrBlock':
-          if (value != null) {
-            result.cidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'egress':
           result.egress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'icmpTypeCode':
-          if (value != null) {
-            result.icmpTypeCode.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IcmpTypeCode),
-            ) as _i2.IcmpTypeCode));
-          }
-          break;
+          result.icmpTypeCode.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IcmpTypeCode),
+          ) as _i2.IcmpTypeCode));
         case 'ipv6CidrBlock':
-          if (value != null) {
-            result.ipv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'portRange':
-          if (value != null) {
-            result.portRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.PortRange),
-            ) as _i3.PortRange));
-          }
-          break;
+          result.portRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PortRange),
+          ) as _i3.PortRange));
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ruleAction':
-          if (value != null) {
-            result.ruleAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.RuleAction),
-            ) as _i4.RuleAction);
-          }
-          break;
+          result.ruleAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.RuleAction),
+          ) as _i4.RuleAction);
         case 'ruleNumber':
           result.ruleNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -228,76 +212,85 @@ class NetworkAclEntryEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkAclEntry object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkAclEntry);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'NetworkAclEntryResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrBlock != null) {
-      result
+    final NetworkAclEntry(
+      :cidrBlock,
+      :egress,
+      :icmpTypeCode,
+      :ipv6CidrBlock,
+      :portRange,
+      :protocol,
+      :ruleAction,
+      :ruleNumber
+    ) = object;
+    if (cidrBlock != null) {
+      result$
         ..add(const _i5.XmlElementName('CidrBlock'))
         ..add(serializers.serialize(
-          payload.cidrBlock!,
+          cidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('Egress'))
       ..add(serializers.serialize(
-        payload.egress,
+        egress,
         specifiedType: const FullType(bool),
       ));
-    if (payload.icmpTypeCode != null) {
-      result
+    if (icmpTypeCode != null) {
+      result$
         ..add(const _i5.XmlElementName('IcmpTypeCode'))
         ..add(serializers.serialize(
-          payload.icmpTypeCode!,
+          icmpTypeCode,
           specifiedType: const FullType(_i2.IcmpTypeCode),
         ));
     }
-    if (payload.ipv6CidrBlock != null) {
-      result
+    if (ipv6CidrBlock != null) {
+      result$
         ..add(const _i5.XmlElementName('Ipv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlock!,
+          ipv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.portRange != null) {
-      result
+    if (portRange != null) {
+      result$
         ..add(const _i5.XmlElementName('PortRange'))
         ..add(serializers.serialize(
-          payload.portRange!,
+          portRange,
           specifiedType: const FullType(_i3.PortRange),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i5.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ruleAction != null) {
-      result
+    if (ruleAction != null) {
+      result$
         ..add(const _i5.XmlElementName('RuleAction'))
         ..add(serializers.serialize(
-          payload.ruleAction!,
+          ruleAction,
           specifiedType: const FullType.nullable(_i4.RuleAction),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('RuleNumber'))
       ..add(serializers.serialize(
-        payload.ruleNumber,
+        ruleNumber,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

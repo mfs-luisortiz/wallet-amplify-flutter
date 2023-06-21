@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_policy_table; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -124,57 +125,45 @@ class TransitGatewayPolicyTableEc2QuerySerializer
     final result = TransitGatewayPolicyTableBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayPolicyTableId':
-          if (value != null) {
-            result.transitGatewayPolicyTableId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayPolicyTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayId':
-          if (value != null) {
-            result.transitGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayPolicyTableState),
-            ) as _i2.TransitGatewayPolicyTableState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayPolicyTableState),
+          ) as _i2.TransitGatewayPolicyTableState);
         case 'creationTime':
-          if (value != null) {
-            result.creationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.creationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -184,64 +173,70 @@ class TransitGatewayPolicyTableEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayPolicyTable object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayPolicyTable);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TransitGatewayPolicyTableResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayPolicyTableId != null) {
-      result
+    final TransitGatewayPolicyTable(
+      :transitGatewayPolicyTableId,
+      :transitGatewayId,
+      :state,
+      :creationTime,
+      :tags
+    ) = object;
+    if (transitGatewayPolicyTableId != null) {
+      result$
         ..add(const _i5.XmlElementName('TransitGatewayPolicyTableId'))
         ..add(serializers.serialize(
-          payload.transitGatewayPolicyTableId!,
+          transitGatewayPolicyTableId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayId != null) {
-      result
+    if (transitGatewayId != null) {
+      result$
         ..add(const _i5.XmlElementName('TransitGatewayId'))
         ..add(serializers.serialize(
-          payload.transitGatewayId!,
+          transitGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i5.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType:
               const FullType.nullable(_i2.TransitGatewayPolicyTableState),
         ));
     }
-    if (payload.creationTime != null) {
-      result
+    if (creationTime != null) {
+      result$
         ..add(const _i5.XmlElementName('CreationTime'))
         ..add(serializers.serialize(
-          payload.creationTime!,
+          creationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

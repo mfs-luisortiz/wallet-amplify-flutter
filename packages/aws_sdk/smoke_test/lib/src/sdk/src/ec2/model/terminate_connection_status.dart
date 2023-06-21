@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.terminate_connection_status; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -102,34 +103,28 @@ class TerminateConnectionStatusEc2QuerySerializer
     final result = TerminateConnectionStatusBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'connectionId':
-          if (value != null) {
-            result.connectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.connectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'previousStatus':
-          if (value != null) {
-            result.previousStatus.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
-            ) as _i2.ClientVpnConnectionStatus));
-          }
-          break;
+          result.previousStatus.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
+          ) as _i2.ClientVpnConnectionStatus));
         case 'currentStatus':
-          if (value != null) {
-            result.currentStatus.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
-            ) as _i2.ClientVpnConnectionStatus));
-          }
-          break;
+          result.currentStatus.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
+          ) as _i2.ClientVpnConnectionStatus));
       }
     }
 
@@ -139,40 +134,44 @@ class TerminateConnectionStatusEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TerminateConnectionStatus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TerminateConnectionStatus);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'TerminateConnectionStatusResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.connectionId != null) {
-      result
+    final TerminateConnectionStatus(
+      :connectionId,
+      :previousStatus,
+      :currentStatus
+    ) = object;
+    if (connectionId != null) {
+      result$
         ..add(const _i3.XmlElementName('ConnectionId'))
         ..add(serializers.serialize(
-          payload.connectionId!,
+          connectionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.previousStatus != null) {
-      result
+    if (previousStatus != null) {
+      result$
         ..add(const _i3.XmlElementName('PreviousStatus'))
         ..add(serializers.serialize(
-          payload.previousStatus!,
+          previousStatus,
           specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
         ));
     }
-    if (payload.currentStatus != null) {
-      result
+    if (currentStatus != null) {
+      result$
         ..add(const _i3.XmlElementName('CurrentStatus'))
         ..add(serializers.serialize(
-          payload.currentStatus!,
+          currentStatus,
           specifiedType: const FullType(_i2.ClientVpnConnectionStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

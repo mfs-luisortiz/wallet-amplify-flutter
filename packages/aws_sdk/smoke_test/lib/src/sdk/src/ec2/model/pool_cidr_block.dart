@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.pool_cidr_block; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -71,18 +72,18 @@ class PoolCidrBlockEc2QuerySerializer
     final result = PoolCidrBlockBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'poolCidrBlock':
-          if (value != null) {
-            result.cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -92,24 +93,24 @@ class PoolCidrBlockEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PoolCidrBlock object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PoolCidrBlock);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PoolCidrBlockResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidr != null) {
-      result
+    final PoolCidrBlock(:cidr) = object;
+    if (cidr != null) {
+      result$
         ..add(const _i2.XmlElementName('PoolCidrBlock'))
         ..add(serializers.serialize(
-          payload.cidr!,
+          cidr,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

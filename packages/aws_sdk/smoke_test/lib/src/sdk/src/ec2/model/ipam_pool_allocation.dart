@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipam_pool_allocation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -140,66 +141,48 @@ class IpamPoolAllocationEc2QuerySerializer
     final result = IpamPoolAllocationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidr':
-          if (value != null) {
-            result.cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamPoolAllocationId':
-          if (value != null) {
-            result.ipamPoolAllocationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamPoolAllocationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceId':
-          if (value != null) {
-            result.resourceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamPoolAllocationResourceType),
-            ) as _i2.IpamPoolAllocationResourceType);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamPoolAllocationResourceType),
+          ) as _i2.IpamPoolAllocationResourceType);
         case 'resourceRegion':
-          if (value != null) {
-            result.resourceRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceOwner':
-          if (value != null) {
-            result.resourceOwner = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceOwner = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -209,73 +192,81 @@ class IpamPoolAllocationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpamPoolAllocation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpamPoolAllocation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'IpamPoolAllocationResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidr != null) {
-      result
+    final IpamPoolAllocation(
+      :cidr,
+      :ipamPoolAllocationId,
+      :description,
+      :resourceId,
+      :resourceType,
+      :resourceRegion,
+      :resourceOwner
+    ) = object;
+    if (cidr != null) {
+      result$
         ..add(const _i3.XmlElementName('Cidr'))
         ..add(serializers.serialize(
-          payload.cidr!,
+          cidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamPoolAllocationId != null) {
-      result
+    if (ipamPoolAllocationId != null) {
+      result$
         ..add(const _i3.XmlElementName('IpamPoolAllocationId'))
         ..add(serializers.serialize(
-          payload.ipamPoolAllocationId!,
+          ipamPoolAllocationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceId != null) {
-      result
+    if (resourceId != null) {
+      result$
         ..add(const _i3.XmlElementName('ResourceId'))
         ..add(serializers.serialize(
-          payload.resourceId!,
+          resourceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i3.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType:
               const FullType.nullable(_i2.IpamPoolAllocationResourceType),
         ));
     }
-    if (payload.resourceRegion != null) {
-      result
+    if (resourceRegion != null) {
+      result$
         ..add(const _i3.XmlElementName('ResourceRegion'))
         ..add(serializers.serialize(
-          payload.resourceRegion!,
+          resourceRegion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceOwner != null) {
-      result
+    if (resourceOwner != null) {
+      result$
         ..add(const _i3.XmlElementName('ResourceOwner'))
         ..add(serializers.serialize(
-          payload.resourceOwner!,
+          resourceOwner,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_peering_connection_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -125,42 +126,35 @@ class ModifyVpcPeeringConnectionOptionsRequestEc2QuerySerializer extends _i1
     final result = ModifyVpcPeeringConnectionOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AccepterPeeringConnectionOptions':
-          if (value != null) {
-            result.accepterPeeringConnectionOptions
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.PeeringConnectionOptionsRequest),
-            ) as _i3.PeeringConnectionOptionsRequest));
-          }
-          break;
+          result.accepterPeeringConnectionOptions
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PeeringConnectionOptionsRequest),
+          ) as _i3.PeeringConnectionOptionsRequest));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'RequesterPeeringConnectionOptions':
-          if (value != null) {
-            result.requesterPeeringConnectionOptions
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.PeeringConnectionOptionsRequest),
-            ) as _i3.PeeringConnectionOptionsRequest));
-          }
-          break;
+          result.requesterPeeringConnectionOptions
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PeeringConnectionOptionsRequest),
+          ) as _i3.PeeringConnectionOptionsRequest));
         case 'VpcPeeringConnectionId':
           result.vpcPeeringConnectionId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -170,44 +164,49 @@ class ModifyVpcPeeringConnectionOptionsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcPeeringConnectionOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcPeeringConnectionOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpcPeeringConnectionOptionsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.accepterPeeringConnectionOptions != null) {
-      result
+    final ModifyVpcPeeringConnectionOptionsRequest(
+      :accepterPeeringConnectionOptions,
+      :dryRun,
+      :requesterPeeringConnectionOptions,
+      :vpcPeeringConnectionId
+    ) = object;
+    if (accepterPeeringConnectionOptions != null) {
+      result$
         ..add(const _i1.XmlElementName('AccepterPeeringConnectionOptions'))
         ..add(serializers.serialize(
-          payload.accepterPeeringConnectionOptions!,
+          accepterPeeringConnectionOptions,
           specifiedType: const FullType(_i3.PeeringConnectionOptionsRequest),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.requesterPeeringConnectionOptions != null) {
-      result
+    if (requesterPeeringConnectionOptions != null) {
+      result$
         ..add(const _i1.XmlElementName('RequesterPeeringConnectionOptions'))
         ..add(serializers.serialize(
-          payload.requesterPeeringConnectionOptions!,
+          requesterPeeringConnectionOptions,
           specifiedType: const FullType(_i3.PeeringConnectionOptionsRequest),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('VpcPeeringConnectionId'))
       ..add(serializers.serialize(
-        payload.vpcPeeringConnectionId,
+        vpcPeeringConnectionId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

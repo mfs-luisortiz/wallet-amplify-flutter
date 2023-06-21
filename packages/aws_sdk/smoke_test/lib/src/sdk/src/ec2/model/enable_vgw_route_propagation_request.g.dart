@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.enable_vgw_route_propagation_request;
+part of 'enable_vgw_route_propagation_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_subnets_result;
+part of 'describe_subnets_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_instance_types_from_instance_requirements_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -152,16 +153,18 @@ class GetInstanceTypesFromInstanceRequirementsRequestEc2QuerySerializer
     final result = GetInstanceTypesFromInstanceRequirementsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ArchitectureType':
           result.architectureTypes.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -174,7 +177,6 @@ class GetInstanceTypesFromInstanceRequirementsRequestEc2QuerySerializer
               [FullType(_i3.ArchitectureType)],
             ),
           ) as _i6.BuiltList<_i3.ArchitectureType>));
-          break;
         case 'VirtualizationType':
           result.virtualizationTypes.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -187,27 +189,21 @@ class GetInstanceTypesFromInstanceRequirementsRequestEc2QuerySerializer
               [FullType(_i4.VirtualizationType)],
             ),
           ) as _i6.BuiltList<_i4.VirtualizationType>));
-          break;
         case 'InstanceRequirements':
           result.instanceRequirements.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i5.InstanceRequirementsRequest),
           ) as _i5.InstanceRequirementsRequest));
-          break;
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -217,68 +213,75 @@ class GetInstanceTypesFromInstanceRequirementsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetInstanceTypesFromInstanceRequirementsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetInstanceTypesFromInstanceRequirementsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetInstanceTypesFromInstanceRequirementsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetInstanceTypesFromInstanceRequirementsRequest(
+      :dryRun,
+      :architectureTypes,
+      :virtualizationTypes,
+      :instanceRequirements,
+      :maxResults,
+      :nextToken
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ArchitectureType'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.architectureTypes,
+        architectureTypes,
         specifiedType: const FullType.nullable(
           _i6.BuiltList,
           [FullType(_i3.ArchitectureType)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VirtualizationType'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.virtualizationTypes,
+        virtualizationTypes,
         specifiedType: const FullType.nullable(
           _i6.BuiltList,
           [FullType(_i4.VirtualizationType)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceRequirements'))
       ..add(serializers.serialize(
-        payload.instanceRequirements,
+        instanceRequirements,
         specifiedType: const FullType(_i5.InstanceRequirementsRequest),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

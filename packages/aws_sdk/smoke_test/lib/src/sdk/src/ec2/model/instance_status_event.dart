@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_status_event; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,58 +132,43 @@ class InstanceStatusEventEc2QuerySerializer
     final result = InstanceStatusEventBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceEventId':
-          if (value != null) {
-            result.instanceEventId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceEventId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'code':
-          if (value != null) {
-            result.code = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.EventCode),
-            ) as _i2.EventCode);
-          }
-          break;
+          result.code = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.EventCode),
+          ) as _i2.EventCode);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'notAfter':
-          if (value != null) {
-            result.notAfter = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.notAfter = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'notBefore':
-          if (value != null) {
-            result.notBefore = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.notBefore = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'notBeforeDeadline':
-          if (value != null) {
-            result.notBeforeDeadline = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.notBeforeDeadline = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -192,64 +178,71 @@ class InstanceStatusEventEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStatusEvent object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStatusEvent);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceStatusEventResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceEventId != null) {
-      result
+    final InstanceStatusEvent(
+      :instanceEventId,
+      :code,
+      :description,
+      :notAfter,
+      :notBefore,
+      :notBeforeDeadline
+    ) = object;
+    if (instanceEventId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceEventId'))
         ..add(serializers.serialize(
-          payload.instanceEventId!,
+          instanceEventId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.code != null) {
-      result
+    if (code != null) {
+      result$
         ..add(const _i3.XmlElementName('Code'))
         ..add(serializers.serialize(
-          payload.code!,
+          code,
           specifiedType: const FullType.nullable(_i2.EventCode),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.notAfter != null) {
-      result
+    if (notAfter != null) {
+      result$
         ..add(const _i3.XmlElementName('NotAfter'))
         ..add(serializers.serialize(
-          payload.notAfter!,
+          notAfter,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.notBefore != null) {
-      result
+    if (notBefore != null) {
+      result$
         ..add(const _i3.XmlElementName('NotBefore'))
         ..add(serializers.serialize(
-          payload.notBefore!,
+          notBefore,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.notBeforeDeadline != null) {
-      result
+    if (notBeforeDeadline != null) {
+      result$
         ..add(const _i3.XmlElementName('NotBeforeDeadline'))
         ..add(serializers.serialize(
-          payload.notBeforeDeadline!,
+          notBeforeDeadline,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_snapshots_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -156,61 +157,50 @@ class CreateSnapshotsRequestEc2QuerySerializer
     final result = CreateSnapshotsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'InstanceSpecification':
           result.instanceSpecification.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.InstanceSpecification),
           ) as _i3.InstanceSpecification));
-          break;
         case 'OutpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i4.TagSpecification>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'CopyTagsFromSource':
-          if (value != null) {
-            result.copyTagsFromSource = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.CopyTagsFromSource),
-            ) as _i5.CopyTagsFromSource);
-          }
-          break;
+          result.copyTagsFromSource = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.CopyTagsFromSource),
+          ) as _i5.CopyTagsFromSource);
       }
     }
 
@@ -220,67 +210,74 @@ class CreateSnapshotsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateSnapshotsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateSnapshotsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateSnapshotsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final CreateSnapshotsRequest(
+      :description,
+      :instanceSpecification,
+      :outpostArn,
+      :tagSpecifications,
+      :dryRun,
+      :copyTagsFromSource
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceSpecification'))
       ..add(serializers.serialize(
-        payload.instanceSpecification,
+        instanceSpecification,
         specifiedType: const FullType(_i3.InstanceSpecification),
       ));
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i1.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.copyTagsFromSource != null) {
-      result
+    if (copyTagsFromSource != null) {
+      result$
         ..add(const _i1.XmlElementName('CopyTagsFromSource'))
         ..add(serializers.serialize(
-          payload.copyTagsFromSource!,
+          copyTagsFromSource,
           specifiedType: const FullType.nullable(_i5.CopyTagsFromSource),
         ));
     }
-    return result;
+    return result$;
   }
 }

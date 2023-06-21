@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.authorization_rule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -132,57 +133,43 @@ class AuthorizationRuleEc2QuerySerializer
     final result = AuthorizationRuleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientVpnEndpointId':
-          if (value != null) {
-            result.clientVpnEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientVpnEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupId':
-          if (value != null) {
-            result.groupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'accessAll':
           result.accessAll = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'destinationCidr':
-          if (value != null) {
-            result.destinationCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.ClientVpnAuthorizationRuleStatus),
-            ) as _i2.ClientVpnAuthorizationRuleStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnAuthorizationRuleStatus),
+          ) as _i2.ClientVpnAuthorizationRuleStatus));
       }
     }
 
@@ -192,62 +179,69 @@ class AuthorizationRuleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AuthorizationRule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AuthorizationRule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AuthorizationRuleResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientVpnEndpointId != null) {
-      result
+    final AuthorizationRule(
+      :clientVpnEndpointId,
+      :description,
+      :groupId,
+      :accessAll,
+      :destinationCidr,
+      :status
+    ) = object;
+    if (clientVpnEndpointId != null) {
+      result$
         ..add(const _i3.XmlElementName('ClientVpnEndpointId'))
         ..add(serializers.serialize(
-          payload.clientVpnEndpointId!,
+          clientVpnEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i3.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groupId != null) {
-      result
+    if (groupId != null) {
+      result$
         ..add(const _i3.XmlElementName('GroupId'))
         ..add(serializers.serialize(
-          payload.groupId!,
+          groupId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('AccessAll'))
       ..add(serializers.serialize(
-        payload.accessAll,
+        accessAll,
         specifiedType: const FullType(bool),
       ));
-    if (payload.destinationCidr != null) {
-      result
+    if (destinationCidr != null) {
+      result$
         ..add(const _i3.XmlElementName('DestinationCidr'))
         ..add(serializers.serialize(
-          payload.destinationCidr!,
+          destinationCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.ClientVpnAuthorizationRuleStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

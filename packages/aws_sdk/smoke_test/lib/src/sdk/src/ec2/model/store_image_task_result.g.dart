@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.store_image_task_result;
+part of 'store_image_task_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

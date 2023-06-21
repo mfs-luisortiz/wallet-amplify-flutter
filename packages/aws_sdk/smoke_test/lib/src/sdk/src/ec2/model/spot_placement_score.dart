@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_placement_score; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,32 +102,28 @@ class SpotPlacementScoreEc2QuerySerializer
     final result = SpotPlacementScoreBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'region':
-          if (value != null) {
-            result.region = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.region = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZoneId':
-          if (value != null) {
-            result.availabilityZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'score':
           result.score = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -136,38 +133,38 @@ class SpotPlacementScoreEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotPlacementScore object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotPlacementScore);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'SpotPlacementScoreResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.region != null) {
-      result
+    final SpotPlacementScore(:region, :availabilityZoneId, :score) = object;
+    if (region != null) {
+      result$
         ..add(const _i2.XmlElementName('Region'))
         ..add(serializers.serialize(
-          payload.region!,
+          region,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZoneId != null) {
-      result
+    if (availabilityZoneId != null) {
+      result$
         ..add(const _i2.XmlElementName('AvailabilityZoneId'))
         ..add(serializers.serialize(
-          payload.availabilityZoneId!,
+          availabilityZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('Score'))
       ..add(serializers.serialize(
-        payload.score,
+        score,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

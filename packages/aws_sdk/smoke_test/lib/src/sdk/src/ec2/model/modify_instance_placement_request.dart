@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_instance_placement_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -159,62 +160,48 @@ class ModifyInstancePlacementRequestEc2QuerySerializer
     final result = ModifyInstancePlacementRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'affinity':
-          if (value != null) {
-            result.affinity = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.Affinity),
-            ) as _i3.Affinity);
-          }
-          break;
+          result.affinity = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.Affinity),
+          ) as _i3.Affinity);
         case 'GroupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'hostId':
-          if (value != null) {
-            result.hostId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'instanceId':
-          result.instanceId = (serializers.deserialize(
-            value!,
+          result.groupName = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'hostId':
+          result.hostId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'instanceId':
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tenancy':
-          if (value != null) {
-            result.tenancy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.HostTenancy),
-            ) as _i4.HostTenancy);
-          }
-          break;
+          result.tenancy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.HostTenancy),
+          ) as _i4.HostTenancy);
         case 'PartitionNumber':
           result.partitionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'HostResourceGroupArn':
-          if (value != null) {
-            result.hostResourceGroupArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hostResourceGroupArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -224,68 +211,76 @@ class ModifyInstancePlacementRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyInstancePlacementRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyInstancePlacementRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyInstancePlacementRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.affinity != null) {
-      result
+    final ModifyInstancePlacementRequest(
+      :affinity,
+      :groupName,
+      :hostId,
+      :instanceId,
+      :tenancy,
+      :partitionNumber,
+      :hostResourceGroupArn
+    ) = object;
+    if (affinity != null) {
+      result$
         ..add(const _i1.XmlElementName('Affinity'))
         ..add(serializers.serialize(
-          payload.affinity!,
+          affinity,
           specifiedType: const FullType.nullable(_i3.Affinity),
         ));
     }
-    if (payload.groupName != null) {
-      result
+    if (groupName != null) {
+      result$
         ..add(const _i1.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.hostId != null) {
-      result
+    if (hostId != null) {
+      result$
         ..add(const _i1.XmlElementName('HostId'))
         ..add(serializers.serialize(
-          payload.hostId!,
+          hostId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    if (payload.tenancy != null) {
-      result
+    if (tenancy != null) {
+      result$
         ..add(const _i1.XmlElementName('Tenancy'))
         ..add(serializers.serialize(
-          payload.tenancy!,
+          tenancy,
           specifiedType: const FullType.nullable(_i4.HostTenancy),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('PartitionNumber'))
       ..add(serializers.serialize(
-        payload.partitionNumber,
+        partitionNumber,
         specifiedType: const FullType(int),
       ));
-    if (payload.hostResourceGroupArn != null) {
-      result
+    if (hostResourceGroupArn != null) {
+      result$
         ..add(const _i1.XmlElementName('HostResourceGroupArn'))
         ..add(serializers.serialize(
-          payload.hostResourceGroupArn!,
+          hostResourceGroupArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

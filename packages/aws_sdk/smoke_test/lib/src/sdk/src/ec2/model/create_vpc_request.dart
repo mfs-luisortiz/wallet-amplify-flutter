@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_vpc_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -210,109 +211,80 @@ class CreateVpcRequestEc2QuerySerializer
     final result = CreateVpcRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CidrBlock':
-          if (value != null) {
-            result.cidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'amazonProvidedIpv6CidrBlock':
           result.amazonProvidedIpv6CidrBlock = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Ipv6Pool':
-          if (value != null) {
-            result.ipv6Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Ipv6CidrBlock':
-          if (value != null) {
-            result.ipv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Ipv4IpamPoolId':
-          if (value != null) {
-            result.ipv4IpamPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv4IpamPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Ipv4NetmaskLength':
-          if (value != null) {
-            result.ipv4NetmaskLength = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.ipv4NetmaskLength = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'Ipv6IpamPoolId':
-          if (value != null) {
-            result.ipv6IpamPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6IpamPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Ipv6NetmaskLength':
-          if (value != null) {
-            result.ipv6NetmaskLength = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.ipv6NetmaskLength = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'instanceTenancy':
-          if (value != null) {
-            result.instanceTenancy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.Tenancy),
-            ) as _i3.Tenancy);
-          }
-          break;
+          result.instanceTenancy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.Tenancy),
+          ) as _i3.Tenancy);
         case 'Ipv6CidrBlockNetworkBorderGroup':
-          if (value != null) {
-            result.ipv6CidrBlockNetworkBorderGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6CidrBlockNetworkBorderGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
       }
     }
 
@@ -322,115 +294,128 @@ class CreateVpcRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateVpcRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateVpcRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateVpcRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrBlock != null) {
-      result
+    final CreateVpcRequest(
+      :cidrBlock,
+      :amazonProvidedIpv6CidrBlock,
+      :ipv6Pool,
+      :ipv6CidrBlock,
+      :ipv4IpamPoolId,
+      :ipv4NetmaskLength,
+      :ipv6IpamPoolId,
+      :ipv6NetmaskLength,
+      :dryRun,
+      :instanceTenancy,
+      :ipv6CidrBlockNetworkBorderGroup,
+      :tagSpecifications
+    ) = object;
+    if (cidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('CidrBlock'))
         ..add(serializers.serialize(
-          payload.cidrBlock!,
+          cidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('AmazonProvidedIpv6CidrBlock'))
       ..add(serializers.serialize(
-        payload.amazonProvidedIpv6CidrBlock,
+        amazonProvidedIpv6CidrBlock,
         specifiedType: const FullType(bool),
       ));
-    if (payload.ipv6Pool != null) {
-      result
+    if (ipv6Pool != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6Pool'))
         ..add(serializers.serialize(
-          payload.ipv6Pool!,
+          ipv6Pool,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6CidrBlock != null) {
-      result
+    if (ipv6CidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlock!,
+          ipv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv4IpamPoolId != null) {
-      result
+    if (ipv4IpamPoolId != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv4IpamPoolId'))
         ..add(serializers.serialize(
-          payload.ipv4IpamPoolId!,
+          ipv4IpamPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv4NetmaskLength != null) {
-      result
+    if (ipv4NetmaskLength != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv4NetmaskLength'))
         ..add(serializers.serialize(
-          payload.ipv4NetmaskLength!,
+          ipv4NetmaskLength,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.ipv6IpamPoolId != null) {
-      result
+    if (ipv6IpamPoolId != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6IpamPoolId'))
         ..add(serializers.serialize(
-          payload.ipv6IpamPoolId!,
+          ipv6IpamPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6NetmaskLength != null) {
-      result
+    if (ipv6NetmaskLength != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6NetmaskLength'))
         ..add(serializers.serialize(
-          payload.ipv6NetmaskLength!,
+          ipv6NetmaskLength,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.instanceTenancy != null) {
-      result
+    if (instanceTenancy != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceTenancy'))
         ..add(serializers.serialize(
-          payload.instanceTenancy!,
+          instanceTenancy,
           specifiedType: const FullType.nullable(_i3.Tenancy),
         ));
     }
-    if (payload.ipv6CidrBlockNetworkBorderGroup != null) {
-      result
+    if (ipv6CidrBlockNetworkBorderGroup != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6CidrBlockNetworkBorderGroup'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlockNetworkBorderGroup!,
+          ipv6CidrBlockNetworkBorderGroup,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

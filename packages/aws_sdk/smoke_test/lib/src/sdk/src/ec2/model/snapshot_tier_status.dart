@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.snapshot_tier_status; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -197,111 +198,80 @@ class SnapshotTierStatusEc2QuerySerializer
     final result = SnapshotTierStatusBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SnapshotState),
-            ) as _i2.SnapshotState);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SnapshotState),
+          ) as _i2.SnapshotState);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i6.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i6.BuiltList<_i3.Tag>));
         case 'storageTier':
-          if (value != null) {
-            result.storageTier = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.StorageTier),
-            ) as _i4.StorageTier);
-          }
-          break;
+          result.storageTier = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.StorageTier),
+          ) as _i4.StorageTier);
         case 'lastTieringStartTime':
-          if (value != null) {
-            result.lastTieringStartTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.lastTieringStartTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'lastTieringProgress':
           result.lastTieringProgress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'lastTieringOperationStatus':
-          if (value != null) {
-            result.lastTieringOperationStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.TieringOperationStatus),
-            ) as _i5.TieringOperationStatus);
-          }
-          break;
+          result.lastTieringOperationStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.TieringOperationStatus),
+          ) as _i5.TieringOperationStatus);
         case 'lastTieringOperationStatusDetail':
-          if (value != null) {
-            result.lastTieringOperationStatusDetail = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.lastTieringOperationStatusDetail = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'archivalCompleteTime':
-          if (value != null) {
-            result.archivalCompleteTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.archivalCompleteTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'restoreExpiryTime':
-          if (value != null) {
-            result.restoreExpiryTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.restoreExpiryTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -311,117 +281,130 @@ class SnapshotTierStatusEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SnapshotTierStatus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SnapshotTierStatus);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'SnapshotTierStatusResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.snapshotId != null) {
-      result
+    final SnapshotTierStatus(
+      :snapshotId,
+      :volumeId,
+      :status,
+      :ownerId,
+      :tags,
+      :storageTier,
+      :lastTieringStartTime,
+      :lastTieringProgress,
+      :lastTieringOperationStatus,
+      :lastTieringOperationStatusDetail,
+      :archivalCompleteTime,
+      :restoreExpiryTime
+    ) = object;
+    if (snapshotId != null) {
+      result$
         ..add(const _i7.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i7.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i7.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i2.SnapshotState),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i7.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    if (payload.storageTier != null) {
-      result
+    if (storageTier != null) {
+      result$
         ..add(const _i7.XmlElementName('StorageTier'))
         ..add(serializers.serialize(
-          payload.storageTier!,
+          storageTier,
           specifiedType: const FullType.nullable(_i4.StorageTier),
         ));
     }
-    if (payload.lastTieringStartTime != null) {
-      result
+    if (lastTieringStartTime != null) {
+      result$
         ..add(const _i7.XmlElementName('LastTieringStartTime'))
         ..add(serializers.serialize(
-          payload.lastTieringStartTime!,
+          lastTieringStartTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('LastTieringProgress'))
       ..add(serializers.serialize(
-        payload.lastTieringProgress,
+        lastTieringProgress,
         specifiedType: const FullType(int),
       ));
-    if (payload.lastTieringOperationStatus != null) {
-      result
+    if (lastTieringOperationStatus != null) {
+      result$
         ..add(const _i7.XmlElementName('LastTieringOperationStatus'))
         ..add(serializers.serialize(
-          payload.lastTieringOperationStatus!,
+          lastTieringOperationStatus,
           specifiedType: const FullType.nullable(_i5.TieringOperationStatus),
         ));
     }
-    if (payload.lastTieringOperationStatusDetail != null) {
-      result
+    if (lastTieringOperationStatusDetail != null) {
+      result$
         ..add(const _i7.XmlElementName('LastTieringOperationStatusDetail'))
         ..add(serializers.serialize(
-          payload.lastTieringOperationStatusDetail!,
+          lastTieringOperationStatusDetail,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.archivalCompleteTime != null) {
-      result
+    if (archivalCompleteTime != null) {
+      result$
         ..add(const _i7.XmlElementName('ArchivalCompleteTime'))
         ..add(serializers.serialize(
-          payload.archivalCompleteTime!,
+          archivalCompleteTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.restoreExpiryTime != null) {
-      result
+    if (restoreExpiryTime != null) {
+      result$
         ..add(const _i7.XmlElementName('RestoreExpiryTime'))
         ..add(serializers.serialize(
-          payload.restoreExpiryTime!,
+          restoreExpiryTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

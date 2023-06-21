@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_insights_path; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -174,95 +175,70 @@ class NetworkInsightsPathEc2QuerySerializer
     final result = NetworkInsightsPathBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsPathId':
-          if (value != null) {
-            result.networkInsightsPathId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsPathId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInsightsPathArn':
-          if (value != null) {
-            result.networkInsightsPathArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsPathArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'createdDate':
-          if (value != null) {
-            result.createdDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createdDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'source':
-          if (value != null) {
-            result.source = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.source = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destination':
-          if (value != null) {
-            result.destination = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destination = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceIp':
-          if (value != null) {
-            result.sourceIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destinationIp':
-          if (value != null) {
-            result.destinationIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Protocol),
-            ) as _i2.Protocol);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Protocol),
+          ) as _i2.Protocol);
         case 'destinationPort':
           result.destinationPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -272,101 +248,112 @@ class NetworkInsightsPathEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInsightsPath object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInsightsPath);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'NetworkInsightsPathResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsPathId != null) {
-      result
+    final NetworkInsightsPath(
+      :networkInsightsPathId,
+      :networkInsightsPathArn,
+      :createdDate,
+      :source,
+      :destination,
+      :sourceIp,
+      :destinationIp,
+      :protocol,
+      :destinationPort,
+      :tags
+    ) = object;
+    if (networkInsightsPathId != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInsightsPathId'))
         ..add(serializers.serialize(
-          payload.networkInsightsPathId!,
+          networkInsightsPathId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInsightsPathArn != null) {
-      result
+    if (networkInsightsPathArn != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInsightsPathArn'))
         ..add(serializers.serialize(
-          payload.networkInsightsPathArn!,
+          networkInsightsPathArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.createdDate != null) {
-      result
+    if (createdDate != null) {
+      result$
         ..add(const _i5.XmlElementName('CreatedDate'))
         ..add(serializers.serialize(
-          payload.createdDate!,
+          createdDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.source != null) {
-      result
+    if (source != null) {
+      result$
         ..add(const _i5.XmlElementName('Source'))
         ..add(serializers.serialize(
-          payload.source!,
+          source,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destination != null) {
-      result
+    if (destination != null) {
+      result$
         ..add(const _i5.XmlElementName('Destination'))
         ..add(serializers.serialize(
-          payload.destination!,
+          destination,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceIp != null) {
-      result
+    if (sourceIp != null) {
+      result$
         ..add(const _i5.XmlElementName('SourceIp'))
         ..add(serializers.serialize(
-          payload.sourceIp!,
+          sourceIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationIp != null) {
-      result
+    if (destinationIp != null) {
+      result$
         ..add(const _i5.XmlElementName('DestinationIp'))
         ..add(serializers.serialize(
-          payload.destinationIp!,
+          destinationIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i5.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType.nullable(_i2.Protocol),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('DestinationPort'))
       ..add(serializers.serialize(
-        payload.destinationPort,
+        destinationPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

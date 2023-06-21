@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.nat_gateway_address; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,42 +108,33 @@ class NatGatewayAddressEc2QuerySerializer
     final result = NatGatewayAddressBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'allocationId':
-          if (value != null) {
-            result.allocationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.allocationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateIp':
-          if (value != null) {
-            result.privateIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'publicIp':
-          if (value != null) {
-            result.publicIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -152,48 +144,53 @@ class NatGatewayAddressEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NatGatewayAddress object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NatGatewayAddress);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'NatGatewayAddressResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationId != null) {
-      result
+    final NatGatewayAddress(
+      :allocationId,
+      :networkInterfaceId,
+      :privateIp,
+      :publicIp
+    ) = object;
+    if (allocationId != null) {
+      result$
         ..add(const _i2.XmlElementName('AllocationId'))
         ..add(serializers.serialize(
-          payload.allocationId!,
+          allocationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateIp != null) {
-      result
+    if (privateIp != null) {
+      result$
         ..add(const _i2.XmlElementName('PrivateIp'))
         ..add(serializers.serialize(
-          payload.privateIp!,
+          privateIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.publicIp != null) {
-      result
+    if (publicIp != null) {
+      result$
         ..add(const _i2.XmlElementName('PublicIp'))
         ..add(serializers.serialize(
-          payload.publicIp!,
+          publicIp,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

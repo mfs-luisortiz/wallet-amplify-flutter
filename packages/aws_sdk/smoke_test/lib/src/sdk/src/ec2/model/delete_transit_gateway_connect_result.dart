@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_transit_gateway_connect_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class DeleteTransitGatewayConnectResultEc2QuerySerializer
     final result = DeleteTransitGatewayConnectResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayConnect':
-          if (value != null) {
-            result.transitGatewayConnect.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayConnect),
-            ) as _i2.TransitGatewayConnect));
-          }
-          break;
+          result.transitGatewayConnect.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayConnect),
+          ) as _i2.TransitGatewayConnect));
       }
     }
 
@@ -106,24 +107,24 @@ class DeleteTransitGatewayConnectResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTransitGatewayConnectResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteTransitGatewayConnectResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteTransitGatewayConnectResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayConnect != null) {
-      result
+    final DeleteTransitGatewayConnectResult(:transitGatewayConnect) = object;
+    if (transitGatewayConnect != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayConnect'))
         ..add(serializers.serialize(
-          payload.transitGatewayConnect!,
+          transitGatewayConnect,
           specifiedType: const FullType(_i2.TransitGatewayConnect),
         ));
     }
-    return result;
+    return result$;
   }
 }

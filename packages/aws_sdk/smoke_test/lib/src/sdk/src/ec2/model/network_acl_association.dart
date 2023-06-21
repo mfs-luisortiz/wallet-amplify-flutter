@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_acl_association; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,34 +100,28 @@ class NetworkAclAssociationEc2QuerySerializer
     final result = NetworkAclAssociationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkAclAssociationId':
-          if (value != null) {
-            result.networkAclAssociationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkAclAssociationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkAclId':
-          if (value != null) {
-            result.networkAclId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkAclId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -136,40 +131,44 @@ class NetworkAclAssociationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkAclAssociation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkAclAssociation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'NetworkAclAssociationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkAclAssociationId != null) {
-      result
+    final NetworkAclAssociation(
+      :networkAclAssociationId,
+      :networkAclId,
+      :subnetId
+    ) = object;
+    if (networkAclAssociationId != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkAclAssociationId'))
         ..add(serializers.serialize(
-          payload.networkAclAssociationId!,
+          networkAclAssociationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkAclId != null) {
-      result
+    if (networkAclId != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkAclId'))
         ..add(serializers.serialize(
-          payload.networkAclId!,
+          networkAclId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i2.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

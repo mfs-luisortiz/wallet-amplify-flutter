@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpc_endpoint_connection; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -188,128 +189,98 @@ class VpcEndpointConnectionEc2QuerySerializer
     final result = VpcEndpointConnectionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'serviceId':
-          if (value != null) {
-            result.serviceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.serviceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcEndpointId':
-          if (value != null) {
-            result.vpcEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcEndpointOwner':
-          if (value != null) {
-            result.vpcEndpointOwner = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcEndpointOwner = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcEndpointState':
-          if (value != null) {
-            result.vpcEndpointState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.State),
-            ) as _i2.State);
-          }
-          break;
+          result.vpcEndpointState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.State),
+          ) as _i2.State);
         case 'creationTimestamp':
-          if (value != null) {
-            result.creationTimestamp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.creationTimestamp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'dnsEntrySet':
-          if (value != null) {
-            result.dnsEntries.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.DnsEntry)],
-              ),
-            ) as _i6.BuiltList<_i3.DnsEntry>));
-          }
-          break;
+          result.dnsEntries.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.DnsEntry)],
+            ),
+          ) as _i6.BuiltList<_i3.DnsEntry>));
         case 'networkLoadBalancerArnSet':
-          if (value != null) {
-            result.networkLoadBalancerArns
-                .replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.networkLoadBalancerArns
+              .replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'gatewayLoadBalancerArnSet':
-          if (value != null) {
-            result.gatewayLoadBalancerArns
-                .replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.gatewayLoadBalancerArns
+              .replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'ipAddressType':
-          if (value != null) {
-            result.ipAddressType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.IpAddressType),
-            ) as _i4.IpAddressType);
-          }
-          break;
+          result.ipAddressType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.IpAddressType),
+          ) as _i4.IpAddressType);
         case 'vpcEndpointConnectionId':
-          if (value != null) {
-            result.vpcEndpointConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcEndpointConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
       }
     }
 
@@ -319,132 +290,144 @@ class VpcEndpointConnectionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpcEndpointConnection object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpcEndpointConnection);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'VpcEndpointConnectionResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.serviceId != null) {
-      result
+    final VpcEndpointConnection(
+      :serviceId,
+      :vpcEndpointId,
+      :vpcEndpointOwner,
+      :vpcEndpointState,
+      :creationTimestamp,
+      :dnsEntries,
+      :networkLoadBalancerArns,
+      :gatewayLoadBalancerArns,
+      :ipAddressType,
+      :vpcEndpointConnectionId,
+      :tags
+    ) = object;
+    if (serviceId != null) {
+      result$
         ..add(const _i7.XmlElementName('ServiceId'))
         ..add(serializers.serialize(
-          payload.serviceId!,
+          serviceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcEndpointId != null) {
-      result
+    if (vpcEndpointId != null) {
+      result$
         ..add(const _i7.XmlElementName('VpcEndpointId'))
         ..add(serializers.serialize(
-          payload.vpcEndpointId!,
+          vpcEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcEndpointOwner != null) {
-      result
+    if (vpcEndpointOwner != null) {
+      result$
         ..add(const _i7.XmlElementName('VpcEndpointOwner'))
         ..add(serializers.serialize(
-          payload.vpcEndpointOwner!,
+          vpcEndpointOwner,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcEndpointState != null) {
-      result
+    if (vpcEndpointState != null) {
+      result$
         ..add(const _i7.XmlElementName('VpcEndpointState'))
         ..add(serializers.serialize(
-          payload.vpcEndpointState!,
+          vpcEndpointState,
           specifiedType: const FullType.nullable(_i2.State),
         ));
     }
-    if (payload.creationTimestamp != null) {
-      result
+    if (creationTimestamp != null) {
+      result$
         ..add(const _i7.XmlElementName('CreationTimestamp'))
         ..add(serializers.serialize(
-          payload.creationTimestamp!,
+          creationTimestamp,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.dnsEntries != null) {
-      result
+    if (dnsEntries != null) {
+      result$
         ..add(const _i7.XmlElementName('DnsEntrySet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.dnsEntries!,
+          dnsEntries,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.DnsEntry)],
           ),
         ));
     }
-    if (payload.networkLoadBalancerArns != null) {
-      result
+    if (networkLoadBalancerArns != null) {
+      result$
         ..add(const _i7.XmlElementName('NetworkLoadBalancerArnSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.networkLoadBalancerArns!,
+          networkLoadBalancerArns,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.gatewayLoadBalancerArns != null) {
-      result
+    if (gatewayLoadBalancerArns != null) {
+      result$
         ..add(const _i7.XmlElementName('GatewayLoadBalancerArnSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.gatewayLoadBalancerArns!,
+          gatewayLoadBalancerArns,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.ipAddressType != null) {
-      result
+    if (ipAddressType != null) {
+      result$
         ..add(const _i7.XmlElementName('IpAddressType'))
         ..add(serializers.serialize(
-          payload.ipAddressType!,
+          ipAddressType,
           specifiedType: const FullType.nullable(_i4.IpAddressType),
         ));
     }
-    if (payload.vpcEndpointConnectionId != null) {
-      result
+    if (vpcEndpointConnectionId != null) {
+      result$
         ..add(const _i7.XmlElementName('VpcEndpointConnectionId'))
         ..add(serializers.serialize(
-          payload.vpcEndpointConnectionId!,
+          vpcEndpointConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

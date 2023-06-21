@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_client_vpn_client_configuration_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -83,18 +84,18 @@ class ExportClientVpnClientConfigurationResultEc2QuerySerializer extends _i2
     final result = ExportClientVpnClientConfigurationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientConfiguration':
-          if (value != null) {
-            result.clientConfiguration = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientConfiguration = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -104,24 +105,25 @@ class ExportClientVpnClientConfigurationResultEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportClientVpnClientConfigurationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportClientVpnClientConfigurationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ExportClientVpnClientConfigurationResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientConfiguration != null) {
-      result
+    final ExportClientVpnClientConfigurationResult(:clientConfiguration) =
+        object;
+    if (clientConfiguration != null) {
+      result$
         ..add(const _i2.XmlElementName('ClientConfiguration'))
         ..add(serializers.serialize(
-          payload.clientConfiguration!,
+          clientConfiguration,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

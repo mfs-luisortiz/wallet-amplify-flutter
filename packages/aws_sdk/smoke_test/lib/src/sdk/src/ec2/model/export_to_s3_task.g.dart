@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.export_to_s3_task;
+part of 'export_to_s3_task.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

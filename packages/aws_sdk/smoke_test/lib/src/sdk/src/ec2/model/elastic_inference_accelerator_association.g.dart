@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.elastic_inference_accelerator_association;
+part of 'elastic_inference_accelerator_association.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

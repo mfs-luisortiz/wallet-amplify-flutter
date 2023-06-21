@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.athena_integration; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,38 +110,33 @@ class AthenaIntegrationEc2QuerySerializer
     final result = AthenaIntegrationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'IntegrationResultS3DestinationArn':
           result.integrationResultS3DestinationArn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PartitionLoadFrequency':
           result.partitionLoadFrequency = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.PartitionLoadFrequency),
           ) as _i2.PartitionLoadFrequency);
-          break;
         case 'PartitionStartDate':
-          if (value != null) {
-            result.partitionStartDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.partitionStartDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'PartitionEndDate':
-          if (value != null) {
-            result.partitionEndDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.partitionEndDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -150,44 +146,49 @@ class AthenaIntegrationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AthenaIntegration object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AthenaIntegration);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AthenaIntegrationResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final AthenaIntegration(
+      :integrationResultS3DestinationArn,
+      :partitionLoadFrequency,
+      :partitionStartDate,
+      :partitionEndDate
+    ) = object;
+    result$
       ..add(const _i3.XmlElementName('IntegrationResultS3DestinationArn'))
       ..add(serializers.serialize(
-        payload.integrationResultS3DestinationArn,
+        integrationResultS3DestinationArn,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('PartitionLoadFrequency'))
       ..add(serializers.serialize(
-        payload.partitionLoadFrequency,
+        partitionLoadFrequency,
         specifiedType: const FullType.nullable(_i2.PartitionLoadFrequency),
       ));
-    if (payload.partitionStartDate != null) {
-      result
+    if (partitionStartDate != null) {
+      result$
         ..add(const _i3.XmlElementName('PartitionStartDate'))
         ..add(serializers.serialize(
-          payload.partitionStartDate!,
+          partitionStartDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.partitionEndDate != null) {
-      result
+    if (partitionEndDate != null) {
+      result$
         ..add(const _i3.XmlElementName('PartitionEndDate'))
         ..add(serializers.serialize(
-          payload.partitionEndDate!,
+          partitionEndDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpc; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -181,111 +182,86 @@ class VpcEc2QuerySerializer extends _i8.StructuredSmithySerializer<Vpc> {
     final result = VpcBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidrBlock':
-          if (value != null) {
-            result.cidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dhcpOptionsId':
-          if (value != null) {
-            result.dhcpOptionsId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.dhcpOptionsId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpcState),
-            ) as _i2.VpcState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpcState),
+          ) as _i2.VpcState);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceTenancy':
-          if (value != null) {
-            result.instanceTenancy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.Tenancy),
-            ) as _i3.Tenancy);
-          }
-          break;
+          result.instanceTenancy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.Tenancy),
+          ) as _i3.Tenancy);
         case 'ipv6CidrBlockAssociationSet':
-          if (value != null) {
-            result.ipv6CidrBlockAssociationSet
-                .replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i4.VpcIpv6CidrBlockAssociation)],
-              ),
-            ) as _i7.BuiltList<_i4.VpcIpv6CidrBlockAssociation>));
-          }
-          break;
+          result.ipv6CidrBlockAssociationSet
+              .replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i4.VpcIpv6CidrBlockAssociation)],
+            ),
+          ) as _i7.BuiltList<_i4.VpcIpv6CidrBlockAssociation>));
         case 'cidrBlockAssociationSet':
-          if (value != null) {
-            result.cidrBlockAssociationSet
-                .replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i5.VpcCidrBlockAssociation)],
-              ),
-            ) as _i7.BuiltList<_i5.VpcCidrBlockAssociation>));
-          }
-          break;
+          result.cidrBlockAssociationSet
+              .replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i5.VpcCidrBlockAssociation)],
+            ),
+          ) as _i7.BuiltList<_i5.VpcCidrBlockAssociation>));
         case 'isDefault':
           result.isDefault = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i6.Tag)],
-              ),
-            ) as _i7.BuiltList<_i6.Tag>));
-          }
-          break;
+          result.tags.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i6.Tag)],
+            ),
+          ) as _i7.BuiltList<_i6.Tag>));
       }
     }
 
@@ -295,115 +271,126 @@ class VpcEc2QuerySerializer extends _i8.StructuredSmithySerializer<Vpc> {
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Vpc object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Vpc);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'VpcResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrBlock != null) {
-      result
+    final Vpc(
+      :cidrBlock,
+      :dhcpOptionsId,
+      :state,
+      :vpcId,
+      :ownerId,
+      :instanceTenancy,
+      :ipv6CidrBlockAssociationSet,
+      :cidrBlockAssociationSet,
+      :isDefault,
+      :tags
+    ) = object;
+    if (cidrBlock != null) {
+      result$
         ..add(const _i8.XmlElementName('CidrBlock'))
         ..add(serializers.serialize(
-          payload.cidrBlock!,
+          cidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.dhcpOptionsId != null) {
-      result
+    if (dhcpOptionsId != null) {
+      result$
         ..add(const _i8.XmlElementName('DhcpOptionsId'))
         ..add(serializers.serialize(
-          payload.dhcpOptionsId!,
+          dhcpOptionsId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i8.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.VpcState),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i8.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i8.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceTenancy != null) {
-      result
+    if (instanceTenancy != null) {
+      result$
         ..add(const _i8.XmlElementName('InstanceTenancy'))
         ..add(serializers.serialize(
-          payload.instanceTenancy!,
+          instanceTenancy,
           specifiedType: const FullType.nullable(_i3.Tenancy),
         ));
     }
-    if (payload.ipv6CidrBlockAssociationSet != null) {
-      result
+    if (ipv6CidrBlockAssociationSet != null) {
+      result$
         ..add(const _i8.XmlElementName('Ipv6CidrBlockAssociationSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv6CidrBlockAssociationSet!,
+          ipv6CidrBlockAssociationSet,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i4.VpcIpv6CidrBlockAssociation)],
           ),
         ));
     }
-    if (payload.cidrBlockAssociationSet != null) {
-      result
+    if (cidrBlockAssociationSet != null) {
+      result$
         ..add(const _i8.XmlElementName('CidrBlockAssociationSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.cidrBlockAssociationSet!,
+          cidrBlockAssociationSet,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i5.VpcCidrBlockAssociation)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i8.XmlElementName('IsDefault'))
       ..add(serializers.serialize(
-        payload.isDefault,
+        isDefault,
         specifiedType: const FullType(bool),
       ));
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i8.XmlElementName('TagSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i6.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

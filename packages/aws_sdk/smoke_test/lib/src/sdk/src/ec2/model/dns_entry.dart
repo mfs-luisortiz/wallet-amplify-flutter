@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.dns_entry; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -86,26 +87,23 @@ class DnsEntryEc2QuerySerializer
     final result = DnsEntryBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dnsName':
-          if (value != null) {
-            result.dnsName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.dnsName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'hostedZoneId':
-          if (value != null) {
-            result.hostedZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hostedZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -115,32 +113,32 @@ class DnsEntryEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DnsEntry object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DnsEntry);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'DnsEntryResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.dnsName != null) {
-      result
+    final DnsEntry(:dnsName, :hostedZoneId) = object;
+    if (dnsName != null) {
+      result$
         ..add(const _i2.XmlElementName('DnsName'))
         ..add(serializers.serialize(
-          payload.dnsName!,
+          dnsName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.hostedZoneId != null) {
-      result
+    if (hostedZoneId != null) {
+      result$
         ..add(const _i2.XmlElementName('HostedZoneId'))
         ..add(serializers.serialize(
-          payload.hostedZoneId!,
+          hostedZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

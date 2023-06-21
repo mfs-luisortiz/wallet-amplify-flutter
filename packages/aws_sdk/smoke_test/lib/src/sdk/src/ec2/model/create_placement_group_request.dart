@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_placement_group_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -155,61 +156,50 @@ class CreatePlacementGroupRequestEc2QuerySerializer
     final result = CreatePlacementGroupRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'strategy':
-          if (value != null) {
-            result.strategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.PlacementStrategy),
-            ) as _i3.PlacementStrategy);
-          }
-          break;
+          result.strategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PlacementStrategy),
+          ) as _i3.PlacementStrategy);
         case 'PartitionCount':
           result.partitionCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i4.TagSpecification>));
         case 'SpreadLevel':
-          if (value != null) {
-            result.spreadLevel = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.SpreadLevel),
-            ) as _i5.SpreadLevel);
-          }
-          break;
+          result.spreadLevel = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.SpreadLevel),
+          ) as _i5.SpreadLevel);
       }
     }
 
@@ -219,67 +209,74 @@ class CreatePlacementGroupRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreatePlacementGroupRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreatePlacementGroupRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreatePlacementGroupRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreatePlacementGroupRequest(
+      :dryRun,
+      :groupName,
+      :strategy,
+      :partitionCount,
+      :tagSpecifications,
+      :spreadLevel
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.groupName != null) {
-      result
+    if (groupName != null) {
+      result$
         ..add(const _i1.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.strategy != null) {
-      result
+    if (strategy != null) {
+      result$
         ..add(const _i1.XmlElementName('Strategy'))
         ..add(serializers.serialize(
-          payload.strategy!,
+          strategy,
           specifiedType: const FullType.nullable(_i3.PlacementStrategy),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('PartitionCount'))
       ..add(serializers.serialize(
-        payload.partitionCount,
+        partitionCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    if (payload.spreadLevel != null) {
-      result
+    if (spreadLevel != null) {
+      result$
         ..add(const _i1.XmlElementName('SpreadLevel'))
         ..add(serializers.serialize(
-          payload.spreadLevel!,
+          spreadLevel,
           specifiedType: const FullType.nullable(_i5.SpreadLevel),
         ));
     }
-    return result;
+    return result$;
   }
 }

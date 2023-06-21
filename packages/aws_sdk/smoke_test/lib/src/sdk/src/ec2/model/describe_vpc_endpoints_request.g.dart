@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_vpc_endpoints_request;
+part of 'describe_vpc_endpoints_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

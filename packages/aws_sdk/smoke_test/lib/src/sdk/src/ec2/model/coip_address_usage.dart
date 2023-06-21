@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.coip_address_usage; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,42 +108,33 @@ class CoipAddressUsageEc2QuerySerializer
     final result = CoipAddressUsageBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'allocationId':
-          if (value != null) {
-            result.allocationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.allocationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'awsAccountId':
-          if (value != null) {
-            result.awsAccountId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.awsAccountId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'awsService':
-          if (value != null) {
-            result.awsService = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.awsService = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'coIp':
-          if (value != null) {
-            result.coIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.coIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -152,48 +144,49 @@ class CoipAddressUsageEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CoipAddressUsage object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CoipAddressUsage);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CoipAddressUsageResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationId != null) {
-      result
+    final CoipAddressUsage(:allocationId, :awsAccountId, :awsService, :coIp) =
+        object;
+    if (allocationId != null) {
+      result$
         ..add(const _i2.XmlElementName('AllocationId'))
         ..add(serializers.serialize(
-          payload.allocationId!,
+          allocationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.awsAccountId != null) {
-      result
+    if (awsAccountId != null) {
+      result$
         ..add(const _i2.XmlElementName('AwsAccountId'))
         ..add(serializers.serialize(
-          payload.awsAccountId!,
+          awsAccountId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.awsService != null) {
-      result
+    if (awsService != null) {
+      result$
         ..add(const _i2.XmlElementName('AwsService'))
         ..add(serializers.serialize(
-          payload.awsService!,
+          awsService,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.coIp != null) {
-      result
+    if (coIp != null) {
+      result$
         ..add(const _i2.XmlElementName('CoIp'))
         ..add(serializers.serialize(
-          payload.coIp!,
+          coIp,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

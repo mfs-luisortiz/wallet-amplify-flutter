@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.capacity_allocation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,24 +93,23 @@ class CapacityAllocationEc2QuerySerializer
     final result = CapacityAllocationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'allocationType':
-          if (value != null) {
-            result.allocationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AllocationType),
-            ) as _i2.AllocationType);
-          }
-          break;
+          result.allocationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AllocationType),
+          ) as _i2.AllocationType);
         case 'count':
           result.count = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -119,30 +119,30 @@ class CapacityAllocationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CapacityAllocation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CapacityAllocation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CapacityAllocationResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationType != null) {
-      result
+    final CapacityAllocation(:allocationType, :count) = object;
+    if (allocationType != null) {
+      result$
         ..add(const _i3.XmlElementName('AllocationType'))
         ..add(serializers.serialize(
-          payload.allocationType!,
+          allocationType,
           specifiedType: const FullType.nullable(_i2.AllocationType),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Count'))
       ..add(serializers.serialize(
-        payload.count,
+        count,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

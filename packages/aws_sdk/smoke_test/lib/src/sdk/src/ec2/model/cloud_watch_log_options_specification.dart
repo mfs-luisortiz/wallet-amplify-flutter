@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cloud_watch_log_options_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,32 +111,28 @@ class CloudWatchLogOptionsSpecificationEc2QuerySerializer
     final result = CloudWatchLogOptionsSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'LogEnabled':
           result.logEnabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'LogGroupArn':
-          if (value != null) {
-            result.logGroupArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.logGroupArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LogOutputFormat':
-          if (value != null) {
-            result.logOutputFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.logOutputFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -145,38 +142,42 @@ class CloudWatchLogOptionsSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CloudWatchLogOptionsSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CloudWatchLogOptionsSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CloudWatchLogOptionsSpecificationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CloudWatchLogOptionsSpecification(
+      :logEnabled,
+      :logGroupArn,
+      :logOutputFormat
+    ) = object;
+    result$
       ..add(const _i2.XmlElementName('LogEnabled'))
       ..add(serializers.serialize(
-        payload.logEnabled,
+        logEnabled,
         specifiedType: const FullType(bool),
       ));
-    if (payload.logGroupArn != null) {
-      result
+    if (logGroupArn != null) {
+      result$
         ..add(const _i2.XmlElementName('LogGroupArn'))
         ..add(serializers.serialize(
-          payload.logGroupArn!,
+          logGroupArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.logOutputFormat != null) {
-      result
+    if (logOutputFormat != null) {
+      result$
         ..add(const _i2.XmlElementName('LogOutputFormat'))
         ..add(serializers.serialize(
-          payload.logOutputFormat!,
+          logOutputFormat,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

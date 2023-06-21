@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.athena_integration;
+part of 'athena_integration.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

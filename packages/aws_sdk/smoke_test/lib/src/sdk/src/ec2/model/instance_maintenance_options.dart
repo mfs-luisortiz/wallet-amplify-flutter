@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_maintenance_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -77,18 +78,18 @@ class InstanceMaintenanceOptionsEc2QuerySerializer
     final result = InstanceMaintenanceOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'autoRecovery':
-          if (value != null) {
-            result.autoRecovery = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceAutoRecoveryState),
-            ) as _i2.InstanceAutoRecoveryState);
-          }
-          break;
+          result.autoRecovery = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceAutoRecoveryState),
+          ) as _i2.InstanceAutoRecoveryState);
       }
     }
 
@@ -98,24 +99,24 @@ class InstanceMaintenanceOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceMaintenanceOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceMaintenanceOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceMaintenanceOptionsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.autoRecovery != null) {
-      result
+    final InstanceMaintenanceOptions(:autoRecovery) = object;
+    if (autoRecovery != null) {
+      result$
         ..add(const _i3.XmlElementName('AutoRecovery'))
         ..add(serializers.serialize(
-          payload.autoRecovery!,
+          autoRecovery,
           specifiedType: const FullType.nullable(_i2.InstanceAutoRecoveryState),
         ));
     }
-    return result;
+    return result$;
   }
 }

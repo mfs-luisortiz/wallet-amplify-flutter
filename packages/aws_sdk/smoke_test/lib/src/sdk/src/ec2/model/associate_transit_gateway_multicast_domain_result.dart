@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_transit_gateway_multicast_domain_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,19 @@ class AssociateTransitGatewayMulticastDomainResultEc2QuerySerializer extends _i3
     final result = AssociateTransitGatewayMulticastDomainResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associations':
-          if (value != null) {
-            result.associations.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayMulticastDomainAssociations),
-            ) as _i2.TransitGatewayMulticastDomainAssociations));
-          }
-          break;
+          result.associations.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayMulticastDomainAssociations),
+          ) as _i2.TransitGatewayMulticastDomainAssociations));
       }
     }
 
@@ -107,25 +108,25 @@ class AssociateTransitGatewayMulticastDomainResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateTransitGatewayMulticastDomainResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateTransitGatewayMulticastDomainResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AssociateTransitGatewayMulticastDomainResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associations != null) {
-      result
+    final AssociateTransitGatewayMulticastDomainResult(:associations) = object;
+    if (associations != null) {
+      result$
         ..add(const _i3.XmlElementName('Associations'))
         ..add(serializers.serialize(
-          payload.associations!,
+          associations,
           specifiedType:
               const FullType(_i2.TransitGatewayMulticastDomainAssociations),
         ));
     }
-    return result;
+    return result$;
   }
 }

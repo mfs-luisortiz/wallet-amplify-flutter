@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.allocate_hosts_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,25 +82,25 @@ class AllocateHostsResultEc2QuerySerializer
     final result = AllocateHostsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'hostIdSet':
-          if (value != null) {
-            result.hostIds.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.hostIds.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
       }
     }
 
@@ -109,31 +110,31 @@ class AllocateHostsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AllocateHostsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AllocateHostsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AllocateHostsResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.hostIds != null) {
-      result
+    final AllocateHostsResult(:hostIds) = object;
+    if (hostIds != null) {
+      result$
         ..add(const _i3.XmlElementName('HostIdSet'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.hostIds!,
+          hostIds,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

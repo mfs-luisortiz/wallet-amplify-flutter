@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_security_group_references_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -88,26 +89,26 @@ class DescribeSecurityGroupReferencesResultEc2QuerySerializer extends _i4
     final result = DescribeSecurityGroupReferencesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'securityGroupReferenceSet':
-          if (value != null) {
-            result.securityGroupReferenceSet
-                .replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.SecurityGroupReference)],
-              ),
-            ) as _i3.BuiltList<_i2.SecurityGroupReference>));
-          }
-          break;
+          result.securityGroupReferenceSet
+              .replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.SecurityGroupReference)],
+            ),
+          ) as _i3.BuiltList<_i2.SecurityGroupReference>));
       }
     }
 
@@ -117,31 +118,32 @@ class DescribeSecurityGroupReferencesResultEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeSecurityGroupReferencesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeSecurityGroupReferencesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeSecurityGroupReferencesResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.securityGroupReferenceSet != null) {
-      result
+    final DescribeSecurityGroupReferencesResult(:securityGroupReferenceSet) =
+        object;
+    if (securityGroupReferenceSet != null) {
+      result$
         ..add(const _i4.XmlElementName('SecurityGroupReferenceSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroupReferenceSet!,
+          securityGroupReferenceSet,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.SecurityGroupReference)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

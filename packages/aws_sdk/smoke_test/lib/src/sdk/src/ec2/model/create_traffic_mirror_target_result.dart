@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_traffic_mirror_target_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,26 +100,23 @@ class CreateTrafficMirrorTargetResultEc2QuerySerializer
     final result = CreateTrafficMirrorTargetResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorTarget':
-          if (value != null) {
-            result.trafficMirrorTarget.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TrafficMirrorTarget),
-            ) as _i2.TrafficMirrorTarget));
-          }
-          break;
+          result.trafficMirrorTarget.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TrafficMirrorTarget),
+          ) as _i2.TrafficMirrorTarget));
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -128,32 +126,33 @@ class CreateTrafficMirrorTargetResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTrafficMirrorTargetResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTrafficMirrorTargetResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateTrafficMirrorTargetResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorTarget != null) {
-      result
+    final CreateTrafficMirrorTargetResult(:trafficMirrorTarget, :clientToken) =
+        object;
+    if (trafficMirrorTarget != null) {
+      result$
         ..add(const _i3.XmlElementName('TrafficMirrorTarget'))
         ..add(serializers.serialize(
-          payload.trafficMirrorTarget!,
+          trafficMirrorTarget,
           specifiedType: const FullType(_i2.TrafficMirrorTarget),
         ));
     }
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i3.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

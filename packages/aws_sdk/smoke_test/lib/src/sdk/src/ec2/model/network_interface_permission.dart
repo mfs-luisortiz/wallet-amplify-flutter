@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_interface_permission; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -134,59 +135,43 @@ class NetworkInterfacePermissionEc2QuerySerializer
     final result = NetworkInterfacePermissionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInterfacePermissionId':
-          if (value != null) {
-            result.networkInterfacePermissionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfacePermissionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'awsAccountId':
-          if (value != null) {
-            result.awsAccountId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.awsAccountId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'awsService':
-          if (value != null) {
-            result.awsService = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.awsService = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'permission':
-          if (value != null) {
-            result.permission = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InterfacePermissionType),
-            ) as _i2.InterfacePermissionType);
-          }
-          break;
+          result.permission = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InterfacePermissionType),
+          ) as _i2.InterfacePermissionType);
         case 'permissionState':
-          if (value != null) {
-            result.permissionState.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.NetworkInterfacePermissionState),
-            ) as _i3.NetworkInterfacePermissionState));
-          }
-          break;
+          result.permissionState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.NetworkInterfacePermissionState),
+          ) as _i3.NetworkInterfacePermissionState));
       }
     }
 
@@ -196,64 +181,71 @@ class NetworkInterfacePermissionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInterfacePermission object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInterfacePermission);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'NetworkInterfacePermissionResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInterfacePermissionId != null) {
-      result
+    final NetworkInterfacePermission(
+      :networkInterfacePermissionId,
+      :networkInterfaceId,
+      :awsAccountId,
+      :awsService,
+      :permission,
+      :permissionState
+    ) = object;
+    if (networkInterfacePermissionId != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInterfacePermissionId'))
         ..add(serializers.serialize(
-          payload.networkInterfacePermissionId!,
+          networkInterfacePermissionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.awsAccountId != null) {
-      result
+    if (awsAccountId != null) {
+      result$
         ..add(const _i4.XmlElementName('AwsAccountId'))
         ..add(serializers.serialize(
-          payload.awsAccountId!,
+          awsAccountId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.awsService != null) {
-      result
+    if (awsService != null) {
+      result$
         ..add(const _i4.XmlElementName('AwsService'))
         ..add(serializers.serialize(
-          payload.awsService!,
+          awsService,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.permission != null) {
-      result
+    if (permission != null) {
+      result$
         ..add(const _i4.XmlElementName('Permission'))
         ..add(serializers.serialize(
-          payload.permission!,
+          permission,
           specifiedType: const FullType.nullable(_i2.InterfacePermissionType),
         ));
     }
-    if (payload.permissionState != null) {
-      result
+    if (permissionState != null) {
+      result$
         ..add(const _i4.XmlElementName('PermissionState'))
         ..add(serializers.serialize(
-          payload.permissionState!,
+          permissionState,
           specifiedType: const FullType(_i3.NetworkInterfacePermissionState),
         ));
     }
-    return result;
+    return result$;
   }
 }

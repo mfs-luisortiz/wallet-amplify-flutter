@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_reserved_instances_exchange_quote_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -121,16 +122,18 @@ class GetReservedInstancesExchangeQuoteRequestEc2QuerySerializer extends _i1
     final result = GetReservedInstancesExchangeQuoteRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ReservedInstanceId':
           result.reservedInstanceIds.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'ReservedInstanceId',
@@ -143,23 +146,18 @@ class GetReservedInstancesExchangeQuoteRequestEc2QuerySerializer extends _i1
               [FullType(String)],
             ),
           ) as _i4.BuiltList<String>));
-          break;
         case 'TargetConfiguration':
-          if (value != null) {
-            result.targetConfigurations
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'TargetConfigurationRequest',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TargetConfigurationRequest)],
-              ),
-            ) as _i4.BuiltList<_i3.TargetConfigurationRequest>));
-          }
-          break;
+          result.targetConfigurations.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'TargetConfigurationRequest',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TargetConfigurationRequest)],
+            ),
+          ) as _i4.BuiltList<_i3.TargetConfigurationRequest>));
       }
     }
 
@@ -169,50 +167,54 @@ class GetReservedInstancesExchangeQuoteRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetReservedInstancesExchangeQuoteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetReservedInstancesExchangeQuoteRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetReservedInstancesExchangeQuoteRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetReservedInstancesExchangeQuoteRequest(
+      :dryRun,
+      :reservedInstanceIds,
+      :targetConfigurations
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ReservedInstanceId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'ReservedInstanceId',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.reservedInstanceIds,
+        reservedInstanceIds,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(String)],
         ),
       ));
-    if (payload.targetConfigurations != null) {
-      result
+    if (targetConfigurations != null) {
+      result$
         ..add(const _i1.XmlElementName('TargetConfiguration'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'TargetConfigurationRequest',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.targetConfigurations!,
+          targetConfigurations,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TargetConfigurationRequest)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_egress_only_internet_gateway_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -103,22 +104,23 @@ class DeleteEgressOnlyInternetGatewayRequestEc2QuerySerializer extends _i1
     final result = DeleteEgressOnlyInternetGatewayRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'EgressOnlyInternetGatewayId':
           result.egressOnlyInternetGatewayId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -128,28 +130,31 @@ class DeleteEgressOnlyInternetGatewayRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteEgressOnlyInternetGatewayRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteEgressOnlyInternetGatewayRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DeleteEgressOnlyInternetGatewayRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DeleteEgressOnlyInternetGatewayRequest(
+      :dryRun,
+      :egressOnlyInternetGatewayId
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('EgressOnlyInternetGatewayId'))
       ..add(serializers.serialize(
-        payload.egressOnlyInternetGatewayId,
+        egressOnlyInternetGatewayId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

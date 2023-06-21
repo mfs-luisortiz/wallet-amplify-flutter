@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.prefix_list; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,41 +99,35 @@ class PrefixListEc2QuerySerializer
     final result = PrefixListBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidrSet':
-          if (value != null) {
-            result.cidrs.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.cidrs.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'prefixListId':
-          if (value != null) {
-            result.prefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'prefixListName':
-          if (value != null) {
-            result.prefixListName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -142,47 +137,47 @@ class PrefixListEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PrefixList object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PrefixList);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'PrefixListResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrs != null) {
-      result
+    final PrefixList(:cidrs, :prefixListId, :prefixListName) = object;
+    if (cidrs != null) {
+      result$
         ..add(const _i3.XmlElementName('CidrSet'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.cidrs!,
+          cidrs,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.prefixListId != null) {
-      result
+    if (prefixListId != null) {
+      result$
         ..add(const _i3.XmlElementName('PrefixListId'))
         ..add(serializers.serialize(
-          payload.prefixListId!,
+          prefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.prefixListName != null) {
-      result
+    if (prefixListName != null) {
+      result$
         ..add(const _i3.XmlElementName('PrefixListName'))
         ..add(serializers.serialize(
-          payload.prefixListName!,
+          prefixListName,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

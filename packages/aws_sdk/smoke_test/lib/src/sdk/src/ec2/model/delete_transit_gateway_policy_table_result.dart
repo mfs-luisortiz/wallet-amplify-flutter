@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_transit_gateway_policy_table_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class DeleteTransitGatewayPolicyTableResultEc2QuerySerializer extends _i3
     final result = DeleteTransitGatewayPolicyTableResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayPolicyTable':
-          if (value != null) {
-            result.transitGatewayPolicyTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayPolicyTable),
-            ) as _i2.TransitGatewayPolicyTable));
-          }
-          break;
+          result.transitGatewayPolicyTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayPolicyTable),
+          ) as _i2.TransitGatewayPolicyTable));
       }
     }
 
@@ -106,24 +107,25 @@ class DeleteTransitGatewayPolicyTableResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTransitGatewayPolicyTableResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteTransitGatewayPolicyTableResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteTransitGatewayPolicyTableResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayPolicyTable != null) {
-      result
+    final DeleteTransitGatewayPolicyTableResult(:transitGatewayPolicyTable) =
+        object;
+    if (transitGatewayPolicyTable != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayPolicyTable'))
         ..add(serializers.serialize(
-          payload.transitGatewayPolicyTable!,
+          transitGatewayPolicyTable,
           specifiedType: const FullType(_i2.TransitGatewayPolicyTable),
         ));
     }
-    return result;
+    return result$;
   }
 }

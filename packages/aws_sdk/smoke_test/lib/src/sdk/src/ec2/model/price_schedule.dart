@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.price_schedule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,36 +120,33 @@ class PriceScheduleEc2QuerySerializer
     final result = PriceScheduleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'active':
           result.active = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'currencyCode':
-          if (value != null) {
-            result.currencyCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CurrencyCodeValues),
-            ) as _i2.CurrencyCodeValues);
-          }
-          break;
+          result.currencyCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CurrencyCodeValues),
+          ) as _i2.CurrencyCodeValues);
         case 'price':
           result.price = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'term':
           result.term = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Int64),
           ) as _i3.Int64);
-          break;
       }
     }
 
@@ -158,42 +156,42 @@ class PriceScheduleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PriceSchedule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PriceSchedule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'PriceScheduleResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final PriceSchedule(:active, :currencyCode, :price, :term) = object;
+    result$
       ..add(const _i4.XmlElementName('Active'))
       ..add(serializers.serialize(
-        payload.active,
+        active,
         specifiedType: const FullType(bool),
       ));
-    if (payload.currencyCode != null) {
-      result
+    if (currencyCode != null) {
+      result$
         ..add(const _i4.XmlElementName('CurrencyCode'))
         ..add(serializers.serialize(
-          payload.currencyCode!,
+          currencyCode,
           specifiedType: const FullType.nullable(_i2.CurrencyCodeValues),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('Price'))
       ..add(serializers.serialize(
-        payload.price,
+        price,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('Term'))
       ..add(serializers.serialize(
-        payload.term,
+        term,
         specifiedType: const FullType(_i3.Int64),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.cancel_capacity_reservation_result;
+part of 'cancel_capacity_reservation_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

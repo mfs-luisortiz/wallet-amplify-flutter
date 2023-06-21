@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.analysis_acl_rule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -133,54 +134,43 @@ class AnalysisAclRuleEc2QuerySerializer
     final result = AnalysisAclRuleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidr':
-          if (value != null) {
-            result.cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'egress':
           result.egress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'portRange':
-          if (value != null) {
-            result.portRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PortRange),
-            ) as _i2.PortRange));
-          }
-          break;
+          result.portRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PortRange),
+          ) as _i2.PortRange));
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ruleAction':
-          if (value != null) {
-            result.ruleAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ruleAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ruleNumber':
           result.ruleNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -190,60 +180,67 @@ class AnalysisAclRuleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AnalysisAclRule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AnalysisAclRule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AnalysisAclRuleResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidr != null) {
-      result
+    final AnalysisAclRule(
+      :cidr,
+      :egress,
+      :portRange,
+      :protocol,
+      :ruleAction,
+      :ruleNumber
+    ) = object;
+    if (cidr != null) {
+      result$
         ..add(const _i3.XmlElementName('Cidr'))
         ..add(serializers.serialize(
-          payload.cidr!,
+          cidr,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Egress'))
       ..add(serializers.serialize(
-        payload.egress,
+        egress,
         specifiedType: const FullType(bool),
       ));
-    if (payload.portRange != null) {
-      result
+    if (portRange != null) {
+      result$
         ..add(const _i3.XmlElementName('PortRange'))
         ..add(serializers.serialize(
-          payload.portRange!,
+          portRange,
           specifiedType: const FullType(_i2.PortRange),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i3.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ruleAction != null) {
-      result
+    if (ruleAction != null) {
+      result$
         ..add(const _i3.XmlElementName('RuleAction'))
         ..add(serializers.serialize(
-          payload.ruleAction!,
+          ruleAction,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('RuleNumber'))
       ..add(serializers.serialize(
-        payload.ruleNumber,
+        ruleNumber,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_instance_maintenance_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -115,30 +116,28 @@ class ModifyInstanceMaintenanceOptionsRequestEc2QuerySerializer extends _i1
     final result = ModifyInstanceMaintenanceOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
           result.instanceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AutoRecovery':
-          if (value != null) {
-            result.autoRecovery = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceAutoRecoveryState),
-            ) as _i3.InstanceAutoRecoveryState);
-          }
-          break;
+          result.autoRecovery = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceAutoRecoveryState),
+          ) as _i3.InstanceAutoRecoveryState);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -148,36 +147,40 @@ class ModifyInstanceMaintenanceOptionsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyInstanceMaintenanceOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyInstanceMaintenanceOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyInstanceMaintenanceOptionsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyInstanceMaintenanceOptionsRequest(
+      :instanceId,
+      :autoRecovery,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    if (payload.autoRecovery != null) {
-      result
+    if (autoRecovery != null) {
+      result$
         ..add(const _i1.XmlElementName('AutoRecovery'))
         ..add(serializers.serialize(
-          payload.autoRecovery!,
+          autoRecovery,
           specifiedType: const FullType.nullable(_i3.InstanceAutoRecoveryState),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

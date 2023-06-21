@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.id_format; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,32 +100,28 @@ class IdFormatEc2QuerySerializer
     final result = IdFormatBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'deadline':
-          if (value != null) {
-            result.deadline = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.deadline = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'resource':
-          if (value != null) {
-            result.resource = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resource = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'useLongIds':
           result.useLongIds = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -134,38 +131,38 @@ class IdFormatEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IdFormat object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IdFormat);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'IdFormatResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.deadline != null) {
-      result
+    final IdFormat(:deadline, :resource, :useLongIds) = object;
+    if (deadline != null) {
+      result$
         ..add(const _i2.XmlElementName('Deadline'))
         ..add(serializers.serialize(
-          payload.deadline!,
+          deadline,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.resource != null) {
-      result
+    if (resource != null) {
+      result$
         ..add(const _i2.XmlElementName('Resource'))
         ..add(serializers.serialize(
-          payload.resource!,
+          resource,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('UseLongIds'))
       ..add(serializers.serialize(
-        payload.useLongIds,
+        useLongIds,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

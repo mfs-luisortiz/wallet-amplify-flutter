@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.load_balancers_config; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,26 +93,23 @@ class LoadBalancersConfigEc2QuerySerializer
     final result = LoadBalancersConfigBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'classicLoadBalancersConfig':
-          if (value != null) {
-            result.classicLoadBalancersConfig.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClassicLoadBalancersConfig),
-            ) as _i2.ClassicLoadBalancersConfig));
-          }
-          break;
+          result.classicLoadBalancersConfig.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClassicLoadBalancersConfig),
+          ) as _i2.ClassicLoadBalancersConfig));
         case 'targetGroupsConfig':
-          if (value != null) {
-            result.targetGroupsConfig.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TargetGroupsConfig),
-            ) as _i3.TargetGroupsConfig));
-          }
-          break;
+          result.targetGroupsConfig.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TargetGroupsConfig),
+          ) as _i3.TargetGroupsConfig));
       }
     }
 
@@ -121,32 +119,35 @@ class LoadBalancersConfigEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LoadBalancersConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LoadBalancersConfig);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LoadBalancersConfigResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.classicLoadBalancersConfig != null) {
-      result
+    final LoadBalancersConfig(
+      :classicLoadBalancersConfig,
+      :targetGroupsConfig
+    ) = object;
+    if (classicLoadBalancersConfig != null) {
+      result$
         ..add(const _i4.XmlElementName('ClassicLoadBalancersConfig'))
         ..add(serializers.serialize(
-          payload.classicLoadBalancersConfig!,
+          classicLoadBalancersConfig,
           specifiedType: const FullType(_i2.ClassicLoadBalancersConfig),
         ));
     }
-    if (payload.targetGroupsConfig != null) {
-      result
+    if (targetGroupsConfig != null) {
+      result$
         ..add(const _i4.XmlElementName('TargetGroupsConfig'))
         ..add(serializers.serialize(
-          payload.targetGroupsConfig!,
+          targetGroupsConfig,
           specifiedType: const FullType(_i3.TargetGroupsConfig),
         ));
     }
-    return result;
+    return result$;
   }
 }

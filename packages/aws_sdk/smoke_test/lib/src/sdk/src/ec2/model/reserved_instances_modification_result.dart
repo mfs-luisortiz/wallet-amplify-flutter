@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reserved_instances_modification_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,26 +96,23 @@ class ReservedInstancesModificationResultEc2QuerySerializer extends _i3
     final result = ReservedInstancesModificationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'reservedInstancesId':
-          if (value != null) {
-            result.reservedInstancesId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservedInstancesId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetConfiguration':
-          if (value != null) {
-            result.targetConfiguration.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ReservedInstancesConfiguration),
-            ) as _i2.ReservedInstancesConfiguration));
-          }
-          break;
+          result.targetConfiguration.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ReservedInstancesConfiguration),
+          ) as _i2.ReservedInstancesConfiguration));
       }
     }
 
@@ -124,32 +122,35 @@ class ReservedInstancesModificationResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservedInstancesModificationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservedInstancesModificationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ReservedInstancesModificationResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.reservedInstancesId != null) {
-      result
+    final ReservedInstancesModificationResult(
+      :reservedInstancesId,
+      :targetConfiguration
+    ) = object;
+    if (reservedInstancesId != null) {
+      result$
         ..add(const _i3.XmlElementName('ReservedInstancesId'))
         ..add(serializers.serialize(
-          payload.reservedInstancesId!,
+          reservedInstancesId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.targetConfiguration != null) {
-      result
+    if (targetConfiguration != null) {
+      result$
         ..add(const _i3.XmlElementName('TargetConfiguration'))
         ..add(serializers.serialize(
-          payload.targetConfiguration!,
+          targetConfiguration,
           specifiedType: const FullType(_i2.ReservedInstancesConfiguration),
         ));
     }
-    return result;
+    return result$;
   }
 }

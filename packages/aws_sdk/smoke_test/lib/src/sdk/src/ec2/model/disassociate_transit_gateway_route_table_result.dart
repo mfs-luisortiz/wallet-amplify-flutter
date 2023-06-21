@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disassociate_transit_gateway_route_table_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class DisassociateTransitGatewayRouteTableResultEc2QuerySerializer extends _i3
     final result = DisassociateTransitGatewayRouteTableResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'association':
-          if (value != null) {
-            result.association.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayAssociation),
-            ) as _i2.TransitGatewayAssociation));
-          }
-          break;
+          result.association.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayAssociation),
+          ) as _i2.TransitGatewayAssociation));
       }
     }
 
@@ -106,24 +107,24 @@ class DisassociateTransitGatewayRouteTableResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DisassociateTransitGatewayRouteTableResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DisassociateTransitGatewayRouteTableResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DisassociateTransitGatewayRouteTableResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.association != null) {
-      result
+    final DisassociateTransitGatewayRouteTableResult(:association) = object;
+    if (association != null) {
+      result$
         ..add(const _i3.XmlElementName('Association'))
         ..add(serializers.serialize(
-          payload.association!,
+          association,
           specifiedType: const FullType(_i2.TransitGatewayAssociation),
         ));
     }
-    return result;
+    return result$;
   }
 }

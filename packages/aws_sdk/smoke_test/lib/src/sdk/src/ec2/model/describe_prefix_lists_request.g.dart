@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_prefix_lists_request;
+part of 'describe_prefix_lists_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

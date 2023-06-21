@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_vpn_connection_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -159,68 +160,56 @@ class CreateVpnConnectionRequestEc2QuerySerializer
     final result = CreateVpnConnectionRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CustomerGatewayId':
           result.customerGatewayId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Type':
           result.type = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'VpnGatewayId':
-          if (value != null) {
-            result.vpnGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpnGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TransitGatewayId':
-          if (value != null) {
-            result.transitGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'options':
-          if (value != null) {
-            result.options.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.VpnConnectionOptionsSpecification),
-            ) as _i3.VpnConnectionOptionsSpecification));
-          }
-          break;
+          result.options.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.VpnConnectionOptionsSpecification),
+          ) as _i3.VpnConnectionOptionsSpecification));
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
       }
     }
 
@@ -230,73 +219,81 @@ class CreateVpnConnectionRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateVpnConnectionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateVpnConnectionRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateVpnConnectionRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateVpnConnectionRequest(
+      :customerGatewayId,
+      :type,
+      :vpnGatewayId,
+      :transitGatewayId,
+      :dryRun,
+      :options,
+      :tagSpecifications
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('CustomerGatewayId'))
       ..add(serializers.serialize(
-        payload.customerGatewayId,
+        customerGatewayId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Type'))
       ..add(serializers.serialize(
-        payload.type,
+        type,
         specifiedType: const FullType(String),
       ));
-    if (payload.vpnGatewayId != null) {
-      result
+    if (vpnGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpnGatewayId'))
         ..add(serializers.serialize(
-          payload.vpnGatewayId!,
+          vpnGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayId != null) {
-      result
+    if (transitGatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('TransitGatewayId'))
         ..add(serializers.serialize(
-          payload.transitGatewayId!,
+          transitGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.options != null) {
-      result
+    if (options != null) {
+      result$
         ..add(const _i1.XmlElementName('Options'))
         ..add(serializers.serialize(
-          payload.options!,
+          options,
           specifiedType: const FullType(_i3.VpnConnectionOptionsSpecification),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

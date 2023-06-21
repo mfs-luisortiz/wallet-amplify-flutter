@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_conversion_tasks_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,25 +86,25 @@ class DescribeConversionTasksResultEc2QuerySerializer
     final result = DescribeConversionTasksResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'conversionTasks':
-          if (value != null) {
-            result.conversionTasks.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.ConversionTask)],
-              ),
-            ) as _i3.BuiltList<_i2.ConversionTask>));
-          }
-          break;
+          result.conversionTasks.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.ConversionTask)],
+            ),
+          ) as _i3.BuiltList<_i2.ConversionTask>));
       }
     }
 
@@ -113,31 +114,31 @@ class DescribeConversionTasksResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeConversionTasksResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeConversionTasksResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeConversionTasksResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.conversionTasks != null) {
-      result
+    final DescribeConversionTasksResult(:conversionTasks) = object;
+    if (conversionTasks != null) {
+      result$
         ..add(const _i4.XmlElementName('ConversionTasks'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.conversionTasks!,
+          conversionTasks,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.ConversionTask)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

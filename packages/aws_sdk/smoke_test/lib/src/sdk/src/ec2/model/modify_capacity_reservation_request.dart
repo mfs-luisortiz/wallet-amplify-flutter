@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_capacity_reservation_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -166,58 +167,48 @@ class ModifyCapacityReservationRequestEc2QuerySerializer
     final result = ModifyCapacityReservationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CapacityReservationId':
           result.capacityReservationId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'InstanceCount':
           result.instanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'EndDate':
-          if (value != null) {
-            result.endDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.endDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'EndDateType':
-          if (value != null) {
-            result.endDateType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.EndDateType),
-            ) as _i3.EndDateType);
-          }
-          break;
+          result.endDateType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.EndDateType),
+          ) as _i3.EndDateType);
         case 'Accept':
           result.accept = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'AdditionalInfo':
-          if (value != null) {
-            result.additionalInfo = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.additionalInfo = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -227,64 +218,72 @@ class ModifyCapacityReservationRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyCapacityReservationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyCapacityReservationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyCapacityReservationRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyCapacityReservationRequest(
+      :capacityReservationId,
+      :instanceCount,
+      :endDate,
+      :endDateType,
+      :accept,
+      :dryRun,
+      :additionalInfo
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('CapacityReservationId'))
       ..add(serializers.serialize(
-        payload.capacityReservationId,
+        capacityReservationId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceCount'))
       ..add(serializers.serialize(
-        payload.instanceCount,
+        instanceCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.endDate != null) {
-      result
+    if (endDate != null) {
+      result$
         ..add(const _i1.XmlElementName('EndDate'))
         ..add(serializers.serialize(
-          payload.endDate!,
+          endDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.endDateType != null) {
-      result
+    if (endDateType != null) {
+      result$
         ..add(const _i1.XmlElementName('EndDateType'))
         ..add(serializers.serialize(
-          payload.endDateType!,
+          endDateType,
           specifiedType: const FullType.nullable(_i3.EndDateType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Accept'))
       ..add(serializers.serialize(
-        payload.accept,
+        accept,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.additionalInfo != null) {
-      result
+    if (additionalInfo != null) {
+      result$
         ..add(const _i1.XmlElementName('AdditionalInfo'))
         ..add(serializers.serialize(
-          payload.additionalInfo!,
+          additionalInfo,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

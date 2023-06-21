@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.unassign_ipv6_addresses_result;
+part of 'unassign_ipv6_addresses_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

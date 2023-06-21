@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_modification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -257,120 +258,93 @@ class VolumeModificationEc2QuerySerializer
     final result = VolumeModificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'modificationState':
-          if (value != null) {
-            result.modificationState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VolumeModificationState),
-            ) as _i2.VolumeModificationState);
-          }
-          break;
+          result.modificationState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VolumeModificationState),
+          ) as _i2.VolumeModificationState);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetSize':
           result.targetSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'targetIops':
           result.targetIops = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'targetVolumeType':
-          if (value != null) {
-            result.targetVolumeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VolumeType),
-            ) as _i3.VolumeType);
-          }
-          break;
+          result.targetVolumeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VolumeType),
+          ) as _i3.VolumeType);
         case 'targetThroughput':
           result.targetThroughput = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'targetMultiAttachEnabled':
           result.targetMultiAttachEnabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'originalSize':
           result.originalSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'originalIops':
           result.originalIops = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'originalVolumeType':
-          if (value != null) {
-            result.originalVolumeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VolumeType),
-            ) as _i3.VolumeType);
-          }
-          break;
+          result.originalVolumeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VolumeType),
+          ) as _i3.VolumeType);
         case 'originalThroughput':
           result.originalThroughput = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'originalMultiAttachEnabled':
           result.originalMultiAttachEnabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'progress':
           result.progress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i4.Int64),
           ) as _i4.Int64);
-          break;
         case 'startTime':
-          if (value != null) {
-            result.startTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.startTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'endTime':
-          if (value != null) {
-            result.endTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.endTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -380,126 +354,143 @@ class VolumeModificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeModification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeModification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'VolumeModificationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.volumeId != null) {
-      result
+    final VolumeModification(
+      :volumeId,
+      :modificationState,
+      :statusMessage,
+      :targetSize,
+      :targetIops,
+      :targetVolumeType,
+      :targetThroughput,
+      :targetMultiAttachEnabled,
+      :originalSize,
+      :originalIops,
+      :originalVolumeType,
+      :originalThroughput,
+      :originalMultiAttachEnabled,
+      :progress,
+      :startTime,
+      :endTime
+    ) = object;
+    if (volumeId != null) {
+      result$
         ..add(const _i5.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.modificationState != null) {
-      result
+    if (modificationState != null) {
+      result$
         ..add(const _i5.XmlElementName('ModificationState'))
         ..add(serializers.serialize(
-          payload.modificationState!,
+          modificationState,
           specifiedType: const FullType.nullable(_i2.VolumeModificationState),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i5.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('TargetSize'))
       ..add(serializers.serialize(
-        payload.targetSize,
+        targetSize,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('TargetIops'))
       ..add(serializers.serialize(
-        payload.targetIops,
+        targetIops,
         specifiedType: const FullType(int),
       ));
-    if (payload.targetVolumeType != null) {
-      result
+    if (targetVolumeType != null) {
+      result$
         ..add(const _i5.XmlElementName('TargetVolumeType'))
         ..add(serializers.serialize(
-          payload.targetVolumeType!,
+          targetVolumeType,
           specifiedType: const FullType.nullable(_i3.VolumeType),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('TargetThroughput'))
       ..add(serializers.serialize(
-        payload.targetThroughput,
+        targetThroughput,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('TargetMultiAttachEnabled'))
       ..add(serializers.serialize(
-        payload.targetMultiAttachEnabled,
+        targetMultiAttachEnabled,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('OriginalSize'))
       ..add(serializers.serialize(
-        payload.originalSize,
+        originalSize,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('OriginalIops'))
       ..add(serializers.serialize(
-        payload.originalIops,
+        originalIops,
         specifiedType: const FullType(int),
       ));
-    if (payload.originalVolumeType != null) {
-      result
+    if (originalVolumeType != null) {
+      result$
         ..add(const _i5.XmlElementName('OriginalVolumeType'))
         ..add(serializers.serialize(
-          payload.originalVolumeType!,
+          originalVolumeType,
           specifiedType: const FullType.nullable(_i3.VolumeType),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('OriginalThroughput'))
       ..add(serializers.serialize(
-        payload.originalThroughput,
+        originalThroughput,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('OriginalMultiAttachEnabled'))
       ..add(serializers.serialize(
-        payload.originalMultiAttachEnabled,
+        originalMultiAttachEnabled,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('Progress'))
       ..add(serializers.serialize(
-        payload.progress,
+        progress,
         specifiedType: const FullType(_i4.Int64),
       ));
-    if (payload.startTime != null) {
-      result
+    if (startTime != null) {
+      result$
         ..add(const _i5.XmlElementName('StartTime'))
         ..add(serializers.serialize(
-          payload.startTime!,
+          startTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.endTime != null) {
-      result
+    if (endTime != null) {
+      result$
         ..add(const _i5.XmlElementName('EndTime'))
         ..add(serializers.serialize(
-          payload.endTime!,
+          endTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

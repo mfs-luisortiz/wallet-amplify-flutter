@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.egress_only_internet_gateway; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -104,48 +105,42 @@ class EgressOnlyInternetGatewayEc2QuerySerializer
     final result = EgressOnlyInternetGatewayBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attachmentSet':
-          if (value != null) {
-            result.attachments.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.InternetGatewayAttachment)],
-              ),
-            ) as _i4.BuiltList<_i2.InternetGatewayAttachment>));
-          }
-          break;
+          result.attachments.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.InternetGatewayAttachment)],
+            ),
+          ) as _i4.BuiltList<_i2.InternetGatewayAttachment>));
         case 'egressOnlyInternetGatewayId':
-          if (value != null) {
-            result.egressOnlyInternetGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.egressOnlyInternetGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -155,54 +150,58 @@ class EgressOnlyInternetGatewayEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EgressOnlyInternetGateway object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EgressOnlyInternetGateway);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'EgressOnlyInternetGatewayResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attachments != null) {
-      result
+    final EgressOnlyInternetGateway(
+      :attachments,
+      :egressOnlyInternetGatewayId,
+      :tags
+    ) = object;
+    if (attachments != null) {
+      result$
         ..add(const _i5.XmlElementName('AttachmentSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.attachments!,
+          attachments,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.InternetGatewayAttachment)],
           ),
         ));
     }
-    if (payload.egressOnlyInternetGatewayId != null) {
-      result
+    if (egressOnlyInternetGatewayId != null) {
+      result$
         ..add(const _i5.XmlElementName('EgressOnlyInternetGatewayId'))
         ..add(serializers.serialize(
-          payload.egressOnlyInternetGatewayId!,
+          egressOnlyInternetGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

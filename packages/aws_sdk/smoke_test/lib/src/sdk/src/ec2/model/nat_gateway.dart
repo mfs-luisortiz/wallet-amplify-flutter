@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.nat_gateway; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -219,121 +220,87 @@ class NatGatewayEc2QuerySerializer
     final result = NatGatewayBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'createTime':
-          if (value != null) {
-            result.createTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'deleteTime':
-          if (value != null) {
-            result.deleteTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.deleteTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'failureCode':
-          if (value != null) {
-            result.failureCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.failureCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'failureMessage':
-          if (value != null) {
-            result.failureMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.failureMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'natGatewayAddressSet':
-          if (value != null) {
-            result.natGatewayAddresses
-                .replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i2.NatGatewayAddress)],
-              ),
-            ) as _i7.BuiltList<_i2.NatGatewayAddress>));
-          }
-          break;
+          result.natGatewayAddresses.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i2.NatGatewayAddress)],
+            ),
+          ) as _i7.BuiltList<_i2.NatGatewayAddress>));
         case 'natGatewayId':
-          if (value != null) {
-            result.natGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.natGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'provisionedBandwidth':
-          if (value != null) {
-            result.provisionedBandwidth.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ProvisionedBandwidth),
-            ) as _i3.ProvisionedBandwidth));
-          }
-          break;
+          result.provisionedBandwidth.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ProvisionedBandwidth),
+          ) as _i3.ProvisionedBandwidth));
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.NatGatewayState),
-            ) as _i4.NatGatewayState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.NatGatewayState),
+          ) as _i4.NatGatewayState);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i8.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i8.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i7.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i8.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i8.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i7.BuiltList<_i5.Tag>));
         case 'connectivityType':
-          if (value != null) {
-            result.connectivityType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.ConnectivityType),
-            ) as _i6.ConnectivityType);
-          }
-          break;
+          result.connectivityType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.ConnectivityType),
+          ) as _i6.ConnectivityType);
       }
     }
 
@@ -343,126 +310,139 @@ class NatGatewayEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NatGateway object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NatGateway);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i8.XmlElementName(
         'NatGatewayResponse',
         _i8.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.createTime != null) {
-      result
+    final NatGateway(
+      :createTime,
+      :deleteTime,
+      :failureCode,
+      :failureMessage,
+      :natGatewayAddresses,
+      :natGatewayId,
+      :provisionedBandwidth,
+      :state,
+      :subnetId,
+      :vpcId,
+      :tags,
+      :connectivityType
+    ) = object;
+    if (createTime != null) {
+      result$
         ..add(const _i8.XmlElementName('CreateTime'))
         ..add(serializers.serialize(
-          payload.createTime!,
+          createTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.deleteTime != null) {
-      result
+    if (deleteTime != null) {
+      result$
         ..add(const _i8.XmlElementName('DeleteTime'))
         ..add(serializers.serialize(
-          payload.deleteTime!,
+          deleteTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.failureCode != null) {
-      result
+    if (failureCode != null) {
+      result$
         ..add(const _i8.XmlElementName('FailureCode'))
         ..add(serializers.serialize(
-          payload.failureCode!,
+          failureCode,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.failureMessage != null) {
-      result
+    if (failureMessage != null) {
+      result$
         ..add(const _i8.XmlElementName('FailureMessage'))
         ..add(serializers.serialize(
-          payload.failureMessage!,
+          failureMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.natGatewayAddresses != null) {
-      result
+    if (natGatewayAddresses != null) {
+      result$
         ..add(const _i8.XmlElementName('NatGatewayAddressSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.natGatewayAddresses!,
+          natGatewayAddresses,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i2.NatGatewayAddress)],
           ),
         ));
     }
-    if (payload.natGatewayId != null) {
-      result
+    if (natGatewayId != null) {
+      result$
         ..add(const _i8.XmlElementName('NatGatewayId'))
         ..add(serializers.serialize(
-          payload.natGatewayId!,
+          natGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.provisionedBandwidth != null) {
-      result
+    if (provisionedBandwidth != null) {
+      result$
         ..add(const _i8.XmlElementName('ProvisionedBandwidth'))
         ..add(serializers.serialize(
-          payload.provisionedBandwidth!,
+          provisionedBandwidth,
           specifiedType: const FullType(_i3.ProvisionedBandwidth),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i8.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i4.NatGatewayState),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i8.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i8.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i8.XmlElementName('TagSet'))
         ..add(const _i8.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i8.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    if (payload.connectivityType != null) {
-      result
+    if (connectivityType != null) {
+      result$
         ..add(const _i8.XmlElementName('ConnectivityType'))
         ..add(serializers.serialize(
-          payload.connectivityType!,
+          connectivityType,
           specifiedType: const FullType.nullable(_i6.ConnectivityType),
         ));
     }
-    return result;
+    return result$;
   }
 }

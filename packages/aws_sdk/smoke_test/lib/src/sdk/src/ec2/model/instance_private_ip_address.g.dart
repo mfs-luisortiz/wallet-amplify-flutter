@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_private_ip_address;
+part of 'instance_private_ip_address.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

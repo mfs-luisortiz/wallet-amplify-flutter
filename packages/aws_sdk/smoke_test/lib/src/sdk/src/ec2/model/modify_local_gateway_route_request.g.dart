@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.modify_local_gateway_route_request;
+part of 'modify_local_gateway_route_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

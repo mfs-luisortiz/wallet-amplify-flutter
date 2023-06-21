@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.v_cpu_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,65 +120,52 @@ class VCpuInfoEc2QuerySerializer
     final result = VCpuInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'defaultVCpus':
-          if (value != null) {
-            result.defaultVCpus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.defaultVCpus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'defaultCores':
-          if (value != null) {
-            result.defaultCores = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.defaultCores = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'defaultThreadsPerCore':
-          if (value != null) {
-            result.defaultThreadsPerCore = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.defaultThreadsPerCore = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'validCores':
-          if (value != null) {
-            result.validCores.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(int)],
-              ),
-            ) as _i2.BuiltList<int>));
-          }
-          break;
+          result.validCores.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(int)],
+            ),
+          ) as _i2.BuiltList<int>));
         case 'validThreadsPerCore':
-          if (value != null) {
-            result.validThreadsPerCore
-                .replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(int)],
-              ),
-            ) as _i2.BuiltList<int>));
-          }
-          break;
+          result.validThreadsPerCore.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(int)],
+            ),
+          ) as _i2.BuiltList<int>));
       }
     }
 
@@ -187,70 +175,76 @@ class VCpuInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VCpuInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VCpuInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'VCpuInfoResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.defaultVCpus != null) {
-      result
+    final VCpuInfo(
+      :defaultVCpus,
+      :defaultCores,
+      :defaultThreadsPerCore,
+      :validCores,
+      :validThreadsPerCore
+    ) = object;
+    if (defaultVCpus != null) {
+      result$
         ..add(const _i3.XmlElementName('DefaultVCpus'))
         ..add(serializers.serialize(
-          payload.defaultVCpus!,
+          defaultVCpus,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.defaultCores != null) {
-      result
+    if (defaultCores != null) {
+      result$
         ..add(const _i3.XmlElementName('DefaultCores'))
         ..add(serializers.serialize(
-          payload.defaultCores!,
+          defaultCores,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.defaultThreadsPerCore != null) {
-      result
+    if (defaultThreadsPerCore != null) {
+      result$
         ..add(const _i3.XmlElementName('DefaultThreadsPerCore'))
         ..add(serializers.serialize(
-          payload.defaultThreadsPerCore!,
+          defaultThreadsPerCore,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.validCores != null) {
-      result
+    if (validCores != null) {
+      result$
         ..add(const _i3.XmlElementName('ValidCores'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.validCores!,
+          validCores,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(int)],
           ),
         ));
     }
-    if (payload.validThreadsPerCore != null) {
-      result
+    if (validThreadsPerCore != null) {
+      result$
         ..add(const _i3.XmlElementName('ValidThreadsPerCore'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.validThreadsPerCore!,
+          validThreadsPerCore,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(int)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

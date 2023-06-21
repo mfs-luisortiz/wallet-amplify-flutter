@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.federated_authentication_request;
+part of 'federated_authentication_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

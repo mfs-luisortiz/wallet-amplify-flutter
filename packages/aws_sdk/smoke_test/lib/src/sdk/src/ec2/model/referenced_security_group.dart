@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.referenced_security_group; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,50 +120,38 @@ class ReferencedSecurityGroupEc2QuerySerializer
     final result = ReferencedSecurityGroupBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupId':
-          if (value != null) {
-            result.groupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peeringStatus':
-          if (value != null) {
-            result.peeringStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peeringStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'userId':
-          if (value != null) {
-            result.userId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.userId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcPeeringConnectionId':
-          if (value != null) {
-            result.vpcPeeringConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcPeeringConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -172,56 +161,62 @@ class ReferencedSecurityGroupEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReferencedSecurityGroup object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReferencedSecurityGroup);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ReferencedSecurityGroupResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupId != null) {
-      result
+    final ReferencedSecurityGroup(
+      :groupId,
+      :peeringStatus,
+      :userId,
+      :vpcId,
+      :vpcPeeringConnectionId
+    ) = object;
+    if (groupId != null) {
+      result$
         ..add(const _i2.XmlElementName('GroupId'))
         ..add(serializers.serialize(
-          payload.groupId!,
+          groupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peeringStatus != null) {
-      result
+    if (peeringStatus != null) {
+      result$
         ..add(const _i2.XmlElementName('PeeringStatus'))
         ..add(serializers.serialize(
-          payload.peeringStatus!,
+          peeringStatus,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.userId != null) {
-      result
+    if (userId != null) {
+      result$
         ..add(const _i2.XmlElementName('UserId'))
         ..add(serializers.serialize(
-          payload.userId!,
+          userId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i2.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcPeeringConnectionId != null) {
-      result
+    if (vpcPeeringConnectionId != null) {
+      result$
         ..add(const _i2.XmlElementName('VpcPeeringConnectionId'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnectionId!,
+          vpcPeeringConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_connect_peer_configuration; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,64 +131,52 @@ class TransitGatewayConnectPeerConfigurationEc2QuerySerializer extends _i5
     final result = TransitGatewayConnectPeerConfigurationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayAddress':
-          if (value != null) {
-            result.transitGatewayAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peerAddress':
-          if (value != null) {
-            result.peerAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'insideCidrBlocks':
-          if (value != null) {
-            result.insideCidrBlocks.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.insideCidrBlocks.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ProtocolValue),
-            ) as _i2.ProtocolValue);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ProtocolValue),
+          ) as _i2.ProtocolValue);
         case 'bgpConfigurations':
-          if (value != null) {
-            result.bgpConfigurations.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TransitGatewayAttachmentBgpConfiguration)],
-              ),
-            ) as _i4.BuiltList<_i3.TransitGatewayAttachmentBgpConfiguration>));
-          }
-          break;
+          result.bgpConfigurations.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TransitGatewayAttachmentBgpConfiguration)],
+            ),
+          ) as _i4.BuiltList<_i3.TransitGatewayAttachmentBgpConfiguration>));
       }
     }
 
@@ -197,70 +186,76 @@ class TransitGatewayConnectPeerConfigurationEc2QuerySerializer extends _i5
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayConnectPeerConfiguration object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayConnectPeerConfiguration);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TransitGatewayConnectPeerConfigurationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayAddress != null) {
-      result
+    final TransitGatewayConnectPeerConfiguration(
+      :transitGatewayAddress,
+      :peerAddress,
+      :insideCidrBlocks,
+      :protocol,
+      :bgpConfigurations
+    ) = object;
+    if (transitGatewayAddress != null) {
+      result$
         ..add(const _i5.XmlElementName('TransitGatewayAddress'))
         ..add(serializers.serialize(
-          payload.transitGatewayAddress!,
+          transitGatewayAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peerAddress != null) {
-      result
+    if (peerAddress != null) {
+      result$
         ..add(const _i5.XmlElementName('PeerAddress'))
         ..add(serializers.serialize(
-          payload.peerAddress!,
+          peerAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.insideCidrBlocks != null) {
-      result
+    if (insideCidrBlocks != null) {
+      result$
         ..add(const _i5.XmlElementName('InsideCidrBlocks'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.insideCidrBlocks!,
+          insideCidrBlocks,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i5.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType.nullable(_i2.ProtocolValue),
         ));
     }
-    if (payload.bgpConfigurations != null) {
-      result
+    if (bgpConfigurations != null) {
+      result$
         ..add(const _i5.XmlElementName('BgpConfigurations'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.bgpConfigurations!,
+          bgpConfigurations,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TransitGatewayAttachmentBgpConfiguration)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

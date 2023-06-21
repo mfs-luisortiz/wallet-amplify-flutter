@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.placement_group_info;
+part of 'placement_group_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_instance_market_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -96,27 +97,24 @@ class LaunchTemplateInstanceMarketOptionsRequestEc2QuerySerializer extends _i4
     final result = LaunchTemplateInstanceMarketOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'MarketType':
-          if (value != null) {
-            result.marketType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.MarketType),
-            ) as _i2.MarketType);
-          }
-          break;
+          result.marketType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.MarketType),
+          ) as _i2.MarketType);
         case 'SpotOptions':
-          if (value != null) {
-            result.spotOptions.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.LaunchTemplateSpotMarketOptionsRequest),
-            ) as _i3.LaunchTemplateSpotMarketOptionsRequest));
-          }
-          break;
+          result.spotOptions.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.LaunchTemplateSpotMarketOptionsRequest),
+          ) as _i3.LaunchTemplateSpotMarketOptionsRequest));
       }
     }
 
@@ -126,33 +124,36 @@ class LaunchTemplateInstanceMarketOptionsRequestEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplateInstanceMarketOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplateInstanceMarketOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LaunchTemplateInstanceMarketOptionsRequestResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.marketType != null) {
-      result
+    final LaunchTemplateInstanceMarketOptionsRequest(
+      :marketType,
+      :spotOptions
+    ) = object;
+    if (marketType != null) {
+      result$
         ..add(const _i4.XmlElementName('MarketType'))
         ..add(serializers.serialize(
-          payload.marketType!,
+          marketType,
           specifiedType: const FullType.nullable(_i2.MarketType),
         ));
     }
-    if (payload.spotOptions != null) {
-      result
+    if (spotOptions != null) {
+      result$
         ..add(const _i4.XmlElementName('SpotOptions'))
         ..add(serializers.serialize(
-          payload.spotOptions!,
+          spotOptions,
           specifiedType:
               const FullType(_i3.LaunchTemplateSpotMarketOptionsRequest),
         ));
     }
-    return result;
+    return result$;
   }
 }

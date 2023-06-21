@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_attribute_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -124,41 +125,34 @@ class ModifyVpcAttributeRequestEc2QuerySerializer
     final result = ModifyVpcAttributeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'EnableDnsHostnames':
-          if (value != null) {
-            result.enableDnsHostnames.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableDnsHostnames.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'EnableDnsSupport':
-          if (value != null) {
-            result.enableDnsSupport.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableDnsSupport.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'vpcId':
           result.vpcId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'EnableNetworkAddressUsageMetrics':
-          if (value != null) {
-            result.enableNetworkAddressUsageMetrics
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableNetworkAddressUsageMetrics
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
       }
     }
 
@@ -168,46 +162,51 @@ class ModifyVpcAttributeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcAttributeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcAttributeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpcAttributeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.enableDnsHostnames != null) {
-      result
+    final ModifyVpcAttributeRequest(
+      :enableDnsHostnames,
+      :enableDnsSupport,
+      :vpcId,
+      :enableNetworkAddressUsageMetrics
+    ) = object;
+    if (enableDnsHostnames != null) {
+      result$
         ..add(const _i1.XmlElementName('EnableDnsHostnames'))
         ..add(serializers.serialize(
-          payload.enableDnsHostnames!,
+          enableDnsHostnames,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    if (payload.enableDnsSupport != null) {
-      result
+    if (enableDnsSupport != null) {
+      result$
         ..add(const _i1.XmlElementName('EnableDnsSupport'))
         ..add(serializers.serialize(
-          payload.enableDnsSupport!,
+          enableDnsSupport,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('VpcId'))
       ..add(serializers.serialize(
-        payload.vpcId,
+        vpcId,
         specifiedType: const FullType(String),
       ));
-    if (payload.enableNetworkAddressUsageMetrics != null) {
-      result
+    if (enableNetworkAddressUsageMetrics != null) {
+      result$
         ..add(const _i1.XmlElementName('EnableNetworkAddressUsageMetrics'))
         ..add(serializers.serialize(
-          payload.enableNetworkAddressUsageMetrics!,
+          enableNetworkAddressUsageMetrics,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

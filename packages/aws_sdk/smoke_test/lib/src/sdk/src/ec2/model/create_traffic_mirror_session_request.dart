@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_traffic_mirror_session_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -206,83 +207,70 @@ class CreateTrafficMirrorSessionRequestEc2QuerySerializer
     final result = CreateTrafficMirrorSessionRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'NetworkInterfaceId':
           result.networkInterfaceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TrafficMirrorTargetId':
           result.trafficMirrorTargetId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TrafficMirrorFilterId':
           result.trafficMirrorFilterId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PacketLength':
           result.packetLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'SessionNumber':
           result.sessionNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'VirtualNetworkId':
           result.virtualNetworkId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TagSpecification)],
-              ),
-            ) as _i4.BuiltList<_i3.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TagSpecification)],
+            ),
+          ) as _i4.BuiltList<_i3.TagSpecification>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -292,89 +280,100 @@ class CreateTrafficMirrorSessionRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTrafficMirrorSessionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTrafficMirrorSessionRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateTrafficMirrorSessionRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateTrafficMirrorSessionRequest(
+      :networkInterfaceId,
+      :trafficMirrorTargetId,
+      :trafficMirrorFilterId,
+      :packetLength,
+      :sessionNumber,
+      :virtualNetworkId,
+      :description,
+      :tagSpecifications,
+      :dryRun,
+      :clientToken
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('NetworkInterfaceId'))
       ..add(serializers.serialize(
-        payload.networkInterfaceId,
+        networkInterfaceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TrafficMirrorTargetId'))
       ..add(serializers.serialize(
-        payload.trafficMirrorTargetId,
+        trafficMirrorTargetId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TrafficMirrorFilterId'))
       ..add(serializers.serialize(
-        payload.trafficMirrorFilterId,
+        trafficMirrorFilterId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PacketLength'))
       ..add(serializers.serialize(
-        payload.packetLength,
+        packetLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('SessionNumber'))
       ..add(serializers.serialize(
-        payload.sessionNumber,
+        sessionNumber,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VirtualNetworkId'))
       ..add(serializers.serialize(
-        payload.virtualNetworkId,
+        virtualNetworkId,
         specifiedType: const FullType(int),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TagSpecification)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.classic_link_instance;
+part of 'classic_link_instance.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

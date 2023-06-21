@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_transit_gateway_route_table_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class CreateTransitGatewayRouteTableResultEc2QuerySerializer extends _i3
     final result = CreateTransitGatewayRouteTableResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayRouteTable':
-          if (value != null) {
-            result.transitGatewayRouteTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayRouteTable),
-            ) as _i2.TransitGatewayRouteTable));
-          }
-          break;
+          result.transitGatewayRouteTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayRouteTable),
+          ) as _i2.TransitGatewayRouteTable));
       }
     }
 
@@ -106,24 +107,25 @@ class CreateTransitGatewayRouteTableResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTransitGatewayRouteTableResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTransitGatewayRouteTableResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateTransitGatewayRouteTableResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayRouteTable != null) {
-      result
+    final CreateTransitGatewayRouteTableResult(:transitGatewayRouteTable) =
+        object;
+    if (transitGatewayRouteTable != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayRouteTable'))
         ..add(serializers.serialize(
-          payload.transitGatewayRouteTable!,
+          transitGatewayRouteTable,
           specifiedType: const FullType(_i2.TransitGatewayRouteTable),
         ));
     }
-    return result;
+    return result$;
   }
 }

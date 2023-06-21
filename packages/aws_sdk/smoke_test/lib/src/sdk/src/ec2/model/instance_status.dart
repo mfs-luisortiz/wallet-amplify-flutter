@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_status; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -143,73 +144,55 @@ class InstanceStatusEc2QuerySerializer
     final result = InstanceStatusBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'outpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventsSet':
-          if (value != null) {
-            result.events.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.InstanceStatusEvent)],
-              ),
-            ) as _i5.BuiltList<_i2.InstanceStatusEvent>));
-          }
-          break;
+          result.events.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.InstanceStatusEvent)],
+            ),
+          ) as _i5.BuiltList<_i2.InstanceStatusEvent>));
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceState':
-          if (value != null) {
-            result.instanceState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceState),
-            ) as _i3.InstanceState));
-          }
-          break;
+          result.instanceState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceState),
+          ) as _i3.InstanceState));
         case 'instanceStatus':
-          if (value != null) {
-            result.instanceStatus.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceStatusSummary),
-            ) as _i4.InstanceStatusSummary));
-          }
-          break;
+          result.instanceStatus.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceStatusSummary),
+          ) as _i4.InstanceStatusSummary));
         case 'systemStatus':
-          if (value != null) {
-            result.systemStatus.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceStatusSummary),
-            ) as _i4.InstanceStatusSummary));
-          }
-          break;
+          result.systemStatus.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceStatusSummary),
+          ) as _i4.InstanceStatusSummary));
       }
     }
 
@@ -219,79 +202,87 @@ class InstanceStatusEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStatus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStatus);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'InstanceStatusResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final InstanceStatus(
+      :availabilityZone,
+      :outpostArn,
+      :events,
+      :instanceId,
+      :instanceState,
+      :instanceStatus,
+      :systemStatus
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i6.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i6.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.events != null) {
-      result
+    if (events != null) {
+      result$
         ..add(const _i6.XmlElementName('EventsSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.events!,
+          events,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.InstanceStatusEvent)],
           ),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i6.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceState != null) {
-      result
+    if (instanceState != null) {
+      result$
         ..add(const _i6.XmlElementName('InstanceState'))
         ..add(serializers.serialize(
-          payload.instanceState!,
+          instanceState,
           specifiedType: const FullType(_i3.InstanceState),
         ));
     }
-    if (payload.instanceStatus != null) {
-      result
+    if (instanceStatus != null) {
+      result$
         ..add(const _i6.XmlElementName('InstanceStatus'))
         ..add(serializers.serialize(
-          payload.instanceStatus!,
+          instanceStatus,
           specifiedType: const FullType(_i4.InstanceStatusSummary),
         ));
     }
-    if (payload.systemStatus != null) {
-      result
+    if (systemStatus != null) {
+      result$
         ..add(const _i6.XmlElementName('SystemStatus'))
         ..add(serializers.serialize(
-          payload.systemStatus!,
+          systemStatus,
           specifiedType: const FullType(_i4.InstanceStatusSummary),
         ));
     }
-    return result;
+    return result$;
   }
 }

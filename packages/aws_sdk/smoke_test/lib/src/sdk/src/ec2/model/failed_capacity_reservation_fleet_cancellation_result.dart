@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.failed_capacity_reservation_fleet_cancellation_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,28 +100,25 @@ class FailedCapacityReservationFleetCancellationResultEc2QuerySerializer
     final result = FailedCapacityReservationFleetCancellationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'capacityReservationFleetId':
-          if (value != null) {
-            result.capacityReservationFleetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.capacityReservationFleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'cancelCapacityReservationFleetError':
-          if (value != null) {
-            result.cancelCapacityReservationFleetError
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.CancelCapacityReservationFleetError),
-            ) as _i2.CancelCapacityReservationFleetError));
-          }
-          break;
+          result.cancelCapacityReservationFleetError
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.CancelCapacityReservationFleetError),
+          ) as _i2.CancelCapacityReservationFleetError));
       }
     }
 
@@ -130,34 +128,36 @@ class FailedCapacityReservationFleetCancellationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FailedCapacityReservationFleetCancellationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as FailedCapacityReservationFleetCancellationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'FailedCapacityReservationFleetCancellationResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.capacityReservationFleetId != null) {
-      result
+    final FailedCapacityReservationFleetCancellationResult(
+      :capacityReservationFleetId,
+      :cancelCapacityReservationFleetError
+    ) = object;
+    if (capacityReservationFleetId != null) {
+      result$
         ..add(const _i3.XmlElementName('CapacityReservationFleetId'))
         ..add(serializers.serialize(
-          payload.capacityReservationFleetId!,
+          capacityReservationFleetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.cancelCapacityReservationFleetError != null) {
-      result
+    if (cancelCapacityReservationFleetError != null) {
+      result$
         ..add(const _i3.XmlElementName('CancelCapacityReservationFleetError'))
         ..add(serializers.serialize(
-          payload.cancelCapacityReservationFleetError!,
+          cancelCapacityReservationFleetError,
           specifiedType:
               const FullType(_i2.CancelCapacityReservationFleetError),
         ));
     }
-    return result;
+    return result$;
   }
 }

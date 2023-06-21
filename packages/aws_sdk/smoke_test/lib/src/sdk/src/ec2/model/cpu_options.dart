@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cpu_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,22 +93,23 @@ class CpuOptionsEc2QuerySerializer
     final result = CpuOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'coreCount':
           result.coreCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'threadsPerCore':
           result.threadsPerCore = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -117,28 +119,28 @@ class CpuOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CpuOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CpuOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CpuOptionsResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CpuOptions(:coreCount, :threadsPerCore) = object;
+    result$
       ..add(const _i2.XmlElementName('CoreCount'))
       ..add(serializers.serialize(
-        payload.coreCount,
+        coreCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('ThreadsPerCore'))
       ..add(serializers.serialize(
-        payload.threadsPerCore,
+        threadsPerCore,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

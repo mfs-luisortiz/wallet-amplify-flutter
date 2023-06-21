@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.elastic_gpu_association; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,42 +110,33 @@ class ElasticGpuAssociationEc2QuerySerializer
     final result = ElasticGpuAssociationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'elasticGpuId':
-          if (value != null) {
-            result.elasticGpuId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticGpuAssociationId':
-          if (value != null) {
-            result.elasticGpuAssociationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuAssociationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticGpuAssociationState':
-          if (value != null) {
-            result.elasticGpuAssociationState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuAssociationState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticGpuAssociationTime':
-          if (value != null) {
-            result.elasticGpuAssociationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuAssociationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -154,48 +146,53 @@ class ElasticGpuAssociationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ElasticGpuAssociation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ElasticGpuAssociation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ElasticGpuAssociationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.elasticGpuId != null) {
-      result
+    final ElasticGpuAssociation(
+      :elasticGpuId,
+      :elasticGpuAssociationId,
+      :elasticGpuAssociationState,
+      :elasticGpuAssociationTime
+    ) = object;
+    if (elasticGpuId != null) {
+      result$
         ..add(const _i2.XmlElementName('ElasticGpuId'))
         ..add(serializers.serialize(
-          payload.elasticGpuId!,
+          elasticGpuId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticGpuAssociationId != null) {
-      result
+    if (elasticGpuAssociationId != null) {
+      result$
         ..add(const _i2.XmlElementName('ElasticGpuAssociationId'))
         ..add(serializers.serialize(
-          payload.elasticGpuAssociationId!,
+          elasticGpuAssociationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticGpuAssociationState != null) {
-      result
+    if (elasticGpuAssociationState != null) {
+      result$
         ..add(const _i2.XmlElementName('ElasticGpuAssociationState'))
         ..add(serializers.serialize(
-          payload.elasticGpuAssociationState!,
+          elasticGpuAssociationState,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticGpuAssociationTime != null) {
-      result
+    if (elasticGpuAssociationTime != null) {
+      result$
         ..add(const _i2.XmlElementName('ElasticGpuAssociationTime'))
         ..add(serializers.serialize(
-          payload.elasticGpuAssociationTime!,
+          elasticGpuAssociationTime,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

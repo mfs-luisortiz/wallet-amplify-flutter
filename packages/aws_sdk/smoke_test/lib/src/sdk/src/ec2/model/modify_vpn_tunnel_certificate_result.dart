@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpn_tunnel_certificate_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class ModifyVpnTunnelCertificateResultEc2QuerySerializer
     final result = ModifyVpnTunnelCertificateResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpnConnection':
-          if (value != null) {
-            result.vpnConnection.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpnConnection),
-            ) as _i2.VpnConnection));
-          }
-          break;
+          result.vpnConnection.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpnConnection),
+          ) as _i2.VpnConnection));
       }
     }
 
@@ -103,24 +104,24 @@ class ModifyVpnTunnelCertificateResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpnTunnelCertificateResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpnTunnelCertificateResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ModifyVpnTunnelCertificateResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpnConnection != null) {
-      result
+    final ModifyVpnTunnelCertificateResult(:vpnConnection) = object;
+    if (vpnConnection != null) {
+      result$
         ..add(const _i3.XmlElementName('VpnConnection'))
         ..add(serializers.serialize(
-          payload.vpnConnection!,
+          vpnConnection,
           specifiedType: const FullType(_i2.VpnConnection),
         ));
     }
-    return result;
+    return result$;
   }
 }

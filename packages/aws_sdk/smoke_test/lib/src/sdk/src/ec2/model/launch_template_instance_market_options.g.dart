@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.launch_template_instance_market_options;
+part of 'launch_template_instance_market_options.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

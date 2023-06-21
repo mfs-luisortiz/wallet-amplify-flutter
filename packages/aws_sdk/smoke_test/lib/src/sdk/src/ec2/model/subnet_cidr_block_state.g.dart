@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.subnet_cidr_block_state;
+part of 'subnet_cidr_block_state.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

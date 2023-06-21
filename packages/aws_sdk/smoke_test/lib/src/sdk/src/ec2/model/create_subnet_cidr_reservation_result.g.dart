@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_subnet_cidr_reservation_result;
+part of 'create_subnet_cidr_reservation_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

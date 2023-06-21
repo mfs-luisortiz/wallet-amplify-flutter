@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_subnet_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -184,83 +185,65 @@ class CreateSubnetRequestEc2QuerySerializer
     final result = CreateSubnetRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TagSpecification)],
-              ),
-            ) as _i4.BuiltList<_i3.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TagSpecification)],
+            ),
+          ) as _i4.BuiltList<_i3.TagSpecification>));
         case 'AvailabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'AvailabilityZoneId':
-          if (value != null) {
-            result.availabilityZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'CidrBlock':
-          if (value != null) {
-            result.cidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'Ipv6CidrBlock':
-          if (value != null) {
-            result.ipv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'OutpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'VpcId':
-          result.vpcId = (serializers.deserialize(
-            value!,
+          result.availabilityZone = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'AvailabilityZoneId':
+          result.availabilityZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'CidrBlock':
+          result.cidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'Ipv6CidrBlock':
+          result.ipv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'OutpostArn':
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'VpcId':
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Ipv6Native':
           result.ipv6Native = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -270,89 +253,99 @@ class CreateSubnetRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateSubnetRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateSubnetRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateSubnetRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.tagSpecifications != null) {
-      result
+    final CreateSubnetRequest(
+      :tagSpecifications,
+      :availabilityZone,
+      :availabilityZoneId,
+      :cidrBlock,
+      :ipv6CidrBlock,
+      :outpostArn,
+      :vpcId,
+      :dryRun,
+      :ipv6Native
+    ) = object;
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TagSpecification)],
           ),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i1.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZoneId != null) {
-      result
+    if (availabilityZoneId != null) {
+      result$
         ..add(const _i1.XmlElementName('AvailabilityZoneId'))
         ..add(serializers.serialize(
-          payload.availabilityZoneId!,
+          availabilityZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.cidrBlock != null) {
-      result
+    if (cidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('CidrBlock'))
         ..add(serializers.serialize(
-          payload.cidrBlock!,
+          cidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6CidrBlock != null) {
-      result
+    if (ipv6CidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('Ipv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlock!,
+          ipv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i1.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('VpcId'))
       ..add(serializers.serialize(
-        payload.vpcId,
+        vpcId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Ipv6Native'))
       ..add(serializers.serialize(
-        payload.ipv6Native,
+        ipv6Native,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

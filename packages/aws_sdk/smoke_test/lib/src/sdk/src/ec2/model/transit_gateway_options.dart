@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -187,99 +188,73 @@ class TransitGatewayOptionsEc2QuerySerializer
     final result = TransitGatewayOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'amazonSideAsn':
           result.amazonSideAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
         case 'transitGatewayCidrBlocks':
-          if (value != null) {
-            result.transitGatewayCidrBlocks
-                .replace((const _i10.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i10.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i9.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i9.BuiltList<String>));
-          }
-          break;
+          result.transitGatewayCidrBlocks
+              .replace((const _i10.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i10.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i9.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i9.BuiltList<String>));
         case 'autoAcceptSharedAttachments':
-          if (value != null) {
-            result.autoAcceptSharedAttachments = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.AutoAcceptSharedAttachmentsValue),
-            ) as _i3.AutoAcceptSharedAttachmentsValue);
-          }
-          break;
+          result.autoAcceptSharedAttachments = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AutoAcceptSharedAttachmentsValue),
+          ) as _i3.AutoAcceptSharedAttachmentsValue);
         case 'defaultRouteTableAssociation':
-          if (value != null) {
-            result.defaultRouteTableAssociation = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.DefaultRouteTableAssociationValue),
-            ) as _i4.DefaultRouteTableAssociationValue);
-          }
-          break;
+          result.defaultRouteTableAssociation = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.DefaultRouteTableAssociationValue),
+          ) as _i4.DefaultRouteTableAssociationValue);
         case 'associationDefaultRouteTableId':
-          if (value != null) {
-            result.associationDefaultRouteTableId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationDefaultRouteTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'defaultRouteTablePropagation':
-          if (value != null) {
-            result.defaultRouteTablePropagation = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i5.DefaultRouteTablePropagationValue),
-            ) as _i5.DefaultRouteTablePropagationValue);
-          }
-          break;
+          result.defaultRouteTablePropagation = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i5.DefaultRouteTablePropagationValue),
+          ) as _i5.DefaultRouteTablePropagationValue);
         case 'propagationDefaultRouteTableId':
-          if (value != null) {
-            result.propagationDefaultRouteTableId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.propagationDefaultRouteTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpnEcmpSupport':
-          if (value != null) {
-            result.vpnEcmpSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.VpnEcmpSupportValue),
-            ) as _i6.VpnEcmpSupportValue);
-          }
-          break;
+          result.vpnEcmpSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.VpnEcmpSupportValue),
+          ) as _i6.VpnEcmpSupportValue);
         case 'dnsSupport':
-          if (value != null) {
-            result.dnsSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.DnsSupportValue),
-            ) as _i7.DnsSupportValue);
-          }
-          break;
+          result.dnsSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.DnsSupportValue),
+          ) as _i7.DnsSupportValue);
         case 'multicastSupport':
-          if (value != null) {
-            result.multicastSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.MulticastSupportValue),
-            ) as _i8.MulticastSupportValue);
-          }
-          break;
+          result.multicastSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.MulticastSupportValue),
+          ) as _i8.MulticastSupportValue);
       }
     }
 
@@ -289,104 +264,115 @@ class TransitGatewayOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i10.XmlElementName(
         'TransitGatewayOptionsResponse',
         _i10.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final TransitGatewayOptions(
+      :amazonSideAsn,
+      :transitGatewayCidrBlocks,
+      :autoAcceptSharedAttachments,
+      :defaultRouteTableAssociation,
+      :associationDefaultRouteTableId,
+      :defaultRouteTablePropagation,
+      :propagationDefaultRouteTableId,
+      :vpnEcmpSupport,
+      :dnsSupport,
+      :multicastSupport
+    ) = object;
+    result$
       ..add(const _i10.XmlElementName('AmazonSideAsn'))
       ..add(serializers.serialize(
-        payload.amazonSideAsn,
+        amazonSideAsn,
         specifiedType: const FullType(_i2.Int64),
       ));
-    if (payload.transitGatewayCidrBlocks != null) {
-      result
+    if (transitGatewayCidrBlocks != null) {
+      result$
         ..add(const _i10.XmlElementName('TransitGatewayCidrBlocks'))
         ..add(const _i10.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i10.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.transitGatewayCidrBlocks!,
+          transitGatewayCidrBlocks,
           specifiedType: const FullType.nullable(
             _i9.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.autoAcceptSharedAttachments != null) {
-      result
+    if (autoAcceptSharedAttachments != null) {
+      result$
         ..add(const _i10.XmlElementName('AutoAcceptSharedAttachments'))
         ..add(serializers.serialize(
-          payload.autoAcceptSharedAttachments!,
+          autoAcceptSharedAttachments,
           specifiedType:
               const FullType.nullable(_i3.AutoAcceptSharedAttachmentsValue),
         ));
     }
-    if (payload.defaultRouteTableAssociation != null) {
-      result
+    if (defaultRouteTableAssociation != null) {
+      result$
         ..add(const _i10.XmlElementName('DefaultRouteTableAssociation'))
         ..add(serializers.serialize(
-          payload.defaultRouteTableAssociation!,
+          defaultRouteTableAssociation,
           specifiedType:
               const FullType.nullable(_i4.DefaultRouteTableAssociationValue),
         ));
     }
-    if (payload.associationDefaultRouteTableId != null) {
-      result
+    if (associationDefaultRouteTableId != null) {
+      result$
         ..add(const _i10.XmlElementName('AssociationDefaultRouteTableId'))
         ..add(serializers.serialize(
-          payload.associationDefaultRouteTableId!,
+          associationDefaultRouteTableId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.defaultRouteTablePropagation != null) {
-      result
+    if (defaultRouteTablePropagation != null) {
+      result$
         ..add(const _i10.XmlElementName('DefaultRouteTablePropagation'))
         ..add(serializers.serialize(
-          payload.defaultRouteTablePropagation!,
+          defaultRouteTablePropagation,
           specifiedType:
               const FullType.nullable(_i5.DefaultRouteTablePropagationValue),
         ));
     }
-    if (payload.propagationDefaultRouteTableId != null) {
-      result
+    if (propagationDefaultRouteTableId != null) {
+      result$
         ..add(const _i10.XmlElementName('PropagationDefaultRouteTableId'))
         ..add(serializers.serialize(
-          payload.propagationDefaultRouteTableId!,
+          propagationDefaultRouteTableId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpnEcmpSupport != null) {
-      result
+    if (vpnEcmpSupport != null) {
+      result$
         ..add(const _i10.XmlElementName('VpnEcmpSupport'))
         ..add(serializers.serialize(
-          payload.vpnEcmpSupport!,
+          vpnEcmpSupport,
           specifiedType: const FullType.nullable(_i6.VpnEcmpSupportValue),
         ));
     }
-    if (payload.dnsSupport != null) {
-      result
+    if (dnsSupport != null) {
+      result$
         ..add(const _i10.XmlElementName('DnsSupport'))
         ..add(serializers.serialize(
-          payload.dnsSupport!,
+          dnsSupport,
           specifiedType: const FullType.nullable(_i7.DnsSupportValue),
         ));
     }
-    if (payload.multicastSupport != null) {
-      result
+    if (multicastSupport != null) {
+      result$
         ..add(const _i10.XmlElementName('MulticastSupport'))
         ..add(serializers.serialize(
-          payload.multicastSupport!,
+          multicastSupport,
           specifiedType: const FullType.nullable(_i8.MulticastSupportValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

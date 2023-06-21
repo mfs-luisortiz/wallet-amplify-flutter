@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipam_scope; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -192,101 +193,75 @@ class IpamScopeEc2QuerySerializer
     final result = IpamScopeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeId':
-          if (value != null) {
-            result.ipamScopeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamScopeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeArn':
-          if (value != null) {
-            result.ipamScopeArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamScopeArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamArn':
-          if (value != null) {
-            result.ipamArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamRegion':
-          if (value != null) {
-            result.ipamRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeType':
-          if (value != null) {
-            result.ipamScopeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamScopeType),
-            ) as _i2.IpamScopeType);
-          }
-          break;
+          result.ipamScopeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamScopeType),
+          ) as _i2.IpamScopeType);
         case 'isDefault':
           result.isDefault = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'poolCount':
           result.poolCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.IpamScopeState),
-            ) as _i3.IpamScopeState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.IpamScopeState),
+          ) as _i3.IpamScopeState);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
       }
     }
 
@@ -296,107 +271,119 @@ class IpamScopeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpamScope object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpamScope);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'IpamScopeResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ownerId != null) {
-      result
+    final IpamScope(
+      :ownerId,
+      :ipamScopeId,
+      :ipamScopeArn,
+      :ipamArn,
+      :ipamRegion,
+      :ipamScopeType,
+      :isDefault,
+      :description,
+      :poolCount,
+      :state,
+      :tags
+    ) = object;
+    if (ownerId != null) {
+      result$
         ..add(const _i6.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeId != null) {
-      result
+    if (ipamScopeId != null) {
+      result$
         ..add(const _i6.XmlElementName('IpamScopeId'))
         ..add(serializers.serialize(
-          payload.ipamScopeId!,
+          ipamScopeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeArn != null) {
-      result
+    if (ipamScopeArn != null) {
+      result$
         ..add(const _i6.XmlElementName('IpamScopeArn'))
         ..add(serializers.serialize(
-          payload.ipamScopeArn!,
+          ipamScopeArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamArn != null) {
-      result
+    if (ipamArn != null) {
+      result$
         ..add(const _i6.XmlElementName('IpamArn'))
         ..add(serializers.serialize(
-          payload.ipamArn!,
+          ipamArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamRegion != null) {
-      result
+    if (ipamRegion != null) {
+      result$
         ..add(const _i6.XmlElementName('IpamRegion'))
         ..add(serializers.serialize(
-          payload.ipamRegion!,
+          ipamRegion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeType != null) {
-      result
+    if (ipamScopeType != null) {
+      result$
         ..add(const _i6.XmlElementName('IpamScopeType'))
         ..add(serializers.serialize(
-          payload.ipamScopeType!,
+          ipamScopeType,
           specifiedType: const FullType.nullable(_i2.IpamScopeType),
         ));
     }
-    result
+    result$
       ..add(const _i6.XmlElementName('IsDefault'))
       ..add(serializers.serialize(
-        payload.isDefault,
+        isDefault,
         specifiedType: const FullType(bool),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i6.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i6.XmlElementName('PoolCount'))
       ..add(serializers.serialize(
-        payload.poolCount,
+        poolCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i6.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i3.IpamScopeState),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

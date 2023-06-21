@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.slot_date_time_range_request;
+part of 'slot_date_time_range_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.efa_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -70,18 +71,18 @@ class EfaInfoEc2QuerySerializer
     final result = EfaInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'maximumEfaInterfaces':
-          if (value != null) {
-            result.maximumEfaInterfaces = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumEfaInterfaces = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -91,24 +92,24 @@ class EfaInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EfaInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EfaInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'EfaInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.maximumEfaInterfaces != null) {
-      result
+    final EfaInfo(:maximumEfaInterfaces) = object;
+    if (maximumEfaInterfaces != null) {
+      result$
         ..add(const _i2.XmlElementName('MaximumEfaInterfaces'))
         ..add(serializers.serialize(
-          payload.maximumEfaInterfaces!,
+          maximumEfaInterfaces,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

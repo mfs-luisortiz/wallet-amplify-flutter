@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.route_table; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -144,94 +145,76 @@ class RouteTableEc2QuerySerializer
     final result = RouteTableBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationSet':
-          if (value != null) {
-            result.associations.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i2.RouteTableAssociation)],
-              ),
-            ) as _i6.BuiltList<_i2.RouteTableAssociation>));
-          }
-          break;
+          result.associations.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i2.RouteTableAssociation)],
+            ),
+          ) as _i6.BuiltList<_i2.RouteTableAssociation>));
         case 'propagatingVgwSet':
-          if (value != null) {
-            result.propagatingVgws.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.PropagatingVgw)],
-              ),
-            ) as _i6.BuiltList<_i3.PropagatingVgw>));
-          }
-          break;
+          result.propagatingVgws.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.PropagatingVgw)],
+            ),
+          ) as _i6.BuiltList<_i3.PropagatingVgw>));
         case 'routeTableId':
-          if (value != null) {
-            result.routeTableId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.routeTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'routeSet':
-          if (value != null) {
-            result.routes.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.Route)],
-              ),
-            ) as _i6.BuiltList<_i4.Route>));
-          }
-          break;
+          result.routes.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.Route)],
+            ),
+          ) as _i6.BuiltList<_i4.Route>));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -241,100 +224,108 @@ class RouteTableEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RouteTable object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RouteTable);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'RouteTableResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associations != null) {
-      result
+    final RouteTable(
+      :associations,
+      :propagatingVgws,
+      :routeTableId,
+      :routes,
+      :tags,
+      :vpcId,
+      :ownerId
+    ) = object;
+    if (associations != null) {
+      result$
         ..add(const _i7.XmlElementName('AssociationSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.associations!,
+          associations,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i2.RouteTableAssociation)],
           ),
         ));
     }
-    if (payload.propagatingVgws != null) {
-      result
+    if (propagatingVgws != null) {
+      result$
         ..add(const _i7.XmlElementName('PropagatingVgwSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.propagatingVgws!,
+          propagatingVgws,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.PropagatingVgw)],
           ),
         ));
     }
-    if (payload.routeTableId != null) {
-      result
+    if (routeTableId != null) {
+      result$
         ..add(const _i7.XmlElementName('RouteTableId'))
         ..add(serializers.serialize(
-          payload.routeTableId!,
+          routeTableId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.routes != null) {
-      result
+    if (routes != null) {
+      result$
         ..add(const _i7.XmlElementName('RouteSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.routes!,
+          routes,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.Route)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i7.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i7.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

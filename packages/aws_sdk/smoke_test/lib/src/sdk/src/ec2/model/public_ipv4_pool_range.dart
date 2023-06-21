@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.public_ipv4_pool_range; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -113,38 +114,33 @@ class PublicIpv4PoolRangeEc2QuerySerializer
     final result = PublicIpv4PoolRangeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'firstAddress':
-          if (value != null) {
-            result.firstAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.firstAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'lastAddress':
-          if (value != null) {
-            result.lastAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.lastAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'addressCount':
           result.addressCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'availableAddressCount':
           result.availableAddressCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -154,44 +150,49 @@ class PublicIpv4PoolRangeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PublicIpv4PoolRange object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PublicIpv4PoolRange);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PublicIpv4PoolRangeResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.firstAddress != null) {
-      result
+    final PublicIpv4PoolRange(
+      :firstAddress,
+      :lastAddress,
+      :addressCount,
+      :availableAddressCount
+    ) = object;
+    if (firstAddress != null) {
+      result$
         ..add(const _i2.XmlElementName('FirstAddress'))
         ..add(serializers.serialize(
-          payload.firstAddress!,
+          firstAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.lastAddress != null) {
-      result
+    if (lastAddress != null) {
+      result$
         ..add(const _i2.XmlElementName('LastAddress'))
         ..add(serializers.serialize(
-          payload.lastAddress!,
+          lastAddress,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('AddressCount'))
       ..add(serializers.serialize(
-        payload.addressCount,
+        addressCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('AvailableAddressCount'))
       ..add(serializers.serialize(
-        payload.availableAddressCount,
+        availableAddressCount,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

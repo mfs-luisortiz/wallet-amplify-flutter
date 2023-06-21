@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_default_credit_specification_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -86,20 +87,20 @@ class GetDefaultCreditSpecificationResultEc2QuerySerializer extends _i3
     final result = GetDefaultCreditSpecificationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceFamilyCreditSpecification':
-          if (value != null) {
-            result.instanceFamilyCreditSpecification
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.InstanceFamilyCreditSpecification),
-            ) as _i2.InstanceFamilyCreditSpecification));
-          }
-          break;
+          result.instanceFamilyCreditSpecification
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.InstanceFamilyCreditSpecification),
+          ) as _i2.InstanceFamilyCreditSpecification));
       }
     }
 
@@ -109,24 +110,26 @@ class GetDefaultCreditSpecificationResultEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetDefaultCreditSpecificationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetDefaultCreditSpecificationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'GetDefaultCreditSpecificationResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceFamilyCreditSpecification != null) {
-      result
+    final GetDefaultCreditSpecificationResult(
+      :instanceFamilyCreditSpecification
+    ) = object;
+    if (instanceFamilyCreditSpecification != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceFamilyCreditSpecification'))
         ..add(serializers.serialize(
-          payload.instanceFamilyCreditSpecification!,
+          instanceFamilyCreditSpecification,
           specifiedType: const FullType(_i2.InstanceFamilyCreditSpecification),
         ));
     }
-    return result;
+    return result$;
   }
 }

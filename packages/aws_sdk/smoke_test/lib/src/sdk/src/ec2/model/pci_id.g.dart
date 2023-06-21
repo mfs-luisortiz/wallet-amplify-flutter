@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.pci_id;
+part of 'pci_id.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

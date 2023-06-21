@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_traffic_mirror_filter_network_services_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,53 +131,48 @@ class ModifyTrafficMirrorFilterNetworkServicesRequestEc2QuerySerializer
     final result = ModifyTrafficMirrorFilterNetworkServicesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TrafficMirrorFilterId':
           result.trafficMirrorFilterId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'AddNetworkService':
-          if (value != null) {
-            result.addNetworkServices.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TrafficMirrorNetworkService)],
-              ),
-            ) as _i4.BuiltList<_i3.TrafficMirrorNetworkService>));
-          }
-          break;
+          result.addNetworkServices.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TrafficMirrorNetworkService)],
+            ),
+          ) as _i4.BuiltList<_i3.TrafficMirrorNetworkService>));
         case 'RemoveNetworkService':
-          if (value != null) {
-            result.removeNetworkServices
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.TrafficMirrorNetworkService)],
-              ),
-            ) as _i4.BuiltList<_i3.TrafficMirrorNetworkService>));
-          }
-          break;
+          result.removeNetworkServices
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.TrafficMirrorNetworkService)],
+            ),
+          ) as _i4.BuiltList<_i3.TrafficMirrorNetworkService>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -186,58 +182,63 @@ class ModifyTrafficMirrorFilterNetworkServicesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyTrafficMirrorFilterNetworkServicesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyTrafficMirrorFilterNetworkServicesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyTrafficMirrorFilterNetworkServicesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyTrafficMirrorFilterNetworkServicesRequest(
+      :trafficMirrorFilterId,
+      :addNetworkServices,
+      :removeNetworkServices,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('TrafficMirrorFilterId'))
       ..add(serializers.serialize(
-        payload.trafficMirrorFilterId,
+        trafficMirrorFilterId,
         specifiedType: const FullType(String),
       ));
-    if (payload.addNetworkServices != null) {
-      result
+    if (addNetworkServices != null) {
+      result$
         ..add(const _i1.XmlElementName('AddNetworkService'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addNetworkServices!,
+          addNetworkServices,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TrafficMirrorNetworkService)],
           ),
         ));
     }
-    if (payload.removeNetworkServices != null) {
-      result
+    if (removeNetworkServices != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveNetworkService'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeNetworkServices!,
+          removeNetworkServices,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.TrafficMirrorNetworkService)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

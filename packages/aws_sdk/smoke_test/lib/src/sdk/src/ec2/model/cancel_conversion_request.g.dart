@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.cancel_conversion_request;
+part of 'cancel_conversion_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

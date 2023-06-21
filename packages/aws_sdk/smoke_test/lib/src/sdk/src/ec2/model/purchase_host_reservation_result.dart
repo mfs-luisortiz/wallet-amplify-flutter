@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.purchase_host_reservation_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,57 +131,45 @@ class PurchaseHostReservationResultEc2QuerySerializer
     final result = PurchaseHostReservationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'currencyCode':
-          if (value != null) {
-            result.currencyCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CurrencyCodeValues),
-            ) as _i2.CurrencyCodeValues);
-          }
-          break;
+          result.currencyCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CurrencyCodeValues),
+          ) as _i2.CurrencyCodeValues);
         case 'purchase':
-          if (value != null) {
-            result.purchase.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Purchase)],
-              ),
-            ) as _i4.BuiltList<_i3.Purchase>));
-          }
-          break;
+          result.purchase.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Purchase)],
+            ),
+          ) as _i4.BuiltList<_i3.Purchase>));
         case 'totalHourlyPrice':
-          if (value != null) {
-            result.totalHourlyPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.totalHourlyPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'totalUpfrontPrice':
-          if (value != null) {
-            result.totalUpfrontPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.totalUpfrontPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -190,63 +179,69 @@ class PurchaseHostReservationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PurchaseHostReservationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PurchaseHostReservationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'PurchaseHostReservationResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientToken != null) {
-      result
+    final PurchaseHostReservationResult(
+      :clientToken,
+      :currencyCode,
+      :purchase,
+      :totalHourlyPrice,
+      :totalUpfrontPrice
+    ) = object;
+    if (clientToken != null) {
+      result$
         ..add(const _i5.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.currencyCode != null) {
-      result
+    if (currencyCode != null) {
+      result$
         ..add(const _i5.XmlElementName('CurrencyCode'))
         ..add(serializers.serialize(
-          payload.currencyCode!,
+          currencyCode,
           specifiedType: const FullType.nullable(_i2.CurrencyCodeValues),
         ));
     }
-    if (payload.purchase != null) {
-      result
+    if (purchase != null) {
+      result$
         ..add(const _i5.XmlElementName('Purchase'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.purchase!,
+          purchase,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Purchase)],
           ),
         ));
     }
-    if (payload.totalHourlyPrice != null) {
-      result
+    if (totalHourlyPrice != null) {
+      result$
         ..add(const _i5.XmlElementName('TotalHourlyPrice'))
         ..add(serializers.serialize(
-          payload.totalHourlyPrice!,
+          totalHourlyPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.totalUpfrontPrice != null) {
-      result
+    if (totalUpfrontPrice != null) {
+      result$
         ..add(const _i5.XmlElementName('TotalUpfrontPrice'))
         ..add(serializers.serialize(
-          payload.totalUpfrontPrice!,
+          totalUpfrontPrice,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

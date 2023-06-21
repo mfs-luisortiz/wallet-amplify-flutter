@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,40 +108,35 @@ class InstanceSpecificationEc2QuerySerializer
     final result = InstanceSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ExcludeBootVolume':
           result.excludeBootVolume = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ExcludeDataVolumeId':
-          if (value != null) {
-            result.excludeDataVolumeIds
-                .replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'VolumeId',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.excludeDataVolumeIds.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'VolumeId',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
       }
     }
 
@@ -150,45 +146,49 @@ class InstanceSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceSpecificationResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final InstanceSpecification(
+      :instanceId,
+      :excludeBootVolume,
+      :excludeDataVolumeIds
+    ) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('ExcludeBootVolume'))
       ..add(serializers.serialize(
-        payload.excludeBootVolume,
+        excludeBootVolume,
         specifiedType: const FullType(bool),
       ));
-    if (payload.excludeDataVolumeIds != null) {
-      result
+    if (excludeDataVolumeIds != null) {
+      result$
         ..add(const _i3.XmlElementName('ExcludeDataVolumeId'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'VolumeId',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.excludeDataVolumeIds!,
+          excludeDataVolumeIds,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

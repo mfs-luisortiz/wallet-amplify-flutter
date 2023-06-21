@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.spot_instance_state_fault;
+part of 'spot_instance_state_fault.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

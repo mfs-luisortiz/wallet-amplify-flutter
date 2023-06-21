@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.gpu_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -88,33 +89,30 @@ class GpuInfoEc2QuerySerializer
     final result = GpuInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'gpus':
-          if (value != null) {
-            result.gpus.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.GpuDeviceInfo)],
-              ),
-            ) as _i3.BuiltList<_i2.GpuDeviceInfo>));
-          }
-          break;
+          result.gpus.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.GpuDeviceInfo)],
+            ),
+          ) as _i3.BuiltList<_i2.GpuDeviceInfo>));
         case 'totalGpuMemoryInMiB':
-          if (value != null) {
-            result.totalGpuMemoryInMib = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.totalGpuMemoryInMib = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -124,39 +122,39 @@ class GpuInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GpuInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GpuInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'GpuInfoResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.gpus != null) {
-      result
+    final GpuInfo(:gpus, :totalGpuMemoryInMib) = object;
+    if (gpus != null) {
+      result$
         ..add(const _i4.XmlElementName('Gpus'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.gpus!,
+          gpus,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.GpuDeviceInfo)],
           ),
         ));
     }
-    if (payload.totalGpuMemoryInMib != null) {
-      result
+    if (totalGpuMemoryInMib != null) {
+      result$
         ..add(const _i4.XmlElementName('TotalGpuMemoryInMiB'))
         ..add(serializers.serialize(
-          payload.totalGpuMemoryInMib!,
+          totalGpuMemoryInMib,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

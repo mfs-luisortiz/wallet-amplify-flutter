@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_transit_gateway_route_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -83,18 +84,18 @@ class DeleteTransitGatewayRouteResultEc2QuerySerializer
     final result = DeleteTransitGatewayRouteResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'route':
-          if (value != null) {
-            result.route.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayRoute),
-            ) as _i2.TransitGatewayRoute));
-          }
-          break;
+          result.route.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayRoute),
+          ) as _i2.TransitGatewayRoute));
       }
     }
 
@@ -104,24 +105,24 @@ class DeleteTransitGatewayRouteResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTransitGatewayRouteResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteTransitGatewayRouteResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteTransitGatewayRouteResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.route != null) {
-      result
+    final DeleteTransitGatewayRouteResult(:route) = object;
+    if (route != null) {
+      result$
         ..add(const _i3.XmlElementName('Route'))
         ..add(serializers.serialize(
-          payload.route!,
+          route,
           specifiedType: const FullType(_i2.TransitGatewayRoute),
         ));
     }
-    return result;
+    return result$;
   }
 }

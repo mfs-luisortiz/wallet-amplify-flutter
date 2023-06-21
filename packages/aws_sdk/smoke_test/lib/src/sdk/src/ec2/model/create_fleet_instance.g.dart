@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_fleet_instance;
+part of 'create_fleet_instance.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.request_ipam_resource_tag;
+part of 'request_ipam_resource_tag.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.deregister_transit_gateway_multicast_group_members_request;
+part of 'deregister_transit_gateway_multicast_group_members_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

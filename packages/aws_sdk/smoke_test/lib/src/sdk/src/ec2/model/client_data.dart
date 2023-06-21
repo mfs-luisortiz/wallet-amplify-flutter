@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.client_data; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,40 +111,33 @@ class ClientDataEc2QuerySerializer
     final result = ClientDataBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Comment':
-          if (value != null) {
-            result.comment = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.comment = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'UploadEnd':
-          if (value != null) {
-            result.uploadEnd = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.uploadEnd = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'UploadSize':
           result.uploadSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'UploadStart':
-          if (value != null) {
-            result.uploadStart = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.uploadStart = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -153,46 +147,46 @@ class ClientDataEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClientData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClientData);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ClientDataResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.comment != null) {
-      result
+    final ClientData(:comment, :uploadEnd, :uploadSize, :uploadStart) = object;
+    if (comment != null) {
+      result$
         ..add(const _i2.XmlElementName('Comment'))
         ..add(serializers.serialize(
-          payload.comment!,
+          comment,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.uploadEnd != null) {
-      result
+    if (uploadEnd != null) {
+      result$
         ..add(const _i2.XmlElementName('UploadEnd'))
         ..add(serializers.serialize(
-          payload.uploadEnd!,
+          uploadEnd,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('UploadSize'))
       ..add(serializers.serialize(
-        payload.uploadSize,
+        uploadSize,
         specifiedType: const FullType(double),
       ));
-    if (payload.uploadStart != null) {
-      result
+    if (uploadStart != null) {
+      result$
         ..add(const _i2.XmlElementName('UploadStart'))
         ..add(serializers.serialize(
-          payload.uploadStart!,
+          uploadStart,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

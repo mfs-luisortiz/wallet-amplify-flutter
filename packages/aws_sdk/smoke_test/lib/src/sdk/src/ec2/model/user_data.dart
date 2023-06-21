@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.user_data; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -70,18 +71,18 @@ class UserDataEc2QuerySerializer
     final result = UserDataBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'data':
-          if (value != null) {
-            result.data = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.data = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -91,24 +92,24 @@ class UserDataEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    UserData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as UserData);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'UserDataResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.data != null) {
-      result
+    final UserData(:data) = object;
+    if (data != null) {
+      result$
         ..add(const _i2.XmlElementName('Data'))
         ..add(serializers.serialize(
-          payload.data!,
+          data,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

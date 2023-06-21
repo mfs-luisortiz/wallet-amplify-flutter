@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_reserved_instances_offerings_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -289,132 +290,102 @@ class DescribeReservedInstancesOfferingsRequestEc2QuerySerializer extends _i1
     final result = DescribeReservedInstancesOfferingsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AvailabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i10.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i10.BuiltList<_i3.Filter>));
         case 'IncludeMarketplace':
           result.includeMarketplace = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'InstanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceType),
-            ) as _i4.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceType),
+          ) as _i4.InstanceType);
         case 'MaxDuration':
           result.maxDuration = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i5.Int64),
           ) as _i5.Int64);
-          break;
         case 'MaxInstanceCount':
           result.maxInstanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'MinDuration':
           result.minDuration = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i5.Int64),
           ) as _i5.Int64);
-          break;
         case 'OfferingClass':
-          if (value != null) {
-            result.offeringClass = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.OfferingClassType),
-            ) as _i6.OfferingClassType);
-          }
-          break;
+          result.offeringClass = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.OfferingClassType),
+          ) as _i6.OfferingClassType);
         case 'ProductDescription':
-          if (value != null) {
-            result.productDescription = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.RiProductDescription),
-            ) as _i7.RiProductDescription);
-          }
-          break;
+          result.productDescription = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.RiProductDescription),
+          ) as _i7.RiProductDescription);
         case 'ReservedInstancesOfferingId':
-          if (value != null) {
-            result.reservedInstancesOfferingIds.replace(
-                (const _i1.XmlBuiltListSerializer(
-                        indexer: _i1.XmlIndexer.ec2QueryList)
-                    .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.reservedInstancesOfferingIds.replace(
+              (const _i1.XmlBuiltListSerializer(
+                      indexer: _i1.XmlIndexer.ec2QueryList)
+                  .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'instanceTenancy':
-          if (value != null) {
-            result.instanceTenancy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.Tenancy),
-            ) as _i8.Tenancy);
-          }
-          break;
+          result.instanceTenancy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.Tenancy),
+          ) as _i8.Tenancy);
         case 'maxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'offeringType':
-          if (value != null) {
-            result.offeringType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.OfferingTypeValues),
-            ) as _i9.OfferingTypeValues);
-          }
-          break;
+          result.offeringType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.OfferingTypeValues),
+          ) as _i9.OfferingTypeValues);
       }
     }
 
@@ -424,137 +395,153 @@ class DescribeReservedInstancesOfferingsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeReservedInstancesOfferingsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeReservedInstancesOfferingsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeReservedInstancesOfferingsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final DescribeReservedInstancesOfferingsRequest(
+      :availabilityZone,
+      :filters,
+      :includeMarketplace,
+      :instanceType,
+      :maxDuration,
+      :maxInstanceCount,
+      :minDuration,
+      :offeringClass,
+      :productDescription,
+      :reservedInstancesOfferingIds,
+      :dryRun,
+      :instanceTenancy,
+      :maxResults,
+      :nextToken,
+      :offeringType
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i1.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.filters != null) {
-      result
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('IncludeMarketplace'))
       ..add(serializers.serialize(
-        payload.includeMarketplace,
+        includeMarketplace,
         specifiedType: const FullType(bool),
       ));
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i4.InstanceType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxDuration'))
       ..add(serializers.serialize(
-        payload.maxDuration,
+        maxDuration,
         specifiedType: const FullType(_i5.Int64),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxInstanceCount'))
       ..add(serializers.serialize(
-        payload.maxInstanceCount,
+        maxInstanceCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MinDuration'))
       ..add(serializers.serialize(
-        payload.minDuration,
+        minDuration,
         specifiedType: const FullType(_i5.Int64),
       ));
-    if (payload.offeringClass != null) {
-      result
+    if (offeringClass != null) {
+      result$
         ..add(const _i1.XmlElementName('OfferingClass'))
         ..add(serializers.serialize(
-          payload.offeringClass!,
+          offeringClass,
           specifiedType: const FullType.nullable(_i6.OfferingClassType),
         ));
     }
-    if (payload.productDescription != null) {
-      result
+    if (productDescription != null) {
+      result$
         ..add(const _i1.XmlElementName('ProductDescription'))
         ..add(serializers.serialize(
-          payload.productDescription!,
+          productDescription,
           specifiedType: const FullType.nullable(_i7.RiProductDescription),
         ));
     }
-    if (payload.reservedInstancesOfferingIds != null) {
-      result
+    if (reservedInstancesOfferingIds != null) {
+      result$
         ..add(const _i1.XmlElementName('ReservedInstancesOfferingId'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.reservedInstancesOfferingIds!,
+          reservedInstancesOfferingIds,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.instanceTenancy != null) {
-      result
+    if (instanceTenancy != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceTenancy'))
         ..add(serializers.serialize(
-          payload.instanceTenancy!,
+          instanceTenancy,
           specifiedType: const FullType.nullable(_i8.Tenancy),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.offeringType != null) {
-      result
+    if (offeringType != null) {
+      result$
         ..add(const _i1.XmlElementName('OfferingType'))
         ..add(serializers.serialize(
-          payload.offeringType!,
+          offeringType,
           specifiedType: const FullType.nullable(_i9.OfferingTypeValues),
         ));
     }
-    return result;
+    return result$;
   }
 }

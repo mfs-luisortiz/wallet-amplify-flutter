@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.enable_volume_io_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,22 +101,23 @@ class EnableVolumeIoRequestEc2QuerySerializer
     final result = EnableVolumeIoRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'volumeId':
           result.volumeId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -125,28 +127,28 @@ class EnableVolumeIoRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EnableVolumeIoRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EnableVolumeIoRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'EnableVolumeIoRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final EnableVolumeIoRequest(:dryRun, :volumeId) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VolumeId'))
       ..add(serializers.serialize(
-        payload.volumeId,
+        volumeId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

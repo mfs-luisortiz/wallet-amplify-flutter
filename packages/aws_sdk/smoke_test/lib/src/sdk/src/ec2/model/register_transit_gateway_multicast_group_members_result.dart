@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.register_transit_gateway_multicast_group_members_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,20 +90,20 @@ class RegisterTransitGatewayMulticastGroupMembersResultEc2QuerySerializer
     final result = RegisterTransitGatewayMulticastGroupMembersResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'registeredMulticastGroupMembers':
-          if (value != null) {
-            result.registeredMulticastGroupMembers
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i2.TransitGatewayMulticastRegisteredGroupMembers),
-            ) as _i2.TransitGatewayMulticastRegisteredGroupMembers));
-          }
-          break;
+          result.registeredMulticastGroupMembers
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i2.TransitGatewayMulticastRegisteredGroupMembers),
+          ) as _i2.TransitGatewayMulticastRegisteredGroupMembers));
       }
     }
 
@@ -112,26 +113,27 @@ class RegisterTransitGatewayMulticastGroupMembersResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RegisterTransitGatewayMulticastGroupMembersResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as RegisterTransitGatewayMulticastGroupMembersResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'RegisterTransitGatewayMulticastGroupMembersResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.registeredMulticastGroupMembers != null) {
-      result
+    final RegisterTransitGatewayMulticastGroupMembersResult(
+      :registeredMulticastGroupMembers
+    ) = object;
+    if (registeredMulticastGroupMembers != null) {
+      result$
         ..add(const _i3.XmlElementName('RegisteredMulticastGroupMembers'))
         ..add(serializers.serialize(
-          payload.registeredMulticastGroupMembers!,
+          registeredMulticastGroupMembers,
           specifiedType:
               const FullType(_i2.TransitGatewayMulticastRegisteredGroupMembers),
         ));
     }
-    return result;
+    return result$;
   }
 }

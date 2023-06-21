@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.cidr_block;
+part of 'cidr_block.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

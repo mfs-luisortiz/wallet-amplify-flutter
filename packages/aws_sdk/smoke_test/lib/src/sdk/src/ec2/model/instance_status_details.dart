@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_status_details; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,34 +102,28 @@ class InstanceStatusDetailsEc2QuerySerializer
     final result = InstanceStatusDetailsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'impairedSince':
-          if (value != null) {
-            result.impairedSince = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.impairedSince = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'name':
-          if (value != null) {
-            result.name = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.StatusName),
-            ) as _i2.StatusName);
-          }
-          break;
+          result.name = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.StatusName),
+          ) as _i2.StatusName);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.StatusType),
-            ) as _i3.StatusType);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.StatusType),
+          ) as _i3.StatusType);
       }
     }
 
@@ -138,40 +133,40 @@ class InstanceStatusDetailsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStatusDetails object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStatusDetails);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'InstanceStatusDetailsResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.impairedSince != null) {
-      result
+    final InstanceStatusDetails(:impairedSince, :name, :status) = object;
+    if (impairedSince != null) {
+      result$
         ..add(const _i4.XmlElementName('ImpairedSince'))
         ..add(serializers.serialize(
-          payload.impairedSince!,
+          impairedSince,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.name != null) {
-      result
+    if (name != null) {
+      result$
         ..add(const _i4.XmlElementName('Name'))
         ..add(serializers.serialize(
-          payload.name!,
+          name,
           specifiedType: const FullType.nullable(_i2.StatusName),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i4.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i3.StatusType),
         ));
     }
-    return result;
+    return result$;
   }
 }

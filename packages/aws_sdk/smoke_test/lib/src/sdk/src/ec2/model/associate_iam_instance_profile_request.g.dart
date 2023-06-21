@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associate_iam_instance_profile_request;
+part of 'associate_iam_instance_profile_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

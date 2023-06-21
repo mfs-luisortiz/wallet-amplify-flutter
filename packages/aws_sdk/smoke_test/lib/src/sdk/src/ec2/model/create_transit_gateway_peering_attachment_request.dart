@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_transit_gateway_peering_attachment_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -158,64 +159,56 @@ class CreateTransitGatewayPeeringAttachmentRequestEc2QuerySerializer extends _i1
     final result = CreateTransitGatewayPeeringAttachmentRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TransitGatewayId':
           result.transitGatewayId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PeerTransitGatewayId':
           result.peerTransitGatewayId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PeerAccountId':
           result.peerAccountId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PeerRegion':
           result.peerRegion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Options':
-          if (value != null) {
-            result.options.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i3.CreateTransitGatewayPeeringAttachmentRequestOptions),
-            ) as _i3.CreateTransitGatewayPeeringAttachmentRequestOptions));
-          }
-          break;
+          result.options.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i3.CreateTransitGatewayPeeringAttachmentRequestOptions),
+          ) as _i3.CreateTransitGatewayPeeringAttachmentRequestOptions));
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -225,70 +218,78 @@ class CreateTransitGatewayPeeringAttachmentRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTransitGatewayPeeringAttachmentRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTransitGatewayPeeringAttachmentRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateTransitGatewayPeeringAttachmentRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateTransitGatewayPeeringAttachmentRequest(
+      :transitGatewayId,
+      :peerTransitGatewayId,
+      :peerAccountId,
+      :peerRegion,
+      :options,
+      :tagSpecifications,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('TransitGatewayId'))
       ..add(serializers.serialize(
-        payload.transitGatewayId,
+        transitGatewayId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PeerTransitGatewayId'))
       ..add(serializers.serialize(
-        payload.peerTransitGatewayId,
+        peerTransitGatewayId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PeerAccountId'))
       ..add(serializers.serialize(
-        payload.peerAccountId,
+        peerAccountId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PeerRegion'))
       ..add(serializers.serialize(
-        payload.peerRegion,
+        peerRegion,
         specifiedType: const FullType(String),
       ));
-    if (payload.options != null) {
-      result
+    if (options != null) {
+      result$
         ..add(const _i1.XmlElementName('Options'))
         ..add(serializers.serialize(
-          payload.options!,
+          options,
           specifiedType: const FullType(
               _i3.CreateTransitGatewayPeeringAttachmentRequestOptions),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

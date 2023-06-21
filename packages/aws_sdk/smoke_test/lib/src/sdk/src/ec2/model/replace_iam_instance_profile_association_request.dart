@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.replace_iam_instance_profile_association_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -102,22 +103,23 @@ class ReplaceIamInstanceProfileAssociationRequestEc2QuerySerializer extends _i1
     final result = ReplaceIamInstanceProfileAssociationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'IamInstanceProfile':
           result.iamInstanceProfile.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.IamInstanceProfileSpecification),
           ) as _i3.IamInstanceProfileSpecification));
-          break;
         case 'AssociationId':
           result.associationId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -127,28 +129,31 @@ class ReplaceIamInstanceProfileAssociationRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReplaceIamInstanceProfileAssociationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReplaceIamInstanceProfileAssociationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ReplaceIamInstanceProfileAssociationRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ReplaceIamInstanceProfileAssociationRequest(
+      :iamInstanceProfile,
+      :associationId
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('IamInstanceProfile'))
       ..add(serializers.serialize(
-        payload.iamInstanceProfile,
+        iamInstanceProfile,
         specifiedType: const FullType(_i3.IamInstanceProfileSpecification),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('AssociationId'))
       ..add(serializers.serialize(
-        payload.associationId,
+        associationId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

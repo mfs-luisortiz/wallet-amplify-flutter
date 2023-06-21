@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_network_insights_access_scope_analyses_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -172,85 +173,68 @@ class DescribeNetworkInsightsAccessScopeAnalysesRequestEc2QuerySerializer
     final result = DescribeNetworkInsightsAccessScopeAnalysesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'NetworkInsightsAccessScopeAnalysisId':
-          if (value != null) {
-            result.networkInsightsAccessScopeAnalysisIds
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.networkInsightsAccessScopeAnalysisIds
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'NetworkInsightsAccessScopeId':
-          if (value != null) {
-            result.networkInsightsAccessScopeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsAccessScopeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AnalysisStartTimeBegin':
-          if (value != null) {
-            result.analysisStartTimeBegin = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.analysisStartTimeBegin = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'AnalysisStartTimeEnd':
-          if (value != null) {
-            result.analysisStartTimeEnd = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.analysisStartTimeEnd = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i4.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i4.BuiltList<_i3.Filter>));
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -260,91 +244,99 @@ class DescribeNetworkInsightsAccessScopeAnalysesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeNetworkInsightsAccessScopeAnalysesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as DescribeNetworkInsightsAccessScopeAnalysesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeNetworkInsightsAccessScopeAnalysesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsAccessScopeAnalysisIds != null) {
-      result
+    final DescribeNetworkInsightsAccessScopeAnalysesRequest(
+      :networkInsightsAccessScopeAnalysisIds,
+      :networkInsightsAccessScopeId,
+      :analysisStartTimeBegin,
+      :analysisStartTimeEnd,
+      :filters,
+      :maxResults,
+      :dryRun,
+      :nextToken
+    ) = object;
+    if (networkInsightsAccessScopeAnalysisIds != null) {
+      result$
         ..add(const _i1.XmlElementName('NetworkInsightsAccessScopeAnalysisId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.networkInsightsAccessScopeAnalysisIds!,
+          networkInsightsAccessScopeAnalysisIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.networkInsightsAccessScopeId != null) {
-      result
+    if (networkInsightsAccessScopeId != null) {
+      result$
         ..add(const _i1.XmlElementName('NetworkInsightsAccessScopeId'))
         ..add(serializers.serialize(
-          payload.networkInsightsAccessScopeId!,
+          networkInsightsAccessScopeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.analysisStartTimeBegin != null) {
-      result
+    if (analysisStartTimeBegin != null) {
+      result$
         ..add(const _i1.XmlElementName('AnalysisStartTimeBegin'))
         ..add(serializers.serialize(
-          payload.analysisStartTimeBegin!,
+          analysisStartTimeBegin,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.analysisStartTimeEnd != null) {
-      result
+    if (analysisStartTimeEnd != null) {
+      result$
         ..add(const _i1.XmlElementName('AnalysisStartTimeEnd'))
         ..add(serializers.serialize(
-          payload.analysisStartTimeEnd!,
+          analysisStartTimeEnd,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.filters != null) {
-      result
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

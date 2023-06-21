@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_managed_prefix_list_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -166,70 +167,60 @@ class ModifyManagedPrefixListRequestEc2QuerySerializer
     final result = ModifyManagedPrefixListRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'PrefixListId':
           result.prefixListId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'CurrentVersion':
           result.currentVersion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Int64),
           ) as _i3.Int64);
-          break;
         case 'PrefixListName':
-          if (value != null) {
-            result.prefixListName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AddEntry':
-          if (value != null) {
-            result.addEntries.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.AddPrefixListEntry)],
-              ),
-            ) as _i6.BuiltList<_i4.AddPrefixListEntry>));
-          }
-          break;
+          result.addEntries.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.AddPrefixListEntry)],
+            ),
+          ) as _i6.BuiltList<_i4.AddPrefixListEntry>));
         case 'RemoveEntry':
-          if (value != null) {
-            result.removeEntries.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.RemovePrefixListEntry)],
-              ),
-            ) as _i6.BuiltList<_i5.RemovePrefixListEntry>));
-          }
-          break;
+          result.removeEntries.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.RemovePrefixListEntry)],
+            ),
+          ) as _i6.BuiltList<_i5.RemovePrefixListEntry>));
         case 'MaxEntries':
           result.maxEntries = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -239,76 +230,84 @@ class ModifyManagedPrefixListRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyManagedPrefixListRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyManagedPrefixListRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyManagedPrefixListRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyManagedPrefixListRequest(
+      :dryRun,
+      :prefixListId,
+      :currentVersion,
+      :prefixListName,
+      :addEntries,
+      :removeEntries,
+      :maxEntries
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PrefixListId'))
       ..add(serializers.serialize(
-        payload.prefixListId,
+        prefixListId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('CurrentVersion'))
       ..add(serializers.serialize(
-        payload.currentVersion,
+        currentVersion,
         specifiedType: const FullType(_i3.Int64),
       ));
-    if (payload.prefixListName != null) {
-      result
+    if (prefixListName != null) {
+      result$
         ..add(const _i1.XmlElementName('PrefixListName'))
         ..add(serializers.serialize(
-          payload.prefixListName!,
+          prefixListName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.addEntries != null) {
-      result
+    if (addEntries != null) {
+      result$
         ..add(const _i1.XmlElementName('AddEntry'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.addEntries!,
+          addEntries,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.AddPrefixListEntry)],
           ),
         ));
     }
-    if (payload.removeEntries != null) {
-      result
+    if (removeEntries != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveEntry'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.removeEntries!,
+          removeEntries,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.RemovePrefixListEntry)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxEntries'))
       ..add(serializers.serialize(
-        payload.maxEntries,
+        maxEntries,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

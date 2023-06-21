@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.security_group_rule_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -196,70 +197,53 @@ class SecurityGroupRuleRequestEc2QuerySerializer
     final result = SecurityGroupRuleRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'IpProtocol':
-          if (value != null) {
-            result.ipProtocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipProtocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'FromPort':
           result.fromPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ToPort':
           result.toPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'CidrIpv4':
-          if (value != null) {
-            result.cidrIpv4 = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrIpv4 = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'CidrIpv6':
-          if (value != null) {
-            result.cidrIpv6 = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrIpv6 = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'PrefixListId':
-          if (value != null) {
-            result.prefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ReferencedGroupId':
-          if (value != null) {
-            result.referencedGroupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.referencedGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -269,76 +253,85 @@ class SecurityGroupRuleRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SecurityGroupRuleRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SecurityGroupRuleRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'SecurityGroupRuleRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipProtocol != null) {
-      result
+    final SecurityGroupRuleRequest(
+      :ipProtocol,
+      :fromPort,
+      :toPort,
+      :cidrIpv4,
+      :cidrIpv6,
+      :prefixListId,
+      :referencedGroupId,
+      :description
+    ) = object;
+    if (ipProtocol != null) {
+      result$
         ..add(const _i2.XmlElementName('IpProtocol'))
         ..add(serializers.serialize(
-          payload.ipProtocol!,
+          ipProtocol,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('FromPort'))
       ..add(serializers.serialize(
-        payload.fromPort,
+        fromPort,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('ToPort'))
       ..add(serializers.serialize(
-        payload.toPort,
+        toPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.cidrIpv4 != null) {
-      result
+    if (cidrIpv4 != null) {
+      result$
         ..add(const _i2.XmlElementName('CidrIpv4'))
         ..add(serializers.serialize(
-          payload.cidrIpv4!,
+          cidrIpv4,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.cidrIpv6 != null) {
-      result
+    if (cidrIpv6 != null) {
+      result$
         ..add(const _i2.XmlElementName('CidrIpv6'))
         ..add(serializers.serialize(
-          payload.cidrIpv6!,
+          cidrIpv6,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.prefixListId != null) {
-      result
+    if (prefixListId != null) {
+      result$
         ..add(const _i2.XmlElementName('PrefixListId'))
         ..add(serializers.serialize(
-          payload.prefixListId!,
+          prefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.referencedGroupId != null) {
-      result
+    if (referencedGroupId != null) {
+      result$
         ..add(const _i2.XmlElementName('ReferencedGroupId'))
         ..add(serializers.serialize(
-          payload.referencedGroupId!,
+          referencedGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

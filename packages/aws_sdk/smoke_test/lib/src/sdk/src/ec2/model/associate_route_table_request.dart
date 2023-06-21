@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_route_table_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -121,38 +122,33 @@ class AssociateRouteTableRequestEc2QuerySerializer
     final result = AssociateRouteTableRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'routeTableId':
           result.routeTableId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'GatewayId':
-          if (value != null) {
-            result.gatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.gatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -162,44 +158,49 @@ class AssociateRouteTableRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateRouteTableRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateRouteTableRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'AssociateRouteTableRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final AssociateRouteTableRequest(
+      :dryRun,
+      :routeTableId,
+      :subnetId,
+      :gatewayId
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('RouteTableId'))
       ..add(serializers.serialize(
-        payload.routeTableId,
+        routeTableId,
         specifiedType: const FullType(String),
       ));
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i1.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.gatewayId != null) {
-      result
+    if (gatewayId != null) {
+      result$
         ..add(const _i1.XmlElementName('GatewayId'))
         ..add(serializers.serialize(
-          payload.gatewayId!,
+          gatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

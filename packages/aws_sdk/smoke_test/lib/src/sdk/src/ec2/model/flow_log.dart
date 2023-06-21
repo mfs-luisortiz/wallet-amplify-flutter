@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.flow_log; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -240,143 +241,100 @@ class FlowLogEc2QuerySerializer
     final result = FlowLogBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'creationTime':
-          if (value != null) {
-            result.creationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.creationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'deliverLogsErrorMessage':
-          if (value != null) {
-            result.deliverLogsErrorMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deliverLogsErrorMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'deliverLogsPermissionArn':
-          if (value != null) {
-            result.deliverLogsPermissionArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deliverLogsPermissionArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'deliverCrossAccountRole':
-          if (value != null) {
-            result.deliverCrossAccountRole = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deliverCrossAccountRole = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'deliverLogsStatus':
-          if (value != null) {
-            result.deliverLogsStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deliverLogsStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'flowLogId':
-          if (value != null) {
-            result.flowLogId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.flowLogId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'flowLogStatus':
-          if (value != null) {
-            result.flowLogStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.flowLogStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'logGroupName':
-          if (value != null) {
-            result.logGroupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.logGroupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceId':
-          if (value != null) {
-            result.resourceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'trafficType':
-          if (value != null) {
-            result.trafficType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TrafficType),
-            ) as _i2.TrafficType);
-          }
-          break;
+          result.trafficType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TrafficType),
+          ) as _i2.TrafficType);
         case 'logDestinationType':
-          if (value != null) {
-            result.logDestinationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.LogDestinationType),
-            ) as _i3.LogDestinationType);
-          }
-          break;
+          result.logDestinationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.LogDestinationType),
+          ) as _i3.LogDestinationType);
         case 'logDestination':
-          if (value != null) {
-            result.logDestination = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.logDestination = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'logFormat':
-          if (value != null) {
-            result.logFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.logFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i6.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i6.BuiltList<_i4.Tag>));
         case 'maxAggregationInterval':
           result.maxAggregationInterval = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'destinationOptions':
-          if (value != null) {
-            result.destinationOptions.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.DestinationOptionsResponse),
-            ) as _i5.DestinationOptionsResponse));
-          }
-          break;
+          result.destinationOptions.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.DestinationOptionsResponse),
+          ) as _i5.DestinationOptionsResponse));
       }
     }
 
@@ -386,149 +344,166 @@ class FlowLogEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FlowLog object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FlowLog);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'FlowLogResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.creationTime != null) {
-      result
+    final FlowLog(
+      :creationTime,
+      :deliverLogsErrorMessage,
+      :deliverLogsPermissionArn,
+      :deliverCrossAccountRole,
+      :deliverLogsStatus,
+      :flowLogId,
+      :flowLogStatus,
+      :logGroupName,
+      :resourceId,
+      :trafficType,
+      :logDestinationType,
+      :logDestination,
+      :logFormat,
+      :tags,
+      :maxAggregationInterval,
+      :destinationOptions
+    ) = object;
+    if (creationTime != null) {
+      result$
         ..add(const _i7.XmlElementName('CreationTime'))
         ..add(serializers.serialize(
-          payload.creationTime!,
+          creationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.deliverLogsErrorMessage != null) {
-      result
+    if (deliverLogsErrorMessage != null) {
+      result$
         ..add(const _i7.XmlElementName('DeliverLogsErrorMessage'))
         ..add(serializers.serialize(
-          payload.deliverLogsErrorMessage!,
+          deliverLogsErrorMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.deliverLogsPermissionArn != null) {
-      result
+    if (deliverLogsPermissionArn != null) {
+      result$
         ..add(const _i7.XmlElementName('DeliverLogsPermissionArn'))
         ..add(serializers.serialize(
-          payload.deliverLogsPermissionArn!,
+          deliverLogsPermissionArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.deliverCrossAccountRole != null) {
-      result
+    if (deliverCrossAccountRole != null) {
+      result$
         ..add(const _i7.XmlElementName('DeliverCrossAccountRole'))
         ..add(serializers.serialize(
-          payload.deliverCrossAccountRole!,
+          deliverCrossAccountRole,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.deliverLogsStatus != null) {
-      result
+    if (deliverLogsStatus != null) {
+      result$
         ..add(const _i7.XmlElementName('DeliverLogsStatus'))
         ..add(serializers.serialize(
-          payload.deliverLogsStatus!,
+          deliverLogsStatus,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.flowLogId != null) {
-      result
+    if (flowLogId != null) {
+      result$
         ..add(const _i7.XmlElementName('FlowLogId'))
         ..add(serializers.serialize(
-          payload.flowLogId!,
+          flowLogId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.flowLogStatus != null) {
-      result
+    if (flowLogStatus != null) {
+      result$
         ..add(const _i7.XmlElementName('FlowLogStatus'))
         ..add(serializers.serialize(
-          payload.flowLogStatus!,
+          flowLogStatus,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.logGroupName != null) {
-      result
+    if (logGroupName != null) {
+      result$
         ..add(const _i7.XmlElementName('LogGroupName'))
         ..add(serializers.serialize(
-          payload.logGroupName!,
+          logGroupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceId != null) {
-      result
+    if (resourceId != null) {
+      result$
         ..add(const _i7.XmlElementName('ResourceId'))
         ..add(serializers.serialize(
-          payload.resourceId!,
+          resourceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.trafficType != null) {
-      result
+    if (trafficType != null) {
+      result$
         ..add(const _i7.XmlElementName('TrafficType'))
         ..add(serializers.serialize(
-          payload.trafficType!,
+          trafficType,
           specifiedType: const FullType.nullable(_i2.TrafficType),
         ));
     }
-    if (payload.logDestinationType != null) {
-      result
+    if (logDestinationType != null) {
+      result$
         ..add(const _i7.XmlElementName('LogDestinationType'))
         ..add(serializers.serialize(
-          payload.logDestinationType!,
+          logDestinationType,
           specifiedType: const FullType.nullable(_i3.LogDestinationType),
         ));
     }
-    if (payload.logDestination != null) {
-      result
+    if (logDestination != null) {
+      result$
         ..add(const _i7.XmlElementName('LogDestination'))
         ..add(serializers.serialize(
-          payload.logDestination!,
+          logDestination,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.logFormat != null) {
-      result
+    if (logFormat != null) {
+      result$
         ..add(const _i7.XmlElementName('LogFormat'))
         ..add(serializers.serialize(
-          payload.logFormat!,
+          logFormat,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('MaxAggregationInterval'))
       ..add(serializers.serialize(
-        payload.maxAggregationInterval,
+        maxAggregationInterval,
         specifiedType: const FullType(int),
       ));
-    if (payload.destinationOptions != null) {
-      result
+    if (destinationOptions != null) {
+      result$
         ..add(const _i7.XmlElementName('DestinationOptions'))
         ..add(serializers.serialize(
-          payload.destinationOptions!,
+          destinationOptions,
           specifiedType: const FullType(_i5.DestinationOptionsResponse),
         ));
     }
-    return result;
+    return result$;
   }
 }

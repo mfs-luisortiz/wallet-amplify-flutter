@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.recurring_charge; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,24 +93,23 @@ class RecurringChargeEc2QuerySerializer
     final result = RecurringChargeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'amount':
           result.amount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'frequency':
-          if (value != null) {
-            result.frequency = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.RecurringChargeFrequency),
-            ) as _i2.RecurringChargeFrequency);
-          }
-          break;
+          result.frequency = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.RecurringChargeFrequency),
+          ) as _i2.RecurringChargeFrequency);
       }
     }
 
@@ -119,30 +119,30 @@ class RecurringChargeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RecurringCharge object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RecurringCharge);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'RecurringChargeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final RecurringCharge(:amount, :frequency) = object;
+    result$
       ..add(const _i3.XmlElementName('Amount'))
       ..add(serializers.serialize(
-        payload.amount,
+        amount,
         specifiedType: const FullType(double),
       ));
-    if (payload.frequency != null) {
-      result
+    if (frequency != null) {
+      result$
         ..add(const _i3.XmlElementName('Frequency'))
         ..add(serializers.serialize(
-          payload.frequency!,
+          frequency,
           specifiedType: const FullType.nullable(_i2.RecurringChargeFrequency),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_public_ipv4_pool_result;
+part of 'delete_public_ipv4_pool_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

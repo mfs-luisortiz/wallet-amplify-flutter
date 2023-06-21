@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.capacity_reservation_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,26 +108,23 @@ class CapacityReservationSpecificationEc2QuerySerializer
     final result = CapacityReservationSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CapacityReservationPreference':
-          if (value != null) {
-            result.capacityReservationPreference = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CapacityReservationPreference),
-            ) as _i2.CapacityReservationPreference);
-          }
-          break;
+          result.capacityReservationPreference = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CapacityReservationPreference),
+          ) as _i2.CapacityReservationPreference);
         case 'CapacityReservationTarget':
-          if (value != null) {
-            result.capacityReservationTarget.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.CapacityReservationTarget),
-            ) as _i3.CapacityReservationTarget));
-          }
-          break;
+          result.capacityReservationTarget.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.CapacityReservationTarget),
+          ) as _i3.CapacityReservationTarget));
       }
     }
 
@@ -136,33 +134,36 @@ class CapacityReservationSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CapacityReservationSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CapacityReservationSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'CapacityReservationSpecificationResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.capacityReservationPreference != null) {
-      result
+    final CapacityReservationSpecification(
+      :capacityReservationPreference,
+      :capacityReservationTarget
+    ) = object;
+    if (capacityReservationPreference != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationPreference'))
         ..add(serializers.serialize(
-          payload.capacityReservationPreference!,
+          capacityReservationPreference,
           specifiedType:
               const FullType.nullable(_i2.CapacityReservationPreference),
         ));
     }
-    if (payload.capacityReservationTarget != null) {
-      result
+    if (capacityReservationTarget != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationTarget'))
         ..add(serializers.serialize(
-          payload.capacityReservationTarget!,
+          capacityReservationTarget,
           specifiedType: const FullType(_i3.CapacityReservationTarget),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpc_peering_connection_vpc_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -146,81 +147,63 @@ class VpcPeeringConnectionVpcInfoEc2QuerySerializer
     final result = VpcPeeringConnectionVpcInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidrBlock':
-          if (value != null) {
-            result.cidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipv6CidrBlockSet':
-          if (value != null) {
-            result.ipv6CidrBlockSet.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.Ipv6CidrBlock)],
-              ),
-            ) as _i5.BuiltList<_i2.Ipv6CidrBlock>));
-          }
-          break;
+          result.ipv6CidrBlockSet.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.Ipv6CidrBlock)],
+            ),
+          ) as _i5.BuiltList<_i2.Ipv6CidrBlock>));
         case 'cidrBlockSet':
-          if (value != null) {
-            result.cidrBlockSet.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.CidrBlock)],
-              ),
-            ) as _i5.BuiltList<_i3.CidrBlock>));
-          }
-          break;
+          result.cidrBlockSet.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.CidrBlock)],
+            ),
+          ) as _i5.BuiltList<_i3.CidrBlock>));
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peeringOptions':
-          if (value != null) {
-            result.peeringOptions.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.VpcPeeringConnectionOptionsDescription),
-            ) as _i4.VpcPeeringConnectionOptionsDescription));
-          }
-          break;
+          result.peeringOptions.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.VpcPeeringConnectionOptionsDescription),
+          ) as _i4.VpcPeeringConnectionOptionsDescription));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'region':
-          if (value != null) {
-            result.region = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.region = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -230,87 +213,95 @@ class VpcPeeringConnectionVpcInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpcPeeringConnectionVpcInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpcPeeringConnectionVpcInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'VpcPeeringConnectionVpcInfoResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidrBlock != null) {
-      result
+    final VpcPeeringConnectionVpcInfo(
+      :cidrBlock,
+      :ipv6CidrBlockSet,
+      :cidrBlockSet,
+      :ownerId,
+      :peeringOptions,
+      :vpcId,
+      :region
+    ) = object;
+    if (cidrBlock != null) {
+      result$
         ..add(const _i6.XmlElementName('CidrBlock'))
         ..add(serializers.serialize(
-          payload.cidrBlock!,
+          cidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6CidrBlockSet != null) {
-      result
+    if (ipv6CidrBlockSet != null) {
+      result$
         ..add(const _i6.XmlElementName('Ipv6CidrBlockSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv6CidrBlockSet!,
+          ipv6CidrBlockSet,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.Ipv6CidrBlock)],
           ),
         ));
     }
-    if (payload.cidrBlockSet != null) {
-      result
+    if (cidrBlockSet != null) {
+      result$
         ..add(const _i6.XmlElementName('CidrBlockSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.cidrBlockSet!,
+          cidrBlockSet,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.CidrBlock)],
           ),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i6.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peeringOptions != null) {
-      result
+    if (peeringOptions != null) {
+      result$
         ..add(const _i6.XmlElementName('PeeringOptions'))
         ..add(serializers.serialize(
-          payload.peeringOptions!,
+          peeringOptions,
           specifiedType:
               const FullType(_i4.VpcPeeringConnectionOptionsDescription),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i6.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.region != null) {
-      result
+    if (region != null) {
+      result$
         ..add(const _i6.XmlElementName('Region'))
         ..add(serializers.serialize(
-          payload.region!,
+          region,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

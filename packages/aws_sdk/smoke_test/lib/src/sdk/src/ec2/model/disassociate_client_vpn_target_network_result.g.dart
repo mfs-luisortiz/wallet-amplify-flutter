@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disassociate_client_vpn_target_network_result;
+part of 'disassociate_client_vpn_target_network_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

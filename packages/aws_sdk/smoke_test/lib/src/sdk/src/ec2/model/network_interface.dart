@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_interface; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -358,253 +359,185 @@ class NetworkInterfaceEc2QuerySerializer
     final result = NetworkInterfaceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'association':
-          if (value != null) {
-            result.association.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NetworkInterfaceAssociation),
-            ) as _i2.NetworkInterfaceAssociation));
-          }
-          break;
+          result.association.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NetworkInterfaceAssociation),
+          ) as _i2.NetworkInterfaceAssociation));
         case 'attachment':
-          if (value != null) {
-            result.attachment.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.NetworkInterfaceAttachment),
-            ) as _i3.NetworkInterfaceAttachment));
-          }
-          break;
+          result.attachment.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.NetworkInterfaceAttachment),
+          ) as _i3.NetworkInterfaceAttachment));
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'groupSet':
-          if (value != null) {
-            result.groups.replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i4.GroupIdentifier)],
-              ),
-            ) as _i12.BuiltList<_i4.GroupIdentifier>));
-          }
-          break;
+          result.groups.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i4.GroupIdentifier)],
+            ),
+          ) as _i12.BuiltList<_i4.GroupIdentifier>));
         case 'interfaceType':
-          if (value != null) {
-            result.interfaceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.NetworkInterfaceType),
-            ) as _i5.NetworkInterfaceType);
-          }
-          break;
+          result.interfaceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.NetworkInterfaceType),
+          ) as _i5.NetworkInterfaceType);
         case 'ipv6AddressesSet':
-          if (value != null) {
-            result.ipv6Addresses.replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i6.NetworkInterfaceIpv6Address)],
-              ),
-            ) as _i12.BuiltList<_i6.NetworkInterfaceIpv6Address>));
-          }
-          break;
+          result.ipv6Addresses.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i6.NetworkInterfaceIpv6Address)],
+            ),
+          ) as _i12.BuiltList<_i6.NetworkInterfaceIpv6Address>));
         case 'macAddress':
-          if (value != null) {
-            result.macAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.macAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'outpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateDnsName':
-          if (value != null) {
-            result.privateDnsName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateDnsName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateIpAddress':
-          if (value != null) {
-            result.privateIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.privateIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'privateIpAddressesSet':
-          if (value != null) {
-            result.privateIpAddresses
-                .replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i7.NetworkInterfacePrivateIpAddress)],
-              ),
-            ) as _i12.BuiltList<_i7.NetworkInterfacePrivateIpAddress>));
-          }
-          break;
+          result.privateIpAddresses.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i7.NetworkInterfacePrivateIpAddress)],
+            ),
+          ) as _i12.BuiltList<_i7.NetworkInterfacePrivateIpAddress>));
         case 'ipv4PrefixSet':
-          if (value != null) {
-            result.ipv4Prefixes.replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i8.Ipv4PrefixSpecification)],
-              ),
-            ) as _i12.BuiltList<_i8.Ipv4PrefixSpecification>));
-          }
-          break;
+          result.ipv4Prefixes.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i8.Ipv4PrefixSpecification)],
+            ),
+          ) as _i12.BuiltList<_i8.Ipv4PrefixSpecification>));
         case 'ipv6PrefixSet':
-          if (value != null) {
-            result.ipv6Prefixes.replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i9.Ipv6PrefixSpecification)],
-              ),
-            ) as _i12.BuiltList<_i9.Ipv6PrefixSpecification>));
-          }
-          break;
+          result.ipv6Prefixes.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i9.Ipv6PrefixSpecification)],
+            ),
+          ) as _i12.BuiltList<_i9.Ipv6PrefixSpecification>));
         case 'requesterId':
-          if (value != null) {
-            result.requesterId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.requesterId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'requesterManaged':
           result.requesterManaged = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'sourceDestCheck':
           result.sourceDestCheck = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i10.NetworkInterfaceStatus),
-            ) as _i10.NetworkInterfaceStatus);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i10.NetworkInterfaceStatus),
+          ) as _i10.NetworkInterfaceStatus);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tagSet.replace((const _i13.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i13.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i12.BuiltList,
-                [FullType(_i11.Tag)],
-              ),
-            ) as _i12.BuiltList<_i11.Tag>));
-          }
-          break;
+          result.tagSet.replace((const _i13.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i13.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i12.BuiltList,
+              [FullType(_i11.Tag)],
+            ),
+          ) as _i12.BuiltList<_i11.Tag>));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'denyAllIgwTraffic':
           result.denyAllIgwTraffic = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ipv6Native':
           result.ipv6Native = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ipv6Address':
-          if (value != null) {
-            result.ipv6Address = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6Address = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -614,258 +547,285 @@ class NetworkInterfaceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInterface object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInterface);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i13.XmlElementName(
         'NetworkInterfaceResponse',
         _i13.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.association != null) {
-      result
+    final NetworkInterface(
+      :association,
+      :attachment,
+      :availabilityZone,
+      :description,
+      :groups,
+      :interfaceType,
+      :ipv6Addresses,
+      :macAddress,
+      :networkInterfaceId,
+      :outpostArn,
+      :ownerId,
+      :privateDnsName,
+      :privateIpAddress,
+      :privateIpAddresses,
+      :ipv4Prefixes,
+      :ipv6Prefixes,
+      :requesterId,
+      :requesterManaged,
+      :sourceDestCheck,
+      :status,
+      :subnetId,
+      :tagSet,
+      :vpcId,
+      :denyAllIgwTraffic,
+      :ipv6Native,
+      :ipv6Address
+    ) = object;
+    if (association != null) {
+      result$
         ..add(const _i13.XmlElementName('Association'))
         ..add(serializers.serialize(
-          payload.association!,
+          association,
           specifiedType: const FullType(_i2.NetworkInterfaceAssociation),
         ));
     }
-    if (payload.attachment != null) {
-      result
+    if (attachment != null) {
+      result$
         ..add(const _i13.XmlElementName('Attachment'))
         ..add(serializers.serialize(
-          payload.attachment!,
+          attachment,
           specifiedType: const FullType(_i3.NetworkInterfaceAttachment),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i13.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i13.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.groups != null) {
-      result
+    if (groups != null) {
+      result$
         ..add(const _i13.XmlElementName('GroupSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groups!,
+          groups,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i4.GroupIdentifier)],
           ),
         ));
     }
-    if (payload.interfaceType != null) {
-      result
+    if (interfaceType != null) {
+      result$
         ..add(const _i13.XmlElementName('InterfaceType'))
         ..add(serializers.serialize(
-          payload.interfaceType!,
+          interfaceType,
           specifiedType: const FullType.nullable(_i5.NetworkInterfaceType),
         ));
     }
-    if (payload.ipv6Addresses != null) {
-      result
+    if (ipv6Addresses != null) {
+      result$
         ..add(const _i13.XmlElementName('Ipv6AddressesSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv6Addresses!,
+          ipv6Addresses,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i6.NetworkInterfaceIpv6Address)],
           ),
         ));
     }
-    if (payload.macAddress != null) {
-      result
+    if (macAddress != null) {
+      result$
         ..add(const _i13.XmlElementName('MacAddress'))
         ..add(serializers.serialize(
-          payload.macAddress!,
+          macAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i13.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i13.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i13.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateDnsName != null) {
-      result
+    if (privateDnsName != null) {
+      result$
         ..add(const _i13.XmlElementName('PrivateDnsName'))
         ..add(serializers.serialize(
-          payload.privateDnsName!,
+          privateDnsName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateIpAddress != null) {
-      result
+    if (privateIpAddress != null) {
+      result$
         ..add(const _i13.XmlElementName('PrivateIpAddress'))
         ..add(serializers.serialize(
-          payload.privateIpAddress!,
+          privateIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.privateIpAddresses != null) {
-      result
+    if (privateIpAddresses != null) {
+      result$
         ..add(const _i13.XmlElementName('PrivateIpAddressesSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.privateIpAddresses!,
+          privateIpAddresses,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i7.NetworkInterfacePrivateIpAddress)],
           ),
         ));
     }
-    if (payload.ipv4Prefixes != null) {
-      result
+    if (ipv4Prefixes != null) {
+      result$
         ..add(const _i13.XmlElementName('Ipv4PrefixSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv4Prefixes!,
+          ipv4Prefixes,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i8.Ipv4PrefixSpecification)],
           ),
         ));
     }
-    if (payload.ipv6Prefixes != null) {
-      result
+    if (ipv6Prefixes != null) {
+      result$
         ..add(const _i13.XmlElementName('Ipv6PrefixSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.ipv6Prefixes!,
+          ipv6Prefixes,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i9.Ipv6PrefixSpecification)],
           ),
         ));
     }
-    if (payload.requesterId != null) {
-      result
+    if (requesterId != null) {
+      result$
         ..add(const _i13.XmlElementName('RequesterId'))
         ..add(serializers.serialize(
-          payload.requesterId!,
+          requesterId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i13.XmlElementName('RequesterManaged'))
       ..add(serializers.serialize(
-        payload.requesterManaged,
+        requesterManaged,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i13.XmlElementName('SourceDestCheck'))
       ..add(serializers.serialize(
-        payload.sourceDestCheck,
+        sourceDestCheck,
         specifiedType: const FullType(bool),
       ));
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i13.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i10.NetworkInterfaceStatus),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i13.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tagSet != null) {
-      result
+    if (tagSet != null) {
+      result$
         ..add(const _i13.XmlElementName('TagSet'))
         ..add(const _i13.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i13.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSet!,
+          tagSet,
           specifiedType: const FullType.nullable(
             _i12.BuiltList,
             [FullType(_i11.Tag)],
           ),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i13.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i13.XmlElementName('DenyAllIgwTraffic'))
       ..add(serializers.serialize(
-        payload.denyAllIgwTraffic,
+        denyAllIgwTraffic,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i13.XmlElementName('Ipv6Native'))
       ..add(serializers.serialize(
-        payload.ipv6Native,
+        ipv6Native,
         specifiedType: const FullType(bool),
       ));
-    if (payload.ipv6Address != null) {
-      result
+    if (ipv6Address != null) {
+      result$
         ..add(const _i13.XmlElementName('Ipv6Address'))
         ..add(serializers.serialize(
-          payload.ipv6Address!,
+          ipv6Address,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

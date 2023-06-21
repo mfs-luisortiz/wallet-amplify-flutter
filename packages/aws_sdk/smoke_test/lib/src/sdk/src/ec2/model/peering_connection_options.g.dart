@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.peering_connection_options;
+part of 'peering_connection_options.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

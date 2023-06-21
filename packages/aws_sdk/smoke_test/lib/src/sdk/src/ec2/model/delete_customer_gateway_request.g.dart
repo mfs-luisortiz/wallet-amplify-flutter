@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_customer_gateway_request;
+part of 'delete_customer_gateway_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

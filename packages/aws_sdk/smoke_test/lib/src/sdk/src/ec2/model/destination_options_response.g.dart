@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.destination_options_response;
+part of 'destination_options_response.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

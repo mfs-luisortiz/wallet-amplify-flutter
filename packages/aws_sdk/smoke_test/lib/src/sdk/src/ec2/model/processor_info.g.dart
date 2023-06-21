@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.processor_info;
+part of 'processor_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_spot_price_history_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -194,98 +195,77 @@ class DescribeSpotPriceHistoryRequestEc2QuerySerializer
     final result = DescribeSpotPriceHistoryRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Filter':
-          if (value != null) {
-            result.filters.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'Filter',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.Filter)],
-              ),
-            ) as _i5.BuiltList<_i3.Filter>));
-          }
-          break;
+          result.filters.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'Filter',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.Filter)],
+            ),
+          ) as _i5.BuiltList<_i3.Filter>));
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'endTime':
-          if (value != null) {
-            result.endTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.endTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'InstanceType':
-          if (value != null) {
-            result.instanceTypes.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.InstanceType)],
-              ),
-            ) as _i5.BuiltList<_i4.InstanceType>));
-          }
-          break;
+          result.instanceTypes.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.InstanceType)],
+            ),
+          ) as _i5.BuiltList<_i4.InstanceType>));
         case 'maxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ProductDescription':
-          if (value != null) {
-            result.productDescriptions.replace(
-                (const _i1.XmlBuiltListSerializer(
-                        indexer: _i1.XmlIndexer.ec2QueryList)
-                    .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.productDescriptions.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'startTime':
-          if (value != null) {
-            result.startTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.startTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -295,103 +275,113 @@ class DescribeSpotPriceHistoryRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeSpotPriceHistoryRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeSpotPriceHistoryRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeSpotPriceHistoryRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.filters != null) {
-      result
+    final DescribeSpotPriceHistoryRequest(
+      :filters,
+      :availabilityZone,
+      :dryRun,
+      :endTime,
+      :instanceTypes,
+      :maxResults,
+      :nextToken,
+      :productDescriptions,
+      :startTime
+    ) = object;
+    if (filters != null) {
+      result$
         ..add(const _i1.XmlElementName('Filter'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'Filter',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.filters!,
+          filters,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.Filter)],
           ),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i1.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.endTime != null) {
-      result
+    if (endTime != null) {
+      result$
         ..add(const _i1.XmlElementName('EndTime'))
         ..add(serializers.serialize(
-          payload.endTime!,
+          endTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.instanceTypes != null) {
-      result
+    if (instanceTypes != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceType'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.instanceTypes!,
+          instanceTypes,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.InstanceType)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.productDescriptions != null) {
-      result
+    if (productDescriptions != null) {
+      result$
         ..add(const _i1.XmlElementName('ProductDescription'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.productDescriptions!,
+          productDescriptions,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.startTime != null) {
-      result
+    if (startTime != null) {
+      result$
         ..add(const _i1.XmlElementName('StartTime'))
         ..add(serializers.serialize(
-          payload.startTime!,
+          startTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

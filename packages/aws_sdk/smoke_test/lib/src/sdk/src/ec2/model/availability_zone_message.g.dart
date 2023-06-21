@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.availability_zone_message;
+part of 'availability_zone_message.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

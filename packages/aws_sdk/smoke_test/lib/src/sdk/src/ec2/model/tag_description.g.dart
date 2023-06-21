@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.tag_description;
+part of 'tag_description.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

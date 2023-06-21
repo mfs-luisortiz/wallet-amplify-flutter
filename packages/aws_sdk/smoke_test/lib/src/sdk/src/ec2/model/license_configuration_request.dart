@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.license_configuration_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -75,18 +76,18 @@ class LicenseConfigurationRequestEc2QuerySerializer
     final result = LicenseConfigurationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'LicenseConfigurationArn':
-          if (value != null) {
-            result.licenseConfigurationArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.licenseConfigurationArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -96,24 +97,24 @@ class LicenseConfigurationRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LicenseConfigurationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LicenseConfigurationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'LicenseConfigurationRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.licenseConfigurationArn != null) {
-      result
+    final LicenseConfigurationRequest(:licenseConfigurationArn) = object;
+    if (licenseConfigurationArn != null) {
+      result$
         ..add(const _i2.XmlElementName('LicenseConfigurationArn'))
         ..add(serializers.serialize(
-          payload.licenseConfigurationArn!,
+          licenseConfigurationArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

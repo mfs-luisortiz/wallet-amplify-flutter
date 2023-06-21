@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_fpga_image_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -93,26 +94,23 @@ class CreateFpgaImageResultEc2QuerySerializer
     final result = CreateFpgaImageResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'fpgaImageId':
-          if (value != null) {
-            result.fpgaImageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fpgaImageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'fpgaImageGlobalId':
-          if (value != null) {
-            result.fpgaImageGlobalId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fpgaImageGlobalId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -122,32 +120,32 @@ class CreateFpgaImageResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateFpgaImageResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateFpgaImageResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CreateFpgaImageResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.fpgaImageId != null) {
-      result
+    final CreateFpgaImageResult(:fpgaImageId, :fpgaImageGlobalId) = object;
+    if (fpgaImageId != null) {
+      result$
         ..add(const _i2.XmlElementName('FpgaImageId'))
         ..add(serializers.serialize(
-          payload.fpgaImageId!,
+          fpgaImageId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.fpgaImageGlobalId != null) {
-      result
+    if (fpgaImageGlobalId != null) {
+      result$
         ..add(const _i2.XmlElementName('FpgaImageGlobalId'))
         ..add(serializers.serialize(
-          payload.fpgaImageGlobalId!,
+          fpgaImageGlobalId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

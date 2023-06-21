@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.send_diagnostic_interrupt_request;
+part of 'send_diagnostic_interrupt_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

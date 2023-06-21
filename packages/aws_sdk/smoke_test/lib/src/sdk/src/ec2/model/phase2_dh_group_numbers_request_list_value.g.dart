@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.phase2_dh_group_numbers_request_list_value;
+part of 'phase2_dh_group_numbers_request_list_value.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

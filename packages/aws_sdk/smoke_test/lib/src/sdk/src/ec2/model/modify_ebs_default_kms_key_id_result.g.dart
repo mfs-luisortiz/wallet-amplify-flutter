@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.modify_ebs_default_kms_key_id_result;
+part of 'modify_ebs_default_kms_key_id_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

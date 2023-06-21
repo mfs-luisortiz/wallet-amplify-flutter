@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_iam_instance_profile_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,19 +86,18 @@ class AssociateIamInstanceProfileResultEc2QuerySerializer
     final result = AssociateIamInstanceProfileResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'iamInstanceProfileAssociation':
-          if (value != null) {
-            result.iamInstanceProfileAssociation
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IamInstanceProfileAssociation),
-            ) as _i2.IamInstanceProfileAssociation));
-          }
-          break;
+          result.iamInstanceProfileAssociation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IamInstanceProfileAssociation),
+          ) as _i2.IamInstanceProfileAssociation));
       }
     }
 
@@ -107,24 +107,25 @@ class AssociateIamInstanceProfileResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateIamInstanceProfileResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateIamInstanceProfileResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AssociateIamInstanceProfileResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.iamInstanceProfileAssociation != null) {
-      result
+    final AssociateIamInstanceProfileResult(:iamInstanceProfileAssociation) =
+        object;
+    if (iamInstanceProfileAssociation != null) {
+      result$
         ..add(const _i3.XmlElementName('IamInstanceProfileAssociation'))
         ..add(serializers.serialize(
-          payload.iamInstanceProfileAssociation!,
+          iamInstanceProfileAssociation,
           specifiedType: const FullType(_i2.IamInstanceProfileAssociation),
         ));
     }
-    return result;
+    return result$;
   }
 }

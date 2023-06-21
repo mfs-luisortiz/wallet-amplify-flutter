@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_route_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -127,46 +128,38 @@ class DeleteRouteRequestEc2QuerySerializer
     final result = DeleteRouteRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'destinationIpv6CidrBlock':
-          if (value != null) {
-            result.destinationIpv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'DestinationPrefixListId':
-          if (value != null) {
-            result.destinationPrefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'dryRun':
-          result.dryRun = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(bool),
-          ) as bool);
-          break;
-        case 'routeTableId':
-          result.routeTableId = (serializers.deserialize(
-            value!,
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'destinationIpv6CidrBlock':
+          result.destinationIpv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'DestinationPrefixListId':
+          result.destinationPrefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'dryRun':
+          result.dryRun = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
+        case 'routeTableId':
+          result.routeTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -176,52 +169,58 @@ class DeleteRouteRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteRouteRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteRouteRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DeleteRouteRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidrBlock != null) {
-      result
+    final DeleteRouteRequest(
+      :destinationCidrBlock,
+      :destinationIpv6CidrBlock,
+      :destinationPrefixListId,
+      :dryRun,
+      :routeTableId
+    ) = object;
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationIpv6CidrBlock != null) {
-      result
+    if (destinationIpv6CidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationIpv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationIpv6CidrBlock!,
+          destinationIpv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationPrefixListId != null) {
-      result
+    if (destinationPrefixListId != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationPrefixListId'))
         ..add(serializers.serialize(
-          payload.destinationPrefixListId!,
+          destinationPrefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('RouteTableId'))
       ..add(serializers.serialize(
-        payload.routeTableId,
+        routeTableId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

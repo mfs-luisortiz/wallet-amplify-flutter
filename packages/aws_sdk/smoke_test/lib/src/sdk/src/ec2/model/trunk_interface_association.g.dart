@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.trunk_interface_association;
+part of 'trunk_interface_association.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

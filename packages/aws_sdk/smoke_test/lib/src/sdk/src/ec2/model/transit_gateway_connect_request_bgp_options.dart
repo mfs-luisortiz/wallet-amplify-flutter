@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_connect_request_bgp_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,16 +82,18 @@ class TransitGatewayConnectRequestBgpOptionsEc2QuerySerializer extends _i3
     final result = TransitGatewayConnectRequestBgpOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'PeerAsn':
           result.peerAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i2.Int64),
           ) as _i2.Int64);
-          break;
       }
     }
 
@@ -100,22 +103,22 @@ class TransitGatewayConnectRequestBgpOptionsEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayConnectRequestBgpOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayConnectRequestBgpOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'TransitGatewayConnectRequestBgpOptionsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final TransitGatewayConnectRequestBgpOptions(:peerAsn) = object;
+    result$
       ..add(const _i3.XmlElementName('PeerAsn'))
       ..add(serializers.serialize(
-        payload.peerAsn,
+        peerAsn,
         specifiedType: const FullType(_i2.Int64),
       ));
-    return result;
+    return result$;
   }
 }

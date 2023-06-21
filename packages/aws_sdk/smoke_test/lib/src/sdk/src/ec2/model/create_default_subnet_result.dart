@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_default_subnet_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -79,18 +80,18 @@ class CreateDefaultSubnetResultEc2QuerySerializer
     final result = CreateDefaultSubnetResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'subnet':
-          if (value != null) {
-            result.subnet.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Subnet),
-            ) as _i2.Subnet));
-          }
-          break;
+          result.subnet.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Subnet),
+          ) as _i2.Subnet));
       }
     }
 
@@ -100,24 +101,24 @@ class CreateDefaultSubnetResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateDefaultSubnetResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateDefaultSubnetResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateDefaultSubnetResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.subnet != null) {
-      result
+    final CreateDefaultSubnetResult(:subnet) = object;
+    if (subnet != null) {
+      result$
         ..add(const _i3.XmlElementName('Subnet'))
         ..add(serializers.serialize(
-          payload.subnet!,
+          subnet,
           specifiedType: const FullType(_i2.Subnet),
         ));
     }
-    return result;
+    return result$;
   }
 }

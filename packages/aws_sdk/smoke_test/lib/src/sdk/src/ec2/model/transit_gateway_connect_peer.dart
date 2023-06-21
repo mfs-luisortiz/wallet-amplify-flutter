@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_connect_peer; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -136,66 +137,51 @@ class TransitGatewayConnectPeerEc2QuerySerializer
     final result = TransitGatewayConnectPeerBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayAttachmentId':
-          if (value != null) {
-            result.transitGatewayAttachmentId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayConnectPeerId':
-          if (value != null) {
-            result.transitGatewayConnectPeerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayConnectPeerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayConnectPeerState),
-            ) as _i2.TransitGatewayConnectPeerState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayConnectPeerState),
+          ) as _i2.TransitGatewayConnectPeerState);
         case 'creationTime':
-          if (value != null) {
-            result.creationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.creationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'connectPeerConfiguration':
-          if (value != null) {
-            result.connectPeerConfiguration.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.TransitGatewayConnectPeerConfiguration),
-            ) as _i3.TransitGatewayConnectPeerConfiguration));
-          }
-          break;
+          result.connectPeerConfiguration.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.TransitGatewayConnectPeerConfiguration),
+          ) as _i3.TransitGatewayConnectPeerConfiguration));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
       }
     }
 
@@ -205,73 +191,80 @@ class TransitGatewayConnectPeerEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayConnectPeer object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayConnectPeer);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'TransitGatewayConnectPeerResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayAttachmentId != null) {
-      result
+    final TransitGatewayConnectPeer(
+      :transitGatewayAttachmentId,
+      :transitGatewayConnectPeerId,
+      :state,
+      :creationTime,
+      :connectPeerConfiguration,
+      :tags
+    ) = object;
+    if (transitGatewayAttachmentId != null) {
+      result$
         ..add(const _i6.XmlElementName('TransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.transitGatewayAttachmentId!,
+          transitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayConnectPeerId != null) {
-      result
+    if (transitGatewayConnectPeerId != null) {
+      result$
         ..add(const _i6.XmlElementName('TransitGatewayConnectPeerId'))
         ..add(serializers.serialize(
-          payload.transitGatewayConnectPeerId!,
+          transitGatewayConnectPeerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i6.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType:
               const FullType.nullable(_i2.TransitGatewayConnectPeerState),
         ));
     }
-    if (payload.creationTime != null) {
-      result
+    if (creationTime != null) {
+      result$
         ..add(const _i6.XmlElementName('CreationTime'))
         ..add(serializers.serialize(
-          payload.creationTime!,
+          creationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.connectPeerConfiguration != null) {
-      result
+    if (connectPeerConfiguration != null) {
+      result$
         ..add(const _i6.XmlElementName('ConnectPeerConfiguration'))
         ..add(serializers.serialize(
-          payload.connectPeerConfiguration!,
+          connectPeerConfiguration,
           specifiedType:
               const FullType(_i3.TransitGatewayConnectPeerConfiguration),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

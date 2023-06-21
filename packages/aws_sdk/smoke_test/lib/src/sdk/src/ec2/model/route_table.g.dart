@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.route_table;
+part of 'route_table.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

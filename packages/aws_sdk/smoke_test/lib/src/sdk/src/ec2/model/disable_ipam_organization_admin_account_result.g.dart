@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disable_ipam_organization_admin_account_result;
+part of 'disable_ipam_organization_admin_account_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

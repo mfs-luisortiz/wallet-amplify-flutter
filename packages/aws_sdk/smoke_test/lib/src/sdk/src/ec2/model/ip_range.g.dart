@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ip_range;
+part of 'ip_range.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

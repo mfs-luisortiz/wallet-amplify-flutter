@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.through_resources_statement_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,18 +82,18 @@ class ThroughResourcesStatementRequestEc2QuerySerializer
     final result = ThroughResourcesStatementRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ResourceStatement':
-          if (value != null) {
-            result.resourceStatement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ResourceStatementRequest),
-            ) as _i2.ResourceStatementRequest));
-          }
-          break;
+          result.resourceStatement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ResourceStatementRequest),
+          ) as _i2.ResourceStatementRequest));
       }
     }
 
@@ -102,24 +103,24 @@ class ThroughResourcesStatementRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ThroughResourcesStatementRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ThroughResourcesStatementRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ThroughResourcesStatementRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.resourceStatement != null) {
-      result
+    final ThroughResourcesStatementRequest(:resourceStatement) = object;
+    if (resourceStatement != null) {
+      result$
         ..add(const _i3.XmlElementName('ResourceStatement'))
         ..add(serializers.serialize(
-          payload.resourceStatement!,
+          resourceStatement,
           specifiedType: const FullType(_i2.ResourceStatementRequest),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipam_pool; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -311,189 +312,138 @@ class IpamPoolEc2QuerySerializer
     final result = IpamPoolBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamPoolId':
-          if (value != null) {
-            result.ipamPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceIpamPoolId':
-          if (value != null) {
-            result.sourceIpamPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceIpamPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamPoolArn':
-          if (value != null) {
-            result.ipamPoolArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamPoolArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeArn':
-          if (value != null) {
-            result.ipamScopeArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamScopeArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamScopeType':
-          if (value != null) {
-            result.ipamScopeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamScopeType),
-            ) as _i2.IpamScopeType);
-          }
-          break;
+          result.ipamScopeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamScopeType),
+          ) as _i2.IpamScopeType);
         case 'ipamArn':
-          if (value != null) {
-            result.ipamArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipamRegion':
-          if (value != null) {
-            result.ipamRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipamRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'locale':
-          if (value != null) {
-            result.locale = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.locale = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'poolDepth':
           result.poolDepth = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.IpamPoolState),
-            ) as _i3.IpamPoolState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.IpamPoolState),
+          ) as _i3.IpamPoolState);
         case 'stateMessage':
-          if (value != null) {
-            result.stateMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.stateMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'autoImport':
           result.autoImport = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'publiclyAdvertisable':
           result.publiclyAdvertisable = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'addressFamily':
-          if (value != null) {
-            result.addressFamily = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.AddressFamily),
-            ) as _i4.AddressFamily);
-          }
-          break;
+          result.addressFamily = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.AddressFamily),
+          ) as _i4.AddressFamily);
         case 'allocationMinNetmaskLength':
           result.allocationMinNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'allocationMaxNetmaskLength':
           result.allocationMaxNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'allocationDefaultNetmaskLength':
           result.allocationDefaultNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'allocationResourceTagSet':
-          if (value != null) {
-            result.allocationResourceTags
-                .replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i5.IpamResourceTag)],
-              ),
-            ) as _i8.BuiltList<_i5.IpamResourceTag>));
-          }
-          break;
+          result.allocationResourceTags
+              .replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i5.IpamResourceTag)],
+            ),
+          ) as _i8.BuiltList<_i5.IpamResourceTag>));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i9.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i9.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i6.Tag)],
-              ),
-            ) as _i8.BuiltList<_i6.Tag>));
-          }
-          break;
+          result.tags.replace((const _i9.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i9.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i6.Tag)],
+            ),
+          ) as _i8.BuiltList<_i6.Tag>));
         case 'awsService':
-          if (value != null) {
-            result.awsService = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.IpamPoolAwsService),
-            ) as _i7.IpamPoolAwsService);
-          }
-          break;
+          result.awsService = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.IpamPoolAwsService),
+          ) as _i7.IpamPoolAwsService);
       }
     }
 
@@ -503,194 +453,217 @@ class IpamPoolEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpamPool object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpamPool);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i9.XmlElementName(
         'IpamPoolResponse',
         _i9.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ownerId != null) {
-      result
+    final IpamPool(
+      :ownerId,
+      :ipamPoolId,
+      :sourceIpamPoolId,
+      :ipamPoolArn,
+      :ipamScopeArn,
+      :ipamScopeType,
+      :ipamArn,
+      :ipamRegion,
+      :locale,
+      :poolDepth,
+      :state,
+      :stateMessage,
+      :description,
+      :autoImport,
+      :publiclyAdvertisable,
+      :addressFamily,
+      :allocationMinNetmaskLength,
+      :allocationMaxNetmaskLength,
+      :allocationDefaultNetmaskLength,
+      :allocationResourceTags,
+      :tags,
+      :awsService
+    ) = object;
+    if (ownerId != null) {
+      result$
         ..add(const _i9.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamPoolId != null) {
-      result
+    if (ipamPoolId != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamPoolId'))
         ..add(serializers.serialize(
-          payload.ipamPoolId!,
+          ipamPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceIpamPoolId != null) {
-      result
+    if (sourceIpamPoolId != null) {
+      result$
         ..add(const _i9.XmlElementName('SourceIpamPoolId'))
         ..add(serializers.serialize(
-          payload.sourceIpamPoolId!,
+          sourceIpamPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamPoolArn != null) {
-      result
+    if (ipamPoolArn != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamPoolArn'))
         ..add(serializers.serialize(
-          payload.ipamPoolArn!,
+          ipamPoolArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeArn != null) {
-      result
+    if (ipamScopeArn != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamScopeArn'))
         ..add(serializers.serialize(
-          payload.ipamScopeArn!,
+          ipamScopeArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamScopeType != null) {
-      result
+    if (ipamScopeType != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamScopeType'))
         ..add(serializers.serialize(
-          payload.ipamScopeType!,
+          ipamScopeType,
           specifiedType: const FullType.nullable(_i2.IpamScopeType),
         ));
     }
-    if (payload.ipamArn != null) {
-      result
+    if (ipamArn != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamArn'))
         ..add(serializers.serialize(
-          payload.ipamArn!,
+          ipamArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipamRegion != null) {
-      result
+    if (ipamRegion != null) {
+      result$
         ..add(const _i9.XmlElementName('IpamRegion'))
         ..add(serializers.serialize(
-          payload.ipamRegion!,
+          ipamRegion,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.locale != null) {
-      result
+    if (locale != null) {
+      result$
         ..add(const _i9.XmlElementName('Locale'))
         ..add(serializers.serialize(
-          payload.locale!,
+          locale,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i9.XmlElementName('PoolDepth'))
       ..add(serializers.serialize(
-        payload.poolDepth,
+        poolDepth,
         specifiedType: const FullType(int),
       ));
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i9.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i3.IpamPoolState),
         ));
     }
-    if (payload.stateMessage != null) {
-      result
+    if (stateMessage != null) {
+      result$
         ..add(const _i9.XmlElementName('StateMessage'))
         ..add(serializers.serialize(
-          payload.stateMessage!,
+          stateMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i9.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i9.XmlElementName('AutoImport'))
       ..add(serializers.serialize(
-        payload.autoImport,
+        autoImport,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i9.XmlElementName('PubliclyAdvertisable'))
       ..add(serializers.serialize(
-        payload.publiclyAdvertisable,
+        publiclyAdvertisable,
         specifiedType: const FullType(bool),
       ));
-    if (payload.addressFamily != null) {
-      result
+    if (addressFamily != null) {
+      result$
         ..add(const _i9.XmlElementName('AddressFamily'))
         ..add(serializers.serialize(
-          payload.addressFamily!,
+          addressFamily,
           specifiedType: const FullType.nullable(_i4.AddressFamily),
         ));
     }
-    result
+    result$
       ..add(const _i9.XmlElementName('AllocationMinNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationMinNetmaskLength,
+        allocationMinNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i9.XmlElementName('AllocationMaxNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationMaxNetmaskLength,
+        allocationMaxNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i9.XmlElementName('AllocationDefaultNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationDefaultNetmaskLength,
+        allocationDefaultNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    if (payload.allocationResourceTags != null) {
-      result
+    if (allocationResourceTags != null) {
+      result$
         ..add(const _i9.XmlElementName('AllocationResourceTagSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.allocationResourceTags!,
+          allocationResourceTags,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i5.IpamResourceTag)],
           ),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i9.XmlElementName('TagSet'))
         ..add(const _i9.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i9.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i6.Tag)],
           ),
         ));
     }
-    if (payload.awsService != null) {
-      result
+    if (awsService != null) {
+      result$
         ..add(const _i9.XmlElementName('AwsService'))
         ..add(serializers.serialize(
-          payload.awsService!,
+          awsService,
           specifiedType: const FullType.nullable(_i7.IpamPoolAwsService),
         ));
     }
-    return result;
+    return result$;
   }
 }

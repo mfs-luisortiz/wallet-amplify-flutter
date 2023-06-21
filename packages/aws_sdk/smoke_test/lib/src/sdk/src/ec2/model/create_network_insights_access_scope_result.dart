@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_network_insights_access_scope_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,28 +102,25 @@ class CreateNetworkInsightsAccessScopeResultEc2QuerySerializer extends _i4
     final result = CreateNetworkInsightsAccessScopeResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsAccessScope':
-          if (value != null) {
-            result.networkInsightsAccessScope.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NetworkInsightsAccessScope),
-            ) as _i2.NetworkInsightsAccessScope));
-          }
-          break;
+          result.networkInsightsAccessScope.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NetworkInsightsAccessScope),
+          ) as _i2.NetworkInsightsAccessScope));
         case 'networkInsightsAccessScopeContent':
-          if (value != null) {
-            result.networkInsightsAccessScopeContent
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.NetworkInsightsAccessScopeContent),
-            ) as _i3.NetworkInsightsAccessScopeContent));
-          }
-          break;
+          result.networkInsightsAccessScopeContent
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.NetworkInsightsAccessScopeContent),
+          ) as _i3.NetworkInsightsAccessScopeContent));
       }
     }
 
@@ -132,32 +130,35 @@ class CreateNetworkInsightsAccessScopeResultEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateNetworkInsightsAccessScopeResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateNetworkInsightsAccessScopeResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'CreateNetworkInsightsAccessScopeResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsAccessScope != null) {
-      result
+    final CreateNetworkInsightsAccessScopeResult(
+      :networkInsightsAccessScope,
+      :networkInsightsAccessScopeContent
+    ) = object;
+    if (networkInsightsAccessScope != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInsightsAccessScope'))
         ..add(serializers.serialize(
-          payload.networkInsightsAccessScope!,
+          networkInsightsAccessScope,
           specifiedType: const FullType(_i2.NetworkInsightsAccessScope),
         ));
     }
-    if (payload.networkInsightsAccessScopeContent != null) {
-      result
+    if (networkInsightsAccessScopeContent != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInsightsAccessScopeContent'))
         ..add(serializers.serialize(
-          payload.networkInsightsAccessScopeContent!,
+          networkInsightsAccessScopeContent,
           specifiedType: const FullType(_i3.NetworkInsightsAccessScopeContent),
         ));
     }
-    return result;
+    return result$;
   }
 }

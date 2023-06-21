@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipv6_cidr_block; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -71,18 +72,18 @@ class Ipv6CidrBlockEc2QuerySerializer
     final result = Ipv6CidrBlockBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipv6CidrBlock':
-          if (value != null) {
-            result.ipv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -92,24 +93,24 @@ class Ipv6CidrBlockEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Ipv6CidrBlock object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Ipv6CidrBlock);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'Ipv6CidrBlockResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipv6CidrBlock != null) {
-      result
+    final Ipv6CidrBlock(:ipv6CidrBlock) = object;
+    if (ipv6CidrBlock != null) {
+      result$
         ..add(const _i2.XmlElementName('Ipv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlock!,
+          ipv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.export_task_s3_location_request;
+part of 'export_task_s3_location_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

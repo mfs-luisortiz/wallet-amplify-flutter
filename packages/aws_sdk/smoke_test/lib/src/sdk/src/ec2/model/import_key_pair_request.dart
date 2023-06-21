@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_key_pair_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -125,43 +126,40 @@ class ImportKeyPairRequestEc2QuerySerializer
     final result = ImportKeyPairRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'keyName':
           result.keyName = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'publicKeyMaterial':
           result.publicKeyMaterial = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Uint8List),
           ) as _i3.Uint8List);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
       }
     }
 
@@ -171,49 +169,54 @@ class ImportKeyPairRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportKeyPairRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportKeyPairRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ImportKeyPairRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ImportKeyPairRequest(
+      :dryRun,
+      :keyName,
+      :publicKeyMaterial,
+      :tagSpecifications
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('KeyName'))
       ..add(serializers.serialize(
-        payload.keyName,
+        keyName,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PublicKeyMaterial'))
       ..add(serializers.serialize(
-        payload.publicKeyMaterial,
+        publicKeyMaterial,
         specifiedType: const FullType.nullable(_i3.Uint8List),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

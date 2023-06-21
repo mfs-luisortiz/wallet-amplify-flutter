@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_volume_permission_modifications; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -96,40 +97,37 @@ class CreateVolumePermissionModificationsEc2QuerySerializer extends _i4
     final result = CreateVolumePermissionModificationsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Add':
-          if (value != null) {
-            result.add.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.CreateVolumePermission)],
-              ),
-            ) as _i3.BuiltList<_i2.CreateVolumePermission>));
-          }
-          break;
+          result.add.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.CreateVolumePermission)],
+            ),
+          ) as _i3.BuiltList<_i2.CreateVolumePermission>));
         case 'Remove':
-          if (value != null) {
-            result.remove.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.CreateVolumePermission)],
-              ),
-            ) as _i3.BuiltList<_i2.CreateVolumePermission>));
-          }
-          break;
+          result.remove.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.CreateVolumePermission)],
+            ),
+          ) as _i3.BuiltList<_i2.CreateVolumePermission>));
       }
     }
 
@@ -139,46 +137,46 @@ class CreateVolumePermissionModificationsEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateVolumePermissionModifications object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateVolumePermissionModifications);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'CreateVolumePermissionModificationsResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.add != null) {
-      result
+    final CreateVolumePermissionModifications(:add, :remove) = object;
+    if (add != null) {
+      result$
         ..add(const _i4.XmlElementName('Add'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.add!,
+          add,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.CreateVolumePermission)],
           ),
         ));
     }
-    if (payload.remove != null) {
-      result
+    if (remove != null) {
+      result$
         ..add(const _i4.XmlElementName('Remove'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.remove!,
+          remove,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.CreateVolumePermission)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

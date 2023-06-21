@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.get_ebs_encryption_by_default_request;
+part of 'get_ebs_encryption_by_default_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

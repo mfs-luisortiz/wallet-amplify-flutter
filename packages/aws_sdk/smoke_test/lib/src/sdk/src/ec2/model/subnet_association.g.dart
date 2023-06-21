@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.subnet_association;
+part of 'subnet_association.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

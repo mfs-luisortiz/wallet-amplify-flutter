@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_credit_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,26 +93,23 @@ class InstanceCreditSpecificationEc2QuerySerializer
     final result = InstanceCreditSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'cpuCredits':
-          if (value != null) {
-            result.cpuCredits = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cpuCredits = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -121,32 +119,32 @@ class InstanceCreditSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceCreditSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceCreditSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'InstanceCreditSpecificationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final InstanceCreditSpecification(:instanceId, :cpuCredits) = object;
+    if (instanceId != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.cpuCredits != null) {
-      result
+    if (cpuCredits != null) {
+      result$
         ..add(const _i2.XmlElementName('CpuCredits'))
         ..add(serializers.serialize(
-          payload.cpuCredits!,
+          cpuCredits,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_requirements_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -483,224 +484,172 @@ class InstanceRequirementsRequestEc2QuerySerializer
     final result = InstanceRequirementsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'VCpuCount':
           result.vCpuCount.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i2.VCpuCountRangeRequest),
           ) as _i2.VCpuCountRangeRequest));
-          break;
         case 'MemoryMiB':
           result.memoryMib.replace((serializers.deserialize(
             value,
             specifiedType: const FullType(_i3.MemoryMiBRequest),
           ) as _i3.MemoryMiBRequest));
-          break;
         case 'CpuManufacturer':
-          if (value != null) {
-            result.cpuManufacturers.replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i4.CpuManufacturer)],
-              ),
-            ) as _i19.BuiltList<_i4.CpuManufacturer>));
-          }
-          break;
+          result.cpuManufacturers.replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i4.CpuManufacturer)],
+            ),
+          ) as _i19.BuiltList<_i4.CpuManufacturer>));
         case 'MemoryGiBPerVCpu':
-          if (value != null) {
-            result.memoryGiBPerVCpu.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.MemoryGiBPerVCpuRequest),
-            ) as _i5.MemoryGiBPerVCpuRequest));
-          }
-          break;
+          result.memoryGiBPerVCpu.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.MemoryGiBPerVCpuRequest),
+          ) as _i5.MemoryGiBPerVCpuRequest));
         case 'ExcludedInstanceType':
-          if (value != null) {
-            result.excludedInstanceTypes
-                .replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i19.BuiltList<String>));
-          }
-          break;
+          result.excludedInstanceTypes
+              .replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i19.BuiltList<String>));
         case 'InstanceGeneration':
-          if (value != null) {
-            result.instanceGenerations
-                .replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i6.InstanceGeneration)],
-              ),
-            ) as _i19.BuiltList<_i6.InstanceGeneration>));
-          }
-          break;
+          result.instanceGenerations.replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i6.InstanceGeneration)],
+            ),
+          ) as _i19.BuiltList<_i6.InstanceGeneration>));
         case 'SpotMaxPricePercentageOverLowestPrice':
           result.spotMaxPricePercentageOverLowestPrice =
               (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'OnDemandMaxPricePercentageOverLowestPrice':
           result.onDemandMaxPricePercentageOverLowestPrice =
               (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'BareMetal':
-          if (value != null) {
-            result.bareMetal = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.BareMetal),
-            ) as _i7.BareMetal);
-          }
-          break;
+          result.bareMetal = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.BareMetal),
+          ) as _i7.BareMetal);
         case 'BurstablePerformance':
-          if (value != null) {
-            result.burstablePerformance = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.BurstablePerformance),
-            ) as _i8.BurstablePerformance);
-          }
-          break;
+          result.burstablePerformance = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.BurstablePerformance),
+          ) as _i8.BurstablePerformance);
         case 'RequireHibernateSupport':
           result.requireHibernateSupport = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'NetworkInterfaceCount':
-          if (value != null) {
-            result.networkInterfaceCount.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.NetworkInterfaceCountRequest),
-            ) as _i9.NetworkInterfaceCountRequest));
-          }
-          break;
+          result.networkInterfaceCount.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.NetworkInterfaceCountRequest),
+          ) as _i9.NetworkInterfaceCountRequest));
         case 'LocalStorage':
-          if (value != null) {
-            result.localStorage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i10.LocalStorage),
-            ) as _i10.LocalStorage);
-          }
-          break;
+          result.localStorage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i10.LocalStorage),
+          ) as _i10.LocalStorage);
         case 'LocalStorageType':
-          if (value != null) {
-            result.localStorageTypes.replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i11.LocalStorageType)],
-              ),
-            ) as _i19.BuiltList<_i11.LocalStorageType>));
-          }
-          break;
+          result.localStorageTypes.replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i11.LocalStorageType)],
+            ),
+          ) as _i19.BuiltList<_i11.LocalStorageType>));
         case 'TotalLocalStorageGB':
-          if (value != null) {
-            result.totalLocalStorageGb.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i12.TotalLocalStorageGbRequest),
-            ) as _i12.TotalLocalStorageGbRequest));
-          }
-          break;
+          result.totalLocalStorageGb.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i12.TotalLocalStorageGbRequest),
+          ) as _i12.TotalLocalStorageGbRequest));
         case 'BaselineEbsBandwidthMbps':
-          if (value != null) {
-            result.baselineEbsBandwidthMbps.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i13.BaselineEbsBandwidthMbpsRequest),
-            ) as _i13.BaselineEbsBandwidthMbpsRequest));
-          }
-          break;
+          result.baselineEbsBandwidthMbps.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i13.BaselineEbsBandwidthMbpsRequest),
+          ) as _i13.BaselineEbsBandwidthMbpsRequest));
         case 'AcceleratorType':
-          if (value != null) {
-            result.acceleratorTypes.replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i14.AcceleratorType)],
-              ),
-            ) as _i19.BuiltList<_i14.AcceleratorType>));
-          }
-          break;
+          result.acceleratorTypes.replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i14.AcceleratorType)],
+            ),
+          ) as _i19.BuiltList<_i14.AcceleratorType>));
         case 'AcceleratorCount':
-          if (value != null) {
-            result.acceleratorCount.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i15.AcceleratorCountRequest),
-            ) as _i15.AcceleratorCountRequest));
-          }
-          break;
+          result.acceleratorCount.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i15.AcceleratorCountRequest),
+          ) as _i15.AcceleratorCountRequest));
         case 'AcceleratorManufacturer':
-          if (value != null) {
-            result.acceleratorManufacturers
-                .replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i16.AcceleratorManufacturer)],
-              ),
-            ) as _i19.BuiltList<_i16.AcceleratorManufacturer>));
-          }
-          break;
+          result.acceleratorManufacturers
+              .replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i16.AcceleratorManufacturer)],
+            ),
+          ) as _i19.BuiltList<_i16.AcceleratorManufacturer>));
         case 'AcceleratorName':
-          if (value != null) {
-            result.acceleratorNames.replace((const _i20.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i20.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i19.BuiltList,
-                [FullType(_i17.AcceleratorName)],
-              ),
-            ) as _i19.BuiltList<_i17.AcceleratorName>));
-          }
-          break;
+          result.acceleratorNames.replace((const _i20.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i20.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i19.BuiltList,
+              [FullType(_i17.AcceleratorName)],
+            ),
+          ) as _i19.BuiltList<_i17.AcceleratorName>));
         case 'AcceleratorTotalMemoryMiB':
-          if (value != null) {
-            result.acceleratorTotalMemoryMib.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i18.AcceleratorTotalMemoryMiBRequest),
-            ) as _i18.AcceleratorTotalMemoryMiBRequest));
-          }
-          break;
+          result.acceleratorTotalMemoryMib.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i18.AcceleratorTotalMemoryMiBRequest),
+          ) as _i18.AcceleratorTotalMemoryMiBRequest));
       }
     }
 
@@ -710,224 +659,246 @@ class InstanceRequirementsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceRequirementsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceRequirementsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i20.XmlElementName(
         'InstanceRequirementsRequestResponse',
         _i20.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final InstanceRequirementsRequest(
+      :vCpuCount,
+      :memoryMib,
+      :cpuManufacturers,
+      :memoryGiBPerVCpu,
+      :excludedInstanceTypes,
+      :instanceGenerations,
+      :spotMaxPricePercentageOverLowestPrice,
+      :onDemandMaxPricePercentageOverLowestPrice,
+      :bareMetal,
+      :burstablePerformance,
+      :requireHibernateSupport,
+      :networkInterfaceCount,
+      :localStorage,
+      :localStorageTypes,
+      :totalLocalStorageGb,
+      :baselineEbsBandwidthMbps,
+      :acceleratorTypes,
+      :acceleratorCount,
+      :acceleratorManufacturers,
+      :acceleratorNames,
+      :acceleratorTotalMemoryMib
+    ) = object;
+    result$
       ..add(const _i20.XmlElementName('VCpuCount'))
       ..add(serializers.serialize(
-        payload.vCpuCount,
+        vCpuCount,
         specifiedType: const FullType(_i2.VCpuCountRangeRequest),
       ));
-    result
+    result$
       ..add(const _i20.XmlElementName('MemoryMiB'))
       ..add(serializers.serialize(
-        payload.memoryMib,
+        memoryMib,
         specifiedType: const FullType(_i3.MemoryMiBRequest),
       ));
-    if (payload.cpuManufacturers != null) {
-      result
+    if (cpuManufacturers != null) {
+      result$
         ..add(const _i20.XmlElementName('CpuManufacturer'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.cpuManufacturers!,
+          cpuManufacturers,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i4.CpuManufacturer)],
           ),
         ));
     }
-    if (payload.memoryGiBPerVCpu != null) {
-      result
+    if (memoryGiBPerVCpu != null) {
+      result$
         ..add(const _i20.XmlElementName('MemoryGiBPerVCpu'))
         ..add(serializers.serialize(
-          payload.memoryGiBPerVCpu!,
+          memoryGiBPerVCpu,
           specifiedType: const FullType(_i5.MemoryGiBPerVCpuRequest),
         ));
     }
-    if (payload.excludedInstanceTypes != null) {
-      result
+    if (excludedInstanceTypes != null) {
+      result$
         ..add(const _i20.XmlElementName('ExcludedInstanceType'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.excludedInstanceTypes!,
+          excludedInstanceTypes,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.instanceGenerations != null) {
-      result
+    if (instanceGenerations != null) {
+      result$
         ..add(const _i20.XmlElementName('InstanceGeneration'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instanceGenerations!,
+          instanceGenerations,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i6.InstanceGeneration)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i20.XmlElementName('SpotMaxPricePercentageOverLowestPrice'))
       ..add(serializers.serialize(
-        payload.spotMaxPricePercentageOverLowestPrice,
+        spotMaxPricePercentageOverLowestPrice,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i20.XmlElementName(
           'OnDemandMaxPricePercentageOverLowestPrice'))
       ..add(serializers.serialize(
-        payload.onDemandMaxPricePercentageOverLowestPrice,
+        onDemandMaxPricePercentageOverLowestPrice,
         specifiedType: const FullType(int),
       ));
-    if (payload.bareMetal != null) {
-      result
+    if (bareMetal != null) {
+      result$
         ..add(const _i20.XmlElementName('BareMetal'))
         ..add(serializers.serialize(
-          payload.bareMetal!,
+          bareMetal,
           specifiedType: const FullType.nullable(_i7.BareMetal),
         ));
     }
-    if (payload.burstablePerformance != null) {
-      result
+    if (burstablePerformance != null) {
+      result$
         ..add(const _i20.XmlElementName('BurstablePerformance'))
         ..add(serializers.serialize(
-          payload.burstablePerformance!,
+          burstablePerformance,
           specifiedType: const FullType.nullable(_i8.BurstablePerformance),
         ));
     }
-    result
+    result$
       ..add(const _i20.XmlElementName('RequireHibernateSupport'))
       ..add(serializers.serialize(
-        payload.requireHibernateSupport,
+        requireHibernateSupport,
         specifiedType: const FullType(bool),
       ));
-    if (payload.networkInterfaceCount != null) {
-      result
+    if (networkInterfaceCount != null) {
+      result$
         ..add(const _i20.XmlElementName('NetworkInterfaceCount'))
         ..add(serializers.serialize(
-          payload.networkInterfaceCount!,
+          networkInterfaceCount,
           specifiedType: const FullType(_i9.NetworkInterfaceCountRequest),
         ));
     }
-    if (payload.localStorage != null) {
-      result
+    if (localStorage != null) {
+      result$
         ..add(const _i20.XmlElementName('LocalStorage'))
         ..add(serializers.serialize(
-          payload.localStorage!,
+          localStorage,
           specifiedType: const FullType.nullable(_i10.LocalStorage),
         ));
     }
-    if (payload.localStorageTypes != null) {
-      result
+    if (localStorageTypes != null) {
+      result$
         ..add(const _i20.XmlElementName('LocalStorageType'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.localStorageTypes!,
+          localStorageTypes,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i11.LocalStorageType)],
           ),
         ));
     }
-    if (payload.totalLocalStorageGb != null) {
-      result
+    if (totalLocalStorageGb != null) {
+      result$
         ..add(const _i20.XmlElementName('TotalLocalStorageGB'))
         ..add(serializers.serialize(
-          payload.totalLocalStorageGb!,
+          totalLocalStorageGb,
           specifiedType: const FullType(_i12.TotalLocalStorageGbRequest),
         ));
     }
-    if (payload.baselineEbsBandwidthMbps != null) {
-      result
+    if (baselineEbsBandwidthMbps != null) {
+      result$
         ..add(const _i20.XmlElementName('BaselineEbsBandwidthMbps'))
         ..add(serializers.serialize(
-          payload.baselineEbsBandwidthMbps!,
+          baselineEbsBandwidthMbps,
           specifiedType: const FullType(_i13.BaselineEbsBandwidthMbpsRequest),
         ));
     }
-    if (payload.acceleratorTypes != null) {
-      result
+    if (acceleratorTypes != null) {
+      result$
         ..add(const _i20.XmlElementName('AcceleratorType'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.acceleratorTypes!,
+          acceleratorTypes,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i14.AcceleratorType)],
           ),
         ));
     }
-    if (payload.acceleratorCount != null) {
-      result
+    if (acceleratorCount != null) {
+      result$
         ..add(const _i20.XmlElementName('AcceleratorCount'))
         ..add(serializers.serialize(
-          payload.acceleratorCount!,
+          acceleratorCount,
           specifiedType: const FullType(_i15.AcceleratorCountRequest),
         ));
     }
-    if (payload.acceleratorManufacturers != null) {
-      result
+    if (acceleratorManufacturers != null) {
+      result$
         ..add(const _i20.XmlElementName('AcceleratorManufacturer'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.acceleratorManufacturers!,
+          acceleratorManufacturers,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i16.AcceleratorManufacturer)],
           ),
         ));
     }
-    if (payload.acceleratorNames != null) {
-      result
+    if (acceleratorNames != null) {
+      result$
         ..add(const _i20.XmlElementName('AcceleratorName'))
         ..add(const _i20.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i20.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.acceleratorNames!,
+          acceleratorNames,
           specifiedType: const FullType.nullable(
             _i19.BuiltList,
             [FullType(_i17.AcceleratorName)],
           ),
         ));
     }
-    if (payload.acceleratorTotalMemoryMib != null) {
-      result
+    if (acceleratorTotalMemoryMib != null) {
+      result$
         ..add(const _i20.XmlElementName('AcceleratorTotalMemoryMiB'))
         ..add(serializers.serialize(
-          payload.acceleratorTotalMemoryMib!,
+          acceleratorTotalMemoryMib,
           specifiedType: const FullType(_i18.AcceleratorTotalMemoryMiBRequest),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.user_id_group_pair;
+part of 'user_id_group_pair.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

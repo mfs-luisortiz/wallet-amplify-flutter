@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cancel_export_task_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -81,16 +82,18 @@ class CancelExportTaskRequestEc2QuerySerializer
     final result = CancelExportTaskRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'exportTaskId':
           result.exportTaskId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
       }
     }
 
@@ -100,22 +103,22 @@ class CancelExportTaskRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CancelExportTaskRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CancelExportTaskRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CancelExportTaskRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CancelExportTaskRequest(:exportTaskId) = object;
+    result$
       ..add(const _i1.XmlElementName('ExportTaskId'))
       ..add(serializers.serialize(
-        payload.exportTaskId,
+        exportTaskId,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

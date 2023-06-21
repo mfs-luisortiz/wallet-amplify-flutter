@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.key_pair_info;
+part of 'key_pair_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

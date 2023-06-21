@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.prefix_list_id; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,26 +90,23 @@ class PrefixListIdEc2QuerySerializer
     final result = PrefixListIdBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'prefixListId':
-          if (value != null) {
-            result.prefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -118,32 +116,32 @@ class PrefixListIdEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PrefixListId object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PrefixListId);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PrefixListIdResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final PrefixListId(:description, :prefixListId) = object;
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.prefixListId != null) {
-      result
+    if (prefixListId != null) {
+      result$
         ..add(const _i2.XmlElementName('PrefixListId'))
         ..add(serializers.serialize(
-          payload.prefixListId!,
+          prefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

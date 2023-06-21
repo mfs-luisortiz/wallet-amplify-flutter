@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disable_transit_gateway_route_table_propagation_result;
+part of 'disable_transit_gateway_route_table_propagation_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

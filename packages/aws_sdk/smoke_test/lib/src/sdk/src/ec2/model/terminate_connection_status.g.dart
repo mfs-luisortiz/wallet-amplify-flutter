@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.terminate_connection_status;
+part of 'terminate_connection_status.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

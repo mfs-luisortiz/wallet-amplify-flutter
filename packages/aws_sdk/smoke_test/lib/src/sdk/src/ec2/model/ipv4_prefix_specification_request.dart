@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipv4_prefix_specification_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -77,18 +78,18 @@ class Ipv4PrefixSpecificationRequestEc2QuerySerializer
     final result = Ipv4PrefixSpecificationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Ipv4Prefix':
-          if (value != null) {
-            result.ipv4Prefix = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv4Prefix = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -98,24 +99,24 @@ class Ipv4PrefixSpecificationRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Ipv4PrefixSpecificationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Ipv4PrefixSpecificationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'Ipv4PrefixSpecificationRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipv4Prefix != null) {
-      result
+    final Ipv4PrefixSpecificationRequest(:ipv4Prefix) = object;
+    if (ipv4Prefix != null) {
+      result$
         ..add(const _i2.XmlElementName('Ipv4Prefix'))
         ..add(serializers.serialize(
-          payload.ipv4Prefix!,
+          ipv4Prefix,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

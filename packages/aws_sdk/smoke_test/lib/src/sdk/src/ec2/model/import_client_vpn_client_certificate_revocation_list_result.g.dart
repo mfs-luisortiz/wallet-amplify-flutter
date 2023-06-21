@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.import_client_vpn_client_certificate_revocation_list_result;
+part of 'import_client_vpn_client_certificate_revocation_list_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

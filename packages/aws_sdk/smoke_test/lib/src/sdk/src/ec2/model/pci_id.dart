@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.pci_id; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -105,42 +106,33 @@ class PciIdEc2QuerySerializer extends _i2.StructuredSmithySerializer<PciId> {
     final result = PciIdBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DeviceId':
-          if (value != null) {
-            result.deviceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deviceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'VendorId':
-          if (value != null) {
-            result.vendorId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vendorId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SubsystemId':
-          if (value != null) {
-            result.subsystemId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subsystemId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SubsystemVendorId':
-          if (value != null) {
-            result.subsystemVendorId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subsystemVendorId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -150,48 +142,49 @@ class PciIdEc2QuerySerializer extends _i2.StructuredSmithySerializer<PciId> {
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PciId object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PciId);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'PciIdResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.deviceId != null) {
-      result
+    final PciId(:deviceId, :vendorId, :subsystemId, :subsystemVendorId) =
+        object;
+    if (deviceId != null) {
+      result$
         ..add(const _i2.XmlElementName('DeviceId'))
         ..add(serializers.serialize(
-          payload.deviceId!,
+          deviceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vendorId != null) {
-      result
+    if (vendorId != null) {
+      result$
         ..add(const _i2.XmlElementName('VendorId'))
         ..add(serializers.serialize(
-          payload.vendorId!,
+          vendorId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subsystemId != null) {
-      result
+    if (subsystemId != null) {
+      result$
         ..add(const _i2.XmlElementName('SubsystemId'))
         ..add(serializers.serialize(
-          payload.subsystemId!,
+          subsystemId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subsystemVendorId != null) {
-      result
+    if (subsystemVendorId != null) {
+      result$
         ..add(const _i2.XmlElementName('SubsystemVendorId'))
         ..add(serializers.serialize(
-          payload.subsystemVendorId!,
+          subsystemVendorId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

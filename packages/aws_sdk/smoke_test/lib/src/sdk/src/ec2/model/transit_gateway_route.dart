@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_route; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -139,67 +140,52 @@ class TransitGatewayRouteEc2QuerySerializer
     final result = TransitGatewayRouteBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'prefixListId':
-          if (value != null) {
-            result.prefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayRouteTableAnnouncementId':
-          if (value != null) {
-            result.transitGatewayRouteTableAnnouncementId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayRouteTableAnnouncementId =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayAttachments':
-          if (value != null) {
-            result.transitGatewayAttachments
-                .replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.TransitGatewayRouteAttachment)],
-              ),
-            ) as _i5.BuiltList<_i2.TransitGatewayRouteAttachment>));
-          }
-          break;
+          result.transitGatewayAttachments
+              .replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.TransitGatewayRouteAttachment)],
+            ),
+          ) as _i5.BuiltList<_i2.TransitGatewayRouteAttachment>));
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TransitGatewayRouteType),
-            ) as _i3.TransitGatewayRouteType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TransitGatewayRouteType),
+          ) as _i3.TransitGatewayRouteType);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.TransitGatewayRouteState),
-            ) as _i4.TransitGatewayRouteState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.TransitGatewayRouteState),
+          ) as _i4.TransitGatewayRouteState);
       }
     }
 
@@ -209,72 +195,79 @@ class TransitGatewayRouteEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayRoute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayRoute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'TransitGatewayRouteResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidrBlock != null) {
-      result
+    final TransitGatewayRoute(
+      :destinationCidrBlock,
+      :prefixListId,
+      :transitGatewayRouteTableAnnouncementId,
+      :transitGatewayAttachments,
+      :type,
+      :state
+    ) = object;
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i6.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.prefixListId != null) {
-      result
+    if (prefixListId != null) {
+      result$
         ..add(const _i6.XmlElementName('PrefixListId'))
         ..add(serializers.serialize(
-          payload.prefixListId!,
+          prefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayRouteTableAnnouncementId != null) {
-      result
+    if (transitGatewayRouteTableAnnouncementId != null) {
+      result$
         ..add(
             const _i6.XmlElementName('TransitGatewayRouteTableAnnouncementId'))
         ..add(serializers.serialize(
-          payload.transitGatewayRouteTableAnnouncementId!,
+          transitGatewayRouteTableAnnouncementId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayAttachments != null) {
-      result
+    if (transitGatewayAttachments != null) {
+      result$
         ..add(const _i6.XmlElementName('TransitGatewayAttachments'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.transitGatewayAttachments!,
+          transitGatewayAttachments,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.TransitGatewayRouteAttachment)],
           ),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i6.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i3.TransitGatewayRouteType),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i6.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i4.TransitGatewayRouteState),
         ));
     }
-    return result;
+    return result$;
   }
 }

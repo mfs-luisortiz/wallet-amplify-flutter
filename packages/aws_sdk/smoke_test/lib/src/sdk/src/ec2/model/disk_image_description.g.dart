@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disk_image_description;
+part of 'disk_image_description.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

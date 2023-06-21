@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_volume_permission;
+part of 'create_volume_permission.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

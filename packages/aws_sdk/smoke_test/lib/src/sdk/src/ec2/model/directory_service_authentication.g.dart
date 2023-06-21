@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.directory_service_authentication;
+part of 'directory_service_authentication.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.local_gateway_virtual_interface; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -171,83 +172,65 @@ class LocalGatewayVirtualInterfaceEc2QuerySerializer
     final result = LocalGatewayVirtualInterfaceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'localGatewayVirtualInterfaceId':
-          if (value != null) {
-            result.localGatewayVirtualInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayVirtualInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'localGatewayId':
-          if (value != null) {
-            result.localGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vlan':
           result.vlan = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'localAddress':
-          if (value != null) {
-            result.localAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'peerAddress':
-          if (value != null) {
-            result.peerAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.peerAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'localBgpAsn':
           result.localBgpAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'peerBgpAsn':
           result.peerBgpAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.Tag)],
-              ),
-            ) as _i3.BuiltList<_i2.Tag>));
-          }
-          break;
+          result.tags.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.Tag)],
+            ),
+          ) as _i3.BuiltList<_i2.Tag>));
       }
     }
 
@@ -257,89 +240,99 @@ class LocalGatewayVirtualInterfaceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LocalGatewayVirtualInterface object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LocalGatewayVirtualInterface);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LocalGatewayVirtualInterfaceResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.localGatewayVirtualInterfaceId != null) {
-      result
+    final LocalGatewayVirtualInterface(
+      :localGatewayVirtualInterfaceId,
+      :localGatewayId,
+      :vlan,
+      :localAddress,
+      :peerAddress,
+      :localBgpAsn,
+      :peerBgpAsn,
+      :ownerId,
+      :tags
+    ) = object;
+    if (localGatewayVirtualInterfaceId != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalGatewayVirtualInterfaceId'))
         ..add(serializers.serialize(
-          payload.localGatewayVirtualInterfaceId!,
+          localGatewayVirtualInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.localGatewayId != null) {
-      result
+    if (localGatewayId != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalGatewayId'))
         ..add(serializers.serialize(
-          payload.localGatewayId!,
+          localGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('Vlan'))
       ..add(serializers.serialize(
-        payload.vlan,
+        vlan,
         specifiedType: const FullType(int),
       ));
-    if (payload.localAddress != null) {
-      result
+    if (localAddress != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalAddress'))
         ..add(serializers.serialize(
-          payload.localAddress!,
+          localAddress,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.peerAddress != null) {
-      result
+    if (peerAddress != null) {
+      result$
         ..add(const _i4.XmlElementName('PeerAddress'))
         ..add(serializers.serialize(
-          payload.peerAddress!,
+          peerAddress,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('LocalBgpAsn'))
       ..add(serializers.serialize(
-        payload.localBgpAsn,
+        localBgpAsn,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('PeerBgpAsn'))
       ..add(serializers.serialize(
-        payload.peerBgpAsn,
+        peerBgpAsn,
         specifiedType: const FullType(int),
       ));
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i4.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i4.XmlElementName('TagSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

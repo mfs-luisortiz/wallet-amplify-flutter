@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.replace_root_volume_task; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -147,65 +148,50 @@ class ReplaceRootVolumeTaskEc2QuerySerializer
     final result = ReplaceRootVolumeTaskBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'replaceRootVolumeTaskId':
-          if (value != null) {
-            result.replaceRootVolumeTaskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.replaceRootVolumeTaskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'taskState':
-          if (value != null) {
-            result.taskState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ReplaceRootVolumeTaskState),
-            ) as _i2.ReplaceRootVolumeTaskState);
-          }
-          break;
+          result.taskState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ReplaceRootVolumeTaskState),
+          ) as _i2.ReplaceRootVolumeTaskState);
         case 'startTime':
-          if (value != null) {
-            result.startTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.startTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'completeTime':
-          if (value != null) {
-            result.completeTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.completeTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
       }
     }
 
@@ -215,72 +201,79 @@ class ReplaceRootVolumeTaskEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReplaceRootVolumeTask object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReplaceRootVolumeTask);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ReplaceRootVolumeTaskResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.replaceRootVolumeTaskId != null) {
-      result
+    final ReplaceRootVolumeTask(
+      :replaceRootVolumeTaskId,
+      :instanceId,
+      :taskState,
+      :startTime,
+      :completeTime,
+      :tags
+    ) = object;
+    if (replaceRootVolumeTaskId != null) {
+      result$
         ..add(const _i5.XmlElementName('ReplaceRootVolumeTaskId'))
         ..add(serializers.serialize(
-          payload.replaceRootVolumeTaskId!,
+          replaceRootVolumeTaskId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.taskState != null) {
-      result
+    if (taskState != null) {
+      result$
         ..add(const _i5.XmlElementName('TaskState'))
         ..add(serializers.serialize(
-          payload.taskState!,
+          taskState,
           specifiedType:
               const FullType.nullable(_i2.ReplaceRootVolumeTaskState),
         ));
     }
-    if (payload.startTime != null) {
-      result
+    if (startTime != null) {
+      result$
         ..add(const _i5.XmlElementName('StartTime'))
         ..add(serializers.serialize(
-          payload.startTime!,
+          startTime,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.completeTime != null) {
-      result
+    if (completeTime != null) {
+      result$
         ..add(const _i5.XmlElementName('CompleteTime'))
         ..add(serializers.serialize(
-          payload.completeTime!,
+          completeTime,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

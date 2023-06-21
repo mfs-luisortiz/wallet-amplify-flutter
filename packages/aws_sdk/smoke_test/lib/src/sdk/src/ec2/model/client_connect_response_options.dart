@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.client_connect_response_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,33 +108,28 @@ class ClientConnectResponseOptionsEc2QuerySerializer
     final result = ClientConnectResponseOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'enabled':
           result.enabled = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'lambdaFunctionArn':
-          if (value != null) {
-            result.lambdaFunctionArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.lambdaFunctionArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.ClientVpnEndpointAttributeStatus),
-            ) as _i2.ClientVpnEndpointAttributeStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnEndpointAttributeStatus),
+          ) as _i2.ClientVpnEndpointAttributeStatus));
       }
     }
 
@@ -143,38 +139,39 @@ class ClientConnectResponseOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClientConnectResponseOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClientConnectResponseOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ClientConnectResponseOptionsResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ClientConnectResponseOptions(:enabled, :lambdaFunctionArn, :status) =
+        object;
+    result$
       ..add(const _i3.XmlElementName('Enabled'))
       ..add(serializers.serialize(
-        payload.enabled,
+        enabled,
         specifiedType: const FullType(bool),
       ));
-    if (payload.lambdaFunctionArn != null) {
-      result
+    if (lambdaFunctionArn != null) {
+      result$
         ..add(const _i3.XmlElementName('LambdaFunctionArn'))
         ..add(serializers.serialize(
-          payload.lambdaFunctionArn!,
+          lambdaFunctionArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.ClientVpnEndpointAttributeStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

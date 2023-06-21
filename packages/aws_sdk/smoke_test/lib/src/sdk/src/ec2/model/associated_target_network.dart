@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associated_target_network; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,26 +92,23 @@ class AssociatedTargetNetworkEc2QuerySerializer
     final result = AssociatedTargetNetworkBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkId':
-          if (value != null) {
-            result.networkId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkType':
-          if (value != null) {
-            result.networkType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AssociatedNetworkType),
-            ) as _i2.AssociatedNetworkType);
-          }
-          break;
+          result.networkType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AssociatedNetworkType),
+          ) as _i2.AssociatedNetworkType);
       }
     }
 
@@ -120,32 +118,32 @@ class AssociatedTargetNetworkEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociatedTargetNetwork object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociatedTargetNetwork);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AssociatedTargetNetworkResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkId != null) {
-      result
+    final AssociatedTargetNetwork(:networkId, :networkType) = object;
+    if (networkId != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkId'))
         ..add(serializers.serialize(
-          payload.networkId!,
+          networkId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkType != null) {
-      result
+    if (networkType != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkType'))
         ..add(serializers.serialize(
-          payload.networkType!,
+          networkType,
           specifiedType: const FullType.nullable(_i2.AssociatedNetworkType),
         ));
     }
-    return result;
+    return result$;
   }
 }

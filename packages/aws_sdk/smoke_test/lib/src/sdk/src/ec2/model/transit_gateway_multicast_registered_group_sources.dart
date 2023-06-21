@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_multicast_registered_group_sources; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,42 +108,36 @@ class TransitGatewayMulticastRegisteredGroupSourcesEc2QuerySerializer
     final result = TransitGatewayMulticastRegisteredGroupSourcesBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayMulticastDomainId':
-          if (value != null) {
-            result.transitGatewayMulticastDomainId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayMulticastDomainId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'registeredNetworkInterfaceIds':
-          if (value != null) {
-            result.registeredNetworkInterfaceIds
-                .replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.registeredNetworkInterfaceIds
+              .replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'groupIpAddress':
-          if (value != null) {
-            result.groupIpAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupIpAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -152,47 +147,51 @@ class TransitGatewayMulticastRegisteredGroupSourcesEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayMulticastRegisteredGroupSources object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayMulticastRegisteredGroupSources);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'TransitGatewayMulticastRegisteredGroupSourcesResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayMulticastDomainId != null) {
-      result
+    final TransitGatewayMulticastRegisteredGroupSources(
+      :transitGatewayMulticastDomainId,
+      :registeredNetworkInterfaceIds,
+      :groupIpAddress
+    ) = object;
+    if (transitGatewayMulticastDomainId != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayMulticastDomainId'))
         ..add(serializers.serialize(
-          payload.transitGatewayMulticastDomainId!,
+          transitGatewayMulticastDomainId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.registeredNetworkInterfaceIds != null) {
-      result
+    if (registeredNetworkInterfaceIds != null) {
+      result$
         ..add(const _i3.XmlElementName('RegisteredNetworkInterfaceIds'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.registeredNetworkInterfaceIds!,
+          registeredNetworkInterfaceIds,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.groupIpAddress != null) {
-      result
+    if (groupIpAddress != null) {
+      result$
         ..add(const _i3.XmlElementName('GroupIpAddress'))
         ..add(serializers.serialize(
-          payload.groupIpAddress!,
+          groupIpAddress,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

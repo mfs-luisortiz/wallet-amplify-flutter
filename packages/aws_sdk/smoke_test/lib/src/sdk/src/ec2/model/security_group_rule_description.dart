@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.security_group_rule_description; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,26 +99,23 @@ class SecurityGroupRuleDescriptionEc2QuerySerializer
     final result = SecurityGroupRuleDescriptionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'SecurityGroupRuleId':
-          if (value != null) {
-            result.securityGroupRuleId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.securityGroupRuleId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -127,32 +125,33 @@ class SecurityGroupRuleDescriptionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SecurityGroupRuleDescription object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SecurityGroupRuleDescription);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'SecurityGroupRuleDescriptionResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.securityGroupRuleId != null) {
-      result
+    final SecurityGroupRuleDescription(:securityGroupRuleId, :description) =
+        object;
+    if (securityGroupRuleId != null) {
+      result$
         ..add(const _i2.XmlElementName('SecurityGroupRuleId'))
         ..add(serializers.serialize(
-          payload.securityGroupRuleId!,
+          securityGroupRuleId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

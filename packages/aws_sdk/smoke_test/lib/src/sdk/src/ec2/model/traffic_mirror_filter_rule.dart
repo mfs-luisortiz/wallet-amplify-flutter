@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.traffic_mirror_filter_rule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -189,94 +190,68 @@ class TrafficMirrorFilterRuleEc2QuerySerializer
     final result = TrafficMirrorFilterRuleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorFilterRuleId':
-          if (value != null) {
-            result.trafficMirrorFilterRuleId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.trafficMirrorFilterRuleId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'trafficMirrorFilterId':
-          if (value != null) {
-            result.trafficMirrorFilterId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.trafficMirrorFilterId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'trafficDirection':
-          if (value != null) {
-            result.trafficDirection = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TrafficDirection),
-            ) as _i2.TrafficDirection);
-          }
-          break;
+          result.trafficDirection = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TrafficDirection),
+          ) as _i2.TrafficDirection);
         case 'ruleNumber':
           result.ruleNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ruleAction':
-          if (value != null) {
-            result.ruleAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TrafficMirrorRuleAction),
-            ) as _i3.TrafficMirrorRuleAction);
-          }
-          break;
+          result.ruleAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TrafficMirrorRuleAction),
+          ) as _i3.TrafficMirrorRuleAction);
         case 'protocol':
           result.protocol = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'destinationPortRange':
-          if (value != null) {
-            result.destinationPortRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.TrafficMirrorPortRange),
-            ) as _i4.TrafficMirrorPortRange));
-          }
-          break;
+          result.destinationPortRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.TrafficMirrorPortRange),
+          ) as _i4.TrafficMirrorPortRange));
         case 'sourcePortRange':
-          if (value != null) {
-            result.sourcePortRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.TrafficMirrorPortRange),
-            ) as _i4.TrafficMirrorPortRange));
-          }
-          break;
+          result.sourcePortRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.TrafficMirrorPortRange),
+          ) as _i4.TrafficMirrorPortRange));
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourceCidrBlock':
-          if (value != null) {
-            result.sourceCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -286,100 +261,112 @@ class TrafficMirrorFilterRuleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TrafficMirrorFilterRule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TrafficMirrorFilterRule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TrafficMirrorFilterRuleResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorFilterRuleId != null) {
-      result
+    final TrafficMirrorFilterRule(
+      :trafficMirrorFilterRuleId,
+      :trafficMirrorFilterId,
+      :trafficDirection,
+      :ruleNumber,
+      :ruleAction,
+      :protocol,
+      :destinationPortRange,
+      :sourcePortRange,
+      :destinationCidrBlock,
+      :sourceCidrBlock,
+      :description
+    ) = object;
+    if (trafficMirrorFilterRuleId != null) {
+      result$
         ..add(const _i5.XmlElementName('TrafficMirrorFilterRuleId'))
         ..add(serializers.serialize(
-          payload.trafficMirrorFilterRuleId!,
+          trafficMirrorFilterRuleId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.trafficMirrorFilterId != null) {
-      result
+    if (trafficMirrorFilterId != null) {
+      result$
         ..add(const _i5.XmlElementName('TrafficMirrorFilterId'))
         ..add(serializers.serialize(
-          payload.trafficMirrorFilterId!,
+          trafficMirrorFilterId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.trafficDirection != null) {
-      result
+    if (trafficDirection != null) {
+      result$
         ..add(const _i5.XmlElementName('TrafficDirection'))
         ..add(serializers.serialize(
-          payload.trafficDirection!,
+          trafficDirection,
           specifiedType: const FullType.nullable(_i2.TrafficDirection),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('RuleNumber'))
       ..add(serializers.serialize(
-        payload.ruleNumber,
+        ruleNumber,
         specifiedType: const FullType(int),
       ));
-    if (payload.ruleAction != null) {
-      result
+    if (ruleAction != null) {
+      result$
         ..add(const _i5.XmlElementName('RuleAction'))
         ..add(serializers.serialize(
-          payload.ruleAction!,
+          ruleAction,
           specifiedType: const FullType.nullable(_i3.TrafficMirrorRuleAction),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('Protocol'))
       ..add(serializers.serialize(
-        payload.protocol,
+        protocol,
         specifiedType: const FullType(int),
       ));
-    if (payload.destinationPortRange != null) {
-      result
+    if (destinationPortRange != null) {
+      result$
         ..add(const _i5.XmlElementName('DestinationPortRange'))
         ..add(serializers.serialize(
-          payload.destinationPortRange!,
+          destinationPortRange,
           specifiedType: const FullType(_i4.TrafficMirrorPortRange),
         ));
     }
-    if (payload.sourcePortRange != null) {
-      result
+    if (sourcePortRange != null) {
+      result$
         ..add(const _i5.XmlElementName('SourcePortRange'))
         ..add(serializers.serialize(
-          payload.sourcePortRange!,
+          sourcePortRange,
           specifiedType: const FullType(_i4.TrafficMirrorPortRange),
         ));
     }
-    if (payload.destinationCidrBlock != null) {
-      result
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i5.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceCidrBlock != null) {
-      result
+    if (sourceCidrBlock != null) {
+      result$
         ..add(const _i5.XmlElementName('SourceCidrBlock'))
         ..add(serializers.serialize(
-          payload.sourceCidrBlock!,
+          sourceCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i5.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

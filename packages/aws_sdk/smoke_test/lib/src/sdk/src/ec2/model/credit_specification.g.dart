@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.credit_specification;
+part of 'credit_specification.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

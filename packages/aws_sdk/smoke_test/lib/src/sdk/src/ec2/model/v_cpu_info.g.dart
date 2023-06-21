@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.v_cpu_info;
+part of 'v_cpu_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

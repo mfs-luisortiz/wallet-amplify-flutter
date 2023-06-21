@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.allocate_address_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -160,71 +161,55 @@ class AllocateAddressRequestEc2QuerySerializer
     final result = AllocateAddressRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Domain':
-          if (value != null) {
-            result.domain = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DomainType),
-            ) as _i3.DomainType);
-          }
-          break;
+          result.domain = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DomainType),
+          ) as _i3.DomainType);
         case 'Address':
-          if (value != null) {
-            result.address = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.address = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'PublicIpv4Pool':
-          if (value != null) {
-            result.publicIpv4Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIpv4Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'NetworkBorderGroup':
-          if (value != null) {
-            result.networkBorderGroup = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkBorderGroup = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'CustomerOwnedIpv4Pool':
-          if (value != null) {
-            result.customerOwnedIpv4Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerOwnedIpv4Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
       }
     }
 
@@ -234,77 +219,85 @@ class AllocateAddressRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AllocateAddressRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AllocateAddressRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'AllocateAddressRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.domain != null) {
-      result
+    final AllocateAddressRequest(
+      :domain,
+      :address,
+      :publicIpv4Pool,
+      :networkBorderGroup,
+      :customerOwnedIpv4Pool,
+      :dryRun,
+      :tagSpecifications
+    ) = object;
+    if (domain != null) {
+      result$
         ..add(const _i1.XmlElementName('Domain'))
         ..add(serializers.serialize(
-          payload.domain!,
+          domain,
           specifiedType: const FullType.nullable(_i3.DomainType),
         ));
     }
-    if (payload.address != null) {
-      result
+    if (address != null) {
+      result$
         ..add(const _i1.XmlElementName('Address'))
         ..add(serializers.serialize(
-          payload.address!,
+          address,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.publicIpv4Pool != null) {
-      result
+    if (publicIpv4Pool != null) {
+      result$
         ..add(const _i1.XmlElementName('PublicIpv4Pool'))
         ..add(serializers.serialize(
-          payload.publicIpv4Pool!,
+          publicIpv4Pool,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkBorderGroup != null) {
-      result
+    if (networkBorderGroup != null) {
+      result$
         ..add(const _i1.XmlElementName('NetworkBorderGroup'))
         ..add(serializers.serialize(
-          payload.networkBorderGroup!,
+          networkBorderGroup,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.customerOwnedIpv4Pool != null) {
-      result
+    if (customerOwnedIpv4Pool != null) {
+      result$
         ..add(const _i1.XmlElementName('CustomerOwnedIpv4Pool'))
         ..add(serializers.serialize(
-          payload.customerOwnedIpv4Pool!,
+          customerOwnedIpv4Pool,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

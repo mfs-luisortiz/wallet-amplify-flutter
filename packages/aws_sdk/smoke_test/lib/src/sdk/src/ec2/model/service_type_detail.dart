@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.service_type_detail; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -72,18 +73,18 @@ class ServiceTypeDetailEc2QuerySerializer
     final result = ServiceTypeDetailBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'serviceType':
-          if (value != null) {
-            result.serviceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ServiceType),
-            ) as _i2.ServiceType);
-          }
-          break;
+          result.serviceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ServiceType),
+          ) as _i2.ServiceType);
       }
     }
 
@@ -93,24 +94,24 @@ class ServiceTypeDetailEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ServiceTypeDetail object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ServiceTypeDetail);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ServiceTypeDetailResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.serviceType != null) {
-      result
+    final ServiceTypeDetail(:serviceType) = object;
+    if (serviceType != null) {
+      result$
         ..add(const _i3.XmlElementName('ServiceType'))
         ..add(serializers.serialize(
-          payload.serviceType!,
+          serviceType,
           specifiedType: const FullType.nullable(_i2.ServiceType),
         ));
     }
-    return result;
+    return result$;
   }
 }

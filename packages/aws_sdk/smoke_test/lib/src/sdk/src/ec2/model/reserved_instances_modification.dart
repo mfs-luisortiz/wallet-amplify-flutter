@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reserved_instances_modification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -172,98 +173,72 @@ class ReservedInstancesModificationEc2QuerySerializer
     final result = ReservedInstancesModificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'createDate':
-          if (value != null) {
-            result.createDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'effectiveDate':
-          if (value != null) {
-            result.effectiveDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.effectiveDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'modificationResultSet':
-          if (value != null) {
-            result.modificationResults
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.ReservedInstancesModificationResult)],
-              ),
-            ) as _i4.BuiltList<_i2.ReservedInstancesModificationResult>));
-          }
-          break;
+          result.modificationResults.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.ReservedInstancesModificationResult)],
+            ),
+          ) as _i4.BuiltList<_i2.ReservedInstancesModificationResult>));
         case 'reservedInstancesSet':
-          if (value != null) {
-            result.reservedInstancesIds
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.ReservedInstancesId)],
-              ),
-            ) as _i4.BuiltList<_i3.ReservedInstancesId>));
-          }
-          break;
+          result.reservedInstancesIds.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.ReservedInstancesId)],
+            ),
+          ) as _i4.BuiltList<_i3.ReservedInstancesId>));
         case 'reservedInstancesModificationId':
-          if (value != null) {
-            result.reservedInstancesModificationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservedInstancesModificationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'updateDate':
-          if (value != null) {
-            result.updateDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.updateDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -273,102 +248,112 @@ class ReservedInstancesModificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservedInstancesModification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservedInstancesModification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ReservedInstancesModificationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientToken != null) {
-      result
+    final ReservedInstancesModification(
+      :clientToken,
+      :createDate,
+      :effectiveDate,
+      :modificationResults,
+      :reservedInstancesIds,
+      :reservedInstancesModificationId,
+      :status,
+      :statusMessage,
+      :updateDate
+    ) = object;
+    if (clientToken != null) {
+      result$
         ..add(const _i5.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.createDate != null) {
-      result
+    if (createDate != null) {
+      result$
         ..add(const _i5.XmlElementName('CreateDate'))
         ..add(serializers.serialize(
-          payload.createDate!,
+          createDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.effectiveDate != null) {
-      result
+    if (effectiveDate != null) {
+      result$
         ..add(const _i5.XmlElementName('EffectiveDate'))
         ..add(serializers.serialize(
-          payload.effectiveDate!,
+          effectiveDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.modificationResults != null) {
-      result
+    if (modificationResults != null) {
+      result$
         ..add(const _i5.XmlElementName('ModificationResultSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.modificationResults!,
+          modificationResults,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.ReservedInstancesModificationResult)],
           ),
         ));
     }
-    if (payload.reservedInstancesIds != null) {
-      result
+    if (reservedInstancesIds != null) {
+      result$
         ..add(const _i5.XmlElementName('ReservedInstancesSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.reservedInstancesIds!,
+          reservedInstancesIds,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.ReservedInstancesId)],
           ),
         ));
     }
-    if (payload.reservedInstancesModificationId != null) {
-      result
+    if (reservedInstancesModificationId != null) {
+      result$
         ..add(const _i5.XmlElementName('ReservedInstancesModificationId'))
         ..add(serializers.serialize(
-          payload.reservedInstancesModificationId!,
+          reservedInstancesModificationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i5.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i5.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.updateDate != null) {
-      result
+    if (updateDate != null) {
+      result$
         ..add(const _i5.XmlElementName('UpdateDate'))
         ..add(serializers.serialize(
-          payload.updateDate!,
+          updateDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

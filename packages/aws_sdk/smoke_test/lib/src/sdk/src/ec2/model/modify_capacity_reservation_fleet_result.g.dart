@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.modify_capacity_reservation_fleet_result;
+part of 'modify_capacity_reservation_fleet_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

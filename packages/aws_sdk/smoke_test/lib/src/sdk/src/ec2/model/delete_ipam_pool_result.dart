@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_ipam_pool_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -78,18 +79,18 @@ class DeleteIpamPoolResultEc2QuerySerializer
     final result = DeleteIpamPoolResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ipamPool':
-          if (value != null) {
-            result.ipamPool.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamPool),
-            ) as _i2.IpamPool));
-          }
-          break;
+          result.ipamPool.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamPool),
+          ) as _i2.IpamPool));
       }
     }
 
@@ -99,24 +100,24 @@ class DeleteIpamPoolResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteIpamPoolResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteIpamPoolResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteIpamPoolResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipamPool != null) {
-      result
+    final DeleteIpamPoolResult(:ipamPool) = object;
+    if (ipamPool != null) {
+      result$
         ..add(const _i3.XmlElementName('IpamPool'))
         ..add(serializers.serialize(
-          payload.ipamPool!,
+          ipamPool,
           specifiedType: const FullType(_i2.IpamPool),
         ));
     }
-    return result;
+    return result$;
   }
 }

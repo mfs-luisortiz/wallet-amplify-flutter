@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.report_instance_status_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -174,32 +175,28 @@ class ReportInstanceStatusRequestEc2QuerySerializer
     final result = ReportInstanceStatusRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'endTime':
-          if (value != null) {
-            result.endTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.endTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'instanceId':
           result.instances.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'InstanceId',
@@ -212,7 +209,6 @@ class ReportInstanceStatusRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i5.BuiltList<String>));
-          break;
         case 'reasonCode':
           result.reasonCodes.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -225,21 +221,16 @@ class ReportInstanceStatusRequestEc2QuerySerializer
               [FullType(_i3.ReportInstanceReasonCodes)],
             ),
           ) as _i5.BuiltList<_i3.ReportInstanceReasonCodes>));
-          break;
         case 'startTime':
-          if (value != null) {
-            result.startTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.startTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'status':
           result.status = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i4.ReportStatusType),
           ) as _i4.ReportStatusType);
-          break;
       }
     }
 
@@ -249,78 +240,86 @@ class ReportInstanceStatusRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReportInstanceStatusRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReportInstanceStatusRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ReportInstanceStatusRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final ReportInstanceStatusRequest(
+      :description,
+      :dryRun,
+      :endTime,
+      :instances,
+      :reasonCodes,
+      :startTime,
+      :status
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.endTime != null) {
-      result
+    if (endTime != null) {
+      result$
         ..add(const _i1.XmlElementName('EndTime'))
         ..add(serializers.serialize(
-          payload.endTime!,
+          endTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'InstanceId',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.instances,
+        instances,
         specifiedType: const FullType.nullable(
           _i5.BuiltList,
           [FullType(String)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ReasonCode'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.reasonCodes,
+        reasonCodes,
         specifiedType: const FullType.nullable(
           _i5.BuiltList,
           [FullType(_i3.ReportInstanceReasonCodes)],
         ),
       ));
-    if (payload.startTime != null) {
-      result
+    if (startTime != null) {
+      result$
         ..add(const _i1.XmlElementName('StartTime'))
         ..add(serializers.serialize(
-          payload.startTime!,
+          startTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Status'))
       ..add(serializers.serialize(
-        payload.status,
+        status,
         specifiedType: const FullType.nullable(_i4.ReportStatusType),
       ));
-    return result;
+    return result$;
   }
 }

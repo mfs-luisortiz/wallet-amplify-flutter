@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.federated_authentication; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,26 +90,23 @@ class FederatedAuthenticationEc2QuerySerializer
     final result = FederatedAuthenticationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'samlProviderArn':
-          if (value != null) {
-            result.samlProviderArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.samlProviderArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'selfServiceSamlProviderArn':
-          if (value != null) {
-            result.selfServiceSamlProviderArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.selfServiceSamlProviderArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -118,32 +116,35 @@ class FederatedAuthenticationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FederatedAuthentication object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FederatedAuthentication);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'FederatedAuthenticationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.samlProviderArn != null) {
-      result
+    final FederatedAuthentication(
+      :samlProviderArn,
+      :selfServiceSamlProviderArn
+    ) = object;
+    if (samlProviderArn != null) {
+      result$
         ..add(const _i2.XmlElementName('SamlProviderArn'))
         ..add(serializers.serialize(
-          payload.samlProviderArn!,
+          samlProviderArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.selfServiceSamlProviderArn != null) {
-      result
+    if (selfServiceSamlProviderArn != null) {
+      result$
         ..add(const _i2.XmlElementName('SelfServiceSamlProviderArn'))
         ..add(serializers.serialize(
-          payload.selfServiceSamlProviderArn!,
+          selfServiceSamlProviderArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

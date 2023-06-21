@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_event_window_time_range; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,38 +119,33 @@ class InstanceEventWindowTimeRangeEc2QuerySerializer
     final result = InstanceEventWindowTimeRangeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'startWeekDay':
-          if (value != null) {
-            result.startWeekDay = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.WeekDay),
-            ) as _i2.WeekDay);
-          }
-          break;
+          result.startWeekDay = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.WeekDay),
+          ) as _i2.WeekDay);
         case 'startHour':
           result.startHour = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'endWeekDay':
-          if (value != null) {
-            result.endWeekDay = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.WeekDay),
-            ) as _i2.WeekDay);
-          }
-          break;
+          result.endWeekDay = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.WeekDay),
+          ) as _i2.WeekDay);
         case 'endHour':
           result.endHour = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -159,44 +155,49 @@ class InstanceEventWindowTimeRangeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceEventWindowTimeRange object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceEventWindowTimeRange);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceEventWindowTimeRangeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.startWeekDay != null) {
-      result
+    final InstanceEventWindowTimeRange(
+      :startWeekDay,
+      :startHour,
+      :endWeekDay,
+      :endHour
+    ) = object;
+    if (startWeekDay != null) {
+      result$
         ..add(const _i3.XmlElementName('StartWeekDay'))
         ..add(serializers.serialize(
-          payload.startWeekDay!,
+          startWeekDay,
           specifiedType: const FullType.nullable(_i2.WeekDay),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('StartHour'))
       ..add(serializers.serialize(
-        payload.startHour,
+        startHour,
         specifiedType: const FullType(int),
       ));
-    if (payload.endWeekDay != null) {
-      result
+    if (endWeekDay != null) {
+      result$
         ..add(const _i3.XmlElementName('EndWeekDay'))
         ..add(serializers.serialize(
-          payload.endWeekDay!,
+          endWeekDay,
           specifiedType: const FullType.nullable(_i2.WeekDay),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('EndHour'))
       ..add(serializers.serialize(
-        payload.endHour,
+        endHour,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

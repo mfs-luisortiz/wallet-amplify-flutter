@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_spot_fleet_request_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -154,61 +155,51 @@ class ModifySpotFleetRequestRequestEc2QuerySerializer
     final result = ModifySpotFleetRequestRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'excessCapacityTerminationPolicy':
-          if (value != null) {
-            result.excessCapacityTerminationPolicy = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.ExcessCapacityTerminationPolicy),
-            ) as _i3.ExcessCapacityTerminationPolicy);
-          }
-          break;
+          result.excessCapacityTerminationPolicy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ExcessCapacityTerminationPolicy),
+          ) as _i3.ExcessCapacityTerminationPolicy);
         case 'LaunchTemplateConfig':
-          if (value != null) {
-            result.launchTemplateConfigs
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.LaunchTemplateConfig)],
-              ),
-            ) as _i5.BuiltList<_i4.LaunchTemplateConfig>));
-          }
-          break;
+          result.launchTemplateConfigs
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.LaunchTemplateConfig)],
+            ),
+          ) as _i5.BuiltList<_i4.LaunchTemplateConfig>));
         case 'spotFleetRequestId':
           result.spotFleetRequestId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'targetCapacity':
           result.targetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'OnDemandTargetCapacity':
           result.onDemandTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'Context':
-          if (value != null) {
-            result.context = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.context = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -218,66 +209,73 @@ class ModifySpotFleetRequestRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifySpotFleetRequestRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifySpotFleetRequestRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifySpotFleetRequestRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.excessCapacityTerminationPolicy != null) {
-      result
+    final ModifySpotFleetRequestRequest(
+      :excessCapacityTerminationPolicy,
+      :launchTemplateConfigs,
+      :spotFleetRequestId,
+      :targetCapacity,
+      :onDemandTargetCapacity,
+      :context
+    ) = object;
+    if (excessCapacityTerminationPolicy != null) {
+      result$
         ..add(const _i1.XmlElementName('ExcessCapacityTerminationPolicy'))
         ..add(serializers.serialize(
-          payload.excessCapacityTerminationPolicy!,
+          excessCapacityTerminationPolicy,
           specifiedType:
               const FullType.nullable(_i3.ExcessCapacityTerminationPolicy),
         ));
     }
-    if (payload.launchTemplateConfigs != null) {
-      result
+    if (launchTemplateConfigs != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchTemplateConfig'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.launchTemplateConfigs!,
+          launchTemplateConfigs,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.LaunchTemplateConfig)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SpotFleetRequestId'))
       ..add(serializers.serialize(
-        payload.spotFleetRequestId,
+        spotFleetRequestId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TargetCapacity'))
       ..add(serializers.serialize(
-        payload.targetCapacity,
+        targetCapacity,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('OnDemandTargetCapacity'))
       ..add(serializers.serialize(
-        payload.onDemandTargetCapacity,
+        onDemandTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.context != null) {
-      result
+    if (context != null) {
+      result$
         ..add(const _i1.XmlElementName('Context'))
         ..add(serializers.serialize(
-          payload.context!,
+          context,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

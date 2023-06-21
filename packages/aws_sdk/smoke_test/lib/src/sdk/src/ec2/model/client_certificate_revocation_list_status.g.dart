@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.client_certificate_revocation_list_status;
+part of 'client_certificate_revocation_list_status.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

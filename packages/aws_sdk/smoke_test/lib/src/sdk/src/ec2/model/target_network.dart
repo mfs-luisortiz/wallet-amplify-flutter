@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.target_network; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,65 +132,50 @@ class TargetNetworkEc2QuerySerializer
     final result = TargetNetworkBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'targetNetworkId':
-          if (value != null) {
-            result.targetNetworkId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.targetNetworkId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'clientVpnEndpointId':
-          if (value != null) {
-            result.clientVpnEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientVpnEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AssociationStatus),
-            ) as _i2.AssociationStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AssociationStatus),
+          ) as _i2.AssociationStatus));
         case 'securityGroups':
-          if (value != null) {
-            result.securityGroups.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i3.BuiltList<String>));
-          }
-          break;
+          result.securityGroups.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i3.BuiltList<String>));
       }
     }
 
@@ -199,71 +185,78 @@ class TargetNetworkEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TargetNetwork object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TargetNetwork);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'TargetNetworkResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationId != null) {
-      result
+    final TargetNetwork(
+      :associationId,
+      :vpcId,
+      :targetNetworkId,
+      :clientVpnEndpointId,
+      :status,
+      :securityGroups
+    ) = object;
+    if (associationId != null) {
+      result$
         ..add(const _i4.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i4.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.targetNetworkId != null) {
-      result
+    if (targetNetworkId != null) {
+      result$
         ..add(const _i4.XmlElementName('TargetNetworkId'))
         ..add(serializers.serialize(
-          payload.targetNetworkId!,
+          targetNetworkId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.clientVpnEndpointId != null) {
-      result
+    if (clientVpnEndpointId != null) {
+      result$
         ..add(const _i4.XmlElementName('ClientVpnEndpointId'))
         ..add(serializers.serialize(
-          payload.clientVpnEndpointId!,
+          clientVpnEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i4.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.AssociationStatus),
         ));
     }
-    if (payload.securityGroups != null) {
-      result
+    if (securityGroups != null) {
+      result$
         ..add(const _i4.XmlElementName('SecurityGroups'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroups!,
+          securityGroups,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

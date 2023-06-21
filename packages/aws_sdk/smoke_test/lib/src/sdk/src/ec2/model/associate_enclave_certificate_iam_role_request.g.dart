@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associate_enclave_certificate_iam_role_request;
+part of 'associate_enclave_certificate_iam_role_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

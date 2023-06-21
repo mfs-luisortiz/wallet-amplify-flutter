@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.accelerator_count;
+part of 'accelerator_count.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

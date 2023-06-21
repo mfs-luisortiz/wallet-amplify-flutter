@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.event_information; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -148,34 +149,28 @@ class EventInformationEc2QuerySerializer
     final result = EventInformationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'eventDescription':
-          if (value != null) {
-            result.eventDescription = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventDescription = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'eventSubType':
-          if (value != null) {
-            result.eventSubType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.eventSubType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -185,40 +180,41 @@ class EventInformationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EventInformation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EventInformation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'EventInformationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.eventDescription != null) {
-      result
+    final EventInformation(:eventDescription, :eventSubType, :instanceId) =
+        object;
+    if (eventDescription != null) {
+      result$
         ..add(const _i2.XmlElementName('EventDescription'))
         ..add(serializers.serialize(
-          payload.eventDescription!,
+          eventDescription,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.eventSubType != null) {
-      result
+    if (eventSubType != null) {
+      result$
         ..add(const _i2.XmlElementName('EventSubType'))
         ..add(serializers.serialize(
-          payload.eventSubType!,
+          eventSubType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_transit_gateway_prefix_list_reference_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -87,20 +88,20 @@ class CreateTransitGatewayPrefixListReferenceResultEc2QuerySerializer
     final result = CreateTransitGatewayPrefixListReferenceResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayPrefixListReference':
-          if (value != null) {
-            result.transitGatewayPrefixListReference
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayPrefixListReference),
-            ) as _i2.TransitGatewayPrefixListReference));
-          }
-          break;
+          result.transitGatewayPrefixListReference
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayPrefixListReference),
+          ) as _i2.TransitGatewayPrefixListReference));
       }
     }
 
@@ -110,24 +111,26 @@ class CreateTransitGatewayPrefixListReferenceResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTransitGatewayPrefixListReferenceResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTransitGatewayPrefixListReferenceResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateTransitGatewayPrefixListReferenceResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayPrefixListReference != null) {
-      result
+    final CreateTransitGatewayPrefixListReferenceResult(
+      :transitGatewayPrefixListReference
+    ) = object;
+    if (transitGatewayPrefixListReference != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayPrefixListReference'))
         ..add(serializers.serialize(
-          payload.transitGatewayPrefixListReference!,
+          transitGatewayPrefixListReference,
           specifiedType: const FullType(_i2.TransitGatewayPrefixListReference),
         ));
     }
-    return result;
+    return result$;
   }
 }

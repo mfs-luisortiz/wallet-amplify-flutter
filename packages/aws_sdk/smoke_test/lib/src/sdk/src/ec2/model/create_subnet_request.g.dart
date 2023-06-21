@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.create_subnet_request;
+part of 'create_subnet_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

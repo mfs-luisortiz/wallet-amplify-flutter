@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_capacity_reservation_specification_response; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -105,27 +106,24 @@ class LaunchTemplateCapacityReservationSpecificationResponseEc2QuerySerializer
         LaunchTemplateCapacityReservationSpecificationResponseBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'capacityReservationPreference':
-          if (value != null) {
-            result.capacityReservationPreference = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CapacityReservationPreference),
-            ) as _i2.CapacityReservationPreference);
-          }
-          break;
+          result.capacityReservationPreference = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CapacityReservationPreference),
+          ) as _i2.CapacityReservationPreference);
         case 'capacityReservationTarget':
-          if (value != null) {
-            result.capacityReservationTarget.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.CapacityReservationTargetResponse),
-            ) as _i3.CapacityReservationTargetResponse));
-          }
-          break;
+          result.capacityReservationTarget.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.CapacityReservationTargetResponse),
+          ) as _i3.CapacityReservationTargetResponse));
       }
     }
 
@@ -135,34 +133,36 @@ class LaunchTemplateCapacityReservationSpecificationResponseEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplateCapacityReservationSpecificationResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as LaunchTemplateCapacityReservationSpecificationResponse);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LaunchTemplateCapacityReservationSpecificationResponseResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.capacityReservationPreference != null) {
-      result
+    final LaunchTemplateCapacityReservationSpecificationResponse(
+      :capacityReservationPreference,
+      :capacityReservationTarget
+    ) = object;
+    if (capacityReservationPreference != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationPreference'))
         ..add(serializers.serialize(
-          payload.capacityReservationPreference!,
+          capacityReservationPreference,
           specifiedType:
               const FullType.nullable(_i2.CapacityReservationPreference),
         ));
     }
-    if (payload.capacityReservationTarget != null) {
-      result
+    if (capacityReservationTarget != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationTarget'))
         ..add(serializers.serialize(
-          payload.capacityReservationTarget!,
+          capacityReservationTarget,
           specifiedType: const FullType(_i3.CapacityReservationTargetResponse),
         ));
     }
-    return result;
+    return result$;
   }
 }

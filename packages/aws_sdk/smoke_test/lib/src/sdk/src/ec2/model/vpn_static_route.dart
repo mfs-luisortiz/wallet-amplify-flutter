@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpn_static_route; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,34 +101,28 @@ class VpnStaticRouteEc2QuerySerializer
     final result = VpnStaticRouteBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'source':
-          if (value != null) {
-            result.source = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpnStaticRouteSource),
-            ) as _i2.VpnStaticRouteSource);
-          }
-          break;
+          result.source = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpnStaticRouteSource),
+          ) as _i2.VpnStaticRouteSource);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.VpnState),
-            ) as _i3.VpnState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VpnState),
+          ) as _i3.VpnState);
       }
     }
 
@@ -137,40 +132,40 @@ class VpnStaticRouteEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpnStaticRoute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpnStaticRoute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'VpnStaticRouteResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidrBlock != null) {
-      result
+    final VpnStaticRoute(:destinationCidrBlock, :source, :state) = object;
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i4.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.source != null) {
-      result
+    if (source != null) {
+      result$
         ..add(const _i4.XmlElementName('Source'))
         ..add(serializers.serialize(
-          payload.source!,
+          source,
           specifiedType: const FullType.nullable(_i2.VpnStaticRouteSource),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i4.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i3.VpnState),
         ));
     }
-    return result;
+    return result$;
   }
 }

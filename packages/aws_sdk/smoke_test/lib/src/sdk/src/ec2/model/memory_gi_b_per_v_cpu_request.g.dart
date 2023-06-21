@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.memory_gi_b_per_v_cpu_request;
+part of 'memory_gi_b_per_v_cpu_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

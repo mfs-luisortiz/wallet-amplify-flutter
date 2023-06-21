@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.connection_notification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -145,73 +146,55 @@ class ConnectionNotificationEc2QuerySerializer
     final result = ConnectionNotificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'connectionNotificationId':
-          if (value != null) {
-            result.connectionNotificationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.connectionNotificationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'serviceId':
-          if (value != null) {
-            result.serviceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.serviceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcEndpointId':
-          if (value != null) {
-            result.vpcEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'connectionNotificationType':
-          if (value != null) {
-            result.connectionNotificationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ConnectionNotificationType),
-            ) as _i2.ConnectionNotificationType);
-          }
-          break;
+          result.connectionNotificationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ConnectionNotificationType),
+          ) as _i2.ConnectionNotificationType);
         case 'connectionNotificationArn':
-          if (value != null) {
-            result.connectionNotificationArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.connectionNotificationArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'connectionEvents':
-          if (value != null) {
-            result.connectionEvents.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i4.BuiltList<String>));
-          }
-          break;
+          result.connectionEvents.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i4.BuiltList<String>));
         case 'connectionNotificationState':
-          if (value != null) {
-            result.connectionNotificationState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ConnectionNotificationState),
-            ) as _i3.ConnectionNotificationState);
-          }
-          break;
+          result.connectionNotificationState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ConnectionNotificationState),
+          ) as _i3.ConnectionNotificationState);
       }
     }
 
@@ -221,81 +204,89 @@ class ConnectionNotificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ConnectionNotification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ConnectionNotification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ConnectionNotificationResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.connectionNotificationId != null) {
-      result
+    final ConnectionNotification(
+      :connectionNotificationId,
+      :serviceId,
+      :vpcEndpointId,
+      :connectionNotificationType,
+      :connectionNotificationArn,
+      :connectionEvents,
+      :connectionNotificationState
+    ) = object;
+    if (connectionNotificationId != null) {
+      result$
         ..add(const _i5.XmlElementName('ConnectionNotificationId'))
         ..add(serializers.serialize(
-          payload.connectionNotificationId!,
+          connectionNotificationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.serviceId != null) {
-      result
+    if (serviceId != null) {
+      result$
         ..add(const _i5.XmlElementName('ServiceId'))
         ..add(serializers.serialize(
-          payload.serviceId!,
+          serviceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcEndpointId != null) {
-      result
+    if (vpcEndpointId != null) {
+      result$
         ..add(const _i5.XmlElementName('VpcEndpointId'))
         ..add(serializers.serialize(
-          payload.vpcEndpointId!,
+          vpcEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.connectionNotificationType != null) {
-      result
+    if (connectionNotificationType != null) {
+      result$
         ..add(const _i5.XmlElementName('ConnectionNotificationType'))
         ..add(serializers.serialize(
-          payload.connectionNotificationType!,
+          connectionNotificationType,
           specifiedType:
               const FullType.nullable(_i2.ConnectionNotificationType),
         ));
     }
-    if (payload.connectionNotificationArn != null) {
-      result
+    if (connectionNotificationArn != null) {
+      result$
         ..add(const _i5.XmlElementName('ConnectionNotificationArn'))
         ..add(serializers.serialize(
-          payload.connectionNotificationArn!,
+          connectionNotificationArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.connectionEvents != null) {
-      result
+    if (connectionEvents != null) {
+      result$
         ..add(const _i5.XmlElementName('ConnectionEvents'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.connectionEvents!,
+          connectionEvents,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.connectionNotificationState != null) {
-      result
+    if (connectionNotificationState != null) {
+      result$
         ..add(const _i5.XmlElementName('ConnectionNotificationState'))
         ..add(serializers.serialize(
-          payload.connectionNotificationState!,
+          connectionNotificationState,
           specifiedType:
               const FullType.nullable(_i3.ConnectionNotificationState),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_market_options; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,48 +131,38 @@ class SpotMarketOptionsEc2QuerySerializer
     final result = SpotMarketOptionsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'MaxPrice':
-          if (value != null) {
-            result.maxPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.maxPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SpotInstanceType':
-          if (value != null) {
-            result.spotInstanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SpotInstanceType),
-            ) as _i2.SpotInstanceType);
-          }
-          break;
+          result.spotInstanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SpotInstanceType),
+          ) as _i2.SpotInstanceType);
         case 'BlockDurationMinutes':
           result.blockDurationMinutes = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ValidUntil':
-          if (value != null) {
-            result.validUntil = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.validUntil = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'InstanceInterruptionBehavior':
-          if (value != null) {
-            result.instanceInterruptionBehavior = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceInterruptionBehavior),
-            ) as _i3.InstanceInterruptionBehavior);
-          }
-          break;
+          result.instanceInterruptionBehavior = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceInterruptionBehavior),
+          ) as _i3.InstanceInterruptionBehavior);
       }
     }
 
@@ -181,55 +172,61 @@ class SpotMarketOptionsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotMarketOptions object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotMarketOptions);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'SpotMarketOptionsResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.maxPrice != null) {
-      result
+    final SpotMarketOptions(
+      :maxPrice,
+      :spotInstanceType,
+      :blockDurationMinutes,
+      :validUntil,
+      :instanceInterruptionBehavior
+    ) = object;
+    if (maxPrice != null) {
+      result$
         ..add(const _i4.XmlElementName('MaxPrice'))
         ..add(serializers.serialize(
-          payload.maxPrice!,
+          maxPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spotInstanceType != null) {
-      result
+    if (spotInstanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('SpotInstanceType'))
         ..add(serializers.serialize(
-          payload.spotInstanceType!,
+          spotInstanceType,
           specifiedType: const FullType.nullable(_i2.SpotInstanceType),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('BlockDurationMinutes'))
       ..add(serializers.serialize(
-        payload.blockDurationMinutes,
+        blockDurationMinutes,
         specifiedType: const FullType(int),
       ));
-    if (payload.validUntil != null) {
-      result
+    if (validUntil != null) {
+      result$
         ..add(const _i4.XmlElementName('ValidUntil'))
         ..add(serializers.serialize(
-          payload.validUntil!,
+          validUntil,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.instanceInterruptionBehavior != null) {
-      result
+    if (instanceInterruptionBehavior != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceInterruptionBehavior'))
         ..add(serializers.serialize(
-          payload.instanceInterruptionBehavior!,
+          instanceInterruptionBehavior,
           specifiedType:
               const FullType.nullable(_i3.InstanceInterruptionBehavior),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.allocate_hosts_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -183,85 +184,65 @@ class AllocateHostsRequestEc2QuerySerializer
     final result = AllocateHostsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'autoPlacement':
-          if (value != null) {
-            result.autoPlacement = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AutoPlacement),
-            ) as _i3.AutoPlacement);
-          }
-          break;
+          result.autoPlacement = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AutoPlacement),
+          ) as _i3.AutoPlacement);
         case 'availabilityZone':
           result.availabilityZone = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'InstanceFamily':
-          if (value != null) {
-            result.instanceFamily = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceFamily = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'quantity':
           result.quantity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i6.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i6.BuiltList<_i4.TagSpecification>));
         case 'HostRecovery':
-          if (value != null) {
-            result.hostRecovery = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.HostRecovery),
-            ) as _i5.HostRecovery);
-          }
-          break;
+          result.hostRecovery = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.HostRecovery),
+          ) as _i5.HostRecovery);
         case 'OutpostArn':
-          if (value != null) {
-            result.outpostArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.outpostArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -271,91 +252,101 @@ class AllocateHostsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AllocateHostsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AllocateHostsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'AllocateHostsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.autoPlacement != null) {
-      result
+    final AllocateHostsRequest(
+      :autoPlacement,
+      :availabilityZone,
+      :clientToken,
+      :instanceType,
+      :instanceFamily,
+      :quantity,
+      :tagSpecifications,
+      :hostRecovery,
+      :outpostArn
+    ) = object;
+    if (autoPlacement != null) {
+      result$
         ..add(const _i1.XmlElementName('AutoPlacement'))
         ..add(serializers.serialize(
-          payload.autoPlacement!,
+          autoPlacement,
           specifiedType: const FullType.nullable(_i3.AutoPlacement),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('AvailabilityZone'))
       ..add(serializers.serialize(
-        payload.availabilityZone,
+        availabilityZone,
         specifiedType: const FullType(String),
       ));
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceFamily != null) {
-      result
+    if (instanceFamily != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceFamily'))
         ..add(serializers.serialize(
-          payload.instanceFamily!,
+          instanceFamily,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Quantity'))
       ..add(serializers.serialize(
-        payload.quantity,
+        quantity,
         specifiedType: const FullType(int),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    if (payload.hostRecovery != null) {
-      result
+    if (hostRecovery != null) {
+      result$
         ..add(const _i1.XmlElementName('HostRecovery'))
         ..add(serializers.serialize(
-          payload.hostRecovery!,
+          hostRecovery,
           specifiedType: const FullType.nullable(_i5.HostRecovery),
         ));
     }
-    if (payload.outpostArn != null) {
-      result
+    if (outpostArn != null) {
+      result$
         ..add(const _i1.XmlElementName('OutpostArn'))
         ..add(serializers.serialize(
-          payload.outpostArn!,
+          outpostArn,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

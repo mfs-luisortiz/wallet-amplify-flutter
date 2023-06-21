@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.path_statement; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,26 +92,23 @@ class PathStatementEc2QuerySerializer
     final result = PathStatementBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'packetHeaderStatement':
-          if (value != null) {
-            result.packetHeaderStatement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PacketHeaderStatement),
-            ) as _i2.PacketHeaderStatement));
-          }
-          break;
+          result.packetHeaderStatement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PacketHeaderStatement),
+          ) as _i2.PacketHeaderStatement));
         case 'resourceStatement':
-          if (value != null) {
-            result.resourceStatement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ResourceStatement),
-            ) as _i3.ResourceStatement));
-          }
-          break;
+          result.resourceStatement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ResourceStatement),
+          ) as _i3.ResourceStatement));
       }
     }
 
@@ -120,32 +118,32 @@ class PathStatementEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PathStatement object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PathStatement);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'PathStatementResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.packetHeaderStatement != null) {
-      result
+    final PathStatement(:packetHeaderStatement, :resourceStatement) = object;
+    if (packetHeaderStatement != null) {
+      result$
         ..add(const _i4.XmlElementName('PacketHeaderStatement'))
         ..add(serializers.serialize(
-          payload.packetHeaderStatement!,
+          packetHeaderStatement,
           specifiedType: const FullType(_i2.PacketHeaderStatement),
         ));
     }
-    if (payload.resourceStatement != null) {
-      result
+    if (resourceStatement != null) {
+      result$
         ..add(const _i4.XmlElementName('ResourceStatement'))
         ..add(serializers.serialize(
-          payload.resourceStatement!,
+          resourceStatement,
           specifiedType: const FullType(_i3.ResourceStatement),
         ));
     }
-    return result;
+    return result$;
   }
 }

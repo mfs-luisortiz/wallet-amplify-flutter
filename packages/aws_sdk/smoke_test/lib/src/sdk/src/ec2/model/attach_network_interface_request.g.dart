@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.attach_network_interface_request;
+part of 'attach_network_interface_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

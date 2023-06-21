@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_price; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -128,50 +129,38 @@ class SpotPriceEc2QuerySerializer
     final result = SpotPriceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'productDescription':
-          if (value != null) {
-            result.productDescription = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.RiProductDescription),
-            ) as _i3.RiProductDescription);
-          }
-          break;
+          result.productDescription = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.RiProductDescription),
+          ) as _i3.RiProductDescription);
         case 'spotPrice':
-          if (value != null) {
-            result.spotPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'timestamp':
-          if (value != null) {
-            result.timestamp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.timestamp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -181,56 +170,62 @@ class SpotPriceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotPrice object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotPrice);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'SpotPriceResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final SpotPrice(
+      :availabilityZone,
+      :instanceType,
+      :productDescription,
+      :spotPrice,
+      :timestamp
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.productDescription != null) {
-      result
+    if (productDescription != null) {
+      result$
         ..add(const _i4.XmlElementName('ProductDescription'))
         ..add(serializers.serialize(
-          payload.productDescription!,
+          productDescription,
           specifiedType: const FullType.nullable(_i3.RiProductDescription),
         ));
     }
-    if (payload.spotPrice != null) {
-      result
+    if (spotPrice != null) {
+      result$
         ..add(const _i4.XmlElementName('SpotPrice'))
         ..add(serializers.serialize(
-          payload.spotPrice!,
+          spotPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.timestamp != null) {
-      result
+    if (timestamp != null) {
+      result$
         ..add(const _i4.XmlElementName('Timestamp'))
         ..add(serializers.serialize(
-          payload.timestamp!,
+          timestamp,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

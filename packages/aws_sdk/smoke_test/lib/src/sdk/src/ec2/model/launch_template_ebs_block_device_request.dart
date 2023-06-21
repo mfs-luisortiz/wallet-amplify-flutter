@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_ebs_block_device_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -188,64 +189,53 @@ class LaunchTemplateEbsBlockDeviceRequestEc2QuerySerializer extends _i3
     final result = LaunchTemplateEbsBlockDeviceRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'DeleteOnTermination':
           result.deleteOnTermination = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Iops':
           result.iops = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'KmsKeyId':
-          if (value != null) {
-            result.kmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SnapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'VolumeSize':
           result.volumeSize = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'VolumeType':
-          if (value != null) {
-            result.volumeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VolumeType),
-            ) as _i2.VolumeType);
-          }
-          break;
+          result.volumeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VolumeType),
+          ) as _i2.VolumeType);
         case 'Throughput':
           result.throughput = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -255,70 +245,79 @@ class LaunchTemplateEbsBlockDeviceRequestEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplateEbsBlockDeviceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplateEbsBlockDeviceRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'LaunchTemplateEbsBlockDeviceRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final LaunchTemplateEbsBlockDeviceRequest(
+      :encrypted,
+      :deleteOnTermination,
+      :iops,
+      :kmsKeyId,
+      :snapshotId,
+      :volumeSize,
+      :volumeType,
+      :throughput
+    ) = object;
+    result$
       ..add(const _i3.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('DeleteOnTermination'))
       ..add(serializers.serialize(
-        payload.deleteOnTermination,
+        deleteOnTermination,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('Iops'))
       ..add(serializers.serialize(
-        payload.iops,
+        iops,
         specifiedType: const FullType(int),
       ));
-    if (payload.kmsKeyId != null) {
-      result
+    if (kmsKeyId != null) {
+      result$
         ..add(const _i3.XmlElementName('KmsKeyId'))
         ..add(serializers.serialize(
-          payload.kmsKeyId!,
+          kmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.snapshotId != null) {
-      result
+    if (snapshotId != null) {
+      result$
         ..add(const _i3.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('VolumeSize'))
       ..add(serializers.serialize(
-        payload.volumeSize,
+        volumeSize,
         specifiedType: const FullType(int),
       ));
-    if (payload.volumeType != null) {
-      result
+    if (volumeType != null) {
+      result$
         ..add(const _i3.XmlElementName('VolumeType'))
         ..add(serializers.serialize(
-          payload.volumeType!,
+          volumeType,
           specifiedType: const FullType.nullable(_i2.VolumeType),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Throughput'))
       ..add(serializers.serialize(
-        payload.throughput,
+        throughput,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

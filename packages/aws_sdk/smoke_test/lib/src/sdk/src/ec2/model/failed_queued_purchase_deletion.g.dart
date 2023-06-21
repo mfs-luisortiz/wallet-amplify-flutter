@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.failed_queued_purchase_deletion;
+part of 'failed_queued_purchase_deletion.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

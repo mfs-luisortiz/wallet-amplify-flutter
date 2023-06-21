@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.moving_address_status;
+part of 'moving_address_status.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

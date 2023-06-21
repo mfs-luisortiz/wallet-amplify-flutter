@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpn_tunnel_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -124,35 +125,34 @@ class ModifyVpnTunnelOptionsRequestEc2QuerySerializer
     final result = ModifyVpnTunnelOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'VpnConnectionId':
           result.vpnConnectionId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'VpnTunnelOutsideIpAddress':
           result.vpnTunnelOutsideIpAddress = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TunnelOptions':
           result.tunnelOptions.replace((serializers.deserialize(
             value,
             specifiedType:
                 const FullType(_i3.ModifyVpnTunnelOptionsSpecification),
           ) as _i3.ModifyVpnTunnelOptionsSpecification));
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -162,40 +162,45 @@ class ModifyVpnTunnelOptionsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpnTunnelOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpnTunnelOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyVpnTunnelOptionsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyVpnTunnelOptionsRequest(
+      :vpnConnectionId,
+      :vpnTunnelOutsideIpAddress,
+      :tunnelOptions,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('VpnConnectionId'))
       ..add(serializers.serialize(
-        payload.vpnConnectionId,
+        vpnConnectionId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VpnTunnelOutsideIpAddress'))
       ..add(serializers.serialize(
-        payload.vpnTunnelOutsideIpAddress,
+        vpnTunnelOutsideIpAddress,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('TunnelOptions'))
       ..add(serializers.serialize(
-        payload.tunnelOptions,
+        tunnelOptions,
         specifiedType: const FullType(_i3.ModifyVpnTunnelOptionsSpecification),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cancel_import_task_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,32 +111,28 @@ class CancelImportTaskRequestEc2QuerySerializer
     final result = CancelImportTaskRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'CancelReason':
-          if (value != null) {
-            result.cancelReason = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cancelReason = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ImportTaskId':
-          if (value != null) {
-            result.importTaskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.importTaskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -145,38 +142,39 @@ class CancelImportTaskRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CancelImportTaskRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CancelImportTaskRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CancelImportTaskRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cancelReason != null) {
-      result
+    final CancelImportTaskRequest(:cancelReason, :dryRun, :importTaskId) =
+        object;
+    if (cancelReason != null) {
+      result$
         ..add(const _i1.XmlElementName('CancelReason'))
         ..add(serializers.serialize(
-          payload.cancelReason!,
+          cancelReason,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.importTaskId != null) {
-      result
+    if (importTaskId != null) {
+      result$
         ..add(const _i1.XmlElementName('ImportTaskId'))
         ..add(serializers.serialize(
-          payload.importTaskId!,
+          importTaskId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

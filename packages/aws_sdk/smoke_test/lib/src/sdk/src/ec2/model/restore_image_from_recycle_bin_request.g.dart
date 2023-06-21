@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.restore_image_from_recycle_bin_request;
+part of 'restore_image_from_recycle_bin_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.scheduled_instances_launch_specification;
+part of 'scheduled_instances_launch_specification.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

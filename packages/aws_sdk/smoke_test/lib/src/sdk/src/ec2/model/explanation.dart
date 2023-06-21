@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.explanation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -607,463 +608,318 @@ class ExplanationEc2QuerySerializer
     final result = ExplanationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'acl':
-          if (value != null) {
-            result.acl.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.acl.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'aclRule':
-          if (value != null) {
-            result.aclRule.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AnalysisAclRule),
-            ) as _i3.AnalysisAclRule));
-          }
-          break;
+          result.aclRule.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AnalysisAclRule),
+          ) as _i3.AnalysisAclRule));
         case 'address':
-          if (value != null) {
-            result.address = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.address = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'addressSet':
-          if (value != null) {
-            result.addresses.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.addresses.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'attachedTo':
-          if (value != null) {
-            result.attachedTo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.attachedTo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'availabilityZoneSet':
-          if (value != null) {
-            result.availabilityZones.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.availabilityZones.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'cidrSet':
-          if (value != null) {
-            result.cidrs.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.cidrs.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'component':
-          if (value != null) {
-            result.component.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.component.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'customerGateway':
-          if (value != null) {
-            result.customerGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.customerGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'destination':
-          if (value != null) {
-            result.destination.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.destination.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'destinationVpc':
-          if (value != null) {
-            result.destinationVpc.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.destinationVpc.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'direction':
-          if (value != null) {
-            result.direction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.direction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'explanationCode':
-          if (value != null) {
-            result.explanationCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.explanationCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ingressRouteTable':
-          if (value != null) {
-            result.ingressRouteTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.ingressRouteTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'internetGateway':
-          if (value != null) {
-            result.internetGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.internetGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'loadBalancerArn':
-          if (value != null) {
-            result.loadBalancerArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.loadBalancerArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'classicLoadBalancerListener':
-          if (value != null) {
-            result.classicLoadBalancerListener.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.AnalysisLoadBalancerListener),
-            ) as _i4.AnalysisLoadBalancerListener));
-          }
-          break;
+          result.classicLoadBalancerListener.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.AnalysisLoadBalancerListener),
+          ) as _i4.AnalysisLoadBalancerListener));
         case 'loadBalancerListenerPort':
           result.loadBalancerListenerPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'loadBalancerTarget':
-          if (value != null) {
-            result.loadBalancerTarget.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.AnalysisLoadBalancerTarget),
-            ) as _i5.AnalysisLoadBalancerTarget));
-          }
-          break;
+          result.loadBalancerTarget.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.AnalysisLoadBalancerTarget),
+          ) as _i5.AnalysisLoadBalancerTarget));
         case 'loadBalancerTargetGroup':
-          if (value != null) {
-            result.loadBalancerTargetGroup.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.loadBalancerTargetGroup.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'loadBalancerTargetGroupSet':
-          if (value != null) {
-            result.loadBalancerTargetGroups
-                .replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i2.AnalysisComponent)],
-              ),
-            ) as _i10.BuiltList<_i2.AnalysisComponent>));
-          }
-          break;
+          result.loadBalancerTargetGroups
+              .replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i2.AnalysisComponent)],
+            ),
+          ) as _i10.BuiltList<_i2.AnalysisComponent>));
         case 'loadBalancerTargetPort':
           result.loadBalancerTargetPort = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'elasticLoadBalancerListener':
-          if (value != null) {
-            result.elasticLoadBalancerListener.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.elasticLoadBalancerListener.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'missingComponent':
-          if (value != null) {
-            result.missingComponent = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.missingComponent = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'natGateway':
-          if (value != null) {
-            result.natGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.natGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'networkInterface':
-          if (value != null) {
-            result.networkInterface.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.networkInterface.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'packetField':
-          if (value != null) {
-            result.packetField = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.packetField = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcPeeringConnection':
-          if (value != null) {
-            result.vpcPeeringConnection.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.vpcPeeringConnection.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'port':
           result.port = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'portRangeSet':
-          if (value != null) {
-            result.portRanges.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i6.PortRange)],
-              ),
-            ) as _i10.BuiltList<_i6.PortRange>));
-          }
-          break;
+          result.portRanges.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i6.PortRange)],
+            ),
+          ) as _i10.BuiltList<_i6.PortRange>));
         case 'prefixList':
-          if (value != null) {
-            result.prefixList.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.prefixList.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'protocolSet':
-          if (value != null) {
-            result.protocols.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i10.BuiltList<String>));
-          }
-          break;
+          result.protocols.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i10.BuiltList<String>));
         case 'routeTableRoute':
-          if (value != null) {
-            result.routeTableRoute.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.AnalysisRouteTableRoute),
-            ) as _i7.AnalysisRouteTableRoute));
-          }
-          break;
+          result.routeTableRoute.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.AnalysisRouteTableRoute),
+          ) as _i7.AnalysisRouteTableRoute));
         case 'routeTable':
-          if (value != null) {
-            result.routeTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.routeTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'securityGroup':
-          if (value != null) {
-            result.securityGroup.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.securityGroup.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'securityGroupRule':
-          if (value != null) {
-            result.securityGroupRule.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.AnalysisSecurityGroupRule),
-            ) as _i8.AnalysisSecurityGroupRule));
-          }
-          break;
+          result.securityGroupRule.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.AnalysisSecurityGroupRule),
+          ) as _i8.AnalysisSecurityGroupRule));
         case 'securityGroupSet':
-          if (value != null) {
-            result.securityGroups.replace((const _i11.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i11.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i10.BuiltList,
-                [FullType(_i2.AnalysisComponent)],
-              ),
-            ) as _i10.BuiltList<_i2.AnalysisComponent>));
-          }
-          break;
+          result.securityGroups.replace((const _i11.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i11.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i10.BuiltList,
+              [FullType(_i2.AnalysisComponent)],
+            ),
+          ) as _i10.BuiltList<_i2.AnalysisComponent>));
         case 'sourceVpc':
-          if (value != null) {
-            result.sourceVpc.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.sourceVpc.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnet':
-          if (value != null) {
-            result.subnet.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.subnet.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'subnetRouteTable':
-          if (value != null) {
-            result.subnetRouteTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.subnetRouteTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'vpc':
-          if (value != null) {
-            result.vpc.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.vpc.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'vpcEndpoint':
-          if (value != null) {
-            result.vpcEndpoint.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.vpcEndpoint.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'vpnConnection':
-          if (value != null) {
-            result.vpnConnection.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.vpnConnection.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'vpnGateway':
-          if (value != null) {
-            result.vpnGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.vpnGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'transitGateway':
-          if (value != null) {
-            result.transitGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.transitGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'transitGatewayRouteTable':
-          if (value != null) {
-            result.transitGatewayRouteTable.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.transitGatewayRouteTable.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'transitGatewayRouteTableRoute':
-          if (value != null) {
-            result.transitGatewayRouteTableRoute
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.TransitGatewayRouteTableRoute),
-            ) as _i9.TransitGatewayRouteTableRoute));
-          }
-          break;
+          result.transitGatewayRouteTableRoute.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.TransitGatewayRouteTableRoute),
+          ) as _i9.TransitGatewayRouteTableRoute));
         case 'transitGatewayAttachment':
-          if (value != null) {
-            result.transitGatewayAttachment.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisComponent),
-            ) as _i2.AnalysisComponent));
-          }
-          break;
+          result.transitGatewayAttachment.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisComponent),
+          ) as _i2.AnalysisComponent));
         case 'componentAccount':
-          if (value != null) {
-            result.componentAccount = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.componentAccount = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'componentRegion':
-          if (value != null) {
-            result.componentRegion = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.componentRegion = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -1073,467 +929,519 @@ class ExplanationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Explanation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Explanation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i11.XmlElementName(
         'ExplanationResponse',
         _i11.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.acl != null) {
-      result
+    final Explanation(
+      :acl,
+      :aclRule,
+      :address,
+      :addresses,
+      :attachedTo,
+      :availabilityZones,
+      :cidrs,
+      :component,
+      :customerGateway,
+      :destination,
+      :destinationVpc,
+      :direction,
+      :explanationCode,
+      :ingressRouteTable,
+      :internetGateway,
+      :loadBalancerArn,
+      :classicLoadBalancerListener,
+      :loadBalancerListenerPort,
+      :loadBalancerTarget,
+      :loadBalancerTargetGroup,
+      :loadBalancerTargetGroups,
+      :loadBalancerTargetPort,
+      :elasticLoadBalancerListener,
+      :missingComponent,
+      :natGateway,
+      :networkInterface,
+      :packetField,
+      :vpcPeeringConnection,
+      :port,
+      :portRanges,
+      :prefixList,
+      :protocols,
+      :routeTableRoute,
+      :routeTable,
+      :securityGroup,
+      :securityGroupRule,
+      :securityGroups,
+      :sourceVpc,
+      :state,
+      :subnet,
+      :subnetRouteTable,
+      :vpc,
+      :vpcEndpoint,
+      :vpnConnection,
+      :vpnGateway,
+      :transitGateway,
+      :transitGatewayRouteTable,
+      :transitGatewayRouteTableRoute,
+      :transitGatewayAttachment,
+      :componentAccount,
+      :componentRegion
+    ) = object;
+    if (acl != null) {
+      result$
         ..add(const _i11.XmlElementName('Acl'))
         ..add(serializers.serialize(
-          payload.acl!,
+          acl,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.aclRule != null) {
-      result
+    if (aclRule != null) {
+      result$
         ..add(const _i11.XmlElementName('AclRule'))
         ..add(serializers.serialize(
-          payload.aclRule!,
+          aclRule,
           specifiedType: const FullType(_i3.AnalysisAclRule),
         ));
     }
-    if (payload.address != null) {
-      result
+    if (address != null) {
+      result$
         ..add(const _i11.XmlElementName('Address'))
         ..add(serializers.serialize(
-          payload.address!,
+          address,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.addresses != null) {
-      result
+    if (addresses != null) {
+      result$
         ..add(const _i11.XmlElementName('AddressSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addresses!,
+          addresses,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.attachedTo != null) {
-      result
+    if (attachedTo != null) {
+      result$
         ..add(const _i11.XmlElementName('AttachedTo'))
         ..add(serializers.serialize(
-          payload.attachedTo!,
+          attachedTo,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.availabilityZones != null) {
-      result
+    if (availabilityZones != null) {
+      result$
         ..add(const _i11.XmlElementName('AvailabilityZoneSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.availabilityZones!,
+          availabilityZones,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.cidrs != null) {
-      result
+    if (cidrs != null) {
+      result$
         ..add(const _i11.XmlElementName('CidrSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.cidrs!,
+          cidrs,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.component != null) {
-      result
+    if (component != null) {
+      result$
         ..add(const _i11.XmlElementName('Component'))
         ..add(serializers.serialize(
-          payload.component!,
+          component,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.customerGateway != null) {
-      result
+    if (customerGateway != null) {
+      result$
         ..add(const _i11.XmlElementName('CustomerGateway'))
         ..add(serializers.serialize(
-          payload.customerGateway!,
+          customerGateway,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.destination != null) {
-      result
+    if (destination != null) {
+      result$
         ..add(const _i11.XmlElementName('Destination'))
         ..add(serializers.serialize(
-          payload.destination!,
+          destination,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.destinationVpc != null) {
-      result
+    if (destinationVpc != null) {
+      result$
         ..add(const _i11.XmlElementName('DestinationVpc'))
         ..add(serializers.serialize(
-          payload.destinationVpc!,
+          destinationVpc,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.direction != null) {
-      result
+    if (direction != null) {
+      result$
         ..add(const _i11.XmlElementName('Direction'))
         ..add(serializers.serialize(
-          payload.direction!,
+          direction,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.explanationCode != null) {
-      result
+    if (explanationCode != null) {
+      result$
         ..add(const _i11.XmlElementName('ExplanationCode'))
         ..add(serializers.serialize(
-          payload.explanationCode!,
+          explanationCode,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ingressRouteTable != null) {
-      result
+    if (ingressRouteTable != null) {
+      result$
         ..add(const _i11.XmlElementName('IngressRouteTable'))
         ..add(serializers.serialize(
-          payload.ingressRouteTable!,
+          ingressRouteTable,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.internetGateway != null) {
-      result
+    if (internetGateway != null) {
+      result$
         ..add(const _i11.XmlElementName('InternetGateway'))
         ..add(serializers.serialize(
-          payload.internetGateway!,
+          internetGateway,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.loadBalancerArn != null) {
-      result
+    if (loadBalancerArn != null) {
+      result$
         ..add(const _i11.XmlElementName('LoadBalancerArn'))
         ..add(serializers.serialize(
-          payload.loadBalancerArn!,
+          loadBalancerArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.classicLoadBalancerListener != null) {
-      result
+    if (classicLoadBalancerListener != null) {
+      result$
         ..add(const _i11.XmlElementName('ClassicLoadBalancerListener'))
         ..add(serializers.serialize(
-          payload.classicLoadBalancerListener!,
+          classicLoadBalancerListener,
           specifiedType: const FullType(_i4.AnalysisLoadBalancerListener),
         ));
     }
-    result
+    result$
       ..add(const _i11.XmlElementName('LoadBalancerListenerPort'))
       ..add(serializers.serialize(
-        payload.loadBalancerListenerPort,
+        loadBalancerListenerPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.loadBalancerTarget != null) {
-      result
+    if (loadBalancerTarget != null) {
+      result$
         ..add(const _i11.XmlElementName('LoadBalancerTarget'))
         ..add(serializers.serialize(
-          payload.loadBalancerTarget!,
+          loadBalancerTarget,
           specifiedType: const FullType(_i5.AnalysisLoadBalancerTarget),
         ));
     }
-    if (payload.loadBalancerTargetGroup != null) {
-      result
+    if (loadBalancerTargetGroup != null) {
+      result$
         ..add(const _i11.XmlElementName('LoadBalancerTargetGroup'))
         ..add(serializers.serialize(
-          payload.loadBalancerTargetGroup!,
+          loadBalancerTargetGroup,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.loadBalancerTargetGroups != null) {
-      result
+    if (loadBalancerTargetGroups != null) {
+      result$
         ..add(const _i11.XmlElementName('LoadBalancerTargetGroupSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.loadBalancerTargetGroups!,
+          loadBalancerTargetGroups,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i2.AnalysisComponent)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i11.XmlElementName('LoadBalancerTargetPort'))
       ..add(serializers.serialize(
-        payload.loadBalancerTargetPort,
+        loadBalancerTargetPort,
         specifiedType: const FullType(int),
       ));
-    if (payload.elasticLoadBalancerListener != null) {
-      result
+    if (elasticLoadBalancerListener != null) {
+      result$
         ..add(const _i11.XmlElementName('ElasticLoadBalancerListener'))
         ..add(serializers.serialize(
-          payload.elasticLoadBalancerListener!,
+          elasticLoadBalancerListener,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.missingComponent != null) {
-      result
+    if (missingComponent != null) {
+      result$
         ..add(const _i11.XmlElementName('MissingComponent'))
         ..add(serializers.serialize(
-          payload.missingComponent!,
+          missingComponent,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.natGateway != null) {
-      result
+    if (natGateway != null) {
+      result$
         ..add(const _i11.XmlElementName('NatGateway'))
         ..add(serializers.serialize(
-          payload.natGateway!,
+          natGateway,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.networkInterface != null) {
-      result
+    if (networkInterface != null) {
+      result$
         ..add(const _i11.XmlElementName('NetworkInterface'))
         ..add(serializers.serialize(
-          payload.networkInterface!,
+          networkInterface,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.packetField != null) {
-      result
+    if (packetField != null) {
+      result$
         ..add(const _i11.XmlElementName('PacketField'))
         ..add(serializers.serialize(
-          payload.packetField!,
+          packetField,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcPeeringConnection != null) {
-      result
+    if (vpcPeeringConnection != null) {
+      result$
         ..add(const _i11.XmlElementName('VpcPeeringConnection'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnection!,
+          vpcPeeringConnection,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    result
+    result$
       ..add(const _i11.XmlElementName('Port'))
       ..add(serializers.serialize(
-        payload.port,
+        port,
         specifiedType: const FullType(int),
       ));
-    if (payload.portRanges != null) {
-      result
+    if (portRanges != null) {
+      result$
         ..add(const _i11.XmlElementName('PortRangeSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.portRanges!,
+          portRanges,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i6.PortRange)],
           ),
         ));
     }
-    if (payload.prefixList != null) {
-      result
+    if (prefixList != null) {
+      result$
         ..add(const _i11.XmlElementName('PrefixList'))
         ..add(serializers.serialize(
-          payload.prefixList!,
+          prefixList,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.protocols != null) {
-      result
+    if (protocols != null) {
+      result$
         ..add(const _i11.XmlElementName('ProtocolSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.protocols!,
+          protocols,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.routeTableRoute != null) {
-      result
+    if (routeTableRoute != null) {
+      result$
         ..add(const _i11.XmlElementName('RouteTableRoute'))
         ..add(serializers.serialize(
-          payload.routeTableRoute!,
+          routeTableRoute,
           specifiedType: const FullType(_i7.AnalysisRouteTableRoute),
         ));
     }
-    if (payload.routeTable != null) {
-      result
+    if (routeTable != null) {
+      result$
         ..add(const _i11.XmlElementName('RouteTable'))
         ..add(serializers.serialize(
-          payload.routeTable!,
+          routeTable,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.securityGroup != null) {
-      result
+    if (securityGroup != null) {
+      result$
         ..add(const _i11.XmlElementName('SecurityGroup'))
         ..add(serializers.serialize(
-          payload.securityGroup!,
+          securityGroup,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.securityGroupRule != null) {
-      result
+    if (securityGroupRule != null) {
+      result$
         ..add(const _i11.XmlElementName('SecurityGroupRule'))
         ..add(serializers.serialize(
-          payload.securityGroupRule!,
+          securityGroupRule,
           specifiedType: const FullType(_i8.AnalysisSecurityGroupRule),
         ));
     }
-    if (payload.securityGroups != null) {
-      result
+    if (securityGroups != null) {
+      result$
         ..add(const _i11.XmlElementName('SecurityGroupSet'))
         ..add(const _i11.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i11.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.securityGroups!,
+          securityGroups,
           specifiedType: const FullType.nullable(
             _i10.BuiltList,
             [FullType(_i2.AnalysisComponent)],
           ),
         ));
     }
-    if (payload.sourceVpc != null) {
-      result
+    if (sourceVpc != null) {
+      result$
         ..add(const _i11.XmlElementName('SourceVpc'))
         ..add(serializers.serialize(
-          payload.sourceVpc!,
+          sourceVpc,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i11.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnet != null) {
-      result
+    if (subnet != null) {
+      result$
         ..add(const _i11.XmlElementName('Subnet'))
         ..add(serializers.serialize(
-          payload.subnet!,
+          subnet,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.subnetRouteTable != null) {
-      result
+    if (subnetRouteTable != null) {
+      result$
         ..add(const _i11.XmlElementName('SubnetRouteTable'))
         ..add(serializers.serialize(
-          payload.subnetRouteTable!,
+          subnetRouteTable,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.vpc != null) {
-      result
+    if (vpc != null) {
+      result$
         ..add(const _i11.XmlElementName('Vpc'))
         ..add(serializers.serialize(
-          payload.vpc!,
+          vpc,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.vpcEndpoint != null) {
-      result
+    if (vpcEndpoint != null) {
+      result$
         ..add(const _i11.XmlElementName('VpcEndpoint'))
         ..add(serializers.serialize(
-          payload.vpcEndpoint!,
+          vpcEndpoint,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.vpnConnection != null) {
-      result
+    if (vpnConnection != null) {
+      result$
         ..add(const _i11.XmlElementName('VpnConnection'))
         ..add(serializers.serialize(
-          payload.vpnConnection!,
+          vpnConnection,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.vpnGateway != null) {
-      result
+    if (vpnGateway != null) {
+      result$
         ..add(const _i11.XmlElementName('VpnGateway'))
         ..add(serializers.serialize(
-          payload.vpnGateway!,
+          vpnGateway,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.transitGateway != null) {
-      result
+    if (transitGateway != null) {
+      result$
         ..add(const _i11.XmlElementName('TransitGateway'))
         ..add(serializers.serialize(
-          payload.transitGateway!,
+          transitGateway,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.transitGatewayRouteTable != null) {
-      result
+    if (transitGatewayRouteTable != null) {
+      result$
         ..add(const _i11.XmlElementName('TransitGatewayRouteTable'))
         ..add(serializers.serialize(
-          payload.transitGatewayRouteTable!,
+          transitGatewayRouteTable,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.transitGatewayRouteTableRoute != null) {
-      result
+    if (transitGatewayRouteTableRoute != null) {
+      result$
         ..add(const _i11.XmlElementName('TransitGatewayRouteTableRoute'))
         ..add(serializers.serialize(
-          payload.transitGatewayRouteTableRoute!,
+          transitGatewayRouteTableRoute,
           specifiedType: const FullType(_i9.TransitGatewayRouteTableRoute),
         ));
     }
-    if (payload.transitGatewayAttachment != null) {
-      result
+    if (transitGatewayAttachment != null) {
+      result$
         ..add(const _i11.XmlElementName('TransitGatewayAttachment'))
         ..add(serializers.serialize(
-          payload.transitGatewayAttachment!,
+          transitGatewayAttachment,
           specifiedType: const FullType(_i2.AnalysisComponent),
         ));
     }
-    if (payload.componentAccount != null) {
-      result
+    if (componentAccount != null) {
+      result$
         ..add(const _i11.XmlElementName('ComponentAccount'))
         ..add(serializers.serialize(
-          payload.componentAccount!,
+          componentAccount,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.componentRegion != null) {
-      result
+    if (componentRegion != null) {
+      result$
         ..add(const _i11.XmlElementName('ComponentRegion'))
         ..add(serializers.serialize(
-          payload.componentRegion!,
+          componentRegion,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

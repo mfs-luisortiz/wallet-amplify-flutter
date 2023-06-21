@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.analysis_security_group_rule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -135,58 +136,43 @@ class AnalysisSecurityGroupRuleEc2QuerySerializer
     final result = AnalysisSecurityGroupRuleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidr':
-          if (value != null) {
-            result.cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'direction':
-          if (value != null) {
-            result.direction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.direction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'securityGroupId':
-          if (value != null) {
-            result.securityGroupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.securityGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'portRange':
-          if (value != null) {
-            result.portRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PortRange),
-            ) as _i2.PortRange));
-          }
-          break;
+          result.portRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PortRange),
+          ) as _i2.PortRange));
         case 'prefixListId':
-          if (value != null) {
-            result.prefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -196,64 +182,71 @@ class AnalysisSecurityGroupRuleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AnalysisSecurityGroupRule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AnalysisSecurityGroupRule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AnalysisSecurityGroupRuleResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidr != null) {
-      result
+    final AnalysisSecurityGroupRule(
+      :cidr,
+      :direction,
+      :securityGroupId,
+      :portRange,
+      :prefixListId,
+      :protocol
+    ) = object;
+    if (cidr != null) {
+      result$
         ..add(const _i3.XmlElementName('Cidr'))
         ..add(serializers.serialize(
-          payload.cidr!,
+          cidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.direction != null) {
-      result
+    if (direction != null) {
+      result$
         ..add(const _i3.XmlElementName('Direction'))
         ..add(serializers.serialize(
-          payload.direction!,
+          direction,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.securityGroupId != null) {
-      result
+    if (securityGroupId != null) {
+      result$
         ..add(const _i3.XmlElementName('SecurityGroupId'))
         ..add(serializers.serialize(
-          payload.securityGroupId!,
+          securityGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.portRange != null) {
-      result
+    if (portRange != null) {
+      result$
         ..add(const _i3.XmlElementName('PortRange'))
         ..add(serializers.serialize(
-          payload.portRange!,
+          portRange,
           specifiedType: const FullType(_i2.PortRange),
         ));
     }
-    if (payload.prefixListId != null) {
-      result
+    if (prefixListId != null) {
+      result$
         ..add(const _i3.XmlElementName('PrefixListId'))
         ..add(serializers.serialize(
-          payload.prefixListId!,
+          prefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i3.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

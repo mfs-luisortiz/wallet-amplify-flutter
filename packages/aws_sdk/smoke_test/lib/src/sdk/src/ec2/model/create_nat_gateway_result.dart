@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_nat_gateway_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -94,26 +95,23 @@ class CreateNatGatewayResultEc2QuerySerializer
     final result = CreateNatGatewayResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'natGateway':
-          if (value != null) {
-            result.natGateway.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.NatGateway),
-            ) as _i2.NatGateway));
-          }
-          break;
+          result.natGateway.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.NatGateway),
+          ) as _i2.NatGateway));
       }
     }
 
@@ -123,32 +121,32 @@ class CreateNatGatewayResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateNatGatewayResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateNatGatewayResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateNatGatewayResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientToken != null) {
-      result
+    final CreateNatGatewayResult(:clientToken, :natGateway) = object;
+    if (clientToken != null) {
+      result$
         ..add(const _i3.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.natGateway != null) {
-      result
+    if (natGateway != null) {
+      result$
         ..add(const _i3.XmlElementName('NatGateway'))
         ..add(serializers.serialize(
-          payload.natGateway!,
+          natGateway,
           specifiedType: const FullType(_i2.NatGateway),
         ));
     }
-    return result;
+    return result$;
   }
 }

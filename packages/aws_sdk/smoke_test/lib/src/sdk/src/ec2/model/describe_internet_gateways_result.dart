@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_internet_gateways_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,33 +101,30 @@ class DescribeInternetGatewaysResultEc2QuerySerializer
     final result = DescribeInternetGatewaysResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'internetGatewaySet':
-          if (value != null) {
-            result.internetGateways.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.InternetGateway)],
-              ),
-            ) as _i3.BuiltList<_i2.InternetGateway>));
-          }
-          break;
+          result.internetGateways.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.InternetGateway)],
+            ),
+          ) as _i3.BuiltList<_i2.InternetGateway>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -136,39 +134,40 @@ class DescribeInternetGatewaysResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeInternetGatewaysResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeInternetGatewaysResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeInternetGatewaysResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.internetGateways != null) {
-      result
+    final DescribeInternetGatewaysResult(:internetGateways, :nextToken) =
+        object;
+    if (internetGateways != null) {
+      result$
         ..add(const _i4.XmlElementName('InternetGatewaySet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.internetGateways!,
+          internetGateways,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.InternetGateway)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.public_ipv4_pool_range;
+part of 'public_ipv4_pool_range.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

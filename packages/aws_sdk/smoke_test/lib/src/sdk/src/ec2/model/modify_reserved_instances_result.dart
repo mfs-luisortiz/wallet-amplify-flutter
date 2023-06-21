@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_reserved_instances_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class ModifyReservedInstancesResultEc2QuerySerializer
     final result = ModifyReservedInstancesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'reservedInstancesModificationId':
-          if (value != null) {
-            result.reservedInstancesModificationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservedInstancesModificationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -106,24 +107,25 @@ class ModifyReservedInstancesResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyReservedInstancesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyReservedInstancesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ModifyReservedInstancesResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.reservedInstancesModificationId != null) {
-      result
+    final ModifyReservedInstancesResult(:reservedInstancesModificationId) =
+        object;
+    if (reservedInstancesModificationId != null) {
+      result$
         ..add(const _i2.XmlElementName('ReservedInstancesModificationId'))
         ..add(serializers.serialize(
-          payload.reservedInstancesModificationId!,
+          reservedInstancesModificationId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.instance_state_change;
+part of 'instance_state_change.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

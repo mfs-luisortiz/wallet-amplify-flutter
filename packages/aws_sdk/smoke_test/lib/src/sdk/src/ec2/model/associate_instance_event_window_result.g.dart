@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associate_instance_event_window_result;
+part of 'associate_instance_event_window_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

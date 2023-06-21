@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.associate_route_table_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -96,26 +97,23 @@ class AssociateRouteTableResultEc2QuerySerializer
     final result = AssociateRouteTableResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'associationState':
-          if (value != null) {
-            result.associationState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.RouteTableAssociationState),
-            ) as _i2.RouteTableAssociationState));
-          }
-          break;
+          result.associationState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.RouteTableAssociationState),
+          ) as _i2.RouteTableAssociationState));
       }
     }
 
@@ -125,32 +123,32 @@ class AssociateRouteTableResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AssociateRouteTableResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AssociateRouteTableResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AssociateRouteTableResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationId != null) {
-      result
+    final AssociateRouteTableResult(:associationId, :associationState) = object;
+    if (associationId != null) {
+      result$
         ..add(const _i3.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.associationState != null) {
-      result
+    if (associationState != null) {
+      result$
         ..add(const _i3.XmlElementName('AssociationState'))
         ..add(serializers.serialize(
-          payload.associationState!,
+          associationState,
           specifiedType: const FullType(_i2.RouteTableAssociationState),
         ));
     }
-    return result;
+    return result$;
   }
 }

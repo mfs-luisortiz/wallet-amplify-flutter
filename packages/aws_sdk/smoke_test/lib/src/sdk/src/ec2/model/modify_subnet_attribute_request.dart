@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_subnet_attribute_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -203,96 +204,70 @@ class ModifySubnetAttributeRequestEc2QuerySerializer
     final result = ModifySubnetAttributeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AssignIpv6AddressOnCreation':
-          if (value != null) {
-            result.assignIpv6AddressOnCreation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.assignIpv6AddressOnCreation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'MapPublicIpOnLaunch':
-          if (value != null) {
-            result.mapPublicIpOnLaunch.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.mapPublicIpOnLaunch.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'subnetId':
           result.subnetId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'MapCustomerOwnedIpOnLaunch':
-          if (value != null) {
-            result.mapCustomerOwnedIpOnLaunch.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.mapCustomerOwnedIpOnLaunch.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'CustomerOwnedIpv4Pool':
-          if (value != null) {
-            result.customerOwnedIpv4Pool = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.customerOwnedIpv4Pool = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'EnableDns64':
-          if (value != null) {
-            result.enableDns64.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableDns64.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'PrivateDnsHostnameTypeOnLaunch':
-          if (value != null) {
-            result.privateDnsHostnameTypeOnLaunch = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.HostnameType),
-            ) as _i4.HostnameType);
-          }
-          break;
+          result.privateDnsHostnameTypeOnLaunch = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.HostnameType),
+          ) as _i4.HostnameType);
         case 'EnableResourceNameDnsARecordOnLaunch':
-          if (value != null) {
-            result.enableResourceNameDnsARecordOnLaunch
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableResourceNameDnsARecordOnLaunch
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'EnableResourceNameDnsAAAARecordOnLaunch':
-          if (value != null) {
-            result.enableResourceNameDnsAaaaRecordOnLaunch
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.enableResourceNameDnsAaaaRecordOnLaunch
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
         case 'EnableLniAtDeviceIndex':
           result.enableLniAtDeviceIndex = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DisableLniAtDeviceIndex':
-          if (value != null) {
-            result.disableLniAtDeviceIndex.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeBooleanValue),
-            ) as _i3.AttributeBooleanValue));
-          }
-          break;
+          result.disableLniAtDeviceIndex.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeBooleanValue),
+          ) as _i3.AttributeBooleanValue));
       }
     }
 
@@ -302,101 +277,113 @@ class ModifySubnetAttributeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifySubnetAttributeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifySubnetAttributeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifySubnetAttributeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.assignIpv6AddressOnCreation != null) {
-      result
+    final ModifySubnetAttributeRequest(
+      :assignIpv6AddressOnCreation,
+      :mapPublicIpOnLaunch,
+      :subnetId,
+      :mapCustomerOwnedIpOnLaunch,
+      :customerOwnedIpv4Pool,
+      :enableDns64,
+      :privateDnsHostnameTypeOnLaunch,
+      :enableResourceNameDnsARecordOnLaunch,
+      :enableResourceNameDnsAaaaRecordOnLaunch,
+      :enableLniAtDeviceIndex,
+      :disableLniAtDeviceIndex
+    ) = object;
+    if (assignIpv6AddressOnCreation != null) {
+      result$
         ..add(const _i1.XmlElementName('AssignIpv6AddressOnCreation'))
         ..add(serializers.serialize(
-          payload.assignIpv6AddressOnCreation!,
+          assignIpv6AddressOnCreation,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    if (payload.mapPublicIpOnLaunch != null) {
-      result
+    if (mapPublicIpOnLaunch != null) {
+      result$
         ..add(const _i1.XmlElementName('MapPublicIpOnLaunch'))
         ..add(serializers.serialize(
-          payload.mapPublicIpOnLaunch!,
+          mapPublicIpOnLaunch,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SubnetId'))
       ..add(serializers.serialize(
-        payload.subnetId,
+        subnetId,
         specifiedType: const FullType(String),
       ));
-    if (payload.mapCustomerOwnedIpOnLaunch != null) {
-      result
+    if (mapCustomerOwnedIpOnLaunch != null) {
+      result$
         ..add(const _i1.XmlElementName('MapCustomerOwnedIpOnLaunch'))
         ..add(serializers.serialize(
-          payload.mapCustomerOwnedIpOnLaunch!,
+          mapCustomerOwnedIpOnLaunch,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    if (payload.customerOwnedIpv4Pool != null) {
-      result
+    if (customerOwnedIpv4Pool != null) {
+      result$
         ..add(const _i1.XmlElementName('CustomerOwnedIpv4Pool'))
         ..add(serializers.serialize(
-          payload.customerOwnedIpv4Pool!,
+          customerOwnedIpv4Pool,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.enableDns64 != null) {
-      result
+    if (enableDns64 != null) {
+      result$
         ..add(const _i1.XmlElementName('EnableDns64'))
         ..add(serializers.serialize(
-          payload.enableDns64!,
+          enableDns64,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    if (payload.privateDnsHostnameTypeOnLaunch != null) {
-      result
+    if (privateDnsHostnameTypeOnLaunch != null) {
+      result$
         ..add(const _i1.XmlElementName('PrivateDnsHostnameTypeOnLaunch'))
         ..add(serializers.serialize(
-          payload.privateDnsHostnameTypeOnLaunch!,
+          privateDnsHostnameTypeOnLaunch,
           specifiedType: const FullType.nullable(_i4.HostnameType),
         ));
     }
-    if (payload.enableResourceNameDnsARecordOnLaunch != null) {
-      result
+    if (enableResourceNameDnsARecordOnLaunch != null) {
+      result$
         ..add(const _i1.XmlElementName('EnableResourceNameDnsARecordOnLaunch'))
         ..add(serializers.serialize(
-          payload.enableResourceNameDnsARecordOnLaunch!,
+          enableResourceNameDnsARecordOnLaunch,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    if (payload.enableResourceNameDnsAaaaRecordOnLaunch != null) {
-      result
+    if (enableResourceNameDnsAaaaRecordOnLaunch != null) {
+      result$
         ..add(
             const _i1.XmlElementName('EnableResourceNameDnsAAAARecordOnLaunch'))
         ..add(serializers.serialize(
-          payload.enableResourceNameDnsAaaaRecordOnLaunch!,
+          enableResourceNameDnsAaaaRecordOnLaunch,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('EnableLniAtDeviceIndex'))
       ..add(serializers.serialize(
-        payload.enableLniAtDeviceIndex,
+        enableLniAtDeviceIndex,
         specifiedType: const FullType(int),
       ));
-    if (payload.disableLniAtDeviceIndex != null) {
-      result
+    if (disableLniAtDeviceIndex != null) {
+      result$
         ..add(const _i1.XmlElementName('DisableLniAtDeviceIndex'))
         ..add(serializers.serialize(
-          payload.disableLniAtDeviceIndex!,
+          disableLniAtDeviceIndex,
           specifiedType: const FullType(_i3.AttributeBooleanValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

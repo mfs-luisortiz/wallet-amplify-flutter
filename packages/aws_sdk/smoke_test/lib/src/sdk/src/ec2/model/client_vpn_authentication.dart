@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.client_vpn_authentication; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -117,42 +118,33 @@ class ClientVpnAuthenticationEc2QuerySerializer
     final result = ClientVpnAuthenticationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClientVpnAuthenticationType),
-            ) as _i2.ClientVpnAuthenticationType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnAuthenticationType),
+          ) as _i2.ClientVpnAuthenticationType);
         case 'activeDirectory':
-          if (value != null) {
-            result.activeDirectory.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DirectoryServiceAuthentication),
-            ) as _i3.DirectoryServiceAuthentication));
-          }
-          break;
+          result.activeDirectory.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DirectoryServiceAuthentication),
+          ) as _i3.DirectoryServiceAuthentication));
         case 'mutualAuthentication':
-          if (value != null) {
-            result.mutualAuthentication.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.CertificateAuthentication),
-            ) as _i4.CertificateAuthentication));
-          }
-          break;
+          result.mutualAuthentication.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.CertificateAuthentication),
+          ) as _i4.CertificateAuthentication));
         case 'federatedAuthentication':
-          if (value != null) {
-            result.federatedAuthentication.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.FederatedAuthentication),
-            ) as _i5.FederatedAuthentication));
-          }
-          break;
+          result.federatedAuthentication.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.FederatedAuthentication),
+          ) as _i5.FederatedAuthentication));
       }
     }
 
@@ -162,49 +154,54 @@ class ClientVpnAuthenticationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClientVpnAuthentication object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClientVpnAuthentication);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'ClientVpnAuthenticationResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.type != null) {
-      result
+    final ClientVpnAuthentication(
+      :type,
+      :activeDirectory,
+      :mutualAuthentication,
+      :federatedAuthentication
+    ) = object;
+    if (type != null) {
+      result$
         ..add(const _i6.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType:
               const FullType.nullable(_i2.ClientVpnAuthenticationType),
         ));
     }
-    if (payload.activeDirectory != null) {
-      result
+    if (activeDirectory != null) {
+      result$
         ..add(const _i6.XmlElementName('ActiveDirectory'))
         ..add(serializers.serialize(
-          payload.activeDirectory!,
+          activeDirectory,
           specifiedType: const FullType(_i3.DirectoryServiceAuthentication),
         ));
     }
-    if (payload.mutualAuthentication != null) {
-      result
+    if (mutualAuthentication != null) {
+      result$
         ..add(const _i6.XmlElementName('MutualAuthentication'))
         ..add(serializers.serialize(
-          payload.mutualAuthentication!,
+          mutualAuthentication,
           specifiedType: const FullType(_i4.CertificateAuthentication),
         ));
     }
-    if (payload.federatedAuthentication != null) {
-      result
+    if (federatedAuthentication != null) {
+      result$
         ..add(const _i6.XmlElementName('FederatedAuthentication'))
         ..add(serializers.serialize(
-          payload.federatedAuthentication!,
+          federatedAuthentication,
           specifiedType: const FullType(_i5.FederatedAuthentication),
         ));
     }
-    return result;
+    return result$;
   }
 }

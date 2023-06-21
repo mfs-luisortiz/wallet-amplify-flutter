@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_transit_gateway_route_table_announcement_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -90,20 +91,20 @@ class DeleteTransitGatewayRouteTableAnnouncementResultEc2QuerySerializer
     final result = DeleteTransitGatewayRouteTableAnnouncementResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayRouteTableAnnouncement':
-          if (value != null) {
-            result.transitGatewayRouteTableAnnouncement
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayRouteTableAnnouncement),
-            ) as _i2.TransitGatewayRouteTableAnnouncement));
-          }
-          break;
+          result.transitGatewayRouteTableAnnouncement
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayRouteTableAnnouncement),
+          ) as _i2.TransitGatewayRouteTableAnnouncement));
       }
     }
 
@@ -113,26 +114,27 @@ class DeleteTransitGatewayRouteTableAnnouncementResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTransitGatewayRouteTableAnnouncementResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as DeleteTransitGatewayRouteTableAnnouncementResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteTransitGatewayRouteTableAnnouncementResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayRouteTableAnnouncement != null) {
-      result
+    final DeleteTransitGatewayRouteTableAnnouncementResult(
+      :transitGatewayRouteTableAnnouncement
+    ) = object;
+    if (transitGatewayRouteTableAnnouncement != null) {
+      result$
         ..add(const _i3.XmlElementName('TransitGatewayRouteTableAnnouncement'))
         ..add(serializers.serialize(
-          payload.transitGatewayRouteTableAnnouncement!,
+          transitGatewayRouteTableAnnouncement,
           specifiedType:
               const FullType(_i2.TransitGatewayRouteTableAnnouncement),
         ));
     }
-    return result;
+    return result$;
   }
 }

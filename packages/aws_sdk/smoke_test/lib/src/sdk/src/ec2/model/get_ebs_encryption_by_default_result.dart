@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_ebs_encryption_by_default_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,16 +86,18 @@ class GetEbsEncryptionByDefaultResultEc2QuerySerializer
     final result = GetEbsEncryptionByDefaultResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ebsEncryptionByDefault':
           result.ebsEncryptionByDefault = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -104,22 +107,22 @@ class GetEbsEncryptionByDefaultResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetEbsEncryptionByDefaultResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetEbsEncryptionByDefaultResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'GetEbsEncryptionByDefaultResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final GetEbsEncryptionByDefaultResult(:ebsEncryptionByDefault) = object;
+    result$
       ..add(const _i2.XmlElementName('EbsEncryptionByDefault'))
       ..add(serializers.serialize(
-        payload.ebsEncryptionByDefault,
+        ebsEncryptionByDefault,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

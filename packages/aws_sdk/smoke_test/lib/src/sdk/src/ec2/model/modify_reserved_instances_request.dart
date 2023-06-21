@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_reserved_instances_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,10 +117,13 @@ class ModifyReservedInstancesRequestEc2QuerySerializer
     final result = ModifyReservedInstancesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ReservedInstancesId':
           result.reservedInstancesIds.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'ReservedInstancesId',
@@ -132,15 +136,11 @@ class ModifyReservedInstancesRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i4.BuiltList<String>));
-          break;
         case 'clientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ReservedInstancesConfigurationSetItemType':
           result.targetConfigurations.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -153,7 +153,6 @@ class ModifyReservedInstancesRequestEc2QuerySerializer
               [FullType(_i3.ReservedInstancesConfiguration)],
             ),
           ) as _i4.BuiltList<_i3.ReservedInstancesConfiguration>));
-          break;
       }
     }
 
@@ -163,38 +162,42 @@ class ModifyReservedInstancesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyReservedInstancesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyReservedInstancesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyReservedInstancesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyReservedInstancesRequest(
+      :reservedInstancesIds,
+      :clientToken,
+      :targetConfigurations
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ReservedInstancesId'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'ReservedInstancesId',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.reservedInstancesIds,
+        reservedInstancesIds,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(String)],
         ),
       ));
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(
           const _i1.XmlElementName('ReservedInstancesConfigurationSetItemType'))
       ..add(const _i1.XmlBuiltListSerializer(
@@ -202,12 +205,12 @@ class ModifyReservedInstancesRequestEc2QuerySerializer
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.targetConfigurations,
+        targetConfigurations,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(_i3.ReservedInstancesConfiguration)],
         ),
       ));
-    return result;
+    return result$;
   }
 }

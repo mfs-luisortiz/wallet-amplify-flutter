@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -191,113 +192,80 @@ class NetworkInfoEc2QuerySerializer
     final result = NetworkInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkPerformance':
-          if (value != null) {
-            result.networkPerformance = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkPerformance = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'maximumNetworkInterfaces':
-          if (value != null) {
-            result.maximumNetworkInterfaces = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumNetworkInterfaces = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'maximumNetworkCards':
-          if (value != null) {
-            result.maximumNetworkCards = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumNetworkCards = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'defaultNetworkCardIndex':
-          if (value != null) {
-            result.defaultNetworkCardIndex = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.defaultNetworkCardIndex = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'networkCards':
-          if (value != null) {
-            result.networkCards.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.NetworkCardInfo)],
-              ),
-            ) as _i5.BuiltList<_i2.NetworkCardInfo>));
-          }
-          break;
+          result.networkCards.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.NetworkCardInfo)],
+            ),
+          ) as _i5.BuiltList<_i2.NetworkCardInfo>));
         case 'ipv4AddressesPerInterface':
-          if (value != null) {
-            result.ipv4AddressesPerInterface = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.ipv4AddressesPerInterface = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'ipv6AddressesPerInterface':
-          if (value != null) {
-            result.ipv6AddressesPerInterface = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.ipv6AddressesPerInterface = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'ipv6Supported':
-          if (value != null) {
-            result.ipv6Supported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.ipv6Supported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'enaSupport':
-          if (value != null) {
-            result.enaSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.EnaSupport),
-            ) as _i3.EnaSupport);
-          }
-          break;
+          result.enaSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.EnaSupport),
+          ) as _i3.EnaSupport);
         case 'efaSupported':
-          if (value != null) {
-            result.efaSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.efaSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'efaInfo':
-          if (value != null) {
-            result.efaInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.EfaInfo),
-            ) as _i4.EfaInfo));
-          }
-          break;
+          result.efaInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.EfaInfo),
+          ) as _i4.EfaInfo));
         case 'encryptionInTransitSupported':
-          if (value != null) {
-            result.encryptionInTransitSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.encryptionInTransitSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
       }
     }
 
@@ -307,119 +275,132 @@ class NetworkInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'NetworkInfoResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkPerformance != null) {
-      result
+    final NetworkInfo(
+      :networkPerformance,
+      :maximumNetworkInterfaces,
+      :maximumNetworkCards,
+      :defaultNetworkCardIndex,
+      :networkCards,
+      :ipv4AddressesPerInterface,
+      :ipv6AddressesPerInterface,
+      :ipv6Supported,
+      :enaSupport,
+      :efaSupported,
+      :efaInfo,
+      :encryptionInTransitSupported
+    ) = object;
+    if (networkPerformance != null) {
+      result$
         ..add(const _i6.XmlElementName('NetworkPerformance'))
         ..add(serializers.serialize(
-          payload.networkPerformance!,
+          networkPerformance,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.maximumNetworkInterfaces != null) {
-      result
+    if (maximumNetworkInterfaces != null) {
+      result$
         ..add(const _i6.XmlElementName('MaximumNetworkInterfaces'))
         ..add(serializers.serialize(
-          payload.maximumNetworkInterfaces!,
+          maximumNetworkInterfaces,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.maximumNetworkCards != null) {
-      result
+    if (maximumNetworkCards != null) {
+      result$
         ..add(const _i6.XmlElementName('MaximumNetworkCards'))
         ..add(serializers.serialize(
-          payload.maximumNetworkCards!,
+          maximumNetworkCards,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.defaultNetworkCardIndex != null) {
-      result
+    if (defaultNetworkCardIndex != null) {
+      result$
         ..add(const _i6.XmlElementName('DefaultNetworkCardIndex'))
         ..add(serializers.serialize(
-          payload.defaultNetworkCardIndex!,
+          defaultNetworkCardIndex,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.networkCards != null) {
-      result
+    if (networkCards != null) {
+      result$
         ..add(const _i6.XmlElementName('NetworkCards'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.networkCards!,
+          networkCards,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.NetworkCardInfo)],
           ),
         ));
     }
-    if (payload.ipv4AddressesPerInterface != null) {
-      result
+    if (ipv4AddressesPerInterface != null) {
+      result$
         ..add(const _i6.XmlElementName('Ipv4AddressesPerInterface'))
         ..add(serializers.serialize(
-          payload.ipv4AddressesPerInterface!,
+          ipv4AddressesPerInterface,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.ipv6AddressesPerInterface != null) {
-      result
+    if (ipv6AddressesPerInterface != null) {
+      result$
         ..add(const _i6.XmlElementName('Ipv6AddressesPerInterface'))
         ..add(serializers.serialize(
-          payload.ipv6AddressesPerInterface!,
+          ipv6AddressesPerInterface,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.ipv6Supported != null) {
-      result
+    if (ipv6Supported != null) {
+      result$
         ..add(const _i6.XmlElementName('Ipv6Supported'))
         ..add(serializers.serialize(
-          payload.ipv6Supported!,
+          ipv6Supported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.enaSupport != null) {
-      result
+    if (enaSupport != null) {
+      result$
         ..add(const _i6.XmlElementName('EnaSupport'))
         ..add(serializers.serialize(
-          payload.enaSupport!,
+          enaSupport,
           specifiedType: const FullType.nullable(_i3.EnaSupport),
         ));
     }
-    if (payload.efaSupported != null) {
-      result
+    if (efaSupported != null) {
+      result$
         ..add(const _i6.XmlElementName('EfaSupported'))
         ..add(serializers.serialize(
-          payload.efaSupported!,
+          efaSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.efaInfo != null) {
-      result
+    if (efaInfo != null) {
+      result$
         ..add(const _i6.XmlElementName('EfaInfo'))
         ..add(serializers.serialize(
-          payload.efaInfo!,
+          efaInfo,
           specifiedType: const FullType(_i4.EfaInfo),
         ));
     }
-    if (payload.encryptionInTransitSupported != null) {
-      result
+    if (encryptionInTransitSupported != null) {
+      result$
         ..add(const _i6.XmlElementName('EncryptionInTransitSupported'))
         ..add(serializers.serialize(
-          payload.encryptionInTransitSupported!,
+          encryptionInTransitSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    return result;
+    return result$;
   }
 }

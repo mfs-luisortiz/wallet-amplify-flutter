@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_account_attributes_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -107,31 +108,30 @@ class DescribeAccountAttributesRequestEc2QuerySerializer
     final result = DescribeAccountAttributesRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attributeName':
-          if (value != null) {
-            result.attributeNames.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'attributeName',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.AccountAttributeName)],
-              ),
-            ) as _i4.BuiltList<_i3.AccountAttributeName>));
-          }
-          break;
+          result.attributeNames.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'attributeName',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.AccountAttributeName)],
+            ),
+          ) as _i4.BuiltList<_i3.AccountAttributeName>));
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -141,37 +141,37 @@ class DescribeAccountAttributesRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeAccountAttributesRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeAccountAttributesRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeAccountAttributesRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attributeNames != null) {
-      result
+    final DescribeAccountAttributesRequest(:attributeNames, :dryRun) = object;
+    if (attributeNames != null) {
+      result$
         ..add(const _i1.XmlElementName('AttributeName'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'attributeName',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.attributeNames!,
+          attributeNames,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.AccountAttributeName)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

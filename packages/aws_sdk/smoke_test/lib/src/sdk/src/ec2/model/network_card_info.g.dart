@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.network_card_info;
+part of 'network_card_info.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.replace_network_acl_association_request;
+part of 'replace_network_acl_association_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

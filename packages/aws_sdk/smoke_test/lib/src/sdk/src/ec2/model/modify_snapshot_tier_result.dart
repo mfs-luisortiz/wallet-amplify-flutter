@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_snapshot_tier_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -94,26 +95,23 @@ class ModifySnapshotTierResultEc2QuerySerializer
     final result = ModifySnapshotTierResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tieringStartTime':
-          if (value != null) {
-            result.tieringStartTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.tieringStartTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -123,32 +121,32 @@ class ModifySnapshotTierResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifySnapshotTierResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifySnapshotTierResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ModifySnapshotTierResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.snapshotId != null) {
-      result
+    final ModifySnapshotTierResult(:snapshotId, :tieringStartTime) = object;
+    if (snapshotId != null) {
+      result$
         ..add(const _i2.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tieringStartTime != null) {
-      result
+    if (tieringStartTime != null) {
+      result$
         ..add(const _i2.XmlElementName('TieringStartTime'))
         ..add(serializers.serialize(
-          payload.tieringStartTime!,
+          tieringStartTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_reserved_instances_exchange_quote_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -184,98 +185,75 @@ class GetReservedInstancesExchangeQuoteResultEc2QuerySerializer extends _i6
     final result = GetReservedInstancesExchangeQuoteResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'currencyCode':
-          if (value != null) {
-            result.currencyCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.currencyCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'isValidExchange':
           result.isValidExchange = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'outputReservedInstancesWillExpireAt':
-          if (value != null) {
-            result.outputReservedInstancesWillExpireAt =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.outputReservedInstancesWillExpireAt = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'paymentDue':
-          if (value != null) {
-            result.paymentDue = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.paymentDue = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'reservedInstanceValueRollup':
-          if (value != null) {
-            result.reservedInstanceValueRollup.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ReservationValue),
-            ) as _i2.ReservationValue));
-          }
-          break;
+          result.reservedInstanceValueRollup.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ReservationValue),
+          ) as _i2.ReservationValue));
         case 'reservedInstanceValueSet':
-          if (value != null) {
-            result.reservedInstanceValueSet
-                .replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.ReservedInstanceReservationValue)],
-              ),
-            ) as _i5.BuiltList<_i3.ReservedInstanceReservationValue>));
-          }
-          break;
+          result.reservedInstanceValueSet
+              .replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.ReservedInstanceReservationValue)],
+            ),
+          ) as _i5.BuiltList<_i3.ReservedInstanceReservationValue>));
         case 'targetConfigurationValueRollup':
-          if (value != null) {
-            result.targetConfigurationValueRollup
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ReservationValue),
-            ) as _i2.ReservationValue));
-          }
-          break;
+          result.targetConfigurationValueRollup
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ReservationValue),
+          ) as _i2.ReservationValue));
         case 'targetConfigurationValueSet':
-          if (value != null) {
-            result.targetConfigurationValueSet
-                .replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TargetReservationValue)],
-              ),
-            ) as _i5.BuiltList<_i4.TargetReservationValue>));
-          }
-          break;
+          result.targetConfigurationValueSet
+              .replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TargetReservationValue)],
+            ),
+          ) as _i5.BuiltList<_i4.TargetReservationValue>));
         case 'validationFailureReason':
-          if (value != null) {
-            result.validationFailureReason = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.validationFailureReason = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -285,100 +263,110 @@ class GetReservedInstancesExchangeQuoteResultEc2QuerySerializer extends _i6
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetReservedInstancesExchangeQuoteResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetReservedInstancesExchangeQuoteResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'GetReservedInstancesExchangeQuoteResultResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.currencyCode != null) {
-      result
+    final GetReservedInstancesExchangeQuoteResult(
+      :currencyCode,
+      :isValidExchange,
+      :outputReservedInstancesWillExpireAt,
+      :paymentDue,
+      :reservedInstanceValueRollup,
+      :reservedInstanceValueSet,
+      :targetConfigurationValueRollup,
+      :targetConfigurationValueSet,
+      :validationFailureReason
+    ) = object;
+    if (currencyCode != null) {
+      result$
         ..add(const _i6.XmlElementName('CurrencyCode'))
         ..add(serializers.serialize(
-          payload.currencyCode!,
+          currencyCode,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i6.XmlElementName('IsValidExchange'))
       ..add(serializers.serialize(
-        payload.isValidExchange,
+        isValidExchange,
         specifiedType: const FullType(bool),
       ));
-    if (payload.outputReservedInstancesWillExpireAt != null) {
-      result
+    if (outputReservedInstancesWillExpireAt != null) {
+      result$
         ..add(const _i6.XmlElementName('OutputReservedInstancesWillExpireAt'))
         ..add(serializers.serialize(
-          payload.outputReservedInstancesWillExpireAt!,
+          outputReservedInstancesWillExpireAt,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.paymentDue != null) {
-      result
+    if (paymentDue != null) {
+      result$
         ..add(const _i6.XmlElementName('PaymentDue'))
         ..add(serializers.serialize(
-          payload.paymentDue!,
+          paymentDue,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.reservedInstanceValueRollup != null) {
-      result
+    if (reservedInstanceValueRollup != null) {
+      result$
         ..add(const _i6.XmlElementName('ReservedInstanceValueRollup'))
         ..add(serializers.serialize(
-          payload.reservedInstanceValueRollup!,
+          reservedInstanceValueRollup,
           specifiedType: const FullType(_i2.ReservationValue),
         ));
     }
-    if (payload.reservedInstanceValueSet != null) {
-      result
+    if (reservedInstanceValueSet != null) {
+      result$
         ..add(const _i6.XmlElementName('ReservedInstanceValueSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.reservedInstanceValueSet!,
+          reservedInstanceValueSet,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.ReservedInstanceReservationValue)],
           ),
         ));
     }
-    if (payload.targetConfigurationValueRollup != null) {
-      result
+    if (targetConfigurationValueRollup != null) {
+      result$
         ..add(const _i6.XmlElementName('TargetConfigurationValueRollup'))
         ..add(serializers.serialize(
-          payload.targetConfigurationValueRollup!,
+          targetConfigurationValueRollup,
           specifiedType: const FullType(_i2.ReservationValue),
         ));
     }
-    if (payload.targetConfigurationValueSet != null) {
-      result
+    if (targetConfigurationValueSet != null) {
+      result$
         ..add(const _i6.XmlElementName('TargetConfigurationValueSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.targetConfigurationValueSet!,
+          targetConfigurationValueSet,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TargetReservationValue)],
           ),
         ));
     }
-    if (payload.validationFailureReason != null) {
-      result
+    if (validationFailureReason != null) {
+      result$
         ..add(const _i6.XmlElementName('ValidationFailureReason'))
         ..add(serializers.serialize(
-          payload.validationFailureReason!,
+          validationFailureReason,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

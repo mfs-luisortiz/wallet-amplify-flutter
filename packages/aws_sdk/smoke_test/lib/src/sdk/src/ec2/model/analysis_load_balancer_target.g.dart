@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.analysis_load_balancer_target;
+part of 'analysis_load_balancer_target.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

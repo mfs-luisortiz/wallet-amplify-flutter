@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_queued_reserved_instances_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,42 +111,39 @@ class DeleteQueuedReservedInstancesResultEc2QuerySerializer extends _i5
     final result = DeleteQueuedReservedInstancesResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'successfulQueuedPurchaseDeletionSet':
-          if (value != null) {
-            result.successfulQueuedPurchaseDeletions
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.SuccessfulQueuedPurchaseDeletion)],
-              ),
-            ) as _i4.BuiltList<_i2.SuccessfulQueuedPurchaseDeletion>));
-          }
-          break;
+          result.successfulQueuedPurchaseDeletions
+              .replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.SuccessfulQueuedPurchaseDeletion)],
+            ),
+          ) as _i4.BuiltList<_i2.SuccessfulQueuedPurchaseDeletion>));
         case 'failedQueuedPurchaseDeletionSet':
-          if (value != null) {
-            result.failedQueuedPurchaseDeletions
-                .replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.FailedQueuedPurchaseDeletion)],
-              ),
-            ) as _i4.BuiltList<_i3.FailedQueuedPurchaseDeletion>));
-          }
-          break;
+          result.failedQueuedPurchaseDeletions
+              .replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.FailedQueuedPurchaseDeletion)],
+            ),
+          ) as _i4.BuiltList<_i3.FailedQueuedPurchaseDeletion>));
       }
     }
 
@@ -155,46 +153,49 @@ class DeleteQueuedReservedInstancesResultEc2QuerySerializer extends _i5
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteQueuedReservedInstancesResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteQueuedReservedInstancesResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'DeleteQueuedReservedInstancesResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.successfulQueuedPurchaseDeletions != null) {
-      result
+    final DeleteQueuedReservedInstancesResult(
+      :successfulQueuedPurchaseDeletions,
+      :failedQueuedPurchaseDeletions
+    ) = object;
+    if (successfulQueuedPurchaseDeletions != null) {
+      result$
         ..add(const _i5.XmlElementName('SuccessfulQueuedPurchaseDeletionSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.successfulQueuedPurchaseDeletions!,
+          successfulQueuedPurchaseDeletions,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.SuccessfulQueuedPurchaseDeletion)],
           ),
         ));
     }
-    if (payload.failedQueuedPurchaseDeletions != null) {
-      result
+    if (failedQueuedPurchaseDeletions != null) {
+      result$
         ..add(const _i5.XmlElementName('FailedQueuedPurchaseDeletionSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.failedQueuedPurchaseDeletions!,
+          failedQueuedPurchaseDeletions,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.FailedQueuedPurchaseDeletion)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

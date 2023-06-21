@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_traffic_mirror_target_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,18 +83,18 @@ class DeleteTrafficMirrorTargetResultEc2QuerySerializer
     final result = DeleteTrafficMirrorTargetResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'trafficMirrorTargetId':
-          if (value != null) {
-            result.trafficMirrorTargetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.trafficMirrorTargetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -103,24 +104,24 @@ class DeleteTrafficMirrorTargetResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteTrafficMirrorTargetResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteTrafficMirrorTargetResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'DeleteTrafficMirrorTargetResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.trafficMirrorTargetId != null) {
-      result
+    final DeleteTrafficMirrorTargetResult(:trafficMirrorTargetId) = object;
+    if (trafficMirrorTargetId != null) {
+      result$
         ..add(const _i2.XmlElementName('TrafficMirrorTargetId'))
         ..add(serializers.serialize(
-          payload.trafficMirrorTargetId!,
+          trafficMirrorTargetId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

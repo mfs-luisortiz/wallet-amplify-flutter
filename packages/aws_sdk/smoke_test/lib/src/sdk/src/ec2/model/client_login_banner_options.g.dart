@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.client_login_banner_options;
+part of 'client_login_banner_options.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

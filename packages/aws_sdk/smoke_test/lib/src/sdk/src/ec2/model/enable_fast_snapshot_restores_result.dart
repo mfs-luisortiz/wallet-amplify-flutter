@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.enable_fast_snapshot_restores_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -102,40 +103,37 @@ class EnableFastSnapshotRestoresResultEc2QuerySerializer
     final result = EnableFastSnapshotRestoresResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'successful':
-          if (value != null) {
-            result.successful.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.EnableFastSnapshotRestoreSuccessItem)],
-              ),
-            ) as _i4.BuiltList<_i2.EnableFastSnapshotRestoreSuccessItem>));
-          }
-          break;
+          result.successful.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.EnableFastSnapshotRestoreSuccessItem)],
+            ),
+          ) as _i4.BuiltList<_i2.EnableFastSnapshotRestoreSuccessItem>));
         case 'unsuccessful':
-          if (value != null) {
-            result.unsuccessful.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.EnableFastSnapshotRestoreErrorItem)],
-              ),
-            ) as _i4.BuiltList<_i3.EnableFastSnapshotRestoreErrorItem>));
-          }
-          break;
+          result.unsuccessful.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.EnableFastSnapshotRestoreErrorItem)],
+            ),
+          ) as _i4.BuiltList<_i3.EnableFastSnapshotRestoreErrorItem>));
       }
     }
 
@@ -145,46 +143,46 @@ class EnableFastSnapshotRestoresResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EnableFastSnapshotRestoresResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EnableFastSnapshotRestoresResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'EnableFastSnapshotRestoresResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.successful != null) {
-      result
+    final EnableFastSnapshotRestoresResult(:successful, :unsuccessful) = object;
+    if (successful != null) {
+      result$
         ..add(const _i5.XmlElementName('Successful'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.successful!,
+          successful,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.EnableFastSnapshotRestoreSuccessItem)],
           ),
         ));
     }
-    if (payload.unsuccessful != null) {
-      result
+    if (unsuccessful != null) {
+      result$
         ..add(const _i5.XmlElementName('Unsuccessful'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.unsuccessful!,
+          unsuccessful,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.EnableFastSnapshotRestoreErrorItem)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

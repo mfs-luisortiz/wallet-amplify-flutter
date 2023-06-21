@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.get_reserved_instances_exchange_quote_request;
+part of 'get_reserved_instances_exchange_quote_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

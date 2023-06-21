@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fleet_capacity_reservation; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -190,93 +191,69 @@ class FleetCapacityReservationEc2QuerySerializer
     final result = FleetCapacityReservationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'capacityReservationId':
-          if (value != null) {
-            result.capacityReservationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.capacityReservationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZoneId':
-          if (value != null) {
-            result.availabilityZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'instancePlatform':
-          if (value != null) {
-            result.instancePlatform = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.CapacityReservationInstancePlatform),
-            ) as _i3.CapacityReservationInstancePlatform);
-          }
-          break;
+          result.instancePlatform = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.CapacityReservationInstancePlatform),
+          ) as _i3.CapacityReservationInstancePlatform);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'totalInstanceCount':
           result.totalInstanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'fulfilledCapacity':
           result.fulfilledCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'ebsOptimized':
           result.ebsOptimized = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'createDate':
-          if (value != null) {
-            result.createDate = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createDate = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'weight':
-          if (value != null) {
-            result.weight = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.weight = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
         case 'priority':
-          if (value != null) {
-            result.priority = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.priority = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -286,99 +263,111 @@ class FleetCapacityReservationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FleetCapacityReservation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FleetCapacityReservation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'FleetCapacityReservationResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.capacityReservationId != null) {
-      result
+    final FleetCapacityReservation(
+      :capacityReservationId,
+      :availabilityZoneId,
+      :instanceType,
+      :instancePlatform,
+      :availabilityZone,
+      :totalInstanceCount,
+      :fulfilledCapacity,
+      :ebsOptimized,
+      :createDate,
+      :weight,
+      :priority
+    ) = object;
+    if (capacityReservationId != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationId'))
         ..add(serializers.serialize(
-          payload.capacityReservationId!,
+          capacityReservationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZoneId != null) {
-      result
+    if (availabilityZoneId != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZoneId'))
         ..add(serializers.serialize(
-          payload.availabilityZoneId!,
+          availabilityZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.instancePlatform != null) {
-      result
+    if (instancePlatform != null) {
+      result$
         ..add(const _i4.XmlElementName('InstancePlatform'))
         ..add(serializers.serialize(
-          payload.instancePlatform!,
+          instancePlatform,
           specifiedType:
               const FullType.nullable(_i3.CapacityReservationInstancePlatform),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('TotalInstanceCount'))
       ..add(serializers.serialize(
-        payload.totalInstanceCount,
+        totalInstanceCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('FulfilledCapacity'))
       ..add(serializers.serialize(
-        payload.fulfilledCapacity,
+        fulfilledCapacity,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('EbsOptimized'))
       ..add(serializers.serialize(
-        payload.ebsOptimized,
+        ebsOptimized,
         specifiedType: const FullType(bool),
       ));
-    if (payload.createDate != null) {
-      result
+    if (createDate != null) {
+      result$
         ..add(const _i4.XmlElementName('CreateDate'))
         ..add(serializers.serialize(
-          payload.createDate!,
+          createDate,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.weight != null) {
-      result
+    if (weight != null) {
+      result$
         ..add(const _i4.XmlElementName('Weight'))
         ..add(serializers.serialize(
-          payload.weight!,
+          weight,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    if (payload.priority != null) {
-      result
+    if (priority != null) {
+      result$
         ..add(const _i4.XmlElementName('Priority'))
         ..add(serializers.serialize(
-          payload.priority!,
+          priority,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

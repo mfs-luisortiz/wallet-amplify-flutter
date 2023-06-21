@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.elastic_gpus; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -142,73 +143,55 @@ class ElasticGpusEc2QuerySerializer
     final result = ElasticGpusBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'elasticGpuId':
-          if (value != null) {
-            result.elasticGpuId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticGpuType':
-          if (value != null) {
-            result.elasticGpuType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticGpuType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticGpuHealth':
-          if (value != null) {
-            result.elasticGpuHealth.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ElasticGpuHealth),
-            ) as _i2.ElasticGpuHealth));
-          }
-          break;
+          result.elasticGpuHealth.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ElasticGpuHealth),
+          ) as _i2.ElasticGpuHealth));
         case 'elasticGpuState':
-          if (value != null) {
-            result.elasticGpuState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ElasticGpuState),
-            ) as _i3.ElasticGpuState);
-          }
-          break;
+          result.elasticGpuState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ElasticGpuState),
+          ) as _i3.ElasticGpuState);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
       }
     }
 
@@ -218,79 +201,87 @@ class ElasticGpusEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ElasticGpus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ElasticGpus);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'ElasticGpusResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.elasticGpuId != null) {
-      result
+    final ElasticGpus(
+      :elasticGpuId,
+      :availabilityZone,
+      :elasticGpuType,
+      :elasticGpuHealth,
+      :elasticGpuState,
+      :instanceId,
+      :tags
+    ) = object;
+    if (elasticGpuId != null) {
+      result$
         ..add(const _i6.XmlElementName('ElasticGpuId'))
         ..add(serializers.serialize(
-          payload.elasticGpuId!,
+          elasticGpuId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i6.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticGpuType != null) {
-      result
+    if (elasticGpuType != null) {
+      result$
         ..add(const _i6.XmlElementName('ElasticGpuType'))
         ..add(serializers.serialize(
-          payload.elasticGpuType!,
+          elasticGpuType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticGpuHealth != null) {
-      result
+    if (elasticGpuHealth != null) {
+      result$
         ..add(const _i6.XmlElementName('ElasticGpuHealth'))
         ..add(serializers.serialize(
-          payload.elasticGpuHealth!,
+          elasticGpuHealth,
           specifiedType: const FullType(_i2.ElasticGpuHealth),
         ));
     }
-    if (payload.elasticGpuState != null) {
-      result
+    if (elasticGpuState != null) {
+      result$
         ..add(const _i6.XmlElementName('ElasticGpuState'))
         ..add(serializers.serialize(
-          payload.elasticGpuState!,
+          elasticGpuState,
           specifiedType: const FullType.nullable(_i3.ElasticGpuState),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i6.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_client_vpn_endpoint_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,34 +109,28 @@ class CreateClientVpnEndpointResultEc2QuerySerializer
     final result = CreateClientVpnEndpointResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'clientVpnEndpointId':
-          if (value != null) {
-            result.clientVpnEndpointId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientVpnEndpointId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ClientVpnEndpointStatus),
-            ) as _i2.ClientVpnEndpointStatus));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ClientVpnEndpointStatus),
+          ) as _i2.ClientVpnEndpointStatus));
         case 'dnsName':
-          if (value != null) {
-            result.dnsName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.dnsName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -145,40 +140,44 @@ class CreateClientVpnEndpointResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateClientVpnEndpointResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateClientVpnEndpointResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CreateClientVpnEndpointResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.clientVpnEndpointId != null) {
-      result
+    final CreateClientVpnEndpointResult(
+      :clientVpnEndpointId,
+      :status,
+      :dnsName
+    ) = object;
+    if (clientVpnEndpointId != null) {
+      result$
         ..add(const _i3.XmlElementName('ClientVpnEndpointId'))
         ..add(serializers.serialize(
-          payload.clientVpnEndpointId!,
+          clientVpnEndpointId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i2.ClientVpnEndpointStatus),
         ));
     }
-    if (payload.dnsName != null) {
-      result
+    if (dnsName != null) {
+      result$
         ..add(const _i3.XmlElementName('DnsName'))
         ..add(serializers.serialize(
-          payload.dnsName!,
+          dnsName,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

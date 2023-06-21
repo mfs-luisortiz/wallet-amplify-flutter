@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.slot_start_time_range_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -90,26 +91,23 @@ class SlotStartTimeRangeRequestEc2QuerySerializer
     final result = SlotStartTimeRangeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'EarliestTime':
-          if (value != null) {
-            result.earliestTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.earliestTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'LatestTime':
-          if (value != null) {
-            result.latestTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.latestTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -119,32 +117,32 @@ class SlotStartTimeRangeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SlotStartTimeRangeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SlotStartTimeRangeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'SlotStartTimeRangeRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.earliestTime != null) {
-      result
+    final SlotStartTimeRangeRequest(:earliestTime, :latestTime) = object;
+    if (earliestTime != null) {
+      result$
         ..add(const _i2.XmlElementName('EarliestTime'))
         ..add(serializers.serialize(
-          payload.earliestTime!,
+          earliestTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.latestTime != null) {
-      result
+    if (latestTime != null) {
+      result$
         ..add(const _i2.XmlElementName('LatestTime'))
         ..add(serializers.serialize(
-          payload.latestTime!,
+          latestTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

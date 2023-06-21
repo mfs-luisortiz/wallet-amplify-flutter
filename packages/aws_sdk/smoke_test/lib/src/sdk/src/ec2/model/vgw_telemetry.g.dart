@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.vgw_telemetry;
+part of 'vgw_telemetry.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

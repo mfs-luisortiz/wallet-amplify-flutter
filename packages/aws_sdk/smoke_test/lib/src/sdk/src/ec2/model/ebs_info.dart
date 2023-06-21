@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ebs_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -113,42 +114,33 @@ class EbsInfoEc2QuerySerializer
     final result = EbsInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ebsOptimizedSupport':
-          if (value != null) {
-            result.ebsOptimizedSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.EbsOptimizedSupport),
-            ) as _i2.EbsOptimizedSupport);
-          }
-          break;
+          result.ebsOptimizedSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.EbsOptimizedSupport),
+          ) as _i2.EbsOptimizedSupport);
         case 'encryptionSupport':
-          if (value != null) {
-            result.encryptionSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.EbsEncryptionSupport),
-            ) as _i3.EbsEncryptionSupport);
-          }
-          break;
+          result.encryptionSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.EbsEncryptionSupport),
+          ) as _i3.EbsEncryptionSupport);
         case 'ebsOptimizedInfo':
-          if (value != null) {
-            result.ebsOptimizedInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.EbsOptimizedInfo),
-            ) as _i4.EbsOptimizedInfo));
-          }
-          break;
+          result.ebsOptimizedInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.EbsOptimizedInfo),
+          ) as _i4.EbsOptimizedInfo));
         case 'nvmeSupport':
-          if (value != null) {
-            result.nvmeSupport = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.EbsNvmeSupport),
-            ) as _i5.EbsNvmeSupport);
-          }
-          break;
+          result.nvmeSupport = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.EbsNvmeSupport),
+          ) as _i5.EbsNvmeSupport);
       }
     }
 
@@ -158,48 +150,53 @@ class EbsInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EbsInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EbsInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'EbsInfoResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ebsOptimizedSupport != null) {
-      result
+    final EbsInfo(
+      :ebsOptimizedSupport,
+      :encryptionSupport,
+      :ebsOptimizedInfo,
+      :nvmeSupport
+    ) = object;
+    if (ebsOptimizedSupport != null) {
+      result$
         ..add(const _i6.XmlElementName('EbsOptimizedSupport'))
         ..add(serializers.serialize(
-          payload.ebsOptimizedSupport!,
+          ebsOptimizedSupport,
           specifiedType: const FullType.nullable(_i2.EbsOptimizedSupport),
         ));
     }
-    if (payload.encryptionSupport != null) {
-      result
+    if (encryptionSupport != null) {
+      result$
         ..add(const _i6.XmlElementName('EncryptionSupport'))
         ..add(serializers.serialize(
-          payload.encryptionSupport!,
+          encryptionSupport,
           specifiedType: const FullType.nullable(_i3.EbsEncryptionSupport),
         ));
     }
-    if (payload.ebsOptimizedInfo != null) {
-      result
+    if (ebsOptimizedInfo != null) {
+      result$
         ..add(const _i6.XmlElementName('EbsOptimizedInfo'))
         ..add(serializers.serialize(
-          payload.ebsOptimizedInfo!,
+          ebsOptimizedInfo,
           specifiedType: const FullType(_i4.EbsOptimizedInfo),
         ));
     }
-    if (payload.nvmeSupport != null) {
-      result
+    if (nvmeSupport != null) {
+      result$
         ..add(const _i6.XmlElementName('NvmeSupport'))
         ..add(serializers.serialize(
-          payload.nvmeSupport!,
+          nvmeSupport,
           specifiedType: const FullType.nullable(_i5.EbsNvmeSupport),
         ));
     }
-    return result;
+    return result$;
   }
 }

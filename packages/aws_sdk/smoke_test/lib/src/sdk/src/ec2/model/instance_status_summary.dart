@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_status_summary; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -93,33 +94,30 @@ class InstanceStatusSummaryEc2QuerySerializer
     final result = InstanceStatusSummaryBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'details':
-          if (value != null) {
-            result.details.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.InstanceStatusDetails)],
-              ),
-            ) as _i4.BuiltList<_i2.InstanceStatusDetails>));
-          }
-          break;
+          result.details.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.InstanceStatusDetails)],
+            ),
+          ) as _i4.BuiltList<_i2.InstanceStatusDetails>));
         case 'status':
-          if (value != null) {
-            result.status = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.SummaryStatus),
-            ) as _i3.SummaryStatus);
-          }
-          break;
+          result.status = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.SummaryStatus),
+          ) as _i3.SummaryStatus);
       }
     }
 
@@ -129,39 +127,39 @@ class InstanceStatusSummaryEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceStatusSummary object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceStatusSummary);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'InstanceStatusSummaryResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.details != null) {
-      result
+    final InstanceStatusSummary(:details, :status) = object;
+    if (details != null) {
+      result$
         ..add(const _i5.XmlElementName('Details'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.details!,
+          details,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.InstanceStatusDetails)],
           ),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i5.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType.nullable(_i3.SummaryStatus),
         ));
     }
-    return result;
+    return result$;
   }
 }

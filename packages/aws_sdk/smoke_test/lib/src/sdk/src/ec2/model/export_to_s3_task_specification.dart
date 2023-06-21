@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_to_s3_task_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -112,42 +113,33 @@ class ExportToS3TaskSpecificationEc2QuerySerializer
     final result = ExportToS3TaskSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'containerFormat':
-          if (value != null) {
-            result.containerFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ContainerFormat),
-            ) as _i2.ContainerFormat);
-          }
-          break;
+          result.containerFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ContainerFormat),
+          ) as _i2.ContainerFormat);
         case 'diskImageFormat':
-          if (value != null) {
-            result.diskImageFormat = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DiskImageFormat),
-            ) as _i3.DiskImageFormat);
-          }
-          break;
+          result.diskImageFormat = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DiskImageFormat),
+          ) as _i3.DiskImageFormat);
         case 's3Bucket':
-          if (value != null) {
-            result.s3Bucket = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.s3Bucket = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 's3Prefix':
-          if (value != null) {
-            result.s3Prefix = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.s3Prefix = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -157,48 +149,53 @@ class ExportToS3TaskSpecificationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportToS3TaskSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportToS3TaskSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'ExportToS3TaskSpecificationResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.containerFormat != null) {
-      result
+    final ExportToS3TaskSpecification(
+      :containerFormat,
+      :diskImageFormat,
+      :s3Bucket,
+      :s3Prefix
+    ) = object;
+    if (containerFormat != null) {
+      result$
         ..add(const _i4.XmlElementName('ContainerFormat'))
         ..add(serializers.serialize(
-          payload.containerFormat!,
+          containerFormat,
           specifiedType: const FullType.nullable(_i2.ContainerFormat),
         ));
     }
-    if (payload.diskImageFormat != null) {
-      result
+    if (diskImageFormat != null) {
+      result$
         ..add(const _i4.XmlElementName('DiskImageFormat'))
         ..add(serializers.serialize(
-          payload.diskImageFormat!,
+          diskImageFormat,
           specifiedType: const FullType.nullable(_i3.DiskImageFormat),
         ));
     }
-    if (payload.s3Bucket != null) {
-      result
+    if (s3Bucket != null) {
+      result$
         ..add(const _i4.XmlElementName('S3Bucket'))
         ..add(serializers.serialize(
-          payload.s3Bucket!,
+          s3Bucket,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.s3Prefix != null) {
-      result
+    if (s3Prefix != null) {
+      result$
         ..add(const _i4.XmlElementName('S3Prefix'))
         ..add(serializers.serialize(
-          payload.s3Prefix!,
+          s3Prefix,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

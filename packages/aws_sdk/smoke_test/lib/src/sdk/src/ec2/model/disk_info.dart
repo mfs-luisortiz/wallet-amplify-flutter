@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disk_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,34 +99,28 @@ class DiskInfoEc2QuerySerializer
     final result = DiskInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'sizeInGB':
-          if (value != null) {
-            result.sizeInGb = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.Int64),
-            ) as _i2.Int64);
-          }
-          break;
+          result.sizeInGb = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.Int64),
+          ) as _i2.Int64);
         case 'count':
-          if (value != null) {
-            result.count = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.count = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DiskType),
-            ) as _i3.DiskType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DiskType),
+          ) as _i3.DiskType);
       }
     }
 
@@ -135,40 +130,40 @@ class DiskInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DiskInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DiskInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DiskInfoResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.sizeInGb != null) {
-      result
+    final DiskInfo(:sizeInGb, :count, :type) = object;
+    if (sizeInGb != null) {
+      result$
         ..add(const _i4.XmlElementName('SizeInGB'))
         ..add(serializers.serialize(
-          payload.sizeInGb!,
+          sizeInGb,
           specifiedType: const FullType.nullable(_i2.Int64),
         ));
     }
-    if (payload.count != null) {
-      result
+    if (count != null) {
+      result$
         ..add(const _i4.XmlElementName('Count'))
         ..add(serializers.serialize(
-          payload.count!,
+          count,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i4.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i3.DiskType),
         ));
     }
-    return result;
+    return result$;
   }
 }

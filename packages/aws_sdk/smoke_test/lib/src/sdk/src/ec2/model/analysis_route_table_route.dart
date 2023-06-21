@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.analysis_route_table_route; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -189,98 +190,68 @@ class AnalysisRouteTableRouteEc2QuerySerializer
     final result = AnalysisRouteTableRouteBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidr':
-          if (value != null) {
-            result.destinationCidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destinationPrefixListId':
-          if (value != null) {
-            result.destinationPrefixListId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationPrefixListId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'egressOnlyInternetGatewayId':
-          if (value != null) {
-            result.egressOnlyInternetGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.egressOnlyInternetGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'gatewayId':
-          if (value != null) {
-            result.gatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.gatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'natGatewayId':
-          if (value != null) {
-            result.natGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.natGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'origin':
-          if (value != null) {
-            result.origin = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.origin = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayId':
-          if (value != null) {
-            result.transitGatewayId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'vpcPeeringConnectionId':
-          if (value != null) {
-            result.vpcPeeringConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcPeeringConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -290,104 +261,116 @@ class AnalysisRouteTableRouteEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AnalysisRouteTableRoute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AnalysisRouteTableRoute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'AnalysisRouteTableRouteResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidr != null) {
-      result
+    final AnalysisRouteTableRoute(
+      :destinationCidr,
+      :destinationPrefixListId,
+      :egressOnlyInternetGatewayId,
+      :gatewayId,
+      :instanceId,
+      :natGatewayId,
+      :networkInterfaceId,
+      :origin,
+      :transitGatewayId,
+      :vpcPeeringConnectionId,
+      :state
+    ) = object;
+    if (destinationCidr != null) {
+      result$
         ..add(const _i2.XmlElementName('DestinationCidr'))
         ..add(serializers.serialize(
-          payload.destinationCidr!,
+          destinationCidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationPrefixListId != null) {
-      result
+    if (destinationPrefixListId != null) {
+      result$
         ..add(const _i2.XmlElementName('DestinationPrefixListId'))
         ..add(serializers.serialize(
-          payload.destinationPrefixListId!,
+          destinationPrefixListId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.egressOnlyInternetGatewayId != null) {
-      result
+    if (egressOnlyInternetGatewayId != null) {
+      result$
         ..add(const _i2.XmlElementName('EgressOnlyInternetGatewayId'))
         ..add(serializers.serialize(
-          payload.egressOnlyInternetGatewayId!,
+          egressOnlyInternetGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.gatewayId != null) {
-      result
+    if (gatewayId != null) {
+      result$
         ..add(const _i2.XmlElementName('GatewayId'))
         ..add(serializers.serialize(
-          payload.gatewayId!,
+          gatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.natGatewayId != null) {
-      result
+    if (natGatewayId != null) {
+      result$
         ..add(const _i2.XmlElementName('NatGatewayId'))
         ..add(serializers.serialize(
-          payload.natGatewayId!,
+          natGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.origin != null) {
-      result
+    if (origin != null) {
+      result$
         ..add(const _i2.XmlElementName('Origin'))
         ..add(serializers.serialize(
-          payload.origin!,
+          origin,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayId != null) {
-      result
+    if (transitGatewayId != null) {
+      result$
         ..add(const _i2.XmlElementName('TransitGatewayId'))
         ..add(serializers.serialize(
-          payload.transitGatewayId!,
+          transitGatewayId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.vpcPeeringConnectionId != null) {
-      result
+    if (vpcPeeringConnectionId != null) {
+      result$
         ..add(const _i2.XmlElementName('VpcPeeringConnectionId'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnectionId!,
+          vpcPeeringConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i2.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

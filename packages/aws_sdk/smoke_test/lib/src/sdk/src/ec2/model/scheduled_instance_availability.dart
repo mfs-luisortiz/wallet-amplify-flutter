@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instance_availability; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -215,104 +216,78 @@ class ScheduledInstanceAvailabilityEc2QuerySerializer
     final result = ScheduledInstanceAvailabilityBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availableInstanceCount':
           result.availableInstanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'firstSlotStartTime':
-          if (value != null) {
-            result.firstSlotStartTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.firstSlotStartTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'hourlyPrice':
-          if (value != null) {
-            result.hourlyPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hourlyPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'maxTermDurationInDays':
           result.maxTermDurationInDays = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'minTermDurationInDays':
           result.minTermDurationInDays = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'networkPlatform':
-          if (value != null) {
-            result.networkPlatform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkPlatform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'purchaseToken':
-          if (value != null) {
-            result.purchaseToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.purchaseToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'recurrence':
-          if (value != null) {
-            result.recurrence.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
-            ) as _i2.ScheduledInstanceRecurrence));
-          }
-          break;
+          result.recurrence.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
+          ) as _i2.ScheduledInstanceRecurrence));
         case 'slotDurationInHours':
           result.slotDurationInHours = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'totalScheduledInstanceHours':
           result.totalScheduledInstanceHours = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -322,110 +297,124 @@ class ScheduledInstanceAvailabilityEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstanceAvailability object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstanceAvailability);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ScheduledInstanceAvailabilityResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.availabilityZone != null) {
-      result
+    final ScheduledInstanceAvailability(
+      :availabilityZone,
+      :availableInstanceCount,
+      :firstSlotStartTime,
+      :hourlyPrice,
+      :instanceType,
+      :maxTermDurationInDays,
+      :minTermDurationInDays,
+      :networkPlatform,
+      :platform,
+      :purchaseToken,
+      :recurrence,
+      :slotDurationInHours,
+      :totalScheduledInstanceHours
+    ) = object;
+    if (availabilityZone != null) {
+      result$
         ..add(const _i3.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('AvailableInstanceCount'))
       ..add(serializers.serialize(
-        payload.availableInstanceCount,
+        availableInstanceCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.firstSlotStartTime != null) {
-      result
+    if (firstSlotStartTime != null) {
+      result$
         ..add(const _i3.XmlElementName('FirstSlotStartTime'))
         ..add(serializers.serialize(
-          payload.firstSlotStartTime!,
+          firstSlotStartTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.hourlyPrice != null) {
-      result
+    if (hourlyPrice != null) {
+      result$
         ..add(const _i3.XmlElementName('HourlyPrice'))
         ..add(serializers.serialize(
-          payload.hourlyPrice!,
+          hourlyPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('MaxTermDurationInDays'))
       ..add(serializers.serialize(
-        payload.maxTermDurationInDays,
+        maxTermDurationInDays,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('MinTermDurationInDays'))
       ..add(serializers.serialize(
-        payload.minTermDurationInDays,
+        minTermDurationInDays,
         specifiedType: const FullType(int),
       ));
-    if (payload.networkPlatform != null) {
-      result
+    if (networkPlatform != null) {
+      result$
         ..add(const _i3.XmlElementName('NetworkPlatform'))
         ..add(serializers.serialize(
-          payload.networkPlatform!,
+          networkPlatform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i3.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.purchaseToken != null) {
-      result
+    if (purchaseToken != null) {
+      result$
         ..add(const _i3.XmlElementName('PurchaseToken'))
         ..add(serializers.serialize(
-          payload.purchaseToken!,
+          purchaseToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.recurrence != null) {
-      result
+    if (recurrence != null) {
+      result$
         ..add(const _i3.XmlElementName('Recurrence'))
         ..add(serializers.serialize(
-          payload.recurrence!,
+          recurrence,
           specifiedType: const FullType(_i2.ScheduledInstanceRecurrence),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('SlotDurationInHours'))
       ..add(serializers.serialize(
-        payload.slotDurationInHours,
+        slotDurationInHours,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('TotalScheduledInstanceHours'))
       ..add(serializers.serialize(
-        payload.totalScheduledInstanceHours,
+        totalScheduledInstanceHours,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

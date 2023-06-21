@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.placement_group; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -157,79 +158,60 @@ class PlacementGroupEc2QuerySerializer
     final result = PlacementGroupBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'groupName':
-          if (value != null) {
-            result.groupName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PlacementGroupState),
-            ) as _i2.PlacementGroupState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PlacementGroupState),
+          ) as _i2.PlacementGroupState);
         case 'strategy':
-          if (value != null) {
-            result.strategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.PlacementStrategy),
-            ) as _i3.PlacementStrategy);
-          }
-          break;
+          result.strategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PlacementStrategy),
+          ) as _i3.PlacementStrategy);
         case 'partitionCount':
           result.partitionCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'groupId':
-          if (value != null) {
-            result.groupId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i6.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i6.BuiltList<_i4.Tag>));
         case 'groupArn':
-          if (value != null) {
-            result.groupArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.groupArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'spreadLevel':
-          if (value != null) {
-            result.spreadLevel = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.SpreadLevel),
-            ) as _i5.SpreadLevel);
-          }
-          break;
+          result.spreadLevel = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.SpreadLevel),
+          ) as _i5.SpreadLevel);
       }
     }
 
@@ -239,85 +221,94 @@ class PlacementGroupEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PlacementGroup object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PlacementGroup);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'PlacementGroupResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.groupName != null) {
-      result
+    final PlacementGroup(
+      :groupName,
+      :state,
+      :strategy,
+      :partitionCount,
+      :groupId,
+      :tags,
+      :groupArn,
+      :spreadLevel
+    ) = object;
+    if (groupName != null) {
+      result$
         ..add(const _i7.XmlElementName('GroupName'))
         ..add(serializers.serialize(
-          payload.groupName!,
+          groupName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i7.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.PlacementGroupState),
         ));
     }
-    if (payload.strategy != null) {
-      result
+    if (strategy != null) {
+      result$
         ..add(const _i7.XmlElementName('Strategy'))
         ..add(serializers.serialize(
-          payload.strategy!,
+          strategy,
           specifiedType: const FullType.nullable(_i3.PlacementStrategy),
         ));
     }
-    result
+    result$
       ..add(const _i7.XmlElementName('PartitionCount'))
       ..add(serializers.serialize(
-        payload.partitionCount,
+        partitionCount,
         specifiedType: const FullType(int),
       ));
-    if (payload.groupId != null) {
-      result
+    if (groupId != null) {
+      result$
         ..add(const _i7.XmlElementName('GroupId'))
         ..add(serializers.serialize(
-          payload.groupId!,
+          groupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    if (payload.groupArn != null) {
-      result
+    if (groupArn != null) {
+      result$
         ..add(const _i7.XmlElementName('GroupArn'))
         ..add(serializers.serialize(
-          payload.groupArn!,
+          groupArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spreadLevel != null) {
-      result
+    if (spreadLevel != null) {
+      result$
         ..add(const _i7.XmlElementName('SpreadLevel'))
         ..add(serializers.serialize(
-          payload.spreadLevel!,
+          spreadLevel,
           specifiedType: const FullType.nullable(_i5.SpreadLevel),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.vpc_peering_connection; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -135,66 +136,50 @@ class VpcPeeringConnectionEc2QuerySerializer
     final result = VpcPeeringConnectionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'accepterVpcInfo':
-          if (value != null) {
-            result.accepterVpcInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
-            ) as _i2.VpcPeeringConnectionVpcInfo));
-          }
-          break;
+          result.accepterVpcInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
+          ) as _i2.VpcPeeringConnectionVpcInfo));
         case 'expirationTime':
-          if (value != null) {
-            result.expirationTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.expirationTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'requesterVpcInfo':
-          if (value != null) {
-            result.requesterVpcInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
-            ) as _i2.VpcPeeringConnectionVpcInfo));
-          }
-          break;
+          result.requesterVpcInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
+          ) as _i2.VpcPeeringConnectionVpcInfo));
         case 'status':
-          if (value != null) {
-            result.status.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.VpcPeeringConnectionStateReason),
-            ) as _i3.VpcPeeringConnectionStateReason));
-          }
-          break;
+          result.status.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.VpcPeeringConnectionStateReason),
+          ) as _i3.VpcPeeringConnectionStateReason));
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
         case 'vpcPeeringConnectionId':
-          if (value != null) {
-            result.vpcPeeringConnectionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcPeeringConnectionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -204,71 +189,78 @@ class VpcPeeringConnectionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VpcPeeringConnection object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VpcPeeringConnection);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'VpcPeeringConnectionResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.accepterVpcInfo != null) {
-      result
+    final VpcPeeringConnection(
+      :accepterVpcInfo,
+      :expirationTime,
+      :requesterVpcInfo,
+      :status,
+      :tags,
+      :vpcPeeringConnectionId
+    ) = object;
+    if (accepterVpcInfo != null) {
+      result$
         ..add(const _i6.XmlElementName('AccepterVpcInfo'))
         ..add(serializers.serialize(
-          payload.accepterVpcInfo!,
+          accepterVpcInfo,
           specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
         ));
     }
-    if (payload.expirationTime != null) {
-      result
+    if (expirationTime != null) {
+      result$
         ..add(const _i6.XmlElementName('ExpirationTime'))
         ..add(serializers.serialize(
-          payload.expirationTime!,
+          expirationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.requesterVpcInfo != null) {
-      result
+    if (requesterVpcInfo != null) {
+      result$
         ..add(const _i6.XmlElementName('RequesterVpcInfo'))
         ..add(serializers.serialize(
-          payload.requesterVpcInfo!,
+          requesterVpcInfo,
           specifiedType: const FullType(_i2.VpcPeeringConnectionVpcInfo),
         ));
     }
-    if (payload.status != null) {
-      result
+    if (status != null) {
+      result$
         ..add(const _i6.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.status!,
+          status,
           specifiedType: const FullType(_i3.VpcPeeringConnectionStateReason),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    if (payload.vpcPeeringConnectionId != null) {
-      result
+    if (vpcPeeringConnectionId != null) {
+      result$
         ..add(const _i6.XmlElementName('VpcPeeringConnectionId'))
         ..add(serializers.serialize(
-          payload.vpcPeeringConnectionId!,
+          vpcPeeringConnectionId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

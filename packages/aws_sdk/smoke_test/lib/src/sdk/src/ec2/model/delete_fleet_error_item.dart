@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_fleet_error_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -91,26 +92,23 @@ class DeleteFleetErrorItemEc2QuerySerializer
     final result = DeleteFleetErrorItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'error':
-          if (value != null) {
-            result.error.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DeleteFleetError),
-            ) as _i2.DeleteFleetError));
-          }
-          break;
+          result.error.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DeleteFleetError),
+          ) as _i2.DeleteFleetError));
         case 'fleetId':
-          if (value != null) {
-            result.fleetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -120,32 +118,32 @@ class DeleteFleetErrorItemEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteFleetErrorItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteFleetErrorItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteFleetErrorItemResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.error != null) {
-      result
+    final DeleteFleetErrorItem(:error, :fleetId) = object;
+    if (error != null) {
+      result$
         ..add(const _i3.XmlElementName('Error'))
         ..add(serializers.serialize(
-          payload.error!,
+          error,
           specifiedType: const FullType(_i2.DeleteFleetError),
         ));
     }
-    if (payload.fleetId != null) {
-      result
+    if (fleetId != null) {
+      result$
         ..add(const _i3.XmlElementName('FleetId'))
         ..add(serializers.serialize(
-          payload.fleetId!,
+          fleetId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

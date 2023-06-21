@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_snapshot_tier_status_request;
+part of 'describe_snapshot_tier_status_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

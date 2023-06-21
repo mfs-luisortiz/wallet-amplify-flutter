@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ipam_pool;
+part of 'ipam_pool.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

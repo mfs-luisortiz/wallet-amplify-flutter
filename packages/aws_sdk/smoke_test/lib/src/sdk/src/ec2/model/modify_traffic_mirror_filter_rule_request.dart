@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_traffic_mirror_filter_rule_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -217,104 +218,79 @@ class ModifyTrafficMirrorFilterRuleRequestEc2QuerySerializer extends _i1
     final result = ModifyTrafficMirrorFilterRuleRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TrafficMirrorFilterRuleId':
           result.trafficMirrorFilterRuleId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TrafficDirection':
-          if (value != null) {
-            result.trafficDirection = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TrafficDirection),
-            ) as _i3.TrafficDirection);
-          }
-          break;
+          result.trafficDirection = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TrafficDirection),
+          ) as _i3.TrafficDirection);
         case 'RuleNumber':
           result.ruleNumber = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'RuleAction':
-          if (value != null) {
-            result.ruleAction = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.TrafficMirrorRuleAction),
-            ) as _i4.TrafficMirrorRuleAction);
-          }
-          break;
+          result.ruleAction = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.TrafficMirrorRuleAction),
+          ) as _i4.TrafficMirrorRuleAction);
         case 'DestinationPortRange':
-          if (value != null) {
-            result.destinationPortRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
-            ) as _i5.TrafficMirrorPortRangeRequest));
-          }
-          break;
+          result.destinationPortRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
+          ) as _i5.TrafficMirrorPortRangeRequest));
         case 'SourcePortRange':
-          if (value != null) {
-            result.sourcePortRange.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
-            ) as _i5.TrafficMirrorPortRangeRequest));
-          }
-          break;
+          result.sourcePortRange.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
+          ) as _i5.TrafficMirrorPortRangeRequest));
         case 'Protocol':
           result.protocol = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DestinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SourceCidrBlock':
-          if (value != null) {
-            result.sourceCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RemoveField':
-          if (value != null) {
-            result.removeFields.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i7.BuiltList,
-                [FullType(_i6.TrafficMirrorFilterRuleField)],
-              ),
-            ) as _i7.BuiltList<_i6.TrafficMirrorFilterRuleField>));
-          }
-          break;
+          result.removeFields.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i7.BuiltList,
+              [FullType(_i6.TrafficMirrorFilterRuleField)],
+            ),
+          ) as _i7.BuiltList<_i6.TrafficMirrorFilterRuleField>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -324,110 +300,123 @@ class ModifyTrafficMirrorFilterRuleRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyTrafficMirrorFilterRuleRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyTrafficMirrorFilterRuleRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyTrafficMirrorFilterRuleRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyTrafficMirrorFilterRuleRequest(
+      :trafficMirrorFilterRuleId,
+      :trafficDirection,
+      :ruleNumber,
+      :ruleAction,
+      :destinationPortRange,
+      :sourcePortRange,
+      :protocol,
+      :destinationCidrBlock,
+      :sourceCidrBlock,
+      :description,
+      :removeFields,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('TrafficMirrorFilterRuleId'))
       ..add(serializers.serialize(
-        payload.trafficMirrorFilterRuleId,
+        trafficMirrorFilterRuleId,
         specifiedType: const FullType(String),
       ));
-    if (payload.trafficDirection != null) {
-      result
+    if (trafficDirection != null) {
+      result$
         ..add(const _i1.XmlElementName('TrafficDirection'))
         ..add(serializers.serialize(
-          payload.trafficDirection!,
+          trafficDirection,
           specifiedType: const FullType.nullable(_i3.TrafficDirection),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('RuleNumber'))
       ..add(serializers.serialize(
-        payload.ruleNumber,
+        ruleNumber,
         specifiedType: const FullType(int),
       ));
-    if (payload.ruleAction != null) {
-      result
+    if (ruleAction != null) {
+      result$
         ..add(const _i1.XmlElementName('RuleAction'))
         ..add(serializers.serialize(
-          payload.ruleAction!,
+          ruleAction,
           specifiedType: const FullType.nullable(_i4.TrafficMirrorRuleAction),
         ));
     }
-    if (payload.destinationPortRange != null) {
-      result
+    if (destinationPortRange != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationPortRange'))
         ..add(serializers.serialize(
-          payload.destinationPortRange!,
+          destinationPortRange,
           specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
         ));
     }
-    if (payload.sourcePortRange != null) {
-      result
+    if (sourcePortRange != null) {
+      result$
         ..add(const _i1.XmlElementName('SourcePortRange'))
         ..add(serializers.serialize(
-          payload.sourcePortRange!,
+          sourcePortRange,
           specifiedType: const FullType(_i5.TrafficMirrorPortRangeRequest),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Protocol'))
       ..add(serializers.serialize(
-        payload.protocol,
+        protocol,
         specifiedType: const FullType(int),
       ));
-    if (payload.destinationCidrBlock != null) {
-      result
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourceCidrBlock != null) {
-      result
+    if (sourceCidrBlock != null) {
+      result$
         ..add(const _i1.XmlElementName('SourceCidrBlock'))
         ..add(serializers.serialize(
-          payload.sourceCidrBlock!,
+          sourceCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.removeFields != null) {
-      result
+    if (removeFields != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveField'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.removeFields!,
+          removeFields,
           specifiedType: const FullType.nullable(
             _i7.BuiltList,
             [FullType(_i6.TrafficMirrorFilterRuleField)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

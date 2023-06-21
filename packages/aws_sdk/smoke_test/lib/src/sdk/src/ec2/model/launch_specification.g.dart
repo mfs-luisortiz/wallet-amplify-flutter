@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.launch_specification;
+part of 'launch_specification.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

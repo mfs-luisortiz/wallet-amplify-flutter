@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.provision_byoip_cidr_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -163,66 +164,56 @@ class ProvisionByoipCidrRequestEc2QuerySerializer
     final result = ProvisionByoipCidrRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Cidr':
           result.cidr = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'CidrAuthorizationContext':
-          if (value != null) {
-            result.cidrAuthorizationContext.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.CidrAuthorizationContext),
-            ) as _i3.CidrAuthorizationContext));
-          }
-          break;
+          result.cidrAuthorizationContext.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.CidrAuthorizationContext),
+          ) as _i3.CidrAuthorizationContext));
         case 'PubliclyAdvertisable':
           result.publiclyAdvertisable = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'PoolTagSpecification':
-          if (value != null) {
-            result.poolTagSpecifications
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.poolTagSpecifications
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
         case 'MultiRegion':
           result.multiRegion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -232,71 +223,79 @@ class ProvisionByoipCidrRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ProvisionByoipCidrRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ProvisionByoipCidrRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ProvisionByoipCidrRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ProvisionByoipCidrRequest(
+      :cidr,
+      :cidrAuthorizationContext,
+      :publiclyAdvertisable,
+      :description,
+      :dryRun,
+      :poolTagSpecifications,
+      :multiRegion
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('Cidr'))
       ..add(serializers.serialize(
-        payload.cidr,
+        cidr,
         specifiedType: const FullType(String),
       ));
-    if (payload.cidrAuthorizationContext != null) {
-      result
+    if (cidrAuthorizationContext != null) {
+      result$
         ..add(const _i1.XmlElementName('CidrAuthorizationContext'))
         ..add(serializers.serialize(
-          payload.cidrAuthorizationContext!,
+          cidrAuthorizationContext,
           specifiedType: const FullType(_i3.CidrAuthorizationContext),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('PubliclyAdvertisable'))
       ..add(serializers.serialize(
-        payload.publiclyAdvertisable,
+        publiclyAdvertisable,
         specifiedType: const FullType(bool),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.poolTagSpecifications != null) {
-      result
+    if (poolTagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('PoolTagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.poolTagSpecifications!,
+          poolTagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MultiRegion'))
       ..add(serializers.serialize(
-        payload.multiRegion,
+        multiRegion,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

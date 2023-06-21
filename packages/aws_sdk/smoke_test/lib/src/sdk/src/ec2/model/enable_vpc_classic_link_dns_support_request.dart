@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.enable_vpc_classic_link_dns_support_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -84,18 +85,18 @@ class EnableVpcClassicLinkDnsSupportRequestEc2QuerySerializer extends _i1
     final result = EnableVpcClassicLinkDnsSupportRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'VpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -105,24 +106,24 @@ class EnableVpcClassicLinkDnsSupportRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EnableVpcClassicLinkDnsSupportRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EnableVpcClassicLinkDnsSupportRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'EnableVpcClassicLinkDnsSupportRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpcId != null) {
-      result
+    final EnableVpcClassicLinkDnsSupportRequest(:vpcId) = object;
+    if (vpcId != null) {
+      result$
         ..add(const _i1.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.restore_managed_prefix_list_version_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -128,34 +129,33 @@ class RestoreManagedPrefixListVersionRequestEc2QuerySerializer extends _i1
     final result = RestoreManagedPrefixListVersionRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'PrefixListId':
           result.prefixListId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'PreviousVersion':
           result.previousVersion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Int64),
           ) as _i3.Int64);
-          break;
         case 'CurrentVersion':
           result.currentVersion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Int64),
           ) as _i3.Int64);
-          break;
       }
     }
 
@@ -165,40 +165,45 @@ class RestoreManagedPrefixListVersionRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    RestoreManagedPrefixListVersionRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as RestoreManagedPrefixListVersionRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'RestoreManagedPrefixListVersionRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final RestoreManagedPrefixListVersionRequest(
+      :dryRun,
+      :prefixListId,
+      :previousVersion,
+      :currentVersion
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PrefixListId'))
       ..add(serializers.serialize(
-        payload.prefixListId,
+        prefixListId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('PreviousVersion'))
       ..add(serializers.serialize(
-        payload.previousVersion,
+        previousVersion,
         specifiedType: const FullType(_i3.Int64),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('CurrentVersion'))
       ..add(serializers.serialize(
-        payload.currentVersion,
+        currentVersion,
         specifiedType: const FullType(_i3.Int64),
       ));
-    return result;
+    return result$;
   }
 }

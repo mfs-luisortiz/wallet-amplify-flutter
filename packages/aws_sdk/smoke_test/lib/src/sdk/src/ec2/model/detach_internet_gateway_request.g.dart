@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.detach_internet_gateway_request;
+part of 'detach_internet_gateway_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

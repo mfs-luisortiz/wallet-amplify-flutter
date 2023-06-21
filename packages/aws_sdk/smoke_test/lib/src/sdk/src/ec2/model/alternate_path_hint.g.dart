@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.alternate_path_hint;
+part of 'alternate_path_hint.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

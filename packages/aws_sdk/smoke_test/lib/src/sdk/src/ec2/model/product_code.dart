@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.product_code; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -89,26 +90,23 @@ class ProductCodeEc2QuerySerializer
     final result = ProductCodeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'productCode':
-          if (value != null) {
-            result.productCodeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.productCodeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'type':
-          if (value != null) {
-            result.productCodeType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ProductCodeValues),
-            ) as _i2.ProductCodeValues);
-          }
-          break;
+          result.productCodeType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ProductCodeValues),
+          ) as _i2.ProductCodeValues);
       }
     }
 
@@ -118,32 +116,32 @@ class ProductCodeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ProductCode object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ProductCode);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ProductCodeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.productCodeId != null) {
-      result
+    final ProductCode(:productCodeId, :productCodeType) = object;
+    if (productCodeId != null) {
+      result$
         ..add(const _i3.XmlElementName('ProductCode'))
         ..add(serializers.serialize(
-          payload.productCodeId!,
+          productCodeId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.productCodeType != null) {
-      result
+    if (productCodeType != null) {
+      result$
         ..add(const _i3.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.productCodeType!,
+          productCodeType,
           specifiedType: const FullType.nullable(_i2.ProductCodeValues),
         ));
     }
-    return result;
+    return result$;
   }
 }

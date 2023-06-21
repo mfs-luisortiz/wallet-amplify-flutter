@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reserved_instance_limit_price; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,24 +96,23 @@ class ReservedInstanceLimitPriceEc2QuerySerializer
     final result = ReservedInstanceLimitPriceBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'amount':
           result.amount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'currencyCode':
-          if (value != null) {
-            result.currencyCode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CurrencyCodeValues),
-            ) as _i2.CurrencyCodeValues);
-          }
-          break;
+          result.currencyCode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CurrencyCodeValues),
+          ) as _i2.CurrencyCodeValues);
       }
     }
 
@@ -122,30 +122,30 @@ class ReservedInstanceLimitPriceEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservedInstanceLimitPrice object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservedInstanceLimitPrice);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ReservedInstanceLimitPriceResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ReservedInstanceLimitPrice(:amount, :currencyCode) = object;
+    result$
       ..add(const _i3.XmlElementName('Amount'))
       ..add(serializers.serialize(
-        payload.amount,
+        amount,
         specifiedType: const FullType(double),
       ));
-    if (payload.currencyCode != null) {
-      result
+    if (currencyCode != null) {
+      result$
         ..add(const _i3.XmlElementName('CurrencyCode'))
         ..add(serializers.serialize(
-          payload.currencyCode!,
+          currencyCode,
           specifiedType: const FullType.nullable(_i2.CurrencyCodeValues),
         ));
     }
-    return result;
+    return result$;
   }
 }

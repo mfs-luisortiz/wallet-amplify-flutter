@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_instance_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -135,53 +136,45 @@ class ImportInstanceRequestEc2QuerySerializer
     final result = ImportInstanceRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'diskImage':
-          if (value != null) {
-            result.diskImages.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i3.DiskImage)],
-              ),
-            ) as _i6.BuiltList<_i3.DiskImage>));
-          }
-          break;
+          result.diskImages.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i3.DiskImage)],
+            ),
+          ) as _i6.BuiltList<_i3.DiskImage>));
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'launchSpecification':
-          if (value != null) {
-            result.launchSpecification.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.ImportInstanceLaunchSpecification),
-            ) as _i4.ImportInstanceLaunchSpecification));
-          }
-          break;
+          result.launchSpecification.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.ImportInstanceLaunchSpecification),
+          ) as _i4.ImportInstanceLaunchSpecification));
         case 'platform':
           result.platform = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i5.PlatformValues),
           ) as _i5.PlatformValues);
-          break;
       }
     }
 
@@ -191,58 +184,64 @@ class ImportInstanceRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportInstanceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportInstanceRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ImportInstanceRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final ImportInstanceRequest(
+      :description,
+      :diskImages,
+      :dryRun,
+      :launchSpecification,
+      :platform
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.diskImages != null) {
-      result
+    if (diskImages != null) {
+      result$
         ..add(const _i1.XmlElementName('DiskImage'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.diskImages!,
+          diskImages,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i3.DiskImage)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.launchSpecification != null) {
-      result
+    if (launchSpecification != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchSpecification'))
         ..add(serializers.serialize(
-          payload.launchSpecification!,
+          launchSpecification,
           specifiedType: const FullType(_i4.ImportInstanceLaunchSpecification),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Platform'))
       ..add(serializers.serialize(
-        payload.platform,
+        platform,
         specifiedType: const FullType.nullable(_i5.PlatformValues),
       ));
-    return result;
+    return result$;
   }
 }

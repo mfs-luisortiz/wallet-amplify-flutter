@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.deregister_instance_event_notification_attributes_result;
+part of 'deregister_instance_event_notification_attributes_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.subnet_ipv6_cidr_block_association; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -105,34 +106,28 @@ class SubnetIpv6CidrBlockAssociationEc2QuerySerializer
     final result = SubnetIpv6CidrBlockAssociationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationId':
-          if (value != null) {
-            result.associationId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.associationId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipv6CidrBlock':
-          if (value != null) {
-            result.ipv6CidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6CidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ipv6CidrBlockState':
-          if (value != null) {
-            result.ipv6CidrBlockState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SubnetCidrBlockState),
-            ) as _i2.SubnetCidrBlockState));
-          }
-          break;
+          result.ipv6CidrBlockState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SubnetCidrBlockState),
+          ) as _i2.SubnetCidrBlockState));
       }
     }
 
@@ -142,40 +137,44 @@ class SubnetIpv6CidrBlockAssociationEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SubnetIpv6CidrBlockAssociation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SubnetIpv6CidrBlockAssociation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'SubnetIpv6CidrBlockAssociationResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associationId != null) {
-      result
+    final SubnetIpv6CidrBlockAssociation(
+      :associationId,
+      :ipv6CidrBlock,
+      :ipv6CidrBlockState
+    ) = object;
+    if (associationId != null) {
+      result$
         ..add(const _i3.XmlElementName('AssociationId'))
         ..add(serializers.serialize(
-          payload.associationId!,
+          associationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6CidrBlock != null) {
-      result
+    if (ipv6CidrBlock != null) {
+      result$
         ..add(const _i3.XmlElementName('Ipv6CidrBlock'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlock!,
+          ipv6CidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipv6CidrBlockState != null) {
-      result
+    if (ipv6CidrBlockState != null) {
+      result$
         ..add(const _i3.XmlElementName('Ipv6CidrBlockState'))
         ..add(serializers.serialize(
-          payload.ipv6CidrBlockState!,
+          ipv6CidrBlockState,
           specifiedType: const FullType(_i2.SubnetCidrBlockState),
         ));
     }
-    return result;
+    return result$;
   }
 }

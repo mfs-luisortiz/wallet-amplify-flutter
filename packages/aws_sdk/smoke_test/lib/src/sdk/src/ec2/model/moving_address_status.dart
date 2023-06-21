@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.moving_address_status; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,26 +96,23 @@ class MovingAddressStatusEc2QuerySerializer
     final result = MovingAddressStatusBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'moveStatus':
-          if (value != null) {
-            result.moveStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.MoveStatus),
-            ) as _i2.MoveStatus);
-          }
-          break;
+          result.moveStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.MoveStatus),
+          ) as _i2.MoveStatus);
         case 'publicIp':
-          if (value != null) {
-            result.publicIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -124,32 +122,32 @@ class MovingAddressStatusEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    MovingAddressStatus object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as MovingAddressStatus);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'MovingAddressStatusResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.moveStatus != null) {
-      result
+    final MovingAddressStatus(:moveStatus, :publicIp) = object;
+    if (moveStatus != null) {
+      result$
         ..add(const _i3.XmlElementName('MoveStatus'))
         ..add(serializers.serialize(
-          payload.moveStatus!,
+          moveStatus,
           specifiedType: const FullType.nullable(_i2.MoveStatus),
         ));
     }
-    if (payload.publicIp != null) {
-      result
+    if (publicIp != null) {
+      result$
         ..add(const _i3.XmlElementName('PublicIp'))
         ..add(serializers.serialize(
-          payload.publicIp!,
+          publicIp,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

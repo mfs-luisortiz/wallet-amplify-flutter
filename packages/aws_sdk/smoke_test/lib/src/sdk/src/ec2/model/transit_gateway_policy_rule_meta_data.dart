@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_policy_rule_meta_data; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -93,26 +94,23 @@ class TransitGatewayPolicyRuleMetaDataEc2QuerySerializer
     final result = TransitGatewayPolicyRuleMetaDataBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'metaDataKey':
-          if (value != null) {
-            result.metaDataKey = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.metaDataKey = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'metaDataValue':
-          if (value != null) {
-            result.metaDataValue = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.metaDataValue = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -122,32 +120,33 @@ class TransitGatewayPolicyRuleMetaDataEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayPolicyRuleMetaData object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayPolicyRuleMetaData);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'TransitGatewayPolicyRuleMetaDataResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.metaDataKey != null) {
-      result
+    final TransitGatewayPolicyRuleMetaData(:metaDataKey, :metaDataValue) =
+        object;
+    if (metaDataKey != null) {
+      result$
         ..add(const _i2.XmlElementName('MetaDataKey'))
         ..add(serializers.serialize(
-          payload.metaDataKey!,
+          metaDataKey,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.metaDataValue != null) {
-      result
+    if (metaDataValue != null) {
+      result$
         ..add(const _i2.XmlElementName('MetaDataValue'))
         ..add(serializers.serialize(
-          payload.metaDataValue!,
+          metaDataValue,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

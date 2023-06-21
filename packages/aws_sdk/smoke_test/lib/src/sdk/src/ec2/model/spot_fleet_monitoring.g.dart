@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.spot_fleet_monitoring;
+part of 'spot_fleet_monitoring.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

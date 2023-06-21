@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.enable_fast_snapshot_restores_request;
+part of 'enable_fast_snapshot_restores_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

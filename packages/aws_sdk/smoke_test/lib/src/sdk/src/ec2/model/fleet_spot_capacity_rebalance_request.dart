@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fleet_spot_capacity_rebalance_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,24 +109,23 @@ class FleetSpotCapacityRebalanceRequestEc2QuerySerializer
     final result = FleetSpotCapacityRebalanceRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ReplacementStrategy':
-          if (value != null) {
-            result.replacementStrategy = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.FleetReplacementStrategy),
-            ) as _i2.FleetReplacementStrategy);
-          }
-          break;
+          result.replacementStrategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FleetReplacementStrategy),
+          ) as _i2.FleetReplacementStrategy);
         case 'TerminationDelay':
           result.terminationDelay = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -135,30 +135,33 @@ class FleetSpotCapacityRebalanceRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FleetSpotCapacityRebalanceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FleetSpotCapacityRebalanceRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'FleetSpotCapacityRebalanceRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.replacementStrategy != null) {
-      result
+    final FleetSpotCapacityRebalanceRequest(
+      :replacementStrategy,
+      :terminationDelay
+    ) = object;
+    if (replacementStrategy != null) {
+      result$
         ..add(const _i3.XmlElementName('ReplacementStrategy'))
         ..add(serializers.serialize(
-          payload.replacementStrategy!,
+          replacementStrategy,
           specifiedType: const FullType.nullable(_i2.FleetReplacementStrategy),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('TerminationDelay'))
       ..add(serializers.serialize(
-        payload.terminationDelay,
+        terminationDelay,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.associate_address_request;
+part of 'associate_address_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

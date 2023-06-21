@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.allocate_hosts_request;
+part of 'allocate_hosts_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

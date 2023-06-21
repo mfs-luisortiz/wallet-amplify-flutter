@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_tag_notification_attribute; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -98,31 +99,30 @@ class InstanceTagNotificationAttributeEc2QuerySerializer
     final result = InstanceTagNotificationAttributeBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceTagKeySet':
-          if (value != null) {
-            result.instanceTagKeys.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i2.BuiltList<String>));
-          }
-          break;
+          result.instanceTagKeys.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i2.BuiltList<String>));
         case 'includeAllTagsOfInstance':
           result.includeAllTagsOfInstance = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -132,37 +132,40 @@ class InstanceTagNotificationAttributeEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceTagNotificationAttribute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceTagNotificationAttribute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'InstanceTagNotificationAttributeResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceTagKeys != null) {
-      result
+    final InstanceTagNotificationAttribute(
+      :instanceTagKeys,
+      :includeAllTagsOfInstance
+    ) = object;
+    if (instanceTagKeys != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceTagKeySet'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instanceTagKeys!,
+          instanceTagKeys,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('IncludeAllTagsOfInstance'))
       ..add(serializers.serialize(
-        payload.includeAllTagsOfInstance,
+        includeAllTagsOfInstance,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

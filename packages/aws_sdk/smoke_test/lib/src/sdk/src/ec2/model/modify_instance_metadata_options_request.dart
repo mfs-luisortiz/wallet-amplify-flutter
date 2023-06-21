@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_instance_metadata_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -172,60 +173,48 @@ class ModifyInstanceMetadataOptionsRequestEc2QuerySerializer extends _i1
     final result = ModifyInstanceMetadataOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceId':
           result.instanceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'HttpTokens':
-          if (value != null) {
-            result.httpTokens = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.HttpTokensState),
-            ) as _i3.HttpTokensState);
-          }
-          break;
+          result.httpTokens = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.HttpTokensState),
+          ) as _i3.HttpTokensState);
         case 'HttpPutResponseHopLimit':
           result.httpPutResponseHopLimit = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'HttpEndpoint':
-          if (value != null) {
-            result.httpEndpoint = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceMetadataEndpointState),
-            ) as _i4.InstanceMetadataEndpointState);
-          }
-          break;
+          result.httpEndpoint = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceMetadataEndpointState),
+          ) as _i4.InstanceMetadataEndpointState);
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'HttpProtocolIpv6':
-          if (value != null) {
-            result.httpProtocolIpv6 = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.InstanceMetadataProtocolState),
-            ) as _i5.InstanceMetadataProtocolState);
-          }
-          break;
+          result.httpProtocolIpv6 = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.InstanceMetadataProtocolState),
+          ) as _i5.InstanceMetadataProtocolState);
         case 'InstanceMetadataTags':
-          if (value != null) {
-            result.instanceMetadataTags = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.InstanceMetadataTagsState),
-            ) as _i6.InstanceMetadataTagsState);
-          }
-          break;
+          result.instanceMetadataTags = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.InstanceMetadataTagsState),
+          ) as _i6.InstanceMetadataTagsState);
       }
     }
 
@@ -235,68 +224,76 @@ class ModifyInstanceMetadataOptionsRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyInstanceMetadataOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyInstanceMetadataOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyInstanceMetadataOptionsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyInstanceMetadataOptionsRequest(
+      :instanceId,
+      :httpTokens,
+      :httpPutResponseHopLimit,
+      :httpEndpoint,
+      :dryRun,
+      :httpProtocolIpv6,
+      :instanceMetadataTags
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('InstanceId'))
       ..add(serializers.serialize(
-        payload.instanceId,
+        instanceId,
         specifiedType: const FullType(String),
       ));
-    if (payload.httpTokens != null) {
-      result
+    if (httpTokens != null) {
+      result$
         ..add(const _i1.XmlElementName('HttpTokens'))
         ..add(serializers.serialize(
-          payload.httpTokens!,
+          httpTokens,
           specifiedType: const FullType.nullable(_i3.HttpTokensState),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('HttpPutResponseHopLimit'))
       ..add(serializers.serialize(
-        payload.httpPutResponseHopLimit,
+        httpPutResponseHopLimit,
         specifiedType: const FullType(int),
       ));
-    if (payload.httpEndpoint != null) {
-      result
+    if (httpEndpoint != null) {
+      result$
         ..add(const _i1.XmlElementName('HttpEndpoint'))
         ..add(serializers.serialize(
-          payload.httpEndpoint!,
+          httpEndpoint,
           specifiedType:
               const FullType.nullable(_i4.InstanceMetadataEndpointState),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.httpProtocolIpv6 != null) {
-      result
+    if (httpProtocolIpv6 != null) {
+      result$
         ..add(const _i1.XmlElementName('HttpProtocolIpv6'))
         ..add(serializers.serialize(
-          payload.httpProtocolIpv6!,
+          httpProtocolIpv6,
           specifiedType:
               const FullType.nullable(_i5.InstanceMetadataProtocolState),
         ));
     }
-    if (payload.instanceMetadataTags != null) {
-      result
+    if (instanceMetadataTags != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceMetadataTags'))
         ..add(serializers.serialize(
-          payload.instanceMetadataTags!,
+          instanceMetadataTags,
           specifiedType: const FullType.nullable(_i6.InstanceMetadataTagsState),
         ));
     }
-    return result;
+    return result$;
   }
 }

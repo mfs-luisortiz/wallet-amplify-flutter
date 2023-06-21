@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_policy_rule; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -132,59 +133,43 @@ class TransitGatewayPolicyRuleEc2QuerySerializer
     final result = TransitGatewayPolicyRuleBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'sourceCidrBlock':
-          if (value != null) {
-            result.sourceCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourceCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sourcePortRange':
-          if (value != null) {
-            result.sourcePortRange = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.sourcePortRange = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'destinationPortRange':
-          if (value != null) {
-            result.destinationPortRange = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationPortRange = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'protocol':
-          if (value != null) {
-            result.protocol = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.protocol = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'metaData':
-          if (value != null) {
-            result.metaData.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayPolicyRuleMetaData),
-            ) as _i2.TransitGatewayPolicyRuleMetaData));
-          }
-          break;
+          result.metaData.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayPolicyRuleMetaData),
+          ) as _i2.TransitGatewayPolicyRuleMetaData));
       }
     }
 
@@ -194,64 +179,71 @@ class TransitGatewayPolicyRuleEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayPolicyRule object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayPolicyRule);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'TransitGatewayPolicyRuleResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.sourceCidrBlock != null) {
-      result
+    final TransitGatewayPolicyRule(
+      :sourceCidrBlock,
+      :sourcePortRange,
+      :destinationCidrBlock,
+      :destinationPortRange,
+      :protocol,
+      :metaData
+    ) = object;
+    if (sourceCidrBlock != null) {
+      result$
         ..add(const _i3.XmlElementName('SourceCidrBlock'))
         ..add(serializers.serialize(
-          payload.sourceCidrBlock!,
+          sourceCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.sourcePortRange != null) {
-      result
+    if (sourcePortRange != null) {
+      result$
         ..add(const _i3.XmlElementName('SourcePortRange'))
         ..add(serializers.serialize(
-          payload.sourcePortRange!,
+          sourcePortRange,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationCidrBlock != null) {
-      result
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i3.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.destinationPortRange != null) {
-      result
+    if (destinationPortRange != null) {
+      result$
         ..add(const _i3.XmlElementName('DestinationPortRange'))
         ..add(serializers.serialize(
-          payload.destinationPortRange!,
+          destinationPortRange,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.protocol != null) {
-      result
+    if (protocol != null) {
+      result$
         ..add(const _i3.XmlElementName('Protocol'))
         ..add(serializers.serialize(
-          payload.protocol!,
+          protocol,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.metaData != null) {
-      result
+    if (metaData != null) {
+      result$
         ..add(const _i3.XmlElementName('MetaData'))
         ..add(serializers.serialize(
-          payload.metaData!,
+          metaData,
           specifiedType: const FullType(_i2.TransitGatewayPolicyRuleMetaData),
         ));
     }
-    return result;
+    return result$;
   }
 }

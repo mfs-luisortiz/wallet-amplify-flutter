@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.capacity_reservation_fleet_cancellation_state; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -105,34 +106,28 @@ class CapacityReservationFleetCancellationStateEc2QuerySerializer extends _i3
     final result = CapacityReservationFleetCancellationStateBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'currentFleetState':
-          if (value != null) {
-            result.currentFleetState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CapacityReservationFleetState),
-            ) as _i2.CapacityReservationFleetState);
-          }
-          break;
+          result.currentFleetState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CapacityReservationFleetState),
+          ) as _i2.CapacityReservationFleetState);
         case 'previousFleetState':
-          if (value != null) {
-            result.previousFleetState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.CapacityReservationFleetState),
-            ) as _i2.CapacityReservationFleetState);
-          }
-          break;
+          result.previousFleetState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.CapacityReservationFleetState),
+          ) as _i2.CapacityReservationFleetState);
         case 'capacityReservationFleetId':
-          if (value != null) {
-            result.capacityReservationFleetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.capacityReservationFleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -142,42 +137,46 @@ class CapacityReservationFleetCancellationStateEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CapacityReservationFleetCancellationState object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CapacityReservationFleetCancellationState);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'CapacityReservationFleetCancellationStateResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.currentFleetState != null) {
-      result
+    final CapacityReservationFleetCancellationState(
+      :currentFleetState,
+      :previousFleetState,
+      :capacityReservationFleetId
+    ) = object;
+    if (currentFleetState != null) {
+      result$
         ..add(const _i3.XmlElementName('CurrentFleetState'))
         ..add(serializers.serialize(
-          payload.currentFleetState!,
+          currentFleetState,
           specifiedType:
               const FullType.nullable(_i2.CapacityReservationFleetState),
         ));
     }
-    if (payload.previousFleetState != null) {
-      result
+    if (previousFleetState != null) {
+      result$
         ..add(const _i3.XmlElementName('PreviousFleetState'))
         ..add(serializers.serialize(
-          payload.previousFleetState!,
+          previousFleetState,
           specifiedType:
               const FullType.nullable(_i2.CapacityReservationFleetState),
         ));
     }
-    if (payload.capacityReservationFleetId != null) {
-      result
+    if (capacityReservationFleetId != null) {
+      result$
         ..add(const _i3.XmlElementName('CapacityReservationFleetId'))
         ..add(serializers.serialize(
-          payload.capacityReservationFleetId!,
+          capacityReservationFleetId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

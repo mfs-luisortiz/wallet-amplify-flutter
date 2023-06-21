@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fleet_launch_template_config_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,34 +101,31 @@ class FleetLaunchTemplateConfigRequestEc2QuerySerializer
     final result = FleetLaunchTemplateConfigRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'LaunchTemplateSpecification':
-          if (value != null) {
-            result.launchTemplateSpecification.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.FleetLaunchTemplateSpecificationRequest),
-            ) as _i2.FleetLaunchTemplateSpecificationRequest));
-          }
-          break;
+          result.launchTemplateSpecification.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.FleetLaunchTemplateSpecificationRequest),
+          ) as _i2.FleetLaunchTemplateSpecificationRequest));
         case 'Overrides':
-          if (value != null) {
-            result.overrides.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.FleetLaunchTemplateOverridesRequest)],
-              ),
-            ) as _i4.BuiltList<_i3.FleetLaunchTemplateOverridesRequest>));
-          }
-          break;
+          result.overrides.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.FleetLaunchTemplateOverridesRequest)],
+            ),
+          ) as _i4.BuiltList<_i3.FleetLaunchTemplateOverridesRequest>));
       }
     }
 
@@ -137,40 +135,43 @@ class FleetLaunchTemplateConfigRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FleetLaunchTemplateConfigRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FleetLaunchTemplateConfigRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'FleetLaunchTemplateConfigRequestResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateSpecification != null) {
-      result
+    final FleetLaunchTemplateConfigRequest(
+      :launchTemplateSpecification,
+      :overrides
+    ) = object;
+    if (launchTemplateSpecification != null) {
+      result$
         ..add(const _i5.XmlElementName('LaunchTemplateSpecification'))
         ..add(serializers.serialize(
-          payload.launchTemplateSpecification!,
+          launchTemplateSpecification,
           specifiedType:
               const FullType(_i2.FleetLaunchTemplateSpecificationRequest),
         ));
     }
-    if (payload.overrides != null) {
-      result
+    if (overrides != null) {
+      result$
         ..add(const _i5.XmlElementName('Overrides'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.overrides!,
+          overrides,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.FleetLaunchTemplateOverridesRequest)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

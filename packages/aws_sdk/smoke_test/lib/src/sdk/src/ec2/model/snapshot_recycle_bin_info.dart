@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.snapshot_recycle_bin_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -119,50 +120,38 @@ class SnapshotRecycleBinInfoEc2QuerySerializer
     final result = SnapshotRecycleBinInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'snapshotId':
-          if (value != null) {
-            result.snapshotId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.snapshotId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'recycleBinEnterTime':
-          if (value != null) {
-            result.recycleBinEnterTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.recycleBinEnterTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'recycleBinExitTime':
-          if (value != null) {
-            result.recycleBinExitTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.recycleBinExitTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -172,56 +161,62 @@ class SnapshotRecycleBinInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SnapshotRecycleBinInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SnapshotRecycleBinInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'SnapshotRecycleBinInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.snapshotId != null) {
-      result
+    final SnapshotRecycleBinInfo(
+      :snapshotId,
+      :recycleBinEnterTime,
+      :recycleBinExitTime,
+      :description,
+      :volumeId
+    ) = object;
+    if (snapshotId != null) {
+      result$
         ..add(const _i2.XmlElementName('SnapshotId'))
         ..add(serializers.serialize(
-          payload.snapshotId!,
+          snapshotId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.recycleBinEnterTime != null) {
-      result
+    if (recycleBinEnterTime != null) {
+      result$
         ..add(const _i2.XmlElementName('RecycleBinEnterTime'))
         ..add(serializers.serialize(
-          payload.recycleBinEnterTime!,
+          recycleBinEnterTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.recycleBinExitTime != null) {
-      result
+    if (recycleBinExitTime != null) {
+      result$
         ..add(const _i2.XmlElementName('RecycleBinExitTime'))
         ..add(serializers.serialize(
-          payload.recycleBinExitTime!,
+          recycleBinExitTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i2.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i2.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

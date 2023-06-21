@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_transit_gateway_multicast_domains_request;
+part of 'describe_transit_gateway_multicast_domains_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

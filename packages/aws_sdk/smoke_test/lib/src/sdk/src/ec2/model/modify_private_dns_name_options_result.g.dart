@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.modify_private_dns_name_options_result;
+part of 'modify_private_dns_name_options_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

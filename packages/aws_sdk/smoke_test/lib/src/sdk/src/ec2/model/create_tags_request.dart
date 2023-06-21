@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_tags_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -110,16 +111,18 @@ class CreateTagsRequestEc2QuerySerializer
     final result = CreateTagsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ResourceId':
           result.resources.replace((const _i1.XmlBuiltListSerializer(
                   indexer: _i1.XmlIndexer.ec2QueryList)
@@ -131,7 +134,6 @@ class CreateTagsRequestEc2QuerySerializer
               [FullType(String)],
             ),
           ) as _i4.BuiltList<String>));
-          break;
         case 'Tag':
           result.tags.replace((const _i1.XmlBuiltListSerializer(
             memberName: 'item',
@@ -144,7 +146,6 @@ class CreateTagsRequestEc2QuerySerializer
               [FullType(_i3.Tag)],
             ),
           ) as _i4.BuiltList<_i3.Tag>));
-          break;
       }
     }
 
@@ -154,47 +155,47 @@ class CreateTagsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateTagsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateTagsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateTagsRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateTagsRequest(:dryRun, :resources, :tags) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ResourceId'))
       ..add(
           const _i1.XmlBuiltListSerializer(indexer: _i1.XmlIndexer.ec2QueryList)
               .serialize(
         serializers,
-        payload.resources,
+        resources,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(String)],
         ),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Tag'))
       ..add(const _i1.XmlBuiltListSerializer(
         memberName: 'item',
         indexer: _i1.XmlIndexer.ec2QueryList,
       ).serialize(
         serializers,
-        payload.tags,
+        tags,
         specifiedType: const FullType.nullable(
           _i4.BuiltList,
           [FullType(_i3.Tag)],
         ),
       ));
-    return result;
+    return result$;
   }
 }

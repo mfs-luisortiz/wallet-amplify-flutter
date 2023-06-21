@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.volume_attachment; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -139,56 +140,43 @@ class VolumeAttachmentEc2QuerySerializer
     final result = VolumeAttachmentBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'attachTime':
-          if (value != null) {
-            result.attachTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.attachTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'device':
-          if (value != null) {
-            result.device = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.device = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'status':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.VolumeAttachmentState),
-            ) as _i2.VolumeAttachmentState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.VolumeAttachmentState),
+          ) as _i2.VolumeAttachmentState);
         case 'volumeId':
-          if (value != null) {
-            result.volumeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'deleteOnTermination':
           result.deleteOnTermination = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -198,62 +186,69 @@ class VolumeAttachmentEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    VolumeAttachment object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as VolumeAttachment);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'VolumeAttachmentResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attachTime != null) {
-      result
+    final VolumeAttachment(
+      :attachTime,
+      :device,
+      :instanceId,
+      :state,
+      :volumeId,
+      :deleteOnTermination
+    ) = object;
+    if (attachTime != null) {
+      result$
         ..add(const _i3.XmlElementName('AttachTime'))
         ..add(serializers.serialize(
-          payload.attachTime!,
+          attachTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.device != null) {
-      result
+    if (device != null) {
+      result$
         ..add(const _i3.XmlElementName('Device'))
         ..add(serializers.serialize(
-          payload.device!,
+          device,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i3.XmlElementName('Status'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.VolumeAttachmentState),
         ));
     }
-    if (payload.volumeId != null) {
-      result
+    if (volumeId != null) {
+      result$
         ..add(const _i3.XmlElementName('VolumeId'))
         ..add(serializers.serialize(
-          payload.volumeId!,
+          volumeId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('DeleteOnTermination'))
       ..add(serializers.serialize(
-        payload.deleteOnTermination,
+        deleteOnTermination,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

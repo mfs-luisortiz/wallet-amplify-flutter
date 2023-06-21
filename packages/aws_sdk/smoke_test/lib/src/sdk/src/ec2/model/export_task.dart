@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.export_task; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -143,73 +144,55 @@ class ExportTaskEc2QuerySerializer
     final result = ExportTaskBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'exportTaskId':
-          if (value != null) {
-            result.exportTaskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.exportTaskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'exportToS3':
-          if (value != null) {
-            result.exportToS3Task.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ExportToS3Task),
-            ) as _i2.ExportToS3Task));
-          }
-          break;
+          result.exportToS3Task.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ExportToS3Task),
+          ) as _i2.ExportToS3Task));
         case 'instanceExport':
-          if (value != null) {
-            result.instanceExportDetails.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.InstanceExportDetails),
-            ) as _i3.InstanceExportDetails));
-          }
-          break;
+          result.instanceExportDetails.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.InstanceExportDetails),
+          ) as _i3.InstanceExportDetails));
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.ExportTaskState),
-            ) as _i4.ExportTaskState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.ExportTaskState),
+          ) as _i4.ExportTaskState);
         case 'statusMessage':
-          if (value != null) {
-            result.statusMessage = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.statusMessage = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
       }
     }
 
@@ -219,79 +202,87 @@ class ExportTaskEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ExportTask object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ExportTask);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'ExportTaskResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final ExportTask(
+      :description,
+      :exportTaskId,
+      :exportToS3Task,
+      :instanceExportDetails,
+      :state,
+      :statusMessage,
+      :tags
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i7.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.exportTaskId != null) {
-      result
+    if (exportTaskId != null) {
+      result$
         ..add(const _i7.XmlElementName('ExportTaskId'))
         ..add(serializers.serialize(
-          payload.exportTaskId!,
+          exportTaskId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.exportToS3Task != null) {
-      result
+    if (exportToS3Task != null) {
+      result$
         ..add(const _i7.XmlElementName('ExportToS3'))
         ..add(serializers.serialize(
-          payload.exportToS3Task!,
+          exportToS3Task,
           specifiedType: const FullType(_i2.ExportToS3Task),
         ));
     }
-    if (payload.instanceExportDetails != null) {
-      result
+    if (instanceExportDetails != null) {
+      result$
         ..add(const _i7.XmlElementName('InstanceExport'))
         ..add(serializers.serialize(
-          payload.instanceExportDetails!,
+          instanceExportDetails,
           specifiedType: const FullType(_i3.InstanceExportDetails),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i7.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i4.ExportTaskState),
         ));
     }
-    if (payload.statusMessage != null) {
-      result
+    if (statusMessage != null) {
+      result$
         ..add(const _i7.XmlElementName('StatusMessage'))
         ..add(serializers.serialize(
-          payload.statusMessage!,
+          statusMessage,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

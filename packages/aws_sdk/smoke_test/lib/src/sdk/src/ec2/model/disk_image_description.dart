@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.disk_image_description; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,40 +117,33 @@ class DiskImageDescriptionEc2QuerySerializer
     final result = DiskImageDescriptionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'checksum':
-          if (value != null) {
-            result.checksum = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.checksum = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'format':
-          if (value != null) {
-            result.format = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DiskImageFormat),
-            ) as _i2.DiskImageFormat);
-          }
-          break;
+          result.format = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DiskImageFormat),
+          ) as _i2.DiskImageFormat);
         case 'importManifestUrl':
-          if (value != null) {
-            result.importManifestUrl = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.importManifestUrl = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'size':
           result.size = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.Int64),
           ) as _i3.Int64);
-          break;
       }
     }
 
@@ -159,46 +153,47 @@ class DiskImageDescriptionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DiskImageDescription object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DiskImageDescription);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DiskImageDescriptionResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.checksum != null) {
-      result
+    final DiskImageDescription(:checksum, :format, :importManifestUrl, :size) =
+        object;
+    if (checksum != null) {
+      result$
         ..add(const _i4.XmlElementName('Checksum'))
         ..add(serializers.serialize(
-          payload.checksum!,
+          checksum,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.format != null) {
-      result
+    if (format != null) {
+      result$
         ..add(const _i4.XmlElementName('Format'))
         ..add(serializers.serialize(
-          payload.format!,
+          format,
           specifiedType: const FullType.nullable(_i2.DiskImageFormat),
         ));
     }
-    if (payload.importManifestUrl != null) {
-      result
+    if (importManifestUrl != null) {
+      result$
         ..add(const _i4.XmlElementName('ImportManifestUrl'))
         ..add(serializers.serialize(
-          payload.importManifestUrl!,
+          importManifestUrl,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('Size'))
       ..add(serializers.serialize(
-        payload.size,
+        size,
         specifiedType: const FullType(_i3.Int64),
       ));
-    return result;
+    return result$;
   }
 }

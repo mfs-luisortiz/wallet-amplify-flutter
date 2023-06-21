@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_fleet_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -147,64 +148,53 @@ class ModifyFleetRequestEc2QuerySerializer
     final result = ModifyFleetRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ExcessCapacityTerminationPolicy':
-          if (value != null) {
-            result.excessCapacityTerminationPolicy = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.FleetExcessCapacityTerminationPolicy),
-            ) as _i3.FleetExcessCapacityTerminationPolicy);
-          }
-          break;
+          result.excessCapacityTerminationPolicy = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.FleetExcessCapacityTerminationPolicy),
+          ) as _i3.FleetExcessCapacityTerminationPolicy);
         case 'LaunchTemplateConfig':
-          if (value != null) {
-            result.launchTemplateConfigs
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i4.FleetLaunchTemplateConfigRequest)],
-              ),
-            ) as _i6.BuiltList<_i4.FleetLaunchTemplateConfigRequest>));
-          }
-          break;
+          result.launchTemplateConfigs
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i4.FleetLaunchTemplateConfigRequest)],
+            ),
+          ) as _i6.BuiltList<_i4.FleetLaunchTemplateConfigRequest>));
         case 'FleetId':
           result.fleetId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'TargetCapacitySpecification':
-          if (value != null) {
-            result.targetCapacitySpecification.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i5.TargetCapacitySpecificationRequest),
-            ) as _i5.TargetCapacitySpecificationRequest));
-          }
-          break;
+          result.targetCapacitySpecification.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i5.TargetCapacitySpecificationRequest),
+          ) as _i5.TargetCapacitySpecificationRequest));
         case 'Context':
-          if (value != null) {
-            result.context = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.context = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -214,68 +204,75 @@ class ModifyFleetRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyFleetRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyFleetRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyFleetRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyFleetRequest(
+      :dryRun,
+      :excessCapacityTerminationPolicy,
+      :launchTemplateConfigs,
+      :fleetId,
+      :targetCapacitySpecification,
+      :context
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.excessCapacityTerminationPolicy != null) {
-      result
+    if (excessCapacityTerminationPolicy != null) {
+      result$
         ..add(const _i1.XmlElementName('ExcessCapacityTerminationPolicy'))
         ..add(serializers.serialize(
-          payload.excessCapacityTerminationPolicy!,
+          excessCapacityTerminationPolicy,
           specifiedType:
               const FullType.nullable(_i3.FleetExcessCapacityTerminationPolicy),
         ));
     }
-    if (payload.launchTemplateConfigs != null) {
-      result
+    if (launchTemplateConfigs != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchTemplateConfig'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.launchTemplateConfigs!,
+          launchTemplateConfigs,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i4.FleetLaunchTemplateConfigRequest)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('FleetId'))
       ..add(serializers.serialize(
-        payload.fleetId,
+        fleetId,
         specifiedType: const FullType(String),
       ));
-    if (payload.targetCapacitySpecification != null) {
-      result
+    if (targetCapacitySpecification != null) {
+      result$
         ..add(const _i1.XmlElementName('TargetCapacitySpecification'))
         ..add(serializers.serialize(
-          payload.targetCapacitySpecification!,
+          targetCapacitySpecification,
           specifiedType: const FullType(_i5.TargetCapacitySpecificationRequest),
         ));
     }
-    if (payload.context != null) {
-      result
+    if (context != null) {
+      result$
         ..add(const _i1.XmlElementName('Context'))
         ..add(serializers.serialize(
-          payload.context!,
+          context,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

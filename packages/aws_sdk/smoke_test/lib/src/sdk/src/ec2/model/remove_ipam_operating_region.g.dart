@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.remove_ipam_operating_region;
+part of 'remove_ipam_operating_region.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

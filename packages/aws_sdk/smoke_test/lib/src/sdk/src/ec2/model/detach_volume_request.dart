@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.detach_volume_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -131,44 +132,38 @@ class DetachVolumeRequestEc2QuerySerializer
     final result = DetachVolumeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Device':
-          if (value != null) {
-            result.device = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'Force':
-          result.force = (serializers.deserialize(
-            value!,
-            specifiedType: const FullType(bool),
-          ) as bool);
-          break;
-        case 'InstanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'VolumeId':
-          result.volumeId = (serializers.deserialize(
-            value!,
+          result.device = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
-        case 'dryRun':
-          result.dryRun = (serializers.deserialize(
-            value!,
+        case 'Force':
+          result.force = (serializers.deserialize(
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
+        case 'InstanceId':
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'VolumeId':
+          result.volumeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'dryRun':
+          result.dryRun = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
       }
     }
 
@@ -178,50 +173,56 @@ class DetachVolumeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DetachVolumeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DetachVolumeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DetachVolumeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.device != null) {
-      result
+    final DetachVolumeRequest(
+      :device,
+      :force,
+      :instanceId,
+      :volumeId,
+      :dryRun
+    ) = object;
+    if (device != null) {
+      result$
         ..add(const _i1.XmlElementName('Device'))
         ..add(serializers.serialize(
-          payload.device!,
+          device,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Force'))
       ..add(serializers.serialize(
-        payload.force,
+        force,
         specifiedType: const FullType(bool),
       ));
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('VolumeId'))
       ..add(serializers.serialize(
-        payload.volumeId,
+        volumeId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

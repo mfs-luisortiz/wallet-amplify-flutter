@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_fleet_success_item;
+part of 'delete_fleet_success_item.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

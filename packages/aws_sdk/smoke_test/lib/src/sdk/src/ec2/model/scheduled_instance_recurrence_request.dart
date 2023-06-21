@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instance_recurrence_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -130,53 +131,45 @@ class ScheduledInstanceRecurrenceRequestEc2QuerySerializer
     final result = ScheduledInstanceRecurrenceRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Frequency':
-          if (value != null) {
-            result.frequency = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.frequency = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Interval':
           result.interval = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'OccurrenceDay':
-          if (value != null) {
-            result.occurrenceDays.replace((const _i3.XmlBuiltListSerializer(
-              memberName: 'OccurenceDay',
-              indexer: _i3.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i2.BuiltList,
-                [FullType(int)],
-              ),
-            ) as _i2.BuiltList<int>));
-          }
-          break;
+          result.occurrenceDays.replace((const _i3.XmlBuiltListSerializer(
+            memberName: 'OccurenceDay',
+            indexer: _i3.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i2.BuiltList,
+              [FullType(int)],
+            ),
+          ) as _i2.BuiltList<int>));
         case 'OccurrenceRelativeToEnd':
           result.occurrenceRelativeToEnd = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'OccurrenceUnit':
-          if (value != null) {
-            result.occurrenceUnit = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.occurrenceUnit = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -186,59 +179,65 @@ class ScheduledInstanceRecurrenceRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstanceRecurrenceRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstanceRecurrenceRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ScheduledInstanceRecurrenceRequestResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.frequency != null) {
-      result
+    final ScheduledInstanceRecurrenceRequest(
+      :frequency,
+      :interval,
+      :occurrenceDays,
+      :occurrenceRelativeToEnd,
+      :occurrenceUnit
+    ) = object;
+    if (frequency != null) {
+      result$
         ..add(const _i3.XmlElementName('Frequency'))
         ..add(serializers.serialize(
-          payload.frequency!,
+          frequency,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('Interval'))
       ..add(serializers.serialize(
-        payload.interval,
+        interval,
         specifiedType: const FullType(int),
       ));
-    if (payload.occurrenceDays != null) {
-      result
+    if (occurrenceDays != null) {
+      result$
         ..add(const _i3.XmlElementName('OccurrenceDay'))
         ..add(const _i3.XmlBuiltListSerializer(
           memberName: 'OccurenceDay',
           indexer: _i3.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.occurrenceDays!,
+          occurrenceDays,
           specifiedType: const FullType.nullable(
             _i2.BuiltList,
             [FullType(int)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('OccurrenceRelativeToEnd'))
       ..add(serializers.serialize(
-        payload.occurrenceRelativeToEnd,
+        occurrenceRelativeToEnd,
         specifiedType: const FullType(bool),
       ));
-    if (payload.occurrenceUnit != null) {
-      result
+    if (occurrenceUnit != null) {
+      result$
         ..add(const _i3.XmlElementName('OccurrenceUnit'))
         ..add(serializers.serialize(
-          payload.occurrenceUnit!,
+          occurrenceUnit,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.packet_header_statement;
+part of 'packet_header_statement.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

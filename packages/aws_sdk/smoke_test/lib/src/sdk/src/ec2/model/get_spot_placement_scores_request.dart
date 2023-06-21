@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_spot_placement_scores_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -194,88 +195,72 @@ class GetSpotPlacementScoresRequestEc2QuerySerializer
     final result = GetSpotPlacementScoresRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceType':
-          if (value != null) {
-            result.instanceTypes.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.instanceTypes.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'TargetCapacity':
           result.targetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'TargetCapacityUnitType':
-          if (value != null) {
-            result.targetCapacityUnitType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TargetCapacityUnitType),
-            ) as _i3.TargetCapacityUnitType);
-          }
-          break;
+          result.targetCapacityUnitType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TargetCapacityUnitType),
+          ) as _i3.TargetCapacityUnitType);
         case 'SingleAvailabilityZone':
           result.singleAvailabilityZone = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'RegionName':
-          if (value != null) {
-            result.regionNames.replace((const _i1.XmlBuiltListSerializer(
-                    indexer: _i1.XmlIndexer.ec2QueryList)
-                .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i5.BuiltList<String>));
-          }
-          break;
+          result.regionNames.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i5.BuiltList<String>));
         case 'InstanceRequirementsWithMetadata':
-          if (value != null) {
-            result.instanceRequirementsWithMetadata
-                .replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.InstanceRequirementsWithMetadataRequest),
-            ) as _i4.InstanceRequirementsWithMetadataRequest));
-          }
-          break;
+          result.instanceRequirementsWithMetadata
+              .replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.InstanceRequirementsWithMetadataRequest),
+          ) as _i4.InstanceRequirementsWithMetadataRequest));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -285,93 +270,103 @@ class GetSpotPlacementScoresRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetSpotPlacementScoresRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as GetSpotPlacementScoresRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'GetSpotPlacementScoresRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceTypes != null) {
-      result
+    final GetSpotPlacementScoresRequest(
+      :instanceTypes,
+      :targetCapacity,
+      :targetCapacityUnitType,
+      :singleAvailabilityZone,
+      :regionNames,
+      :instanceRequirementsWithMetadata,
+      :dryRun,
+      :maxResults,
+      :nextToken
+    ) = object;
+    if (instanceTypes != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceType'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.instanceTypes!,
+          instanceTypes,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('TargetCapacity'))
       ..add(serializers.serialize(
-        payload.targetCapacity,
+        targetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.targetCapacityUnitType != null) {
-      result
+    if (targetCapacityUnitType != null) {
+      result$
         ..add(const _i1.XmlElementName('TargetCapacityUnitType'))
         ..add(serializers.serialize(
-          payload.targetCapacityUnitType!,
+          targetCapacityUnitType,
           specifiedType: const FullType.nullable(_i3.TargetCapacityUnitType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SingleAvailabilityZone'))
       ..add(serializers.serialize(
-        payload.singleAvailabilityZone,
+        singleAvailabilityZone,
         specifiedType: const FullType(bool),
       ));
-    if (payload.regionNames != null) {
-      result
+    if (regionNames != null) {
+      result$
         ..add(const _i1.XmlElementName('RegionName'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.regionNames!,
+          regionNames,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.instanceRequirementsWithMetadata != null) {
-      result
+    if (instanceRequirementsWithMetadata != null) {
+      result$
         ..add(const _i1.XmlElementName('InstanceRequirementsWithMetadata'))
         ..add(serializers.serialize(
-          payload.instanceRequirementsWithMetadata!,
+          instanceRequirementsWithMetadata,
           specifiedType:
               const FullType(_i4.InstanceRequirementsWithMetadataRequest),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.local_gateway_route; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -171,91 +172,63 @@ class LocalGatewayRouteEc2QuerySerializer
     final result = LocalGatewayRouteBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'destinationCidrBlock':
-          if (value != null) {
-            result.destinationCidrBlock = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationCidrBlock = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'localGatewayVirtualInterfaceGroupId':
-          if (value != null) {
-            result.localGatewayVirtualInterfaceGroupId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayVirtualInterfaceGroupId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'type':
-          if (value != null) {
-            result.type = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.LocalGatewayRouteType),
-            ) as _i2.LocalGatewayRouteType);
-          }
-          break;
+          result.type = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.LocalGatewayRouteType),
+          ) as _i2.LocalGatewayRouteType);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.LocalGatewayRouteState),
-            ) as _i3.LocalGatewayRouteState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.LocalGatewayRouteState),
+          ) as _i3.LocalGatewayRouteState);
         case 'localGatewayRouteTableId':
-          if (value != null) {
-            result.localGatewayRouteTableId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayRouteTableId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'localGatewayRouteTableArn':
-          if (value != null) {
-            result.localGatewayRouteTableArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.localGatewayRouteTableArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'coipPoolId':
-          if (value != null) {
-            result.coipPoolId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.coipPoolId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'networkInterfaceId':
-          if (value != null) {
-            result.networkInterfaceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInterfaceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -265,96 +238,107 @@ class LocalGatewayRouteEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LocalGatewayRoute object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LocalGatewayRoute);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'LocalGatewayRouteResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.destinationCidrBlock != null) {
-      result
+    final LocalGatewayRoute(
+      :destinationCidrBlock,
+      :localGatewayVirtualInterfaceGroupId,
+      :type,
+      :state,
+      :localGatewayRouteTableId,
+      :localGatewayRouteTableArn,
+      :ownerId,
+      :subnetId,
+      :coipPoolId,
+      :networkInterfaceId
+    ) = object;
+    if (destinationCidrBlock != null) {
+      result$
         ..add(const _i4.XmlElementName('DestinationCidrBlock'))
         ..add(serializers.serialize(
-          payload.destinationCidrBlock!,
+          destinationCidrBlock,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.localGatewayVirtualInterfaceGroupId != null) {
-      result
+    if (localGatewayVirtualInterfaceGroupId != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalGatewayVirtualInterfaceGroupId'))
         ..add(serializers.serialize(
-          payload.localGatewayVirtualInterfaceGroupId!,
+          localGatewayVirtualInterfaceGroupId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.type != null) {
-      result
+    if (type != null) {
+      result$
         ..add(const _i4.XmlElementName('Type'))
         ..add(serializers.serialize(
-          payload.type!,
+          type,
           specifiedType: const FullType.nullable(_i2.LocalGatewayRouteType),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i4.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i3.LocalGatewayRouteState),
         ));
     }
-    if (payload.localGatewayRouteTableId != null) {
-      result
+    if (localGatewayRouteTableId != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalGatewayRouteTableId'))
         ..add(serializers.serialize(
-          payload.localGatewayRouteTableId!,
+          localGatewayRouteTableId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.localGatewayRouteTableArn != null) {
-      result
+    if (localGatewayRouteTableArn != null) {
+      result$
         ..add(const _i4.XmlElementName('LocalGatewayRouteTableArn'))
         ..add(serializers.serialize(
-          payload.localGatewayRouteTableArn!,
+          localGatewayRouteTableArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i4.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i4.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.coipPoolId != null) {
-      result
+    if (coipPoolId != null) {
+      result$
         ..add(const _i4.XmlElementName('CoipPoolId'))
         ..add(serializers.serialize(
-          payload.coipPoolId!,
+          coipPoolId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.networkInterfaceId != null) {
-      result
+    if (networkInterfaceId != null) {
+      result$
         ..add(const _i4.XmlElementName('NetworkInterfaceId'))
         ..add(serializers.serialize(
-          payload.networkInterfaceId!,
+          networkInterfaceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

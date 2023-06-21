@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.added_principal; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,42 +109,33 @@ class AddedPrincipalEc2QuerySerializer
     final result = AddedPrincipalBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'principalType':
-          if (value != null) {
-            result.principalType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PrincipalType),
-            ) as _i2.PrincipalType);
-          }
-          break;
+          result.principalType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PrincipalType),
+          ) as _i2.PrincipalType);
         case 'principal':
-          if (value != null) {
-            result.principal = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.principal = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'servicePermissionId':
-          if (value != null) {
-            result.servicePermissionId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.servicePermissionId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'serviceId':
-          if (value != null) {
-            result.serviceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.serviceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -153,48 +145,53 @@ class AddedPrincipalEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    AddedPrincipal object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as AddedPrincipal);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'AddedPrincipalResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.principalType != null) {
-      result
+    final AddedPrincipal(
+      :principalType,
+      :principal,
+      :servicePermissionId,
+      :serviceId
+    ) = object;
+    if (principalType != null) {
+      result$
         ..add(const _i3.XmlElementName('PrincipalType'))
         ..add(serializers.serialize(
-          payload.principalType!,
+          principalType,
           specifiedType: const FullType.nullable(_i2.PrincipalType),
         ));
     }
-    if (payload.principal != null) {
-      result
+    if (principal != null) {
+      result$
         ..add(const _i3.XmlElementName('Principal'))
         ..add(serializers.serialize(
-          payload.principal!,
+          principal,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.servicePermissionId != null) {
-      result
+    if (servicePermissionId != null) {
+      result$
         ..add(const _i3.XmlElementName('ServicePermissionId'))
         ..add(serializers.serialize(
-          payload.servicePermissionId!,
+          servicePermissionId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.serviceId != null) {
-      result
+    if (serviceId != null) {
+      result$
         ..add(const _i3.XmlElementName('ServiceId'))
         ..add(serializers.serialize(
-          payload.serviceId!,
+          serviceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

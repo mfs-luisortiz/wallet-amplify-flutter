@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_ipam_resource_cidr_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -154,54 +155,48 @@ class ModifyIpamResourceCidrRequestEc2QuerySerializer
     final result = ModifyIpamResourceCidrRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'ResourceId':
           result.resourceId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ResourceCidr':
           result.resourceCidr = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ResourceRegion':
           result.resourceRegion = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'CurrentIpamScopeId':
           result.currentIpamScopeId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'DestinationIpamScopeId':
-          if (value != null) {
-            result.destinationIpamScopeId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.destinationIpamScopeId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Monitored':
           result.monitored = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -211,60 +206,68 @@ class ModifyIpamResourceCidrRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyIpamResourceCidrRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyIpamResourceCidrRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyIpamResourceCidrRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyIpamResourceCidrRequest(
+      :dryRun,
+      :resourceId,
+      :resourceCidr,
+      :resourceRegion,
+      :currentIpamScopeId,
+      :destinationIpamScopeId,
+      :monitored
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ResourceId'))
       ..add(serializers.serialize(
-        payload.resourceId,
+        resourceId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ResourceCidr'))
       ..add(serializers.serialize(
-        payload.resourceCidr,
+        resourceCidr,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ResourceRegion'))
       ..add(serializers.serialize(
-        payload.resourceRegion,
+        resourceRegion,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('CurrentIpamScopeId'))
       ..add(serializers.serialize(
-        payload.currentIpamScopeId,
+        currentIpamScopeId,
         specifiedType: const FullType(String),
       ));
-    if (payload.destinationIpamScopeId != null) {
-      result
+    if (destinationIpamScopeId != null) {
+      result$
         ..add(const _i1.XmlElementName('DestinationIpamScopeId'))
         ..add(serializers.serialize(
-          payload.destinationIpamScopeId!,
+          destinationIpamScopeId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Monitored'))
       ..add(serializers.serialize(
-        payload.monitored,
+        monitored,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

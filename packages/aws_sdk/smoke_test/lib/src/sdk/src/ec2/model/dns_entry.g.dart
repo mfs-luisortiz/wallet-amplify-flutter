@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.dns_entry;
+part of 'dns_entry.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

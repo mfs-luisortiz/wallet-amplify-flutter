@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.target_capacity_specification_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -142,44 +143,38 @@ class TargetCapacitySpecificationRequestEc2QuerySerializer
     final result = TargetCapacitySpecificationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'TotalTargetCapacity':
           result.totalTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'OnDemandTargetCapacity':
           result.onDemandTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'SpotTargetCapacity':
           result.spotTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DefaultTargetCapacityType':
-          if (value != null) {
-            result.defaultTargetCapacityType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.DefaultTargetCapacityType),
-            ) as _i2.DefaultTargetCapacityType);
-          }
-          break;
+          result.defaultTargetCapacityType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.DefaultTargetCapacityType),
+          ) as _i2.DefaultTargetCapacityType);
         case 'TargetCapacityUnitType':
-          if (value != null) {
-            result.targetCapacityUnitType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.TargetCapacityUnitType),
-            ) as _i3.TargetCapacityUnitType);
-          }
-          break;
+          result.targetCapacityUnitType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.TargetCapacityUnitType),
+          ) as _i3.TargetCapacityUnitType);
       }
     }
 
@@ -189,50 +184,56 @@ class TargetCapacitySpecificationRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TargetCapacitySpecificationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TargetCapacitySpecificationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'TargetCapacitySpecificationRequestResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final TargetCapacitySpecificationRequest(
+      :totalTargetCapacity,
+      :onDemandTargetCapacity,
+      :spotTargetCapacity,
+      :defaultTargetCapacityType,
+      :targetCapacityUnitType
+    ) = object;
+    result$
       ..add(const _i4.XmlElementName('TotalTargetCapacity'))
       ..add(serializers.serialize(
-        payload.totalTargetCapacity,
+        totalTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('OnDemandTargetCapacity'))
       ..add(serializers.serialize(
-        payload.onDemandTargetCapacity,
+        onDemandTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('SpotTargetCapacity'))
       ..add(serializers.serialize(
-        payload.spotTargetCapacity,
+        spotTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.defaultTargetCapacityType != null) {
-      result
+    if (defaultTargetCapacityType != null) {
+      result$
         ..add(const _i4.XmlElementName('DefaultTargetCapacityType'))
         ..add(serializers.serialize(
-          payload.defaultTargetCapacityType!,
+          defaultTargetCapacityType,
           specifiedType: const FullType.nullable(_i2.DefaultTargetCapacityType),
         ));
     }
-    if (payload.targetCapacityUnitType != null) {
-      result
+    if (targetCapacityUnitType != null) {
+      result$
         ..add(const _i4.XmlElementName('TargetCapacityUnitType'))
         ..add(serializers.serialize(
-          payload.targetCapacityUnitType!,
+          targetCapacityUnitType,
           specifiedType: const FullType.nullable(_i3.TargetCapacityUnitType),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.ipam_pool_cidr; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -101,34 +102,28 @@ class IpamPoolCidrEc2QuerySerializer
     final result = IpamPoolCidrBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cidr':
-          if (value != null) {
-            result.cidr = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.cidr = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.IpamPoolCidrState),
-            ) as _i2.IpamPoolCidrState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.IpamPoolCidrState),
+          ) as _i2.IpamPoolCidrState);
         case 'failureReason':
-          if (value != null) {
-            result.failureReason.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.IpamPoolCidrFailureReason),
-            ) as _i3.IpamPoolCidrFailureReason));
-          }
-          break;
+          result.failureReason.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.IpamPoolCidrFailureReason),
+          ) as _i3.IpamPoolCidrFailureReason));
       }
     }
 
@@ -138,40 +133,40 @@ class IpamPoolCidrEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    IpamPoolCidr object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as IpamPoolCidr);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'IpamPoolCidrResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.cidr != null) {
-      result
+    final IpamPoolCidr(:cidr, :state, :failureReason) = object;
+    if (cidr != null) {
+      result$
         ..add(const _i4.XmlElementName('Cidr'))
         ..add(serializers.serialize(
-          payload.cidr!,
+          cidr,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i4.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i2.IpamPoolCidrState),
         ));
     }
-    if (payload.failureReason != null) {
-      result
+    if (failureReason != null) {
+      result$
         ..add(const _i4.XmlElementName('FailureReason'))
         ..add(serializers.serialize(
-          payload.failureReason!,
+          failureReason,
           specifiedType: const FullType(_i3.IpamPoolCidrFailureReason),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_image_attribute_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -214,138 +215,109 @@ class ModifyImageAttributeRequestEc2QuerySerializer
     final result = ModifyImageAttributeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Attribute':
-          if (value != null) {
-            result.attribute = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'Description':
-          if (value != null) {
-            result.description.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.AttributeValue),
-            ) as _i3.AttributeValue));
-          }
-          break;
-        case 'ImageId':
-          result.imageId = (serializers.deserialize(
-            value!,
+          result.attribute = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'Description':
+          result.description.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.AttributeValue),
+          ) as _i3.AttributeValue));
+        case 'ImageId':
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LaunchPermission':
-          if (value != null) {
-            result.launchPermission.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.LaunchPermissionModifications),
-            ) as _i4.LaunchPermissionModifications));
-          }
-          break;
+          result.launchPermission.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.LaunchPermissionModifications),
+          ) as _i4.LaunchPermissionModifications));
         case 'OperationType':
-          if (value != null) {
-            result.operationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.OperationType),
-            ) as _i5.OperationType);
-          }
-          break;
+          result.operationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.OperationType),
+          ) as _i5.OperationType);
         case 'ProductCode':
-          if (value != null) {
-            result.productCodes.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'ProductCode',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.productCodes.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'ProductCode',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'UserGroup':
-          if (value != null) {
-            result.userGroups.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'UserGroup',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.userGroups.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'UserGroup',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'UserId':
-          if (value != null) {
-            result.userIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'UserId',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.userIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'UserId',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'Value':
-          if (value != null) {
-            result.value = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.value = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'OrganizationArn':
-          if (value != null) {
-            result.organizationArns.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'OrganizationArn',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.organizationArns.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'OrganizationArn',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'OrganizationalUnitArn':
-          if (value != null) {
-            result.organizationalUnitArns
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'OrganizationalUnitArn',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.organizationalUnitArns
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'OrganizationalUnitArn',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
       }
     }
 
@@ -355,143 +327,156 @@ class ModifyImageAttributeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyImageAttributeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyImageAttributeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyImageAttributeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attribute != null) {
-      result
+    final ModifyImageAttributeRequest(
+      :attribute,
+      :description,
+      :imageId,
+      :launchPermission,
+      :operationType,
+      :productCodes,
+      :userGroups,
+      :userIds,
+      :value,
+      :dryRun,
+      :organizationArns,
+      :organizationalUnitArns
+    ) = object;
+    if (attribute != null) {
+      result$
         ..add(const _i1.XmlElementName('Attribute'))
         ..add(serializers.serialize(
-          payload.attribute!,
+          attribute,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(_i3.AttributeValue),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('ImageId'))
       ..add(serializers.serialize(
-        payload.imageId,
+        imageId,
         specifiedType: const FullType(String),
       ));
-    if (payload.launchPermission != null) {
-      result
+    if (launchPermission != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchPermission'))
         ..add(serializers.serialize(
-          payload.launchPermission!,
+          launchPermission,
           specifiedType: const FullType(_i4.LaunchPermissionModifications),
         ));
     }
-    if (payload.operationType != null) {
-      result
+    if (operationType != null) {
+      result$
         ..add(const _i1.XmlElementName('OperationType'))
         ..add(serializers.serialize(
-          payload.operationType!,
+          operationType,
           specifiedType: const FullType.nullable(_i5.OperationType),
         ));
     }
-    if (payload.productCodes != null) {
-      result
+    if (productCodes != null) {
+      result$
         ..add(const _i1.XmlElementName('ProductCode'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'ProductCode',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.productCodes!,
+          productCodes,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.userGroups != null) {
-      result
+    if (userGroups != null) {
+      result$
         ..add(const _i1.XmlElementName('UserGroup'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'UserGroup',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.userGroups!,
+          userGroups,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.userIds != null) {
-      result
+    if (userIds != null) {
+      result$
         ..add(const _i1.XmlElementName('UserId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'UserId',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.userIds!,
+          userIds,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.value != null) {
-      result
+    if (value != null) {
+      result$
         ..add(const _i1.XmlElementName('Value'))
         ..add(serializers.serialize(
-          payload.value!,
+          value,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.organizationArns != null) {
-      result
+    if (organizationArns != null) {
+      result$
         ..add(const _i1.XmlElementName('OrganizationArn'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'OrganizationArn',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.organizationArns!,
+          organizationArns,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.organizationalUnitArns != null) {
-      result
+    if (organizationalUnitArns != null) {
+      result$
         ..add(const _i1.XmlElementName('OrganizationalUnitArn'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'OrganizationalUnitArn',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.organizationalUnitArns!,
+          organizationalUnitArns,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

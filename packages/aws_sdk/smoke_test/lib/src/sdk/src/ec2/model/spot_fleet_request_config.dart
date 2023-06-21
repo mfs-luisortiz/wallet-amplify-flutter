@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_fleet_request_config; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -135,65 +136,50 @@ class SpotFleetRequestConfigEc2QuerySerializer
     final result = SpotFleetRequestConfigBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'activityStatus':
-          if (value != null) {
-            result.activityStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ActivityStatus),
-            ) as _i2.ActivityStatus);
-          }
-          break;
+          result.activityStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ActivityStatus),
+          ) as _i2.ActivityStatus);
         case 'createTime':
-          if (value != null) {
-            result.createTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
         case 'spotFleetRequestConfig':
-          if (value != null) {
-            result.spotFleetRequestConfig.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.SpotFleetRequestConfigData),
-            ) as _i3.SpotFleetRequestConfigData));
-          }
-          break;
+          result.spotFleetRequestConfig.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.SpotFleetRequestConfigData),
+          ) as _i3.SpotFleetRequestConfigData));
         case 'spotFleetRequestId':
-          if (value != null) {
-            result.spotFleetRequestId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotFleetRequestId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'spotFleetRequestState':
-          if (value != null) {
-            result.spotFleetRequestState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.BatchState),
-            ) as _i4.BatchState);
-          }
-          break;
+          result.spotFleetRequestState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.BatchState),
+          ) as _i4.BatchState);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i7.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i7.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(_i5.Tag)],
-              ),
-            ) as _i6.BuiltList<_i5.Tag>));
-          }
-          break;
+          result.tags.replace((const _i7.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i7.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(_i5.Tag)],
+            ),
+          ) as _i6.BuiltList<_i5.Tag>));
       }
     }
 
@@ -203,71 +189,78 @@ class SpotFleetRequestConfigEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotFleetRequestConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotFleetRequestConfig);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i7.XmlElementName(
         'SpotFleetRequestConfigResponse',
         _i7.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.activityStatus != null) {
-      result
+    final SpotFleetRequestConfig(
+      :activityStatus,
+      :createTime,
+      :spotFleetRequestConfig,
+      :spotFleetRequestId,
+      :spotFleetRequestState,
+      :tags
+    ) = object;
+    if (activityStatus != null) {
+      result$
         ..add(const _i7.XmlElementName('ActivityStatus'))
         ..add(serializers.serialize(
-          payload.activityStatus!,
+          activityStatus,
           specifiedType: const FullType.nullable(_i2.ActivityStatus),
         ));
     }
-    if (payload.createTime != null) {
-      result
+    if (createTime != null) {
+      result$
         ..add(const _i7.XmlElementName('CreateTime'))
         ..add(serializers.serialize(
-          payload.createTime!,
+          createTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    if (payload.spotFleetRequestConfig != null) {
-      result
+    if (spotFleetRequestConfig != null) {
+      result$
         ..add(const _i7.XmlElementName('SpotFleetRequestConfig'))
         ..add(serializers.serialize(
-          payload.spotFleetRequestConfig!,
+          spotFleetRequestConfig,
           specifiedType: const FullType(_i3.SpotFleetRequestConfigData),
         ));
     }
-    if (payload.spotFleetRequestId != null) {
-      result
+    if (spotFleetRequestId != null) {
+      result$
         ..add(const _i7.XmlElementName('SpotFleetRequestId'))
         ..add(serializers.serialize(
-          payload.spotFleetRequestId!,
+          spotFleetRequestId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spotFleetRequestState != null) {
-      result
+    if (spotFleetRequestState != null) {
+      result$
         ..add(const _i7.XmlElementName('SpotFleetRequestState'))
         ..add(serializers.serialize(
-          payload.spotFleetRequestState!,
+          spotFleetRequestState,
           specifiedType: const FullType.nullable(_i4.BatchState),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i7.XmlElementName('TagSet'))
         ..add(const _i7.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i7.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(_i5.Tag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

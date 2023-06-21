@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_ipam_pool_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -199,92 +200,79 @@ class ModifyIpamPoolRequestEc2QuerySerializer
     final result = ModifyIpamPoolRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'IpamPoolId':
           result.ipamPoolId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AutoImport':
           result.autoImport = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'AllocationMinNetmaskLength':
           result.allocationMinNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'AllocationMaxNetmaskLength':
           result.allocationMaxNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'AllocationDefaultNetmaskLength':
           result.allocationDefaultNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ClearAllocationDefaultNetmaskLength':
           result.clearAllocationDefaultNetmaskLength = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'AddAllocationResourceTag':
-          if (value != null) {
-            result.addAllocationResourceTags
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.RequestIpamResourceTag)],
-              ),
-            ) as _i4.BuiltList<_i3.RequestIpamResourceTag>));
-          }
-          break;
+          result.addAllocationResourceTags
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.RequestIpamResourceTag)],
+            ),
+          ) as _i4.BuiltList<_i3.RequestIpamResourceTag>));
         case 'RemoveAllocationResourceTag':
-          if (value != null) {
-            result.removeAllocationResourceTags
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.RequestIpamResourceTag)],
-              ),
-            ) as _i4.BuiltList<_i3.RequestIpamResourceTag>));
-          }
-          break;
+          result.removeAllocationResourceTags
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.RequestIpamResourceTag)],
+            ),
+          ) as _i4.BuiltList<_i3.RequestIpamResourceTag>));
       }
     }
 
@@ -294,96 +282,107 @@ class ModifyIpamPoolRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyIpamPoolRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyIpamPoolRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyIpamPoolRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyIpamPoolRequest(
+      :dryRun,
+      :ipamPoolId,
+      :description,
+      :autoImport,
+      :allocationMinNetmaskLength,
+      :allocationMaxNetmaskLength,
+      :allocationDefaultNetmaskLength,
+      :clearAllocationDefaultNetmaskLength,
+      :addAllocationResourceTags,
+      :removeAllocationResourceTags
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('IpamPoolId'))
       ..add(serializers.serialize(
-        payload.ipamPoolId,
+        ipamPoolId,
         specifiedType: const FullType(String),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('AutoImport'))
       ..add(serializers.serialize(
-        payload.autoImport,
+        autoImport,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('AllocationMinNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationMinNetmaskLength,
+        allocationMinNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('AllocationMaxNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationMaxNetmaskLength,
+        allocationMaxNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('AllocationDefaultNetmaskLength'))
       ..add(serializers.serialize(
-        payload.allocationDefaultNetmaskLength,
+        allocationDefaultNetmaskLength,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ClearAllocationDefaultNetmaskLength'))
       ..add(serializers.serialize(
-        payload.clearAllocationDefaultNetmaskLength,
+        clearAllocationDefaultNetmaskLength,
         specifiedType: const FullType(bool),
       ));
-    if (payload.addAllocationResourceTags != null) {
-      result
+    if (addAllocationResourceTags != null) {
+      result$
         ..add(const _i1.XmlElementName('AddAllocationResourceTag'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addAllocationResourceTags!,
+          addAllocationResourceTags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.RequestIpamResourceTag)],
           ),
         ));
     }
-    if (payload.removeAllocationResourceTags != null) {
-      result
+    if (removeAllocationResourceTags != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveAllocationResourceTag'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.removeAllocationResourceTags!,
+          removeAllocationResourceTags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.RequestIpamResourceTag)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

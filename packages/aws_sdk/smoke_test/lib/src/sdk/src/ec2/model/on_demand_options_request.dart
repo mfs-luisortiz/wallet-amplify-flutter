@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.on_demand_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -156,54 +157,44 @@ class OnDemandOptionsRequestEc2QuerySerializer
     final result = OnDemandOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'AllocationStrategy':
-          if (value != null) {
-            result.allocationStrategy = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.FleetOnDemandAllocationStrategy),
-            ) as _i2.FleetOnDemandAllocationStrategy);
-          }
-          break;
+          result.allocationStrategy = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FleetOnDemandAllocationStrategy),
+          ) as _i2.FleetOnDemandAllocationStrategy);
         case 'CapacityReservationOptions':
-          if (value != null) {
-            result.capacityReservationOptions.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.CapacityReservationOptionsRequest),
-            ) as _i3.CapacityReservationOptionsRequest));
-          }
-          break;
+          result.capacityReservationOptions.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.CapacityReservationOptionsRequest),
+          ) as _i3.CapacityReservationOptionsRequest));
         case 'SingleInstanceType':
           result.singleInstanceType = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'SingleAvailabilityZone':
           result.singleAvailabilityZone = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'MinTargetCapacity':
           result.minTargetCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'MaxTotalPrice':
-          if (value != null) {
-            result.maxTotalPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.maxTotalPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -213,59 +204,66 @@ class OnDemandOptionsRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    OnDemandOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as OnDemandOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'OnDemandOptionsRequestResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.allocationStrategy != null) {
-      result
+    final OnDemandOptionsRequest(
+      :allocationStrategy,
+      :capacityReservationOptions,
+      :singleInstanceType,
+      :singleAvailabilityZone,
+      :minTargetCapacity,
+      :maxTotalPrice
+    ) = object;
+    if (allocationStrategy != null) {
+      result$
         ..add(const _i4.XmlElementName('AllocationStrategy'))
         ..add(serializers.serialize(
-          payload.allocationStrategy!,
+          allocationStrategy,
           specifiedType:
               const FullType.nullable(_i2.FleetOnDemandAllocationStrategy),
         ));
     }
-    if (payload.capacityReservationOptions != null) {
-      result
+    if (capacityReservationOptions != null) {
+      result$
         ..add(const _i4.XmlElementName('CapacityReservationOptions'))
         ..add(serializers.serialize(
-          payload.capacityReservationOptions!,
+          capacityReservationOptions,
           specifiedType: const FullType(_i3.CapacityReservationOptionsRequest),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('SingleInstanceType'))
       ..add(serializers.serialize(
-        payload.singleInstanceType,
+        singleInstanceType,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('SingleAvailabilityZone'))
       ..add(serializers.serialize(
-        payload.singleAvailabilityZone,
+        singleAvailabilityZone,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i4.XmlElementName('MinTargetCapacity'))
       ..add(serializers.serialize(
-        payload.minTargetCapacity,
+        minTargetCapacity,
         specifiedType: const FullType(int),
       ));
-    if (payload.maxTotalPrice != null) {
-      result
+    if (maxTotalPrice != null) {
+      result$
         ..add(const _i4.XmlElementName('MaxTotalPrice'))
         ..add(serializers.serialize(
-          payload.maxTotalPrice!,
+          maxTotalPrice,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

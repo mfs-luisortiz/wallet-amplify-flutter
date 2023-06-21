@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.describe_local_gateway_route_table_virtual_interface_group_associations_request;
+part of 'describe_local_gateway_route_table_virtual_interface_group_associations_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

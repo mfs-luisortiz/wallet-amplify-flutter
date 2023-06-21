@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reservation_fleet_instance_specification; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -149,65 +150,49 @@ class ReservationFleetInstanceSpecificationEc2QuerySerializer extends _i4
     final result = ReservationFleetInstanceSpecificationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'InstancePlatform':
-          if (value != null) {
-            result.instancePlatform = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.CapacityReservationInstancePlatform),
-            ) as _i3.CapacityReservationInstancePlatform);
-          }
-          break;
+          result.instancePlatform = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.CapacityReservationInstancePlatform),
+          ) as _i3.CapacityReservationInstancePlatform);
         case 'Weight':
-          if (value != null) {
-            result.weight = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(double),
-            ) as double);
-          }
-          break;
+          result.weight = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(double),
+          ) as double);
         case 'AvailabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AvailabilityZoneId':
-          if (value != null) {
-            result.availabilityZoneId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZoneId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'EbsOptimized':
           result.ebsOptimized = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Priority':
-          if (value != null) {
-            result.priority = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.priority = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -217,71 +202,79 @@ class ReservationFleetInstanceSpecificationEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservationFleetInstanceSpecification object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservationFleetInstanceSpecification);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'ReservationFleetInstanceSpecificationResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceType != null) {
-      result
+    final ReservationFleetInstanceSpecification(
+      :instanceType,
+      :instancePlatform,
+      :weight,
+      :availabilityZone,
+      :availabilityZoneId,
+      :ebsOptimized,
+      :priority
+    ) = object;
+    if (instanceType != null) {
+      result$
         ..add(const _i4.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.instancePlatform != null) {
-      result
+    if (instancePlatform != null) {
+      result$
         ..add(const _i4.XmlElementName('InstancePlatform'))
         ..add(serializers.serialize(
-          payload.instancePlatform!,
+          instancePlatform,
           specifiedType:
               const FullType.nullable(_i3.CapacityReservationInstancePlatform),
         ));
     }
-    if (payload.weight != null) {
-      result
+    if (weight != null) {
+      result$
         ..add(const _i4.XmlElementName('Weight'))
         ..add(serializers.serialize(
-          payload.weight!,
+          weight,
           specifiedType: const FullType.nullable(double),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZoneId != null) {
-      result
+    if (availabilityZoneId != null) {
+      result$
         ..add(const _i4.XmlElementName('AvailabilityZoneId'))
         ..add(serializers.serialize(
-          payload.availabilityZoneId!,
+          availabilityZoneId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('EbsOptimized'))
       ..add(serializers.serialize(
-        payload.ebsOptimized,
+        ebsOptimized,
         specifiedType: const FullType(bool),
       ));
-    if (payload.priority != null) {
-      result
+    if (priority != null) {
+      result$
         ..add(const _i4.XmlElementName('Priority'))
         ..add(serializers.serialize(
-          payload.priority!,
+          priority,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

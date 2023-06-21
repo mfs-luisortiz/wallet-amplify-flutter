@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_fleet_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -106,48 +107,42 @@ class CreateFleetResultEc2QuerySerializer
     final result = CreateFleetResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'fleetId':
-          if (value != null) {
-            result.fleetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'errorSet':
-          if (value != null) {
-            result.errors.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i2.CreateFleetError)],
-              ),
-            ) as _i4.BuiltList<_i2.CreateFleetError>));
-          }
-          break;
+          result.errors.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i2.CreateFleetError)],
+            ),
+          ) as _i4.BuiltList<_i2.CreateFleetError>));
         case 'fleetInstanceSet':
-          if (value != null) {
-            result.instances.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.CreateFleetInstance)],
-              ),
-            ) as _i4.BuiltList<_i3.CreateFleetInstance>));
-          }
-          break;
+          result.instances.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.CreateFleetInstance)],
+            ),
+          ) as _i4.BuiltList<_i3.CreateFleetInstance>));
       }
     }
 
@@ -157,54 +152,54 @@ class CreateFleetResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateFleetResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateFleetResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'CreateFleetResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.fleetId != null) {
-      result
+    final CreateFleetResult(:fleetId, :errors, :instances) = object;
+    if (fleetId != null) {
+      result$
         ..add(const _i5.XmlElementName('FleetId'))
         ..add(serializers.serialize(
-          payload.fleetId!,
+          fleetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.errors != null) {
-      result
+    if (errors != null) {
+      result$
         ..add(const _i5.XmlElementName('ErrorSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.errors!,
+          errors,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i2.CreateFleetError)],
           ),
         ));
     }
-    if (payload.instances != null) {
-      result
+    if (instances != null) {
+      result$
         ..add(const _i5.XmlElementName('FleetInstanceSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.instances!,
+          instances,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.CreateFleetInstance)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

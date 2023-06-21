@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_ipam_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -137,60 +138,51 @@ class ModifyIpamRequestEc2QuerySerializer
     final result = ModifyIpamRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'IpamId':
           result.ipamId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'AddOperatingRegion':
-          if (value != null) {
-            result.addOperatingRegions.replace(
-                (const _i1.XmlBuiltListSerializer(
-                        indexer: _i1.XmlIndexer.ec2QueryList)
-                    .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.AddIpamOperatingRegion)],
-              ),
-            ) as _i5.BuiltList<_i3.AddIpamOperatingRegion>));
-          }
-          break;
+          result.addOperatingRegions.replace((const _i1.XmlBuiltListSerializer(
+                  indexer: _i1.XmlIndexer.ec2QueryList)
+              .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.AddIpamOperatingRegion)],
+            ),
+          ) as _i5.BuiltList<_i3.AddIpamOperatingRegion>));
         case 'RemoveOperatingRegion':
-          if (value != null) {
-            result.removeOperatingRegions.replace(
-                (const _i1.XmlBuiltListSerializer(
-                        indexer: _i1.XmlIndexer.ec2QueryList)
-                    .deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.RemoveIpamOperatingRegion)],
-              ),
-            ) as _i5.BuiltList<_i4.RemoveIpamOperatingRegion>));
-          }
-          break;
+          result.removeOperatingRegions.replace(
+              (const _i1.XmlBuiltListSerializer(
+                      indexer: _i1.XmlIndexer.ec2QueryList)
+                  .deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.RemoveIpamOperatingRegion)],
+            ),
+          ) as _i5.BuiltList<_i4.RemoveIpamOperatingRegion>));
       }
     }
 
@@ -200,64 +192,70 @@ class ModifyIpamRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyIpamRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyIpamRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifyIpamRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ModifyIpamRequest(
+      :dryRun,
+      :ipamId,
+      :description,
+      :addOperatingRegions,
+      :removeOperatingRegions
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('IpamId'))
       ..add(serializers.serialize(
-        payload.ipamId,
+        ipamId,
         specifiedType: const FullType(String),
       ));
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.addOperatingRegions != null) {
-      result
+    if (addOperatingRegions != null) {
+      result$
         ..add(const _i1.XmlElementName('AddOperatingRegion'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.addOperatingRegions!,
+          addOperatingRegions,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.AddIpamOperatingRegion)],
           ),
         ));
     }
-    if (payload.removeOperatingRegions != null) {
-      result
+    if (removeOperatingRegions != null) {
+      result$
         ..add(const _i1.XmlElementName('RemoveOperatingRegion'))
         ..add(const _i1.XmlBuiltListSerializer(
                 indexer: _i1.XmlIndexer.ec2QueryList)
             .serialize(
           serializers,
-          payload.removeOperatingRegions!,
+          removeOperatingRegions,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.RemoveIpamOperatingRegion)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

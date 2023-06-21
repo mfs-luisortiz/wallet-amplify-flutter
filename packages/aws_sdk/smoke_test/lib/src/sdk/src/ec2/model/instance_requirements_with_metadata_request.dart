@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_requirements_with_metadata_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -118,49 +119,42 @@ class InstanceRequirementsWithMetadataRequestEc2QuerySerializer extends _i6
     final result = InstanceRequirementsWithMetadataRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ArchitectureType':
-          if (value != null) {
-            result.architectureTypes.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.ArchitectureType)],
-              ),
-            ) as _i5.BuiltList<_i2.ArchitectureType>));
-          }
-          break;
+          result.architectureTypes.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.ArchitectureType)],
+            ),
+          ) as _i5.BuiltList<_i2.ArchitectureType>));
         case 'VirtualizationType':
-          if (value != null) {
-            result.virtualizationTypes
-                .replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.VirtualizationType)],
-              ),
-            ) as _i5.BuiltList<_i3.VirtualizationType>));
-          }
-          break;
+          result.virtualizationTypes.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.VirtualizationType)],
+            ),
+          ) as _i5.BuiltList<_i3.VirtualizationType>));
         case 'InstanceRequirements':
-          if (value != null) {
-            result.instanceRequirements.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceRequirementsRequest),
-            ) as _i4.InstanceRequirementsRequest));
-          }
-          break;
+          result.instanceRequirements.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceRequirementsRequest),
+          ) as _i4.InstanceRequirementsRequest));
       }
     }
 
@@ -170,54 +164,58 @@ class InstanceRequirementsWithMetadataRequestEc2QuerySerializer extends _i6
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceRequirementsWithMetadataRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceRequirementsWithMetadataRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'InstanceRequirementsWithMetadataRequestResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.architectureTypes != null) {
-      result
+    final InstanceRequirementsWithMetadataRequest(
+      :architectureTypes,
+      :virtualizationTypes,
+      :instanceRequirements
+    ) = object;
+    if (architectureTypes != null) {
+      result$
         ..add(const _i6.XmlElementName('ArchitectureType'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.architectureTypes!,
+          architectureTypes,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.ArchitectureType)],
           ),
         ));
     }
-    if (payload.virtualizationTypes != null) {
-      result
+    if (virtualizationTypes != null) {
+      result$
         ..add(const _i6.XmlElementName('VirtualizationType'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.virtualizationTypes!,
+          virtualizationTypes,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.VirtualizationType)],
           ),
         ));
     }
-    if (payload.instanceRequirements != null) {
-      result
+    if (instanceRequirements != null) {
+      result$
         ..add(const _i6.XmlElementName('InstanceRequirements'))
         ..add(serializers.serialize(
-          payload.instanceRequirements!,
+          instanceRequirements,
           specifiedType: const FullType(_i4.InstanceRequirementsRequest),
         ));
     }
-    return result;
+    return result$;
   }
 }

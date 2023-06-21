@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.authorization_rule;
+part of 'authorization_rule.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

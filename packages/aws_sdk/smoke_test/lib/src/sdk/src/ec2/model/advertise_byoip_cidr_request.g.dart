@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.advertise_byoip_cidr_request;
+part of 'advertise_byoip_cidr_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

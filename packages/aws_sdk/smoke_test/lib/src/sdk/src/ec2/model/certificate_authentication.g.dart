@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.certificate_authentication;
+part of 'certificate_authentication.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

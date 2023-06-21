@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.host_properties;
+part of 'host_properties.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

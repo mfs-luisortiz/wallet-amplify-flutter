@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.reserved_instance_reservation_value; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -94,26 +95,23 @@ class ReservedInstanceReservationValueEc2QuerySerializer
     final result = ReservedInstanceReservationValueBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'reservationValue':
-          if (value != null) {
-            result.reservationValue.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.ReservationValue),
-            ) as _i2.ReservationValue));
-          }
-          break;
+          result.reservationValue.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.ReservationValue),
+          ) as _i2.ReservationValue));
         case 'reservedInstanceId':
-          if (value != null) {
-            result.reservedInstanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.reservedInstanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -123,32 +121,35 @@ class ReservedInstanceReservationValueEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ReservedInstanceReservationValue object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ReservedInstanceReservationValue);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'ReservedInstanceReservationValueResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.reservationValue != null) {
-      result
+    final ReservedInstanceReservationValue(
+      :reservationValue,
+      :reservedInstanceId
+    ) = object;
+    if (reservationValue != null) {
+      result$
         ..add(const _i3.XmlElementName('ReservationValue'))
         ..add(serializers.serialize(
-          payload.reservationValue!,
+          reservationValue,
           specifiedType: const FullType(_i2.ReservationValue),
         ));
     }
-    if (payload.reservedInstanceId != null) {
-      result
+    if (reservedInstanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('ReservedInstanceId'))
         ..add(serializers.serialize(
-          payload.reservedInstanceId!,
+          reservedInstanceId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

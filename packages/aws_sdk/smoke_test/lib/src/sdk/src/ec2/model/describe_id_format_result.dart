@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_id_format_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -80,25 +81,25 @@ class DescribeIdFormatResultEc2QuerySerializer
     final result = DescribeIdFormatResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'statusSet':
-          if (value != null) {
-            result.statuses.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.IdFormat)],
-              ),
-            ) as _i3.BuiltList<_i2.IdFormat>));
-          }
-          break;
+          result.statuses.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.IdFormat)],
+            ),
+          ) as _i3.BuiltList<_i2.IdFormat>));
       }
     }
 
@@ -108,31 +109,31 @@ class DescribeIdFormatResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeIdFormatResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeIdFormatResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeIdFormatResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.statuses != null) {
-      result
+    final DescribeIdFormatResult(:statuses) = object;
+    if (statuses != null) {
+      result$
         ..add(const _i4.XmlElementName('StatusSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.statuses!,
+          statuses,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.IdFormat)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

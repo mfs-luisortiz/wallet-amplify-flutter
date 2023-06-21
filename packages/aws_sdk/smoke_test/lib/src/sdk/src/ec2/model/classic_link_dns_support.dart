@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.classic_link_dns_support; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,24 +93,23 @@ class ClassicLinkDnsSupportEc2QuerySerializer
     final result = ClassicLinkDnsSupportBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'classicLinkDnsSupported':
           result.classicLinkDnsSupported = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -119,30 +119,30 @@ class ClassicLinkDnsSupportEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ClassicLinkDnsSupport object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ClassicLinkDnsSupport);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ClassicLinkDnsSupportResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final ClassicLinkDnsSupport(:classicLinkDnsSupported, :vpcId) = object;
+    result$
       ..add(const _i2.XmlElementName('ClassicLinkDnsSupported'))
       ..add(serializers.serialize(
-        payload.classicLinkDnsSupported,
+        classicLinkDnsSupported,
         specifiedType: const FullType(bool),
       ));
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i2.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

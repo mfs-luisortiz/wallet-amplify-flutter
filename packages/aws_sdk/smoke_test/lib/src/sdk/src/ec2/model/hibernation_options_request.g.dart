@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.hibernation_options_request;
+part of 'hibernation_options_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

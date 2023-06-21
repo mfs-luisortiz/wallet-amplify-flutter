@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_snapshot_attribute_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -159,77 +160,63 @@ class ModifySnapshotAttributeRequestEc2QuerySerializer
     final result = ModifySnapshotAttributeRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Attribute':
-          if (value != null) {
-            result.attribute = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.SnapshotAttributeName),
-            ) as _i3.SnapshotAttributeName);
-          }
-          break;
+          result.attribute = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.SnapshotAttributeName),
+          ) as _i3.SnapshotAttributeName);
         case 'CreateVolumePermission':
-          if (value != null) {
-            result.createVolumePermission.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i4.CreateVolumePermissionModifications),
-            ) as _i4.CreateVolumePermissionModifications));
-          }
-          break;
+          result.createVolumePermission.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i4.CreateVolumePermissionModifications),
+          ) as _i4.CreateVolumePermissionModifications));
         case 'UserGroup':
-          if (value != null) {
-            result.groupNames.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'GroupName',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.groupNames.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'GroupName',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'OperationType':
-          if (value != null) {
-            result.operationType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i5.OperationType),
-            ) as _i5.OperationType);
-          }
-          break;
+          result.operationType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i5.OperationType),
+          ) as _i5.OperationType);
         case 'SnapshotId':
           result.snapshotId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'UserId':
-          if (value != null) {
-            result.userIds.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'UserId',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i6.BuiltList,
-                [FullType(String)],
-              ),
-            ) as _i6.BuiltList<String>));
-          }
-          break;
+          result.userIds.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'UserId',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i6.BuiltList,
+              [FullType(String)],
+            ),
+          ) as _i6.BuiltList<String>));
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -239,83 +226,91 @@ class ModifySnapshotAttributeRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifySnapshotAttributeRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifySnapshotAttributeRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ModifySnapshotAttributeRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.attribute != null) {
-      result
+    final ModifySnapshotAttributeRequest(
+      :attribute,
+      :createVolumePermission,
+      :groupNames,
+      :operationType,
+      :snapshotId,
+      :userIds,
+      :dryRun
+    ) = object;
+    if (attribute != null) {
+      result$
         ..add(const _i1.XmlElementName('Attribute'))
         ..add(serializers.serialize(
-          payload.attribute!,
+          attribute,
           specifiedType: const FullType.nullable(_i3.SnapshotAttributeName),
         ));
     }
-    if (payload.createVolumePermission != null) {
-      result
+    if (createVolumePermission != null) {
+      result$
         ..add(const _i1.XmlElementName('CreateVolumePermission'))
         ..add(serializers.serialize(
-          payload.createVolumePermission!,
+          createVolumePermission,
           specifiedType:
               const FullType(_i4.CreateVolumePermissionModifications),
         ));
     }
-    if (payload.groupNames != null) {
-      result
+    if (groupNames != null) {
+      result$
         ..add(const _i1.XmlElementName('UserGroup'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'GroupName',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.groupNames!,
+          groupNames,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    if (payload.operationType != null) {
-      result
+    if (operationType != null) {
+      result$
         ..add(const _i1.XmlElementName('OperationType'))
         ..add(serializers.serialize(
-          payload.operationType!,
+          operationType,
           specifiedType: const FullType.nullable(_i5.OperationType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('SnapshotId'))
       ..add(serializers.serialize(
-        payload.snapshotId,
+        snapshotId,
         specifiedType: const FullType(String),
       ));
-    if (payload.userIds != null) {
-      result
+    if (userIds != null) {
+      result$
         ..add(const _i1.XmlElementName('UserId'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'UserId',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.userIds!,
+          userIds,
           specifiedType: const FullType.nullable(
             _i6.BuiltList,
             [FullType(String)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

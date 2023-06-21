@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_acl; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -145,85 +146,69 @@ class NetworkAclEc2QuerySerializer
     final result = NetworkAclBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'associationSet':
-          if (value != null) {
-            result.associations.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i2.NetworkAclAssociation)],
-              ),
-            ) as _i5.BuiltList<_i2.NetworkAclAssociation>));
-          }
-          break;
+          result.associations.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i2.NetworkAclAssociation)],
+            ),
+          ) as _i5.BuiltList<_i2.NetworkAclAssociation>));
         case 'entrySet':
-          if (value != null) {
-            result.entries.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i3.NetworkAclEntry)],
-              ),
-            ) as _i5.BuiltList<_i3.NetworkAclEntry>));
-          }
-          break;
+          result.entries.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i3.NetworkAclEntry)],
+            ),
+          ) as _i5.BuiltList<_i3.NetworkAclEntry>));
         case 'default':
           result.isDefault = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'networkAclId':
-          if (value != null) {
-            result.networkAclId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkAclId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i6.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i6.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.Tag)],
-              ),
-            ) as _i5.BuiltList<_i4.Tag>));
-          }
-          break;
+          result.tags.replace((const _i6.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i6.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.Tag)],
+            ),
+          ) as _i5.BuiltList<_i4.Tag>));
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -233,91 +218,99 @@ class NetworkAclEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkAcl object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkAcl);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i6.XmlElementName(
         'NetworkAclResponse',
         _i6.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.associations != null) {
-      result
+    final NetworkAcl(
+      :associations,
+      :entries,
+      :isDefault,
+      :networkAclId,
+      :tags,
+      :vpcId,
+      :ownerId
+    ) = object;
+    if (associations != null) {
+      result$
         ..add(const _i6.XmlElementName('AssociationSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.associations!,
+          associations,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i2.NetworkAclAssociation)],
           ),
         ));
     }
-    if (payload.entries != null) {
-      result
+    if (entries != null) {
+      result$
         ..add(const _i6.XmlElementName('EntrySet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.entries!,
+          entries,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i3.NetworkAclEntry)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i6.XmlElementName('Default'))
       ..add(serializers.serialize(
-        payload.isDefault,
+        isDefault,
         specifiedType: const FullType(bool),
       ));
-    if (payload.networkAclId != null) {
-      result
+    if (networkAclId != null) {
+      result$
         ..add(const _i6.XmlElementName('NetworkAclId'))
         ..add(serializers.serialize(
-          payload.networkAclId!,
+          networkAclId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i6.XmlElementName('TagSet'))
         ..add(const _i6.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i6.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.Tag)],
           ),
         ));
     }
-    if (payload.vpcId != null) {
-      result
+    if (vpcId != null) {
+      result$
         ..add(const _i6.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i6.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

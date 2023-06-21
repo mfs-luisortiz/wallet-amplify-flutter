@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.launch_template_elastic_inference_accelerator_response;
+part of 'launch_template_elastic_inference_accelerator_response.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

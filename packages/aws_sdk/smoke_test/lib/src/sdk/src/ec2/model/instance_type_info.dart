@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.instance_type_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -337,234 +338,164 @@ class InstanceTypeInfoEc2QuerySerializer
     final result = InstanceTypeInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'currentGeneration':
-          if (value != null) {
-            result.currentGeneration = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.currentGeneration = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'freeTierEligible':
-          if (value != null) {
-            result.freeTierEligible = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.freeTierEligible = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'supportedUsageClasses':
-          if (value != null) {
-            result.supportedUsageClasses
-                .replace((const _i19.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i19.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i18.BuiltList,
-                [FullType(_i3.UsageClassType)],
-              ),
-            ) as _i18.BuiltList<_i3.UsageClassType>));
-          }
-          break;
+          result.supportedUsageClasses
+              .replace((const _i19.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i19.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i18.BuiltList,
+              [FullType(_i3.UsageClassType)],
+            ),
+          ) as _i18.BuiltList<_i3.UsageClassType>));
         case 'supportedRootDeviceTypes':
-          if (value != null) {
-            result.supportedRootDeviceTypes
-                .replace((const _i19.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i19.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i18.BuiltList,
-                [FullType(_i4.RootDeviceType)],
-              ),
-            ) as _i18.BuiltList<_i4.RootDeviceType>));
-          }
-          break;
+          result.supportedRootDeviceTypes
+              .replace((const _i19.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i19.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i18.BuiltList,
+              [FullType(_i4.RootDeviceType)],
+            ),
+          ) as _i18.BuiltList<_i4.RootDeviceType>));
         case 'supportedVirtualizationTypes':
-          if (value != null) {
-            result.supportedVirtualizationTypes
-                .replace((const _i19.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i19.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i18.BuiltList,
-                [FullType(_i5.VirtualizationType)],
-              ),
-            ) as _i18.BuiltList<_i5.VirtualizationType>));
-          }
-          break;
+          result.supportedVirtualizationTypes
+              .replace((const _i19.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i19.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i18.BuiltList,
+              [FullType(_i5.VirtualizationType)],
+            ),
+          ) as _i18.BuiltList<_i5.VirtualizationType>));
         case 'bareMetal':
-          if (value != null) {
-            result.bareMetal = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.bareMetal = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'hypervisor':
-          if (value != null) {
-            result.hypervisor = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i6.InstanceTypeHypervisor),
-            ) as _i6.InstanceTypeHypervisor);
-          }
-          break;
+          result.hypervisor = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i6.InstanceTypeHypervisor),
+          ) as _i6.InstanceTypeHypervisor);
         case 'processorInfo':
-          if (value != null) {
-            result.processorInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.ProcessorInfo),
-            ) as _i7.ProcessorInfo));
-          }
-          break;
+          result.processorInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.ProcessorInfo),
+          ) as _i7.ProcessorInfo));
         case 'vCpuInfo':
-          if (value != null) {
-            result.vCpuInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i8.VCpuInfo),
-            ) as _i8.VCpuInfo));
-          }
-          break;
+          result.vCpuInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i8.VCpuInfo),
+          ) as _i8.VCpuInfo));
         case 'memoryInfo':
-          if (value != null) {
-            result.memoryInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i9.MemoryInfo),
-            ) as _i9.MemoryInfo));
-          }
-          break;
+          result.memoryInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i9.MemoryInfo),
+          ) as _i9.MemoryInfo));
         case 'instanceStorageSupported':
-          if (value != null) {
-            result.instanceStorageSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.instanceStorageSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'instanceStorageInfo':
-          if (value != null) {
-            result.instanceStorageInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i10.InstanceStorageInfo),
-            ) as _i10.InstanceStorageInfo));
-          }
-          break;
+          result.instanceStorageInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i10.InstanceStorageInfo),
+          ) as _i10.InstanceStorageInfo));
         case 'ebsInfo':
-          if (value != null) {
-            result.ebsInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i11.EbsInfo),
-            ) as _i11.EbsInfo));
-          }
-          break;
+          result.ebsInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i11.EbsInfo),
+          ) as _i11.EbsInfo));
         case 'networkInfo':
-          if (value != null) {
-            result.networkInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i12.NetworkInfo),
-            ) as _i12.NetworkInfo));
-          }
-          break;
+          result.networkInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i12.NetworkInfo),
+          ) as _i12.NetworkInfo));
         case 'gpuInfo':
-          if (value != null) {
-            result.gpuInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i13.GpuInfo),
-            ) as _i13.GpuInfo));
-          }
-          break;
+          result.gpuInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i13.GpuInfo),
+          ) as _i13.GpuInfo));
         case 'fpgaInfo':
-          if (value != null) {
-            result.fpgaInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i14.FpgaInfo),
-            ) as _i14.FpgaInfo));
-          }
-          break;
+          result.fpgaInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i14.FpgaInfo),
+          ) as _i14.FpgaInfo));
         case 'placementGroupInfo':
-          if (value != null) {
-            result.placementGroupInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i15.PlacementGroupInfo),
-            ) as _i15.PlacementGroupInfo));
-          }
-          break;
+          result.placementGroupInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i15.PlacementGroupInfo),
+          ) as _i15.PlacementGroupInfo));
         case 'inferenceAcceleratorInfo':
-          if (value != null) {
-            result.inferenceAcceleratorInfo.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i16.InferenceAcceleratorInfo),
-            ) as _i16.InferenceAcceleratorInfo));
-          }
-          break;
+          result.inferenceAcceleratorInfo.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i16.InferenceAcceleratorInfo),
+          ) as _i16.InferenceAcceleratorInfo));
         case 'hibernationSupported':
-          if (value != null) {
-            result.hibernationSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.hibernationSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'burstablePerformanceSupported':
-          if (value != null) {
-            result.burstablePerformanceSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.burstablePerformanceSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'dedicatedHostsSupported':
-          if (value != null) {
-            result.dedicatedHostsSupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.dedicatedHostsSupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'autoRecoverySupported':
-          if (value != null) {
-            result.autoRecoverySupported = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(bool),
-            ) as bool);
-          }
-          break;
+          result.autoRecoverySupported = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(bool),
+          ) as bool);
         case 'supportedBootModes':
-          if (value != null) {
-            result.supportedBootModes
-                .replace((const _i19.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i19.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i18.BuiltList,
-                [FullType(_i17.BootModeType)],
-              ),
-            ) as _i18.BuiltList<_i17.BootModeType>));
-          }
-          break;
+          result.supportedBootModes.replace((const _i19.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i19.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i18.BuiltList,
+              [FullType(_i17.BootModeType)],
+            ),
+          ) as _i18.BuiltList<_i17.BootModeType>));
       }
     }
 
@@ -574,236 +505,261 @@ class InstanceTypeInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    InstanceTypeInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as InstanceTypeInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i19.XmlElementName(
         'InstanceTypeInfoResponse',
         _i19.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceType != null) {
-      result
+    final InstanceTypeInfo(
+      :instanceType,
+      :currentGeneration,
+      :freeTierEligible,
+      :supportedUsageClasses,
+      :supportedRootDeviceTypes,
+      :supportedVirtualizationTypes,
+      :bareMetal,
+      :hypervisor,
+      :processorInfo,
+      :vCpuInfo,
+      :memoryInfo,
+      :instanceStorageSupported,
+      :instanceStorageInfo,
+      :ebsInfo,
+      :networkInfo,
+      :gpuInfo,
+      :fpgaInfo,
+      :placementGroupInfo,
+      :inferenceAcceleratorInfo,
+      :hibernationSupported,
+      :burstablePerformanceSupported,
+      :dedicatedHostsSupported,
+      :autoRecoverySupported,
+      :supportedBootModes
+    ) = object;
+    if (instanceType != null) {
+      result$
         ..add(const _i19.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.currentGeneration != null) {
-      result
+    if (currentGeneration != null) {
+      result$
         ..add(const _i19.XmlElementName('CurrentGeneration'))
         ..add(serializers.serialize(
-          payload.currentGeneration!,
+          currentGeneration,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.freeTierEligible != null) {
-      result
+    if (freeTierEligible != null) {
+      result$
         ..add(const _i19.XmlElementName('FreeTierEligible'))
         ..add(serializers.serialize(
-          payload.freeTierEligible!,
+          freeTierEligible,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.supportedUsageClasses != null) {
-      result
+    if (supportedUsageClasses != null) {
+      result$
         ..add(const _i19.XmlElementName('SupportedUsageClasses'))
         ..add(const _i19.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i19.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedUsageClasses!,
+          supportedUsageClasses,
           specifiedType: const FullType.nullable(
             _i18.BuiltList,
             [FullType(_i3.UsageClassType)],
           ),
         ));
     }
-    if (payload.supportedRootDeviceTypes != null) {
-      result
+    if (supportedRootDeviceTypes != null) {
+      result$
         ..add(const _i19.XmlElementName('SupportedRootDeviceTypes'))
         ..add(const _i19.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i19.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedRootDeviceTypes!,
+          supportedRootDeviceTypes,
           specifiedType: const FullType.nullable(
             _i18.BuiltList,
             [FullType(_i4.RootDeviceType)],
           ),
         ));
     }
-    if (payload.supportedVirtualizationTypes != null) {
-      result
+    if (supportedVirtualizationTypes != null) {
+      result$
         ..add(const _i19.XmlElementName('SupportedVirtualizationTypes'))
         ..add(const _i19.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i19.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedVirtualizationTypes!,
+          supportedVirtualizationTypes,
           specifiedType: const FullType.nullable(
             _i18.BuiltList,
             [FullType(_i5.VirtualizationType)],
           ),
         ));
     }
-    if (payload.bareMetal != null) {
-      result
+    if (bareMetal != null) {
+      result$
         ..add(const _i19.XmlElementName('BareMetal'))
         ..add(serializers.serialize(
-          payload.bareMetal!,
+          bareMetal,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.hypervisor != null) {
-      result
+    if (hypervisor != null) {
+      result$
         ..add(const _i19.XmlElementName('Hypervisor'))
         ..add(serializers.serialize(
-          payload.hypervisor!,
+          hypervisor,
           specifiedType: const FullType.nullable(_i6.InstanceTypeHypervisor),
         ));
     }
-    if (payload.processorInfo != null) {
-      result
+    if (processorInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('ProcessorInfo'))
         ..add(serializers.serialize(
-          payload.processorInfo!,
+          processorInfo,
           specifiedType: const FullType(_i7.ProcessorInfo),
         ));
     }
-    if (payload.vCpuInfo != null) {
-      result
+    if (vCpuInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('VCpuInfo'))
         ..add(serializers.serialize(
-          payload.vCpuInfo!,
+          vCpuInfo,
           specifiedType: const FullType(_i8.VCpuInfo),
         ));
     }
-    if (payload.memoryInfo != null) {
-      result
+    if (memoryInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('MemoryInfo'))
         ..add(serializers.serialize(
-          payload.memoryInfo!,
+          memoryInfo,
           specifiedType: const FullType(_i9.MemoryInfo),
         ));
     }
-    if (payload.instanceStorageSupported != null) {
-      result
+    if (instanceStorageSupported != null) {
+      result$
         ..add(const _i19.XmlElementName('InstanceStorageSupported'))
         ..add(serializers.serialize(
-          payload.instanceStorageSupported!,
+          instanceStorageSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.instanceStorageInfo != null) {
-      result
+    if (instanceStorageInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('InstanceStorageInfo'))
         ..add(serializers.serialize(
-          payload.instanceStorageInfo!,
+          instanceStorageInfo,
           specifiedType: const FullType(_i10.InstanceStorageInfo),
         ));
     }
-    if (payload.ebsInfo != null) {
-      result
+    if (ebsInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('EbsInfo'))
         ..add(serializers.serialize(
-          payload.ebsInfo!,
+          ebsInfo,
           specifiedType: const FullType(_i11.EbsInfo),
         ));
     }
-    if (payload.networkInfo != null) {
-      result
+    if (networkInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('NetworkInfo'))
         ..add(serializers.serialize(
-          payload.networkInfo!,
+          networkInfo,
           specifiedType: const FullType(_i12.NetworkInfo),
         ));
     }
-    if (payload.gpuInfo != null) {
-      result
+    if (gpuInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('GpuInfo'))
         ..add(serializers.serialize(
-          payload.gpuInfo!,
+          gpuInfo,
           specifiedType: const FullType(_i13.GpuInfo),
         ));
     }
-    if (payload.fpgaInfo != null) {
-      result
+    if (fpgaInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('FpgaInfo'))
         ..add(serializers.serialize(
-          payload.fpgaInfo!,
+          fpgaInfo,
           specifiedType: const FullType(_i14.FpgaInfo),
         ));
     }
-    if (payload.placementGroupInfo != null) {
-      result
+    if (placementGroupInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('PlacementGroupInfo'))
         ..add(serializers.serialize(
-          payload.placementGroupInfo!,
+          placementGroupInfo,
           specifiedType: const FullType(_i15.PlacementGroupInfo),
         ));
     }
-    if (payload.inferenceAcceleratorInfo != null) {
-      result
+    if (inferenceAcceleratorInfo != null) {
+      result$
         ..add(const _i19.XmlElementName('InferenceAcceleratorInfo'))
         ..add(serializers.serialize(
-          payload.inferenceAcceleratorInfo!,
+          inferenceAcceleratorInfo,
           specifiedType: const FullType(_i16.InferenceAcceleratorInfo),
         ));
     }
-    if (payload.hibernationSupported != null) {
-      result
+    if (hibernationSupported != null) {
+      result$
         ..add(const _i19.XmlElementName('HibernationSupported'))
         ..add(serializers.serialize(
-          payload.hibernationSupported!,
+          hibernationSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.burstablePerformanceSupported != null) {
-      result
+    if (burstablePerformanceSupported != null) {
+      result$
         ..add(const _i19.XmlElementName('BurstablePerformanceSupported'))
         ..add(serializers.serialize(
-          payload.burstablePerformanceSupported!,
+          burstablePerformanceSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.dedicatedHostsSupported != null) {
-      result
+    if (dedicatedHostsSupported != null) {
+      result$
         ..add(const _i19.XmlElementName('DedicatedHostsSupported'))
         ..add(serializers.serialize(
-          payload.dedicatedHostsSupported!,
+          dedicatedHostsSupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.autoRecoverySupported != null) {
-      result
+    if (autoRecoverySupported != null) {
+      result$
         ..add(const _i19.XmlElementName('AutoRecoverySupported'))
         ..add(serializers.serialize(
-          payload.autoRecoverySupported!,
+          autoRecoverySupported,
           specifiedType: const FullType.nullable(bool),
         ));
     }
-    if (payload.supportedBootModes != null) {
-      result
+    if (supportedBootModes != null) {
+      result$
         ..add(const _i19.XmlElementName('SupportedBootModes'))
         ..add(const _i19.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i19.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.supportedBootModes!,
+          supportedBootModes,
           specifiedType: const FullType.nullable(
             _i18.BuiltList,
             [FullType(_i17.BootModeType)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

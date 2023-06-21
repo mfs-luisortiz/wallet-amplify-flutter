@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.cancel_import_task_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -103,34 +104,28 @@ class CancelImportTaskResultEc2QuerySerializer
     final result = CancelImportTaskResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'importTaskId':
-          if (value != null) {
-            result.importTaskId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.importTaskId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'previousState':
-          if (value != null) {
-            result.previousState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.previousState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -140,40 +135,41 @@ class CancelImportTaskResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CancelImportTaskResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CancelImportTaskResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'CancelImportTaskResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.importTaskId != null) {
-      result
+    final CancelImportTaskResult(:importTaskId, :previousState, :state) =
+        object;
+    if (importTaskId != null) {
+      result$
         ..add(const _i2.XmlElementName('ImportTaskId'))
         ..add(serializers.serialize(
-          payload.importTaskId!,
+          importTaskId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.previousState != null) {
-      result
+    if (previousState != null) {
+      result$
         ..add(const _i2.XmlElementName('PreviousState'))
         ..add(serializers.serialize(
-          payload.previousState!,
+          previousState,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i2.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.detach_vpn_gateway_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -113,28 +114,28 @@ class DetachVpnGatewayRequestEc2QuerySerializer
     final result = DetachVpnGatewayRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'VpcId':
           result.vpcId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'VpnGatewayId':
           result.vpnGatewayId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -144,34 +145,34 @@ class DetachVpnGatewayRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DetachVpnGatewayRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DetachVpnGatewayRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DetachVpnGatewayRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DetachVpnGatewayRequest(:vpcId, :vpnGatewayId, :dryRun) = object;
+    result$
       ..add(const _i1.XmlElementName('VpcId'))
       ..add(serializers.serialize(
-        payload.vpcId,
+        vpcId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('VpnGatewayId'))
       ..add(serializers.serialize(
-        payload.vpnGatewayId,
+        vpnGatewayId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

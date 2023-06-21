@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.create_customer_gateway_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -175,75 +176,60 @@ class CreateCustomerGatewayRequestEc2QuerySerializer
     final result = CreateCustomerGatewayRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'BgpAsn':
           result.bgpAsn = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'PublicIp':
-          if (value != null) {
-            result.publicIp = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicIp = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'CertificateArn':
-          if (value != null) {
-            result.certificateArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.certificateArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Type':
           result.type = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(_i3.GatewayType),
           ) as _i3.GatewayType);
-          break;
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i5.BuiltList,
-                [FullType(_i4.TagSpecification)],
-              ),
-            ) as _i5.BuiltList<_i4.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i5.BuiltList,
+              [FullType(_i4.TagSpecification)],
+            ),
+          ) as _i5.BuiltList<_i4.TagSpecification>));
         case 'DeviceName':
-          if (value != null) {
-            result.deviceName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.deviceName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'IpAddress':
-          if (value != null) {
-            result.ipAddress = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipAddress = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -253,81 +239,90 @@ class CreateCustomerGatewayRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    CreateCustomerGatewayRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as CreateCustomerGatewayRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'CreateCustomerGatewayRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final CreateCustomerGatewayRequest(
+      :bgpAsn,
+      :publicIp,
+      :certificateArn,
+      :type,
+      :tagSpecifications,
+      :deviceName,
+      :ipAddress,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('BgpAsn'))
       ..add(serializers.serialize(
-        payload.bgpAsn,
+        bgpAsn,
         specifiedType: const FullType(int),
       ));
-    if (payload.publicIp != null) {
-      result
+    if (publicIp != null) {
+      result$
         ..add(const _i1.XmlElementName('PublicIp'))
         ..add(serializers.serialize(
-          payload.publicIp!,
+          publicIp,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.certificateArn != null) {
-      result
+    if (certificateArn != null) {
+      result$
         ..add(const _i1.XmlElementName('CertificateArn'))
         ..add(serializers.serialize(
-          payload.certificateArn!,
+          certificateArn,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('Type'))
       ..add(serializers.serialize(
-        payload.type,
+        type,
         specifiedType: const FullType.nullable(_i3.GatewayType),
       ));
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i5.BuiltList,
             [FullType(_i4.TagSpecification)],
           ),
         ));
     }
-    if (payload.deviceName != null) {
-      result
+    if (deviceName != null) {
+      result$
         ..add(const _i1.XmlElementName('DeviceName'))
         ..add(serializers.serialize(
-          payload.deviceName!,
+          deviceName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.ipAddress != null) {
-      result
+    if (ipAddress != null) {
+      result$
         ..add(const _i1.XmlElementName('IpAddress'))
         ..add(serializers.serialize(
-          payload.ipAddress!,
+          ipAddress,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

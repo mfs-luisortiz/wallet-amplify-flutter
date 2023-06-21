@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.region; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,34 +96,28 @@ class RegionEc2QuerySerializer extends _i2.StructuredSmithySerializer<Region> {
     final result = RegionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'regionEndpoint':
-          if (value != null) {
-            result.endpoint = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.endpoint = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'regionName':
-          if (value != null) {
-            result.regionName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.regionName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'optInStatus':
-          if (value != null) {
-            result.optInStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.optInStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -132,40 +127,40 @@ class RegionEc2QuerySerializer extends _i2.StructuredSmithySerializer<Region> {
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    Region object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as Region);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'RegionResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.endpoint != null) {
-      result
+    final Region(:endpoint, :regionName, :optInStatus) = object;
+    if (endpoint != null) {
+      result$
         ..add(const _i2.XmlElementName('RegionEndpoint'))
         ..add(serializers.serialize(
-          payload.endpoint!,
+          endpoint,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.regionName != null) {
-      result
+    if (regionName != null) {
+      result$
         ..add(const _i2.XmlElementName('RegionName'))
         ..add(serializers.serialize(
-          payload.regionName!,
+          regionName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.optInStatus != null) {
-      result
+    if (optInStatus != null) {
+      result$
         ..add(const _i2.XmlElementName('OptInStatus'))
         ..add(serializers.serialize(
-          payload.optInStatus!,
+          optInStatus,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

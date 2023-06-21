@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_fleet_success_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -100,34 +101,28 @@ class DeleteFleetSuccessItemEc2QuerySerializer
     final result = DeleteFleetSuccessItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'currentFleetState':
-          if (value != null) {
-            result.currentFleetState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.FleetStateCode),
-            ) as _i2.FleetStateCode);
-          }
-          break;
+          result.currentFleetState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FleetStateCode),
+          ) as _i2.FleetStateCode);
         case 'previousFleetState':
-          if (value != null) {
-            result.previousFleetState = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.FleetStateCode),
-            ) as _i2.FleetStateCode);
-          }
-          break;
+          result.previousFleetState = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.FleetStateCode),
+          ) as _i2.FleetStateCode);
         case 'fleetId':
-          if (value != null) {
-            result.fleetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.fleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -137,40 +132,44 @@ class DeleteFleetSuccessItemEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteFleetSuccessItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteFleetSuccessItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteFleetSuccessItemResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.currentFleetState != null) {
-      result
+    final DeleteFleetSuccessItem(
+      :currentFleetState,
+      :previousFleetState,
+      :fleetId
+    ) = object;
+    if (currentFleetState != null) {
+      result$
         ..add(const _i3.XmlElementName('CurrentFleetState'))
         ..add(serializers.serialize(
-          payload.currentFleetState!,
+          currentFleetState,
           specifiedType: const FullType.nullable(_i2.FleetStateCode),
         ));
     }
-    if (payload.previousFleetState != null) {
-      result
+    if (previousFleetState != null) {
+      result$
         ..add(const _i3.XmlElementName('PreviousFleetState'))
         ..add(serializers.serialize(
-          payload.previousFleetState!,
+          previousFleetState,
           specifiedType: const FullType.nullable(_i2.FleetStateCode),
         ));
     }
-    if (payload.fleetId != null) {
-      result
+    if (fleetId != null) {
+      result$
         ..add(const _i3.XmlElementName('FleetId'))
         ..add(serializers.serialize(
-          payload.fleetId!,
+          fleetId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

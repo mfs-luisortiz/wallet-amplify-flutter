@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fpga_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -88,33 +89,30 @@ class FpgaInfoEc2QuerySerializer
     final result = FpgaInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'fpgas':
-          if (value != null) {
-            result.fpgas.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.FpgaDeviceInfo)],
-              ),
-            ) as _i3.BuiltList<_i2.FpgaDeviceInfo>));
-          }
-          break;
+          result.fpgas.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.FpgaDeviceInfo)],
+            ),
+          ) as _i3.BuiltList<_i2.FpgaDeviceInfo>));
         case 'totalFpgaMemoryInMiB':
-          if (value != null) {
-            result.totalFpgaMemoryInMib = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.totalFpgaMemoryInMib = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -124,39 +122,39 @@ class FpgaInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FpgaInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FpgaInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'FpgaInfoResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.fpgas != null) {
-      result
+    final FpgaInfo(:fpgas, :totalFpgaMemoryInMib) = object;
+    if (fpgas != null) {
+      result$
         ..add(const _i4.XmlElementName('Fpgas'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.fpgas!,
+          fpgas,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.FpgaDeviceInfo)],
           ),
         ));
     }
-    if (payload.totalFpgaMemoryInMib != null) {
-      result
+    if (totalFpgaMemoryInMib != null) {
+      result$
         ..add(const _i4.XmlElementName('TotalFpgaMemoryInMiB'))
         ..add(serializers.serialize(
-          payload.totalFpgaMemoryInMib!,
+          totalFpgaMemoryInMib,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

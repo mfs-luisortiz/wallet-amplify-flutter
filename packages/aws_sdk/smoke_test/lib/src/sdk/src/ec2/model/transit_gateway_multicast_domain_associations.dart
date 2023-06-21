@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.transit_gateway_multicast_domain_associations; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -138,66 +139,51 @@ class TransitGatewayMulticastDomainAssociationsEc2QuerySerializer extends _i5
     final result = TransitGatewayMulticastDomainAssociationsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'transitGatewayMulticastDomainId':
-          if (value != null) {
-            result.transitGatewayMulticastDomainId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayMulticastDomainId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'transitGatewayAttachmentId':
-          if (value != null) {
-            result.transitGatewayAttachmentId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.transitGatewayAttachmentId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceId':
-          if (value != null) {
-            result.resourceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'resourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i2.TransitGatewayAttachmentResourceType),
-            ) as _i2.TransitGatewayAttachmentResourceType);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i2.TransitGatewayAttachmentResourceType),
+          ) as _i2.TransitGatewayAttachmentResourceType);
         case 'resourceOwnerId':
-          if (value != null) {
-            result.resourceOwnerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceOwnerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnets':
-          if (value != null) {
-            result.subnets.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.SubnetAssociation)],
-              ),
-            ) as _i4.BuiltList<_i3.SubnetAssociation>));
-          }
-          break;
+          result.subnets.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.SubnetAssociation)],
+            ),
+          ) as _i4.BuiltList<_i3.SubnetAssociation>));
       }
     }
 
@@ -207,72 +193,79 @@ class TransitGatewayMulticastDomainAssociationsEc2QuerySerializer extends _i5
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TransitGatewayMulticastDomainAssociations object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TransitGatewayMulticastDomainAssociations);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'TransitGatewayMulticastDomainAssociationsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.transitGatewayMulticastDomainId != null) {
-      result
+    final TransitGatewayMulticastDomainAssociations(
+      :transitGatewayMulticastDomainId,
+      :transitGatewayAttachmentId,
+      :resourceId,
+      :resourceType,
+      :resourceOwnerId,
+      :subnets
+    ) = object;
+    if (transitGatewayMulticastDomainId != null) {
+      result$
         ..add(const _i5.XmlElementName('TransitGatewayMulticastDomainId'))
         ..add(serializers.serialize(
-          payload.transitGatewayMulticastDomainId!,
+          transitGatewayMulticastDomainId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.transitGatewayAttachmentId != null) {
-      result
+    if (transitGatewayAttachmentId != null) {
+      result$
         ..add(const _i5.XmlElementName('TransitGatewayAttachmentId'))
         ..add(serializers.serialize(
-          payload.transitGatewayAttachmentId!,
+          transitGatewayAttachmentId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceId != null) {
-      result
+    if (resourceId != null) {
+      result$
         ..add(const _i5.XmlElementName('ResourceId'))
         ..add(serializers.serialize(
-          payload.resourceId!,
+          resourceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i5.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType:
               const FullType.nullable(_i2.TransitGatewayAttachmentResourceType),
         ));
     }
-    if (payload.resourceOwnerId != null) {
-      result
+    if (resourceOwnerId != null) {
+      result$
         ..add(const _i5.XmlElementName('ResourceOwnerId'))
         ..add(serializers.serialize(
-          payload.resourceOwnerId!,
+          resourceOwnerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnets != null) {
-      result
+    if (subnets != null) {
+      result$
         ..add(const _i5.XmlElementName('Subnets'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.subnets!,
+          subnets,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.SubnetAssociation)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

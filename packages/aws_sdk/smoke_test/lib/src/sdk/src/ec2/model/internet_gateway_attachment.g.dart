@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.internet_gateway_attachment;
+part of 'internet_gateway_attachment.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

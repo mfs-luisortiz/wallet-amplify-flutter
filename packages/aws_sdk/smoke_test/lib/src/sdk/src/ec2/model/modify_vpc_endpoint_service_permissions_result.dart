@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.modify_vpc_endpoint_service_permissions_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -103,31 +104,30 @@ class ModifyVpcEndpointServicePermissionsResultEc2QuerySerializer extends _i4
     final result = ModifyVpcEndpointServicePermissionsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'addedPrincipalSet':
-          if (value != null) {
-            result.addedPrincipals.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.AddedPrincipal)],
-              ),
-            ) as _i3.BuiltList<_i2.AddedPrincipal>));
-          }
-          break;
+          result.addedPrincipals.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.AddedPrincipal)],
+            ),
+          ) as _i3.BuiltList<_i2.AddedPrincipal>));
         case 'return':
           result.returnValue = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -137,37 +137,40 @@ class ModifyVpcEndpointServicePermissionsResultEc2QuerySerializer extends _i4
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ModifyVpcEndpointServicePermissionsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ModifyVpcEndpointServicePermissionsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'ModifyVpcEndpointServicePermissionsResultResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.addedPrincipals != null) {
-      result
+    final ModifyVpcEndpointServicePermissionsResult(
+      :addedPrincipals,
+      :returnValue
+    ) = object;
+    if (addedPrincipals != null) {
+      result$
         ..add(const _i4.XmlElementName('AddedPrincipalSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.addedPrincipals!,
+          addedPrincipals,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.AddedPrincipal)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i4.XmlElementName('Return'))
       ..add(serializers.serialize(
-        payload.returnValue,
+        returnValue,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

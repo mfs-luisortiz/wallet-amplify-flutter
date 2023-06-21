@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.spot_datafeed_subscription;
+part of 'spot_datafeed_subscription.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

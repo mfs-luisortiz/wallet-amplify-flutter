@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.ebs_block_device;
+part of 'ebs_block_device.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

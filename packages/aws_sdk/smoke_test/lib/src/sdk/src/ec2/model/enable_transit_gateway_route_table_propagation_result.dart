@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.enable_transit_gateway_route_table_propagation_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -86,18 +87,18 @@ class EnableTransitGatewayRouteTablePropagationResultEc2QuerySerializer
     final result = EnableTransitGatewayRouteTablePropagationResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'propagation':
-          if (value != null) {
-            result.propagation.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.TransitGatewayPropagation),
-            ) as _i2.TransitGatewayPropagation));
-          }
-          break;
+          result.propagation.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.TransitGatewayPropagation),
+          ) as _i2.TransitGatewayPropagation));
       }
     }
 
@@ -107,24 +108,25 @@ class EnableTransitGatewayRouteTablePropagationResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EnableTransitGatewayRouteTablePropagationResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EnableTransitGatewayRouteTablePropagationResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'EnableTransitGatewayRouteTablePropagationResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.propagation != null) {
-      result
+    final EnableTransitGatewayRouteTablePropagationResult(:propagation) =
+        object;
+    if (propagation != null) {
+      result$
         ..add(const _i3.XmlElementName('Propagation'))
         ..add(serializers.serialize(
-          payload.propagation!,
+          propagation,
           specifiedType: const FullType(_i2.TransitGatewayPropagation),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.revoke_security_group_egress_request;
+part of 'revoke_security_group_egress_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

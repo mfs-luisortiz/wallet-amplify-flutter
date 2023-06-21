@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_image_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -279,156 +280,115 @@ class ImportImageRequestEc2QuerySerializer
     final result = ImportImageRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Architecture':
-          if (value != null) {
-            result.architecture = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.architecture = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'ClientData':
-          if (value != null) {
-            result.clientData.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ClientData),
-            ) as _i3.ClientData));
-          }
-          break;
+          result.clientData.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ClientData),
+          ) as _i3.ClientData));
         case 'ClientToken':
-          if (value != null) {
-            result.clientToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.clientToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'DiskContainer':
-          if (value != null) {
-            result.diskContainers.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i4.ImageDiskContainer)],
-              ),
-            ) as _i8.BuiltList<_i4.ImageDiskContainer>));
-          }
-          break;
+          result.diskContainers.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i4.ImageDiskContainer)],
+            ),
+          ) as _i8.BuiltList<_i4.ImageDiskContainer>));
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Encrypted':
           result.encrypted = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'Hypervisor':
-          if (value != null) {
-            result.hypervisor = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.hypervisor = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'KmsKeyId':
-          if (value != null) {
-            result.kmsKeyId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.kmsKeyId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LicenseType':
-          if (value != null) {
-            result.licenseType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.licenseType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'Platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'RoleName':
-          if (value != null) {
-            result.roleName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.roleName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'LicenseSpecifications':
-          if (value != null) {
-            result.licenseSpecifications
-                .replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i5.ImportImageLicenseConfigurationRequest)],
-              ),
-            ) as _i8.BuiltList<_i5.ImportImageLicenseConfigurationRequest>));
-          }
-          break;
+          result.licenseSpecifications
+              .replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i5.ImportImageLicenseConfigurationRequest)],
+            ),
+          ) as _i8.BuiltList<_i5.ImportImageLicenseConfigurationRequest>));
         case 'TagSpecification':
-          if (value != null) {
-            result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i1.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i8.BuiltList,
-                [FullType(_i6.TagSpecification)],
-              ),
-            ) as _i8.BuiltList<_i6.TagSpecification>));
-          }
-          break;
+          result.tagSpecifications.replace((const _i1.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i1.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i8.BuiltList,
+              [FullType(_i6.TagSpecification)],
+            ),
+          ) as _i8.BuiltList<_i6.TagSpecification>));
         case 'UsageOperation':
-          if (value != null) {
-            result.usageOperation = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.usageOperation = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'BootMode':
-          if (value != null) {
-            result.bootMode = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i7.BootModeValues),
-            ) as _i7.BootModeValues);
-          }
-          break;
+          result.bootMode = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i7.BootModeValues),
+          ) as _i7.BootModeValues);
       }
     }
 
@@ -438,161 +398,178 @@ class ImportImageRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportImageRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportImageRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'ImportImageRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.architecture != null) {
-      result
+    final ImportImageRequest(
+      :architecture,
+      :clientData,
+      :clientToken,
+      :description,
+      :diskContainers,
+      :dryRun,
+      :encrypted,
+      :hypervisor,
+      :kmsKeyId,
+      :licenseType,
+      :platform,
+      :roleName,
+      :licenseSpecifications,
+      :tagSpecifications,
+      :usageOperation,
+      :bootMode
+    ) = object;
+    if (architecture != null) {
+      result$
         ..add(const _i1.XmlElementName('Architecture'))
         ..add(serializers.serialize(
-          payload.architecture!,
+          architecture,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.clientData != null) {
-      result
+    if (clientData != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientData'))
         ..add(serializers.serialize(
-          payload.clientData!,
+          clientData,
           specifiedType: const FullType(_i3.ClientData),
         ));
     }
-    if (payload.clientToken != null) {
-      result
+    if (clientToken != null) {
+      result$
         ..add(const _i1.XmlElementName('ClientToken'))
         ..add(serializers.serialize(
-          payload.clientToken!,
+          clientToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.description != null) {
-      result
+    if (description != null) {
+      result$
         ..add(const _i1.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.diskContainers != null) {
-      result
+    if (diskContainers != null) {
+      result$
         ..add(const _i1.XmlElementName('DiskContainer'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.diskContainers!,
+          diskContainers,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i4.ImageDiskContainer)],
           ),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('Encrypted'))
       ..add(serializers.serialize(
-        payload.encrypted,
+        encrypted,
         specifiedType: const FullType(bool),
       ));
-    if (payload.hypervisor != null) {
-      result
+    if (hypervisor != null) {
+      result$
         ..add(const _i1.XmlElementName('Hypervisor'))
         ..add(serializers.serialize(
-          payload.hypervisor!,
+          hypervisor,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.kmsKeyId != null) {
-      result
+    if (kmsKeyId != null) {
+      result$
         ..add(const _i1.XmlElementName('KmsKeyId'))
         ..add(serializers.serialize(
-          payload.kmsKeyId!,
+          kmsKeyId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.licenseType != null) {
-      result
+    if (licenseType != null) {
+      result$
         ..add(const _i1.XmlElementName('LicenseType'))
         ..add(serializers.serialize(
-          payload.licenseType!,
+          licenseType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i1.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.roleName != null) {
-      result
+    if (roleName != null) {
+      result$
         ..add(const _i1.XmlElementName('RoleName'))
         ..add(serializers.serialize(
-          payload.roleName!,
+          roleName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.licenseSpecifications != null) {
-      result
+    if (licenseSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('LicenseSpecifications'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.licenseSpecifications!,
+          licenseSpecifications,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i5.ImportImageLicenseConfigurationRequest)],
           ),
         ));
     }
-    if (payload.tagSpecifications != null) {
-      result
+    if (tagSpecifications != null) {
+      result$
         ..add(const _i1.XmlElementName('TagSpecification'))
         ..add(const _i1.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i1.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tagSpecifications!,
+          tagSpecifications,
           specifiedType: const FullType.nullable(
             _i8.BuiltList,
             [FullType(_i6.TagSpecification)],
           ),
         ));
     }
-    if (payload.usageOperation != null) {
-      result
+    if (usageOperation != null) {
+      result$
         ..add(const _i1.XmlElementName('UsageOperation'))
         ..add(serializers.serialize(
-          payload.usageOperation!,
+          usageOperation,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.bootMode != null) {
-      result
+    if (bootMode != null) {
+      result$
         ..add(const _i1.XmlElementName('BootMode'))
         ..add(serializers.serialize(
-          payload.bootMode!,
+          bootMode,
           specifiedType: const FullType.nullable(_i7.BootModeValues),
         ));
     }
-    return result;
+    return result$;
   }
 }

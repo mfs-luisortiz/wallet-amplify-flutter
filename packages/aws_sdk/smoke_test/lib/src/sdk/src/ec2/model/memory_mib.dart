@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.memory_mib; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -92,22 +93,23 @@ class MemoryMibEc2QuerySerializer
     final result = MemoryMibBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'min':
           result.min = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'max':
           result.max = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -117,28 +119,28 @@ class MemoryMibEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    MemoryMib object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as MemoryMib);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'MemoryMibResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final MemoryMib(:min, :max) = object;
+    result$
       ..add(const _i2.XmlElementName('Min'))
       ..add(serializers.serialize(
-        payload.min,
+        min,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('Max'))
       ..add(serializers.serialize(
-        payload.max,
+        max,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

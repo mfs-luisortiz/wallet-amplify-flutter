@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_spot_fleet_instances_response; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -113,41 +114,35 @@ class DescribeSpotFleetInstancesResponseEc2QuerySerializer
     final result = DescribeSpotFleetInstancesResponseBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'activeInstanceSet':
-          if (value != null) {
-            result.activeInstances.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.ActiveInstance)],
-              ),
-            ) as _i3.BuiltList<_i2.ActiveInstance>));
-          }
-          break;
+          result.activeInstances.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.ActiveInstance)],
+            ),
+          ) as _i3.BuiltList<_i2.ActiveInstance>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'spotFleetRequestId':
-          if (value != null) {
-            result.spotFleetRequestId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.spotFleetRequestId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -157,47 +152,51 @@ class DescribeSpotFleetInstancesResponseEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeSpotFleetInstancesResponse object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeSpotFleetInstancesResponse);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'DescribeSpotFleetInstancesResponseResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.activeInstances != null) {
-      result
+    final DescribeSpotFleetInstancesResponse(
+      :activeInstances,
+      :nextToken,
+      :spotFleetRequestId
+    ) = object;
+    if (activeInstances != null) {
+      result$
         ..add(const _i4.XmlElementName('ActiveInstanceSet'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.activeInstances!,
+          activeInstances,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.ActiveInstance)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i4.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.spotFleetRequestId != null) {
-      result
+    if (spotFleetRequestId != null) {
+      result$
         ..add(const _i4.XmlElementName('SpotFleetRequestId'))
         ..add(serializers.serialize(
-          payload.spotFleetRequestId!,
+          spotFleetRequestId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

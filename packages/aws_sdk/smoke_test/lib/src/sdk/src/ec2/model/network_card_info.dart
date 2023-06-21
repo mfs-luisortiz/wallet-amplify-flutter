@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.network_card_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -97,34 +98,28 @@ class NetworkCardInfoEc2QuerySerializer
     final result = NetworkCardInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkCardIndex':
-          if (value != null) {
-            result.networkCardIndex = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.networkCardIndex = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
         case 'networkPerformance':
-          if (value != null) {
-            result.networkPerformance = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkPerformance = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'maximumNetworkInterfaces':
-          if (value != null) {
-            result.maximumNetworkInterfaces = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(int),
-            ) as int);
-          }
-          break;
+          result.maximumNetworkInterfaces = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(int),
+          ) as int);
       }
     }
 
@@ -134,40 +129,44 @@ class NetworkCardInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    NetworkCardInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as NetworkCardInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'NetworkCardInfoResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkCardIndex != null) {
-      result
+    final NetworkCardInfo(
+      :networkCardIndex,
+      :networkPerformance,
+      :maximumNetworkInterfaces
+    ) = object;
+    if (networkCardIndex != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkCardIndex'))
         ..add(serializers.serialize(
-          payload.networkCardIndex!,
+          networkCardIndex,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    if (payload.networkPerformance != null) {
-      result
+    if (networkPerformance != null) {
+      result$
         ..add(const _i2.XmlElementName('NetworkPerformance'))
         ..add(serializers.serialize(
-          payload.networkPerformance!,
+          networkPerformance,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.maximumNetworkInterfaces != null) {
-      result
+    if (maximumNetworkInterfaces != null) {
+      result$
         ..add(const _i2.XmlElementName('MaximumNetworkInterfaces'))
         ..add(serializers.serialize(
-          payload.maximumNetworkInterfaces!,
+          maximumNetworkInterfaces,
           specifiedType: const FullType.nullable(int),
         ));
     }
-    return result;
+    return result$;
   }
 }

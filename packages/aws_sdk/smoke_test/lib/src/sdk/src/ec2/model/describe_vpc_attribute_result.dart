@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_vpc_attribute_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,43 +117,34 @@ class DescribeVpcAttributeResultEc2QuerySerializer
     final result = DescribeVpcAttributeResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'vpcId':
-          if (value != null) {
-            result.vpcId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.vpcId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'enableDnsHostnames':
-          if (value != null) {
-            result.enableDnsHostnames.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AttributeBooleanValue),
-            ) as _i2.AttributeBooleanValue));
-          }
-          break;
+          result.enableDnsHostnames.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AttributeBooleanValue),
+          ) as _i2.AttributeBooleanValue));
         case 'enableDnsSupport':
-          if (value != null) {
-            result.enableDnsSupport.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AttributeBooleanValue),
-            ) as _i2.AttributeBooleanValue));
-          }
-          break;
+          result.enableDnsSupport.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AttributeBooleanValue),
+          ) as _i2.AttributeBooleanValue));
         case 'enableNetworkAddressUsageMetrics':
-          if (value != null) {
-            result.enableNetworkAddressUsageMetrics
-                .replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AttributeBooleanValue),
-            ) as _i2.AttributeBooleanValue));
-          }
-          break;
+          result.enableNetworkAddressUsageMetrics
+              .replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AttributeBooleanValue),
+          ) as _i2.AttributeBooleanValue));
       }
     }
 
@@ -162,48 +154,53 @@ class DescribeVpcAttributeResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeVpcAttributeResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeVpcAttributeResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DescribeVpcAttributeResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.vpcId != null) {
-      result
+    final DescribeVpcAttributeResult(
+      :vpcId,
+      :enableDnsHostnames,
+      :enableDnsSupport,
+      :enableNetworkAddressUsageMetrics
+    ) = object;
+    if (vpcId != null) {
+      result$
         ..add(const _i3.XmlElementName('VpcId'))
         ..add(serializers.serialize(
-          payload.vpcId!,
+          vpcId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.enableDnsHostnames != null) {
-      result
+    if (enableDnsHostnames != null) {
+      result$
         ..add(const _i3.XmlElementName('EnableDnsHostnames'))
         ..add(serializers.serialize(
-          payload.enableDnsHostnames!,
+          enableDnsHostnames,
           specifiedType: const FullType(_i2.AttributeBooleanValue),
         ));
     }
-    if (payload.enableDnsSupport != null) {
-      result
+    if (enableDnsSupport != null) {
+      result$
         ..add(const _i3.XmlElementName('EnableDnsSupport'))
         ..add(serializers.serialize(
-          payload.enableDnsSupport!,
+          enableDnsSupport,
           specifiedType: const FullType(_i2.AttributeBooleanValue),
         ));
     }
-    if (payload.enableNetworkAddressUsageMetrics != null) {
-      result
+    if (enableNetworkAddressUsageMetrics != null) {
+      result$
         ..add(const _i3.XmlElementName('EnableNetworkAddressUsageMetrics'))
         ..add(serializers.serialize(
-          payload.enableNetworkAddressUsageMetrics!,
+          enableNetworkAddressUsageMetrics,
           specifiedType: const FullType(_i2.AttributeBooleanValue),
         ));
     }
-    return result;
+    return result$;
   }
 }

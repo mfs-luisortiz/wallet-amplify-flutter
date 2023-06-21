@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.enable_fast_launch_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -146,54 +147,45 @@ class EnableFastLaunchRequestEc2QuerySerializer
     final result = EnableFastLaunchRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ImageId':
           result.imageId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'ResourceType':
-          if (value != null) {
-            result.resourceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.resourceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'SnapshotConfiguration':
-          if (value != null) {
-            result.snapshotConfiguration.replace((serializers.deserialize(
-              value,
-              specifiedType:
-                  const FullType(_i3.FastLaunchSnapshotConfigurationRequest),
-            ) as _i3.FastLaunchSnapshotConfigurationRequest));
-          }
-          break;
+          result.snapshotConfiguration.replace((serializers.deserialize(
+            value,
+            specifiedType:
+                const FullType(_i3.FastLaunchSnapshotConfigurationRequest),
+          ) as _i3.FastLaunchSnapshotConfigurationRequest));
         case 'LaunchTemplate':
-          if (value != null) {
-            result.launchTemplate.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i4.FastLaunchLaunchTemplateSpecificationRequest),
-            ) as _i4.FastLaunchLaunchTemplateSpecificationRequest));
-          }
-          break;
+          result.launchTemplate.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i4.FastLaunchLaunchTemplateSpecificationRequest),
+          ) as _i4.FastLaunchLaunchTemplateSpecificationRequest));
         case 'MaxParallelLaunches':
           result.maxParallelLaunches = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -203,60 +195,67 @@ class EnableFastLaunchRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    EnableFastLaunchRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as EnableFastLaunchRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'EnableFastLaunchRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final EnableFastLaunchRequest(
+      :imageId,
+      :resourceType,
+      :snapshotConfiguration,
+      :launchTemplate,
+      :maxParallelLaunches,
+      :dryRun
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('ImageId'))
       ..add(serializers.serialize(
-        payload.imageId,
+        imageId,
         specifiedType: const FullType(String),
       ));
-    if (payload.resourceType != null) {
-      result
+    if (resourceType != null) {
+      result$
         ..add(const _i1.XmlElementName('ResourceType'))
         ..add(serializers.serialize(
-          payload.resourceType!,
+          resourceType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.snapshotConfiguration != null) {
-      result
+    if (snapshotConfiguration != null) {
+      result$
         ..add(const _i1.XmlElementName('SnapshotConfiguration'))
         ..add(serializers.serialize(
-          payload.snapshotConfiguration!,
+          snapshotConfiguration,
           specifiedType:
               const FullType(_i3.FastLaunchSnapshotConfigurationRequest),
         ));
     }
-    if (payload.launchTemplate != null) {
-      result
+    if (launchTemplate != null) {
+      result$
         ..add(const _i1.XmlElementName('LaunchTemplate'))
         ..add(serializers.serialize(
-          payload.launchTemplate!,
+          launchTemplate,
           specifiedType:
               const FullType(_i4.FastLaunchLaunchTemplateSpecificationRequest),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxParallelLaunches'))
       ..add(serializers.serialize(
-        payload.maxParallelLaunches,
+        maxParallelLaunches,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

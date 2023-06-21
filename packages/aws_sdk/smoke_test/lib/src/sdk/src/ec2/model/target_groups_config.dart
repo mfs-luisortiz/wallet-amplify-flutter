@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.target_groups_config; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -76,25 +77,25 @@ class TargetGroupsConfigEc2QuerySerializer
     final result = TargetGroupsConfigBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'targetGroups':
-          if (value != null) {
-            result.targetGroups.replace((const _i4.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i4.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i3.BuiltList,
-                [FullType(_i2.TargetGroup)],
-              ),
-            ) as _i3.BuiltList<_i2.TargetGroup>));
-          }
-          break;
+          result.targetGroups.replace((const _i4.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i4.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i3.BuiltList,
+              [FullType(_i2.TargetGroup)],
+            ),
+          ) as _i3.BuiltList<_i2.TargetGroup>));
       }
     }
 
@@ -104,31 +105,31 @@ class TargetGroupsConfigEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    TargetGroupsConfig object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as TargetGroupsConfig);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'TargetGroupsConfigResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.targetGroups != null) {
-      result
+    final TargetGroupsConfig(:targetGroups) = object;
+    if (targetGroups != null) {
+      result$
         ..add(const _i4.XmlElementName('TargetGroups'))
         ..add(const _i4.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i4.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.targetGroups!,
+          targetGroups,
           specifiedType: const FullType.nullable(
             _i3.BuiltList,
             [FullType(_i2.TargetGroup)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.delete_instance_event_window_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -85,18 +86,18 @@ class DeleteInstanceEventWindowResultEc2QuerySerializer
     final result = DeleteInstanceEventWindowResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceEventWindowState':
-          if (value != null) {
-            result.instanceEventWindowState.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceEventWindowStateChange),
-            ) as _i2.InstanceEventWindowStateChange));
-          }
-          break;
+          result.instanceEventWindowState.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceEventWindowStateChange),
+          ) as _i2.InstanceEventWindowStateChange));
       }
     }
 
@@ -106,24 +107,24 @@ class DeleteInstanceEventWindowResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DeleteInstanceEventWindowResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DeleteInstanceEventWindowResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'DeleteInstanceEventWindowResultResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceEventWindowState != null) {
-      result
+    final DeleteInstanceEventWindowResult(:instanceEventWindowState) = object;
+    if (instanceEventWindowState != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceEventWindowState'))
         ..add(serializers.serialize(
-          payload.instanceEventWindowState!,
+          instanceEventWindowState,
           specifiedType: const FullType(_i2.InstanceEventWindowStateChange),
         ));
     }
-    return result;
+    return result$;
   }
 }

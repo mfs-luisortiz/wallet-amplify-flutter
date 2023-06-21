@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.scheduled_instances_ipv6_address; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -76,18 +77,18 @@ class ScheduledInstancesIpv6AddressEc2QuerySerializer
     final result = ScheduledInstancesIpv6AddressBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Ipv6Address':
-          if (value != null) {
-            result.ipv6Address = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ipv6Address = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -97,24 +98,24 @@ class ScheduledInstancesIpv6AddressEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ScheduledInstancesIpv6Address object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ScheduledInstancesIpv6Address);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ScheduledInstancesIpv6AddressResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ipv6Address != null) {
-      result
+    final ScheduledInstancesIpv6Address(:ipv6Address) = object;
+    if (ipv6Address != null) {
+      result$
         ..add(const _i2.XmlElementName('Ipv6Address'))
         ..add(serializers.serialize(
-          payload.ipv6Address!,
+          ipv6Address,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

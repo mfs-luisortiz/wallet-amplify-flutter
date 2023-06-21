@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.delete_ipam_scope_result;
+part of 'delete_ipam_scope_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

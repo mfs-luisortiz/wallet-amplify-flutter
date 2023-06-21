@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.get_network_insights_access_scope_analysis_findings_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -125,50 +126,41 @@ class GetNetworkInsightsAccessScopeAnalysisFindingsResultEc2QuerySerializer
     final result = GetNetworkInsightsAccessScopeAnalysisFindingsResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'networkInsightsAccessScopeAnalysisId':
-          if (value != null) {
-            result.networkInsightsAccessScopeAnalysisId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.networkInsightsAccessScopeAnalysisId =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'analysisStatus':
-          if (value != null) {
-            result.analysisStatus = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.AnalysisStatus),
-            ) as _i2.AnalysisStatus);
-          }
-          break;
+          result.analysisStatus = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.AnalysisStatus),
+          ) as _i2.AnalysisStatus);
         case 'analysisFindingSet':
-          if (value != null) {
-            result.analysisFindings.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.AccessScopeAnalysisFinding)],
-              ),
-            ) as _i4.BuiltList<_i3.AccessScopeAnalysisFinding>));
-          }
-          break;
+          result.analysisFindings.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.AccessScopeAnalysisFinding)],
+            ),
+          ) as _i4.BuiltList<_i3.AccessScopeAnalysisFinding>));
         case 'nextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.nextToken = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -178,56 +170,60 @@ class GetNetworkInsightsAccessScopeAnalysisFindingsResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    GetNetworkInsightsAccessScopeAnalysisFindingsResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload =
-        (object as GetNetworkInsightsAccessScopeAnalysisFindingsResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'GetNetworkInsightsAccessScopeAnalysisFindingsResultResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.networkInsightsAccessScopeAnalysisId != null) {
-      result
+    final GetNetworkInsightsAccessScopeAnalysisFindingsResult(
+      :networkInsightsAccessScopeAnalysisId,
+      :analysisStatus,
+      :analysisFindings,
+      :nextToken
+    ) = object;
+    if (networkInsightsAccessScopeAnalysisId != null) {
+      result$
         ..add(const _i5.XmlElementName('NetworkInsightsAccessScopeAnalysisId'))
         ..add(serializers.serialize(
-          payload.networkInsightsAccessScopeAnalysisId!,
+          networkInsightsAccessScopeAnalysisId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.analysisStatus != null) {
-      result
+    if (analysisStatus != null) {
+      result$
         ..add(const _i5.XmlElementName('AnalysisStatus'))
         ..add(serializers.serialize(
-          payload.analysisStatus!,
+          analysisStatus,
           specifiedType: const FullType.nullable(_i2.AnalysisStatus),
         ));
     }
-    if (payload.analysisFindings != null) {
-      result
+    if (analysisFindings != null) {
+      result$
         ..add(const _i5.XmlElementName('AnalysisFindingSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.analysisFindings!,
+          analysisFindings,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.AccessScopeAnalysisFinding)],
           ),
         ));
     }
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i5.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

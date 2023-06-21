@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.elastic_inference_accelerator_association; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -116,45 +117,36 @@ class ElasticInferenceAcceleratorAssociationEc2QuerySerializer extends _i2
     final result = ElasticInferenceAcceleratorAssociationBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'elasticInferenceAcceleratorArn':
-          if (value != null) {
-            result.elasticInferenceAcceleratorArn = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticInferenceAcceleratorArn = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticInferenceAcceleratorAssociationId':
-          if (value != null) {
-            result.elasticInferenceAcceleratorAssociationId =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticInferenceAcceleratorAssociationId =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticInferenceAcceleratorAssociationState':
-          if (value != null) {
-            result.elasticInferenceAcceleratorAssociationState =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.elasticInferenceAcceleratorAssociationState =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'elasticInferenceAcceleratorAssociationTime':
-          if (value != null) {
-            result.elasticInferenceAcceleratorAssociationTime =
-                (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.elasticInferenceAcceleratorAssociationTime =
+              (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -164,51 +156,56 @@ class ElasticInferenceAcceleratorAssociationEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ElasticInferenceAcceleratorAssociation object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ElasticInferenceAcceleratorAssociation);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ElasticInferenceAcceleratorAssociationResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.elasticInferenceAcceleratorArn != null) {
-      result
+    final ElasticInferenceAcceleratorAssociation(
+      :elasticInferenceAcceleratorArn,
+      :elasticInferenceAcceleratorAssociationId,
+      :elasticInferenceAcceleratorAssociationState,
+      :elasticInferenceAcceleratorAssociationTime
+    ) = object;
+    if (elasticInferenceAcceleratorArn != null) {
+      result$
         ..add(const _i2.XmlElementName('ElasticInferenceAcceleratorArn'))
         ..add(serializers.serialize(
-          payload.elasticInferenceAcceleratorArn!,
+          elasticInferenceAcceleratorArn,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticInferenceAcceleratorAssociationId != null) {
-      result
+    if (elasticInferenceAcceleratorAssociationId != null) {
+      result$
         ..add(const _i2.XmlElementName(
             'ElasticInferenceAcceleratorAssociationId'))
         ..add(serializers.serialize(
-          payload.elasticInferenceAcceleratorAssociationId!,
+          elasticInferenceAcceleratorAssociationId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticInferenceAcceleratorAssociationState != null) {
-      result
+    if (elasticInferenceAcceleratorAssociationState != null) {
+      result$
         ..add(const _i2.XmlElementName(
             'ElasticInferenceAcceleratorAssociationState'))
         ..add(serializers.serialize(
-          payload.elasticInferenceAcceleratorAssociationState!,
+          elasticInferenceAcceleratorAssociationState,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.elasticInferenceAcceleratorAssociationTime != null) {
-      result
+    if (elasticInferenceAcceleratorAssociationTime != null) {
+      result$
         ..add(const _i2.XmlElementName(
             'ElasticInferenceAcceleratorAssociationTime'))
         ..add(serializers.serialize(
-          payload.elasticInferenceAcceleratorAssociationTime!,
+          elasticInferenceAcceleratorAssociationTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

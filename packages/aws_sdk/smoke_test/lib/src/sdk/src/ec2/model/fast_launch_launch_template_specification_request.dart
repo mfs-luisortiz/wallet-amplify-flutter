@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fast_launch_launch_template_specification_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -109,32 +110,28 @@ class FastLaunchLaunchTemplateSpecificationRequestEc2QuerySerializer extends _i2
     final result = FastLaunchLaunchTemplateSpecificationRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'LaunchTemplateId':
-          if (value != null) {
-            result.launchTemplateId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'LaunchTemplateName':
-          if (value != null) {
-            result.launchTemplateName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'Version':
-          result.version = (serializers.deserialize(
-            value!,
+          result.launchTemplateId = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'LaunchTemplateName':
+          result.launchTemplateName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
+        case 'Version':
+          result.version = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -144,38 +141,42 @@ class FastLaunchLaunchTemplateSpecificationRequestEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FastLaunchLaunchTemplateSpecificationRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FastLaunchLaunchTemplateSpecificationRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'FastLaunchLaunchTemplateSpecificationRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.launchTemplateId != null) {
-      result
+    final FastLaunchLaunchTemplateSpecificationRequest(
+      :launchTemplateId,
+      :launchTemplateName,
+      :version
+    ) = object;
+    if (launchTemplateId != null) {
+      result$
         ..add(const _i2.XmlElementName('LaunchTemplateId'))
         ..add(serializers.serialize(
-          payload.launchTemplateId!,
+          launchTemplateId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.launchTemplateName != null) {
-      result
+    if (launchTemplateName != null) {
+      result$
         ..add(const _i2.XmlElementName('LaunchTemplateName'))
         ..add(serializers.serialize(
-          payload.launchTemplateName!,
+          launchTemplateName,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('Version'))
       ..add(serializers.serialize(
-        payload.version,
+        version,
         specifiedType: const FullType(String),
       ));
-    return result;
+    return result$;
   }
 }

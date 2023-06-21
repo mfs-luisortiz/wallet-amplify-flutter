@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.confirm_product_instance_result; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -99,24 +100,23 @@ class ConfirmProductInstanceResultEc2QuerySerializer
     final result = ConfirmProductInstanceResultBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'return':
           result.return_ = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -126,30 +126,30 @@ class ConfirmProductInstanceResultEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ConfirmProductInstanceResult object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ConfirmProductInstanceResult);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'ConfirmProductInstanceResultResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.ownerId != null) {
-      result
+    final ConfirmProductInstanceResult(:ownerId, :return_) = object;
+    if (ownerId != null) {
+      result$
         ..add(const _i2.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('Return'))
       ..add(serializers.serialize(
-        payload.return_,
+        return_,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

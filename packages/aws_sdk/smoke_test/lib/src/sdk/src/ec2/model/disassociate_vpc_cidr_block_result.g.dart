@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.disassociate_vpc_cidr_block_result;
+part of 'disassociate_vpc_cidr_block_result.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

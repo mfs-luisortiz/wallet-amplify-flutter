@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.purchase_reserved_instances_offering_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -140,44 +141,38 @@ class PurchaseReservedInstancesOfferingRequestEc2QuerySerializer extends _i1
     final result = PurchaseReservedInstancesOfferingRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'InstanceCount':
           result.instanceCount = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'ReservedInstancesOfferingId':
           result.reservedInstancesOfferingId = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
         case 'dryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'limitPrice':
-          if (value != null) {
-            result.limitPrice.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.ReservedInstanceLimitPrice),
-            ) as _i3.ReservedInstanceLimitPrice));
-          }
-          break;
+          result.limitPrice.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.ReservedInstanceLimitPrice),
+          ) as _i3.ReservedInstanceLimitPrice));
         case 'PurchaseTime':
-          if (value != null) {
-            result.purchaseTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.purchaseTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -187,50 +182,56 @@ class PurchaseReservedInstancesOfferingRequestEc2QuerySerializer extends _i1
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PurchaseReservedInstancesOfferingRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PurchaseReservedInstancesOfferingRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'PurchaseReservedInstancesOfferingRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final PurchaseReservedInstancesOfferingRequest(
+      :instanceCount,
+      :reservedInstancesOfferingId,
+      :dryRun,
+      :limitPrice,
+      :purchaseTime
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('InstanceCount'))
       ..add(serializers.serialize(
-        payload.instanceCount,
+        instanceCount,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('ReservedInstancesOfferingId'))
       ..add(serializers.serialize(
-        payload.reservedInstancesOfferingId,
+        reservedInstancesOfferingId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.limitPrice != null) {
-      result
+    if (limitPrice != null) {
+      result$
         ..add(const _i1.XmlElementName('LimitPrice'))
         ..add(serializers.serialize(
-          payload.limitPrice!,
+          limitPrice,
           specifiedType: const FullType(_i3.ReservedInstanceLimitPrice),
         ));
     }
-    if (payload.purchaseTime != null) {
-      result
+    if (purchaseTime != null) {
+      result$
         ..add(const _i1.XmlElementName('PurchaseTime'))
         ..add(serializers.serialize(
-          payload.purchaseTime!,
+          purchaseTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

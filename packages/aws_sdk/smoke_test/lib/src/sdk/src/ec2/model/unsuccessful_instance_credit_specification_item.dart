@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.unsuccessful_instance_credit_specification_item; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -95,27 +96,24 @@ class UnsuccessfulInstanceCreditSpecificationItemEc2QuerySerializer extends _i3
     final result = UnsuccessfulInstanceCreditSpecificationItemBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'error':
-          if (value != null) {
-            result.error.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(
-                  _i2.UnsuccessfulInstanceCreditSpecificationItemError),
-            ) as _i2.UnsuccessfulInstanceCreditSpecificationItemError));
-          }
-          break;
+          result.error.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(
+                _i2.UnsuccessfulInstanceCreditSpecificationItemError),
+          ) as _i2.UnsuccessfulInstanceCreditSpecificationItemError));
       }
     }
 
@@ -125,33 +123,34 @@ class UnsuccessfulInstanceCreditSpecificationItemEc2QuerySerializer extends _i3
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    UnsuccessfulInstanceCreditSpecificationItem object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as UnsuccessfulInstanceCreditSpecificationItem);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'UnsuccessfulInstanceCreditSpecificationItemResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceId != null) {
-      result
+    final UnsuccessfulInstanceCreditSpecificationItem(:instanceId, :error) =
+        object;
+    if (instanceId != null) {
+      result$
         ..add(const _i3.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.error != null) {
-      result
+    if (error != null) {
+      result$
         ..add(const _i3.XmlElementName('Error'))
         ..add(serializers.serialize(
-          payload.error!,
+          error,
           specifiedType: const FullType(
               _i2.UnsuccessfulInstanceCreditSpecificationItemError),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.spot_datafeed_subscription; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -124,50 +125,38 @@ class SpotDatafeedSubscriptionEc2QuerySerializer
     final result = SpotDatafeedSubscriptionBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'bucket':
-          if (value != null) {
-            result.bucket = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.bucket = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'fault':
-          if (value != null) {
-            result.fault.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.SpotInstanceStateFault),
-            ) as _i2.SpotInstanceStateFault));
-          }
-          break;
+          result.fault.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.SpotInstanceStateFault),
+          ) as _i2.SpotInstanceStateFault));
         case 'ownerId':
-          if (value != null) {
-            result.ownerId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.ownerId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'prefix':
-          if (value != null) {
-            result.prefix = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.prefix = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'state':
-          if (value != null) {
-            result.state = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.DatafeedSubscriptionState),
-            ) as _i3.DatafeedSubscriptionState);
-          }
-          break;
+          result.state = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.DatafeedSubscriptionState),
+          ) as _i3.DatafeedSubscriptionState);
       }
     }
 
@@ -177,56 +166,57 @@ class SpotDatafeedSubscriptionEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    SpotDatafeedSubscription object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as SpotDatafeedSubscription);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i4.XmlElementName(
         'SpotDatafeedSubscriptionResponse',
         _i4.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.bucket != null) {
-      result
+    final SpotDatafeedSubscription(:bucket, :fault, :ownerId, :prefix, :state) =
+        object;
+    if (bucket != null) {
+      result$
         ..add(const _i4.XmlElementName('Bucket'))
         ..add(serializers.serialize(
-          payload.bucket!,
+          bucket,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.fault != null) {
-      result
+    if (fault != null) {
+      result$
         ..add(const _i4.XmlElementName('Fault'))
         ..add(serializers.serialize(
-          payload.fault!,
+          fault,
           specifiedType: const FullType(_i2.SpotInstanceStateFault),
         ));
     }
-    if (payload.ownerId != null) {
-      result
+    if (ownerId != null) {
+      result$
         ..add(const _i4.XmlElementName('OwnerId'))
         ..add(serializers.serialize(
-          payload.ownerId!,
+          ownerId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.prefix != null) {
-      result
+    if (prefix != null) {
+      result$
         ..add(const _i4.XmlElementName('Prefix'))
         ..add(serializers.serialize(
-          payload.prefix!,
+          prefix,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.state != null) {
-      result
+    if (state != null) {
+      result$
         ..add(const _i4.XmlElementName('State'))
         ..add(serializers.serialize(
-          payload.state!,
+          state,
           specifiedType: const FullType.nullable(_i3.DatafeedSubscriptionState),
         ));
     }
-    return result;
+    return result$;
   }
 }

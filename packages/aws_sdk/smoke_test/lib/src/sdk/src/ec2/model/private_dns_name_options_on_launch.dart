@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.private_dns_name_options_on_launch; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -108,30 +109,28 @@ class PrivateDnsNameOptionsOnLaunchEc2QuerySerializer
     final result = PrivateDnsNameOptionsOnLaunchBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'hostnameType':
-          if (value != null) {
-            result.hostnameType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.HostnameType),
-            ) as _i2.HostnameType);
-          }
-          break;
+          result.hostnameType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.HostnameType),
+          ) as _i2.HostnameType);
         case 'enableResourceNameDnsARecord':
           result.enableResourceNameDnsARecord = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'enableResourceNameDnsAAAARecord':
           result.enableResourceNameDnsAaaaRecord = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -141,36 +140,40 @@ class PrivateDnsNameOptionsOnLaunchEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    PrivateDnsNameOptionsOnLaunch object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as PrivateDnsNameOptionsOnLaunch);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i3.XmlElementName(
         'PrivateDnsNameOptionsOnLaunchResponse',
         _i3.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.hostnameType != null) {
-      result
+    final PrivateDnsNameOptionsOnLaunch(
+      :hostnameType,
+      :enableResourceNameDnsARecord,
+      :enableResourceNameDnsAaaaRecord
+    ) = object;
+    if (hostnameType != null) {
+      result$
         ..add(const _i3.XmlElementName('HostnameType'))
         ..add(serializers.serialize(
-          payload.hostnameType!,
+          hostnameType,
           specifiedType: const FullType.nullable(_i2.HostnameType),
         ));
     }
-    result
+    result$
       ..add(const _i3.XmlElementName('EnableResourceNameDnsARecord'))
       ..add(serializers.serialize(
-        payload.enableResourceNameDnsARecord,
+        enableResourceNameDnsARecord,
         specifiedType: const FullType(bool),
       ));
-    result
+    result$
       ..add(const _i3.XmlElementName('EnableResourceNameDnsAAAARecord'))
       ..add(serializers.serialize(
-        payload.enableResourceNameDnsAaaaRecord,
+        enableResourceNameDnsAaaaRecord,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }

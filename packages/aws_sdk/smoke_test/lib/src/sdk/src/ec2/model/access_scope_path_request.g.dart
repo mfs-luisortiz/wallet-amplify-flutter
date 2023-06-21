@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of smoke_test.ec2.model.access_scope_path_request;
+part of 'access_scope_path_request.dart';
 
 // **************************************************************************
 // BuiltValueGenerator

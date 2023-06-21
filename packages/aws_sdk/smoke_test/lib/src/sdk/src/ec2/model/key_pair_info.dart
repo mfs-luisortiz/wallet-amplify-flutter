@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.key_pair_info; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -153,73 +154,55 @@ class KeyPairInfoEc2QuerySerializer
     final result = KeyPairInfoBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'keyPairId':
-          if (value != null) {
-            result.keyPairId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.keyPairId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'keyFingerprint':
-          if (value != null) {
-            result.keyFingerprint = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.keyFingerprint = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'keyName':
-          if (value != null) {
-            result.keyName = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.keyName = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'keyType':
-          if (value != null) {
-            result.keyType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.KeyType),
-            ) as _i2.KeyType);
-          }
-          break;
+          result.keyType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.KeyType),
+          ) as _i2.KeyType);
         case 'tagSet':
-          if (value != null) {
-            result.tags.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.Tag)],
-              ),
-            ) as _i4.BuiltList<_i3.Tag>));
-          }
-          break;
+          result.tags.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.Tag)],
+            ),
+          ) as _i4.BuiltList<_i3.Tag>));
         case 'publicKey':
-          if (value != null) {
-            result.publicKey = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.publicKey = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'createTime':
-          if (value != null) {
-            result.createTime = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(DateTime),
-            ) as DateTime);
-          }
-          break;
+          result.createTime = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(DateTime),
+          ) as DateTime);
       }
     }
 
@@ -229,79 +212,87 @@ class KeyPairInfoEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    KeyPairInfo object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as KeyPairInfo);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'KeyPairInfoResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.keyPairId != null) {
-      result
+    final KeyPairInfo(
+      :keyPairId,
+      :keyFingerprint,
+      :keyName,
+      :keyType,
+      :tags,
+      :publicKey,
+      :createTime
+    ) = object;
+    if (keyPairId != null) {
+      result$
         ..add(const _i5.XmlElementName('KeyPairId'))
         ..add(serializers.serialize(
-          payload.keyPairId!,
+          keyPairId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.keyFingerprint != null) {
-      result
+    if (keyFingerprint != null) {
+      result$
         ..add(const _i5.XmlElementName('KeyFingerprint'))
         ..add(serializers.serialize(
-          payload.keyFingerprint!,
+          keyFingerprint,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.keyName != null) {
-      result
+    if (keyName != null) {
+      result$
         ..add(const _i5.XmlElementName('KeyName'))
         ..add(serializers.serialize(
-          payload.keyName!,
+          keyName,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.keyType != null) {
-      result
+    if (keyType != null) {
+      result$
         ..add(const _i5.XmlElementName('KeyType'))
         ..add(serializers.serialize(
-          payload.keyType!,
+          keyType,
           specifiedType: const FullType.nullable(_i2.KeyType),
         ));
     }
-    if (payload.tags != null) {
-      result
+    if (tags != null) {
+      result$
         ..add(const _i5.XmlElementName('TagSet'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.tags!,
+          tags,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.Tag)],
           ),
         ));
     }
-    if (payload.publicKey != null) {
-      result
+    if (publicKey != null) {
+      result$
         ..add(const _i5.XmlElementName('PublicKey'))
         ..add(serializers.serialize(
-          payload.publicKey!,
+          publicKey,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.createTime != null) {
-      result
+    if (createTime != null) {
+      result$
         ..add(const _i5.XmlElementName('CreateTime'))
         ..add(serializers.serialize(
-          payload.createTime!,
+          createTime,
           specifiedType: const FullType.nullable(DateTime),
         ));
     }
-    return result;
+    return result$;
   }
 }

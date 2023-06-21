@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.import_instance_task_details; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -114,49 +115,40 @@ class ImportInstanceTaskDetailsEc2QuerySerializer
     final result = ImportInstanceTaskDetailsBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'description':
-          if (value != null) {
-            result.description = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.description = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceId':
-          if (value != null) {
-            result.instanceId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'platform':
-          if (value != null) {
-            result.platform = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.PlatformValues),
-            ) as _i2.PlatformValues);
-          }
-          break;
+          result.platform = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.PlatformValues),
+          ) as _i2.PlatformValues);
         case 'volumes':
-          if (value != null) {
-            result.volumes.replace((const _i5.XmlBuiltListSerializer(
-              memberName: 'item',
-              indexer: _i5.XmlIndexer.ec2QueryList,
-            ).deserialize(
-              serializers,
-              value is String ? const [] : (value as Iterable<Object?>),
-              specifiedType: const FullType(
-                _i4.BuiltList,
-                [FullType(_i3.ImportInstanceVolumeDetailItem)],
-              ),
-            ) as _i4.BuiltList<_i3.ImportInstanceVolumeDetailItem>));
-          }
-          break;
+          result.volumes.replace((const _i5.XmlBuiltListSerializer(
+            memberName: 'item',
+            indexer: _i5.XmlIndexer.ec2QueryList,
+          ).deserialize(
+            serializers,
+            value is String ? const [] : (value as Iterable<Object?>),
+            specifiedType: const FullType(
+              _i4.BuiltList,
+              [FullType(_i3.ImportInstanceVolumeDetailItem)],
+            ),
+          ) as _i4.BuiltList<_i3.ImportInstanceVolumeDetailItem>));
       }
     }
 
@@ -166,55 +158,60 @@ class ImportInstanceTaskDetailsEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    ImportInstanceTaskDetails object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as ImportInstanceTaskDetails);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'ImportInstanceTaskDetailsResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.description != null) {
-      result
+    final ImportInstanceTaskDetails(
+      :description,
+      :instanceId,
+      :platform,
+      :volumes
+    ) = object;
+    if (description != null) {
+      result$
         ..add(const _i5.XmlElementName('Description'))
         ..add(serializers.serialize(
-          payload.description!,
+          description,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceId != null) {
-      result
+    if (instanceId != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceId'))
         ..add(serializers.serialize(
-          payload.instanceId!,
+          instanceId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.platform != null) {
-      result
+    if (platform != null) {
+      result$
         ..add(const _i5.XmlElementName('Platform'))
         ..add(serializers.serialize(
-          payload.platform!,
+          platform,
           specifiedType: const FullType.nullable(_i2.PlatformValues),
         ));
     }
-    if (payload.volumes != null) {
-      result
+    if (volumes != null) {
+      result$
         ..add(const _i5.XmlElementName('Volumes'))
         ..add(const _i5.XmlBuiltListSerializer(
           memberName: 'item',
           indexer: _i5.XmlIndexer.ec2QueryList,
         ).serialize(
           serializers,
-          payload.volumes!,
+          volumes,
           specifiedType: const FullType.nullable(
             _i4.BuiltList,
             [FullType(_i3.ImportInstanceVolumeDetailItem)],
           ),
         ));
     }
-    return result;
+    return result$;
   }
 }

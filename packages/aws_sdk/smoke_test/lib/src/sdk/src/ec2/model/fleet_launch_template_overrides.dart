@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.fleet_launch_template_overrides; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -184,78 +185,58 @@ class FleetLaunchTemplateOverridesEc2QuerySerializer
     final result = FleetLaunchTemplateOverridesBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i2.InstanceType),
-            ) as _i2.InstanceType);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i2.InstanceType),
+          ) as _i2.InstanceType);
         case 'maxPrice':
-          if (value != null) {
-            result.maxPrice = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.maxPrice = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'subnetId':
-          if (value != null) {
-            result.subnetId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.subnetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'availabilityZone':
-          if (value != null) {
-            result.availabilityZone = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.availabilityZone = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'weightedCapacity':
           result.weightedCapacity = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'priority':
           result.priority = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(double),
           ) as double);
-          break;
         case 'placement':
-          if (value != null) {
-            result.placement.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.PlacementResponse),
-            ) as _i3.PlacementResponse));
-          }
-          break;
+          result.placement.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.PlacementResponse),
+          ) as _i3.PlacementResponse));
         case 'instanceRequirements':
-          if (value != null) {
-            result.instanceRequirements.replace((serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i4.InstanceRequirements),
-            ) as _i4.InstanceRequirements));
-          }
-          break;
+          result.instanceRequirements.replace((serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i4.InstanceRequirements),
+          ) as _i4.InstanceRequirements));
         case 'imageId':
-          if (value != null) {
-            result.imageId = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.imageId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
       }
     }
 
@@ -265,84 +246,94 @@ class FleetLaunchTemplateOverridesEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    FleetLaunchTemplateOverrides object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as FleetLaunchTemplateOverrides);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i5.XmlElementName(
         'FleetLaunchTemplateOverridesResponse',
         _i5.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    if (payload.instanceType != null) {
-      result
+    final FleetLaunchTemplateOverrides(
+      :instanceType,
+      :maxPrice,
+      :subnetId,
+      :availabilityZone,
+      :weightedCapacity,
+      :priority,
+      :placement,
+      :instanceRequirements,
+      :imageId
+    ) = object;
+    if (instanceType != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType.nullable(_i2.InstanceType),
         ));
     }
-    if (payload.maxPrice != null) {
-      result
+    if (maxPrice != null) {
+      result$
         ..add(const _i5.XmlElementName('MaxPrice'))
         ..add(serializers.serialize(
-          payload.maxPrice!,
+          maxPrice,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.subnetId != null) {
-      result
+    if (subnetId != null) {
+      result$
         ..add(const _i5.XmlElementName('SubnetId'))
         ..add(serializers.serialize(
-          payload.subnetId!,
+          subnetId,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.availabilityZone != null) {
-      result
+    if (availabilityZone != null) {
+      result$
         ..add(const _i5.XmlElementName('AvailabilityZone'))
         ..add(serializers.serialize(
-          payload.availabilityZone!,
+          availabilityZone,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i5.XmlElementName('WeightedCapacity'))
       ..add(serializers.serialize(
-        payload.weightedCapacity,
+        weightedCapacity,
         specifiedType: const FullType(double),
       ));
-    result
+    result$
       ..add(const _i5.XmlElementName('Priority'))
       ..add(serializers.serialize(
-        payload.priority,
+        priority,
         specifiedType: const FullType(double),
       ));
-    if (payload.placement != null) {
-      result
+    if (placement != null) {
+      result$
         ..add(const _i5.XmlElementName('Placement'))
         ..add(serializers.serialize(
-          payload.placement!,
+          placement,
           specifiedType: const FullType(_i3.PlacementResponse),
         ));
     }
-    if (payload.instanceRequirements != null) {
-      result
+    if (instanceRequirements != null) {
+      result$
         ..add(const _i5.XmlElementName('InstanceRequirements'))
         ..add(serializers.serialize(
-          payload.instanceRequirements!,
+          instanceRequirements,
           specifiedType: const FullType(_i4.InstanceRequirements),
         ));
     }
-    if (payload.imageId != null) {
-      result
+    if (imageId != null) {
+      result$
         ..add(const _i5.XmlElementName('ImageId'))
         ..add(serializers.serialize(
-          payload.imageId!,
+          imageId,
           specifiedType: const FullType(String),
         ));
     }
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.host_properties; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -124,44 +125,38 @@ class HostPropertiesEc2QuerySerializer
     final result = HostPropertiesBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'cores':
           result.cores = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'instanceType':
-          if (value != null) {
-            result.instanceType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'instanceFamily':
-          if (value != null) {
-            result.instanceFamily = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
+          result.instanceFamily = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'sockets':
           result.sockets = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'totalVCpus':
           result.totalVCpus = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
       }
     }
 
@@ -171,50 +166,56 @@ class HostPropertiesEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    HostProperties object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as HostProperties);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'HostPropertiesResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final HostProperties(
+      :cores,
+      :instanceType,
+      :instanceFamily,
+      :sockets,
+      :totalVCpus
+    ) = object;
+    result$
       ..add(const _i2.XmlElementName('Cores'))
       ..add(serializers.serialize(
-        payload.cores,
+        cores,
         specifiedType: const FullType(int),
       ));
-    if (payload.instanceType != null) {
-      result
+    if (instanceType != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceType'))
         ..add(serializers.serialize(
-          payload.instanceType!,
+          instanceType,
           specifiedType: const FullType(String),
         ));
     }
-    if (payload.instanceFamily != null) {
-      result
+    if (instanceFamily != null) {
+      result$
         ..add(const _i2.XmlElementName('InstanceFamily'))
         ..add(serializers.serialize(
-          payload.instanceFamily!,
+          instanceFamily,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i2.XmlElementName('Sockets'))
       ..add(serializers.serialize(
-        payload.sockets,
+        sockets,
         specifiedType: const FullType(int),
       ));
-    result
+    result$
       ..add(const _i2.XmlElementName('TotalVCpus'))
       ..add(serializers.serialize(
-        payload.totalVCpus,
+        totalVCpus,
         specifiedType: const FullType(int),
       ));
-    return result;
+    return result$;
   }
 }

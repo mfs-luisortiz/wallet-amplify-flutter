@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.describe_fleet_history_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -144,50 +145,43 @@ class DescribeFleetHistoryRequestEc2QuerySerializer
     final result = DescribeFleetHistoryRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'DryRun':
           result.dryRun = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
         case 'EventType':
-          if (value != null) {
-            result.eventType = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(_i3.FleetEventType),
-            ) as _i3.FleetEventType);
-          }
-          break;
+          result.eventType = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(_i3.FleetEventType),
+          ) as _i3.FleetEventType);
         case 'MaxResults':
           result.maxResults = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(int),
           ) as int);
-          break;
         case 'NextToken':
-          if (value != null) {
-            result.nextToken = (serializers.deserialize(
-              value,
-              specifiedType: const FullType(String),
-            ) as String);
-          }
-          break;
-        case 'FleetId':
-          result.fleetId = (serializers.deserialize(
-            value!,
+          result.nextToken = (serializers.deserialize(
+            value,
             specifiedType: const FullType(String),
           ) as String);
-          break;
+        case 'FleetId':
+          result.fleetId = (serializers.deserialize(
+            value,
+            specifiedType: const FullType(String),
+          ) as String);
         case 'StartTime':
           result.startTime = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(DateTime),
           ) as DateTime);
-          break;
       }
     }
 
@@ -197,56 +191,63 @@ class DescribeFleetHistoryRequestEc2QuerySerializer
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    DescribeFleetHistoryRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as DescribeFleetHistoryRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i1.XmlElementName(
         'DescribeFleetHistoryRequestResponse',
         _i1.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final DescribeFleetHistoryRequest(
+      :dryRun,
+      :eventType,
+      :maxResults,
+      :nextToken,
+      :fleetId,
+      :startTime
+    ) = object;
+    result$
       ..add(const _i1.XmlElementName('DryRun'))
       ..add(serializers.serialize(
-        payload.dryRun,
+        dryRun,
         specifiedType: const FullType(bool),
       ));
-    if (payload.eventType != null) {
-      result
+    if (eventType != null) {
+      result$
         ..add(const _i1.XmlElementName('EventType'))
         ..add(serializers.serialize(
-          payload.eventType!,
+          eventType,
           specifiedType: const FullType.nullable(_i3.FleetEventType),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('MaxResults'))
       ..add(serializers.serialize(
-        payload.maxResults,
+        maxResults,
         specifiedType: const FullType(int),
       ));
-    if (payload.nextToken != null) {
-      result
+    if (nextToken != null) {
+      result$
         ..add(const _i1.XmlElementName('NextToken'))
         ..add(serializers.serialize(
-          payload.nextToken!,
+          nextToken,
           specifiedType: const FullType(String),
         ));
     }
-    result
+    result$
       ..add(const _i1.XmlElementName('FleetId'))
       ..add(serializers.serialize(
-        payload.fleetId,
+        fleetId,
         specifiedType: const FullType(String),
       ));
-    result
+    result$
       ..add(const _i1.XmlElementName('StartTime'))
       ..add(serializers.serialize(
-        payload.startTime,
+        startTime,
         specifiedType: const FullType.nullable(DateTime),
       ));
-    return result;
+    return result$;
   }
 }

@@ -1,4 +1,5 @@
 // Generated with smithy-dart 0.3.1. DO NOT MODIFY.
+// ignore_for_file: avoid_unused_constructor_parameters,deprecated_member_use_from_same_package,non_constant_identifier_names
 
 library smoke_test.ec2.model.launch_template_hibernation_options_request; // ignore_for_file: no_leading_underscores_for_library_prefixes
 
@@ -82,16 +83,18 @@ class LaunchTemplateHibernationOptionsRequestEc2QuerySerializer extends _i2
     final result = LaunchTemplateHibernationOptionsRequestBuilder();
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current;
+      final key = iterator.current as String;
       iterator.moveNext();
       final value = iterator.current;
-      switch (key as String) {
+      if (value == null) {
+        continue;
+      }
+      switch (key) {
         case 'Configured':
           result.configured = (serializers.deserialize(
-            value!,
+            value,
             specifiedType: const FullType(bool),
           ) as bool);
-          break;
       }
     }
 
@@ -101,22 +104,22 @@ class LaunchTemplateHibernationOptionsRequestEc2QuerySerializer extends _i2
   @override
   Iterable<Object?> serialize(
     Serializers serializers,
-    Object? object, {
+    LaunchTemplateHibernationOptionsRequest object, {
     FullType specifiedType = FullType.unspecified,
   }) {
-    final payload = (object as LaunchTemplateHibernationOptionsRequest);
-    final result = <Object?>[
+    final result$ = <Object?>[
       const _i2.XmlElementName(
         'LaunchTemplateHibernationOptionsRequestResponse',
         _i2.XmlNamespace('http://ec2.amazonaws.com/doc/2016-11-15'),
       )
     ];
-    result
+    final LaunchTemplateHibernationOptionsRequest(:configured) = object;
+    result$
       ..add(const _i2.XmlElementName('Configured'))
       ..add(serializers.serialize(
-        payload.configured,
+        configured,
         specifiedType: const FullType(bool),
       ));
-    return result;
+    return result$;
   }
 }
