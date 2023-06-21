@@ -239,6 +239,10 @@ updates:
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
+    directory: "packages/smithy/goldens/lib/ec2Query"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
     directory: "packages/smithy/goldens/lib/restJson1"
     schedule:
       interval: "daily"
@@ -264,6 +268,10 @@ updates:
       interval: "daily"
   - package-ecosystem: "pub"
     directory: "packages/smithy/goldens/lib2/custom"
+    schedule:
+      interval: "daily"
+  - package-ecosystem: "pub"
+    directory: "packages/smithy/goldens/lib2/ec2Query"
     schedule:
       interval: "daily"
   - package-ecosystem: "pub"
