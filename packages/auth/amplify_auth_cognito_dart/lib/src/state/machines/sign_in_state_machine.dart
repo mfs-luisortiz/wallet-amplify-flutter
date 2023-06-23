@@ -546,9 +546,9 @@ final class SignInStateMachine
     });
   }
 
-  TotpSetupDetails _createTotpSetupResult(String secretCode) =>
+  TotpSetupDetails _createTotpSetupResult(String sharedSecret) =>
       TotpSetupDetails(
-        secretCode: secretCode,
+        sharedSecret: sharedSecret,
         username: _user.username!,
       );
 
