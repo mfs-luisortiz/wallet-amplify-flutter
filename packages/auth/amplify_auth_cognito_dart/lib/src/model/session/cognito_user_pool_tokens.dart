@@ -74,21 +74,6 @@ abstract class CognitoUserPoolTokens
   /// The Cognito user's username.
   String get username => CognitoIdToken(idToken).username;
 
-  /// Validates the tokens against the client state.
-  void validate({
-    String? nonce,
-  }) {
-    // Missing nonce values or nonce mismatches should throw exceptions,
-    // indicating the tokens cannot be used.
-    final idTokenNonce = idToken.nonce;
-    if (nonce == null || idTokenNonce == null) {
-      throw const InvalidStateException('Missing nonce');
-    }
-    if (nonce != idTokenNonce) {
-      throw const InvalidStateException('Nonce values do not match');
-    }
-  }
-
   @override
   Map<String, Object?> toJson() => _$CognitoUserPoolTokensToJson(this);
 
