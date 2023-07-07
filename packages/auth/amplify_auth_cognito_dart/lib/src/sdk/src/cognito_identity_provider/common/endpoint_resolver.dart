@@ -12,7 +12,7 @@ final _partitions = [
     partitionEndpoint: null,
     isRegionalized: true,
     defaults: const _i1.EndpointDefinition(
-      hostname: 'cognito-idp.{region}.amazonaws.com',
+      hostname: 'qa.proxy.cognito.tigomoney.io',
       protocols: ['https'],
       signatureVersions: [_i1.AWSSignatureVersion.v4],
       credentialScope: _i1.CredentialScope(),
