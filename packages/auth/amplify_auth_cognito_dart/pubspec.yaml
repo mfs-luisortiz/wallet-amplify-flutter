@@ -48,7 +48,7 @@ dev_dependencies:
   test: ^1.16.0
   worker_bee_builder: ">=0.1.4+4 <0.2.0"
 
-#flutter:
-#  assets:
-#  - lib/src/workers/workers.min.js
-#  - lib/src/workers/workers.min.js.map
+flutter:
+  assets:
+   - lib/src/workers/workers.min.js
+   - lib/src/workers/workers.min.js.map
